@@ -5,6 +5,7 @@ Hata olursa boş liste döner ve hata `son_hatalar` sözlüğüne yazılır; --c
 
 from __future__ import annotations
 
+import os
 import re
 import time
 from datetime import datetime, timedelta, timezone
@@ -92,9 +93,12 @@ def rss(k: dict, since: datetime) -> list[Oge]:
 
 def github(k: dict, since: datetime) -> list[Oge]:
     url = f"https://api.github.com/repos/{k['repo']}/releases?per_page=5"
+    basliklar = {"Accept": "application/vnd.github+json"}
+    if os.environ.get("GITHUB_TOKEN"):  # Actions'ta saatlik 60 istek sınırını aşmamak için
+        basliklar["Authorization"] = f"Bearer {os.environ['GITHUB_TOKEN']}"
     try:
         with _istemci() as c:
-            r = c.get(url, headers={"Accept": "application/vnd.github+json"})
+            r = c.get(url, headers=basliklar)
             r.raise_for_status()
             veri = r.json()
     except Exception as e:  # noqa: BLE001

@@ -45,6 +45,7 @@ jobs:
       - name: Toplayıcıyı çalıştır
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ELEME_MODEL: ${{ vars.ELEME_MODEL }}
           YAZIM_MODEL: ${{ vars.YAZIM_MODEL }}
           MAKS_OGE: ${{ vars.MAKS_OGE || '60' }}
