@@ -44,11 +44,12 @@ export async function getStaticPaths() {
 const fontlar = Promise.all([
   readFile(path.resolve(process.cwd(), 'src/assets/fonts/InstrumentSerif-400.ttf')),
   readFile(path.resolve(process.cwd(), 'src/assets/fonts/Newsreader-500.ttf')),
+  readFile(path.resolve(process.cwd(), 'src/assets/fonts/GrenzeGotisch-700.ttf')),
 ]);
 
 export async function GET({ props }: APIContext) {
   const { baslik, ustYazi, altYazi } = props as Veri;
-  const [instrument, newsreader] = await fontlar;
+  const [instrument, newsreader, grenze] = await fontlar;
   const uzun = baslik.length > 55;
 
   const cizgi = (kalin = 1) => ({ type: 'div', props: { style: { height: kalin, background: INK, width: '100%' } } });
@@ -74,7 +75,7 @@ export async function GET({ props }: APIContext) {
               style: { display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', fontSize: 22, letterSpacing: 2, textTransform: 'uppercase', fontFamily: 'Instrument Serif' },
               children: [
                 { type: 'div', props: { children: 'Türkiye' } },
-                { type: 'div', props: { style: { fontFamily: 'Instrument Serif', fontSize: 56, letterSpacing: -1 }, children: 'YEKVISUAL' } },
+                { type: 'div', props: { style: { fontFamily: 'Grenze Gotisch', fontSize: 64, letterSpacing: 0, textTransform: 'none' }, children: 'yekvisual' } },
                 { type: 'div', props: { children: 'yekvisual.github.io' } },
               ],
             },
@@ -114,6 +115,7 @@ export async function GET({ props }: APIContext) {
       fonts: [
         { name: 'Instrument Serif', data: instrument, weight: 400, style: 'normal' },
         { name: 'Newsreader', data: newsreader, weight: 500, style: 'normal' },
+        { name: 'Grenze Gotisch', data: grenze, weight: 700, style: 'normal' },
       ],
     },
   );

@@ -12,7 +12,7 @@
   --rule-strong: #1d1d1b;
   --font-display: 'Instrument Serif', 'Times New Roman', serif;
   --font-body: 'Newsreader', Georgia, 'Times New Roman', serif;
-  --font-masthead: 'Instrument Serif', 'Times New Roman', serif;
+  --font-masthead: 'Grenze Gotisch', 'Instrument Serif', serif;
   --gutter: 16px;
   --container: 1480px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -314,9 +314,8 @@ a:hover .kapak img,
 }
 .kapak-uretilmis .kapak-marka {
   font-family: var(--font-masthead);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 0.85rem;
+  font-weight: 700;
+  font-size: 1.1rem;
   color: var(--ink);
 }
 .kapak-uretilmis .kapak-baslik {
