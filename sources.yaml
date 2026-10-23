@@ -1,0 +1,108 @@
+# Taranan kaynaklar. Her kaynak: ad, tur (rss | github | huggingface | arxiv | reddit),
+# url ya da tür'e özel alanlar, varsayılan kategori ve isteğe bağlı anahtar kelime filtresi.
+# `python -m collector --check` her kaynağın çalışıp çalışmadığını listeler.
+#
+# RSS vermeyen kaynaklar (sonraki faz, sayfa izleme): Anthropic, Meta AI, Black Forest Labs,
+# Runway, Luma, Ideogram, Adobe, Krea, Suno, Midjourney, Stability AI.
+#
+# kategori değerleri site/src/lib/taxonomy.ts ile aynı:
+#   gorsel, video, ses, 3d, araclar, acik-kaynak, otomasyon, arastirma
+
+rss:
+  - ad: OpenAI
+    url: https://openai.com/news/rss.xml
+    kategori: araclar
+  - ad: Google DeepMind
+    url: https://deepmind.google/blog/rss.xml
+    kategori: gorsel
+  - ad: Google Blog
+    url: https://blog.google/rss/
+    kategori: araclar
+    anahtar: [gemini, veo, imagen, nano banana, image, video, flow, whisk, ai]
+  - ad: ElevenLabs
+    url: https://elevenlabs.io/blog/rss.xml
+    kategori: ses
+  - ad: NVIDIA Blog
+    url: https://blogs.nvidia.com/feed/
+    kategori: arastirma
+    anahtar: [generative, diffusion, video, image, nim, omniverse, 3d]
+  - ad: Hugging Face Blog
+    url: https://huggingface.co/blog/feed.xml
+    kategori: acik-kaynak
+  - ad: Remotion
+    url: https://www.remotion.dev/blog/rss.xml
+    kategori: video
+  - ad: Blackmagic Design
+    url: https://www.blackmagicdesign.com/rss
+    kategori: video
+    anahtar: [resolve, ai, neural]
+  - ad: Comfy Blog
+    url: https://blog.comfy.org/feed
+    kategori: acik-kaynak
+  - ad: Replicate
+    url: https://replicate.com/blog/rss
+    kategori: acik-kaynak
+  - ad: fal.ai
+    url: https://blog.fal.ai/rss/
+    kategori: araclar
+
+github:
+  - ad: ComfyUI
+    repo: comfyanonymous/ComfyUI
+    kategori: acik-kaynak
+  - ad: diffusers
+    repo: huggingface/diffusers
+    kategori: acik-kaynak
+  - ad: Remotion
+    repo: remotion-dev/remotion
+    kategori: video
+  - ad: HyperFrames
+    repo: hyperframes/hyperframes
+    kategori: video
+  - ad: Wan
+    repo: Wan-Video/Wan2.2
+    kategori: acik-kaynak
+  - ad: Claude Code
+    repo: anthropics/claude-code
+    kategori: otomasyon
+
+huggingface:
+  - ad: HF görsel
+    filtre: text-to-image
+    kategori: gorsel
+  - ad: HF video
+    filtre: text-to-video
+    kategori: video
+  - ad: HF görselden video
+    filtre: image-to-video
+    kategori: video
+  - ad: HF ses
+    filtre: text-to-speech
+    kategori: ses
+  - ad: HF 3D
+    filtre: image-to-3d
+    kategori: 3d
+
+arxiv:
+  - ad: arXiv görsel/video üretimi
+    sorgu: "(cat:cs.CV OR cat:cs.GR) AND (abs:\"video generation\" OR abs:\"image generation\" OR abs:\"text-to-image\" OR abs:\"text-to-video\" OR abs:\"image editing\" OR abs:\"diffusion model\")"
+    kategori: arastirma
+    limit: 25
+
+reddit:
+  - ad: r/StableDiffusion
+    sub: StableDiffusion
+    kategori: acik-kaynak
+    limit: 8
+  - ad: r/aivideo
+    sub: aivideo
+    kategori: video
+    limit: 8
+  - ad: r/midjourney
+    sub: midjourney
+    kategori: gorsel
+    limit: 8
+  - ad: r/ClaudeAI
+    sub: ClaudeAI
+    kategori: otomasyon
+    limit: 8

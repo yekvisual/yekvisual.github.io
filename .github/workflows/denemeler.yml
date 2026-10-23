@@ -1,0 +1,43 @@
+name: Denemeleri işle
+
+# denemeler/gelen/<ad>/ klasörüne görsel/video (+ isteğe bağlı prompt.txt) atıldığında
+# ilgili habere "Ben denedim" bölümü ekler, medyayı sıkıştırır, klasörü islendi/ altına taşır.
+on:
+  push:
+    branches: [main]
+    paths: ["denemeler/gelen/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  experiments:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: sudo apt-get update -q && sudo apt-get install -y -q ffmpeg
+      - run: pip install -r requirements.txt
+      - name: Denemeleri işle
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          YAZIM_MODEL: ${{ vars.YAZIM_MODEL }}
+        run: python -m collector.experiments
+      - name: Commit
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "yekvisual-bot"
+          git config user.email "yekvisual-bot@users.noreply.github.com"
+          git add -A content denemeler
+          if ! git diff --cached --quiet; then
+            git commit -m "Denemeler işlendi [bot]"
+            git push
+            gh workflow run deploy.yml --ref main || true
+          fi
