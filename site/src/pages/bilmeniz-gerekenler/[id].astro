@@ -1,5 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import HaberKart from '../../components/HaberKart.astro';
 import Rozetler from '../../components/Rozetler.astro';
@@ -40,6 +41,12 @@ const haberler = (await getCollection('haberler'))
       </div>
       <div class="bas-sag" aria-hidden="true">{d.ikon}</div>
     </header>
+
+    {d.gorsel && (
+      <div class="kapak reveal-img hero-gorsel">
+        <Image src={d.gorsel} alt="" width={1400} widths={[800, 1200, 1600]} sizes="100vw" loading="eager" />
+      </div>
+    )}
 
     <div class="govde">
       <div class="prose dropcap reveal" style="--d:100ms">
@@ -117,6 +124,14 @@ const haberler = (await getCollection('haberler'))
   .bas-sag {
     font-size: 3rem;
     filter: grayscale(1) contrast(1.2);
+  }
+  .hero-gorsel {
+    aspect-ratio: 21 / 9;
+    margin-bottom: 2.5rem;
+    background: var(--paper-2);
+  }
+  .hero-gorsel img {
+    mix-blend-mode: multiply;
   }
   .govde {
     display: grid;

@@ -8,6 +8,7 @@ zorluk: yeni
 kategori: otomasyon
 araclar: [claude-code]
 etiketler: [claude code, dosya düzenleme, yer açma, terminal, mac, windows]
+gorsel: ./medya/bilgisayar-kontrolu.webp
 ---
 
 ## Ne bu?

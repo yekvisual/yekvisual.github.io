@@ -7,6 +7,7 @@ zorluk: orta
 kategori: video
 araclar: [davinci-resolve, claude-code]
 etiketler: [davinci resolve, claude, kurgu, renk, mcp]
+gorsel: ./medya/ai-ile-video-edit.webp
 ---
 
 ## Ne bu?

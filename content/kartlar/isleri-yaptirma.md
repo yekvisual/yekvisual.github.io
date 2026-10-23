@@ -7,6 +7,7 @@ zorluk: yeni
 kategori: otomasyon
 araclar: [claude, claude-code, github-actions]
 etiketler: [otomasyon, zamanlama, takvim, e-posta, routine, cron]
+gorsel: ./medya/isleri-yaptirma.webp
 ---
 
 ## Ne bu?

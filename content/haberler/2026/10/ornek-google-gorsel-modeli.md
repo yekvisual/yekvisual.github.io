@@ -14,7 +14,7 @@ model: Gemini (görsel)
 etiketler: [google, gemini, görsel düzenleme, ücretsiz]
 kart: connectorler
 kapak: ./ornek-google-gorsel-modeli/kapak.webp
-kapak_kaynak: "Görsel: Google"
+kapak_kaynak: "Görsel: yekvisual"
 kaynaklar:
   - ad: Google Blog
     url: https://blog.google/

@@ -7,6 +7,7 @@ zorluk: orta
 kategori: video
 araclar: [remotion, hyperframes, claude-code]
 etiketler: [remotion, hyperframes, claude code, motion graphics]
+gorsel: ./medya/kodla-video.webp
 ---
 
 ## Ne bu?

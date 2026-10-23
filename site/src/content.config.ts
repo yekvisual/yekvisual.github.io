@@ -46,7 +46,8 @@ const haberler = defineCollection({
 
 const kartlar = defineCollection({
   loader: glob({ pattern: '*.md', base: '../content/kartlar' }),
-  schema: z.object({
+  schema: ({ image }) =>
+    z.object({
     baslik: z.string(),
     ozet: z.string(),
     ikon: z.string(),
@@ -55,6 +56,7 @@ const kartlar = defineCollection({
     kategori,
     araclar: z.array(z.string()).default([]),
     etiketler: z.array(z.string()).default([]),
+    gorsel: image().optional(),
   }),
 });
 

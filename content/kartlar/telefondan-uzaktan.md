@@ -8,6 +8,7 @@ zorluk: orta
 kategori: otomasyon
 araclar: [claude-code]
 etiketler: [uzaktan erişim, remote control, telefon, claude code, mobil]
+gorsel: ./medya/telefondan-uzaktan.webp
 ---
 
 ## Ne bu?

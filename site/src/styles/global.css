@@ -12,9 +12,9 @@
   --rule-strong: #1d1d1b;
   --font-display: 'Instrument Serif', 'Times New Roman', serif;
   --font-body: 'Newsreader', Georgia, 'Times New Roman', serif;
-  --font-masthead: 'UnifrakturMaguntia', 'Instrument Serif', serif;
+  --font-masthead: 'Instrument Serif', 'Times New Roman', serif;
   --gutter: 16px;
-  --container: 1320px;
+  --container: 1480px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   color-scheme: light;
 }
@@ -27,6 +27,8 @@
 
 html {
   -webkit-text-size-adjust: 100%;
+  /* Ekran genişliğine duyarlı yazı: tüm rem değerleri bununla ölçeklenir */
+  font-size: clamp(17px, 0.7vw + 8px, 23px);
 }
 
 body {
@@ -34,7 +36,7 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--font-body);
-  font-size: 17px;
+  font-size: 1rem;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
@@ -312,7 +314,9 @@ a:hover .kapak img,
 }
 .kapak-uretilmis .kapak-marka {
   font-family: var(--font-masthead);
-  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.85rem;
   color: var(--ink);
 }
 .kapak-uretilmis .kapak-baslik {

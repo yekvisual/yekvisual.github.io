@@ -8,6 +8,7 @@ zorluk: yeni
 kategori: araclar
 araclar: [claude, canva, adobe-express]
 etiketler: [connector, bağlayıcı, canva, adobe, figma, drive, mcp]
+gorsel: ./medya/connectorler.webp
 ---
 
 ## Ne bu?

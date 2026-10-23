@@ -7,6 +7,7 @@ zorluk: teknik
 kategori: acik-kaynak
 araclar: [comfyui, flux, wan]
 etiketler: [açık kaynak, comfyui, flux, wan, stable diffusion, yerel, ücretsiz]
+gorsel: ./medya/acik-kaynak-modeller.webp
 ---
 
 ## Ne bu?

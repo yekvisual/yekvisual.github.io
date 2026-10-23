@@ -7,6 +7,7 @@ zorluk: orta
 kategori: otomasyon
 araclar: [reels-bot, github-actions]
 etiketler: [instagram, reels, otomatik paylaşım, github actions, meta api]
+gorsel: ./medya/instagram-baglama.webp
 ---
 
 ## Ne bu?

@@ -12,6 +12,8 @@ zorluk: teknik
 sirket: Remotion
 etiketler: [remotion, claude code, şablon, reels]
 kart: kodla-video
+kapak: ./ornek-remotion-surumu/kapak.webp
+kapak_kaynak: "Görsel: yekvisual"
 kaynaklar:
   - ad: Remotion Blog
     url: https://www.remotion.dev/blog
