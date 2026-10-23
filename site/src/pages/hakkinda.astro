@@ -4,10 +4,10 @@ import { SITE } from '../lib/site';
 ---
 
 <Base title="Hakkında" description="yekvisual kimdir, bu site nasıl çalışır.">
-  <section class="section container yazi">
-    <p class="eyebrow">Hakkında</p>
-    <h1>Merhaba, ben <span class="gradient-text">yekvisual</span>.</h1>
-    <div class="prose">
+  <section class="container section yazi">
+    <p class="kicker kicker-accent reveal">Künye</p>
+    <h1 class="display reveal" style="--d:60ms">Merhaba, ben <em>yekvisual.</em></h1>
+    <div class="prose dropcap reveal rule" style="--d:120ms">
       <p>
         Video ve görsel üretiyorum; son bir yıldır işimin büyük kısmını yapay zekâyla birlikte yapıyorum. Bu siteyi,
         "nereden başlasam?" diye soran herkese aynı şeyleri tekrar tekrar anlatmak yerine tek bir yere yazmak için
@@ -28,15 +28,24 @@ import { SITE } from '../lib/site';
       <h2>İletişim</h2>
       <p>En hızlı yol Instagram: <a href={SITE.instagram} target="_blank" rel="noopener">{SITE.instagramKullanici}</a></p>
     </div>
-    <a href={SITE.instagram} class="btn btn-gradient" target="_blank" rel="noopener">Instagram'da takip et</a>
+    <a href={SITE.instagram} class="btn btn-ink" target="_blank" rel="noopener">Instagram'da takip et</a>
   </section>
 </Base>
 
 <style>
   .yazi {
-    max-width: 720px;
+    max-width: 760px;
+  }
+  .yazi h1 {
+    text-transform: none;
+    font-size: clamp(2.6rem, 6vw, 5rem);
+  }
+  .yazi em {
+    font-style: italic;
+    color: var(--accent);
   }
   .prose {
-    margin-bottom: 2rem;
+    margin: 1.5rem 0 2rem;
+    padding-top: 1.5rem;
   }
 </style>

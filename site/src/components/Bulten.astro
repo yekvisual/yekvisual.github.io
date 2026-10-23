@@ -3,21 +3,21 @@ import { SITE } from '../lib/site';
 const aktif = Boolean(SITE.bultenFormUrl);
 ---
 
-<section class="bulten">
+<section class="bulten band reveal">
   <div class="bulten-ic">
-    <p class="eyebrow">Haftalık bülten</p>
-    <h2>Haftada bir e-posta, <span class="gradient-text">sıfır gürültü</span>.</h2>
-    <p class="muted">Haftanın en önemli 5 gelişmesi, ne işine yarayacağıyla birlikte. Her pazar.</p>
+    <p class="kicker kicker-paper">Haftalık bülten · Her pazar</p>
+    <h2 class="display">Haftada bir e-posta, <em>sıfır gürültü.</em></h2>
+    <p class="aciklama">Haftanın en önemli beş gelişmesi, ne işine yarayacağıyla birlikte.</p>
     {aktif ? (
       <form action={SITE.bultenFormUrl} method="post" target="_blank" class="form">
         <label class="sr-only" for="bulten-email">E-posta</label>
         <input id="bulten-email" type="email" name="email" placeholder="e-posta adresin" required />
-        <button class="btn btn-primary" type="submit">Abone ol</button>
+        <button class="btn btn-paper" type="submit">Abone ol</button>
       </form>
     ) : (
       <div class="form">
-        <a class="btn btn-gradient" href={SITE.instagram} target="_blank" rel="noopener">Şimdilik Instagram'dan takip et</a>
-        <span class="muted small">Bülten çok yakında.</span>
+        <a class="btn btn-paper" href={SITE.instagram} target="_blank" rel="noopener">Şimdilik Instagram'dan takip et</a>
+        <span class="kicker kicker-paper">Bülten çok yakında</span>
       </div>
     )}
   </div>
@@ -25,16 +25,27 @@ const aktif = Boolean(SITE.bultenFormUrl);
 
 <style>
   .bulten {
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    background:
-      radial-gradient(70% 100% at 100% 0%, rgba(34, 211, 238, 0.12), transparent 60%),
-      radial-gradient(60% 100% at 0% 100%, rgba(167, 139, 250, 0.14), transparent 60%),
-      var(--surface);
-    padding: clamp(1.5rem, 4vw, 3rem);
+    padding: clamp(2rem, 5vw, 4rem) clamp(1.2rem, 4vw, 3.5rem);
+    border: 1px solid var(--ink);
   }
   .bulten-ic {
-    max-width: 560px;
+    max-width: 720px;
+  }
+  .bulten h2 {
+    font-size: clamp(2.4rem, 5.5vw, 5rem);
+    text-transform: none;
+    margin-bottom: 0.4em;
+  }
+  .bulten em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .kicker-paper {
+    color: rgba(217, 210, 200, 0.75);
+  }
+  .aciklama {
+    color: rgba(217, 210, 200, 0.85);
+    font-size: 1.05rem;
   }
   .form {
     display: flex;
@@ -45,15 +56,27 @@ const aktif = Boolean(SITE.bultenFormUrl);
   }
   input {
     flex: 1 1 220px;
-    padding: 0.7rem 1rem;
-    border-radius: 999px;
-    border: 1px solid var(--border-strong);
-    background: var(--bg-2);
-    color: var(--text);
     font: inherit;
+    font-size: 1rem;
+    padding: 0.7rem 1rem;
+    border: 1px solid rgba(217, 210, 200, 0.5);
+    background: transparent;
+    color: var(--paper);
+    border-radius: 999px;
+  }
+  input::placeholder {
+    color: rgba(217, 210, 200, 0.5);
   }
   input:focus {
-    outline: 2px solid var(--accent);
+    outline: 1px solid var(--paper);
     outline-offset: 2px;
+  }
+  .btn-paper {
+    border-color: var(--paper);
+    color: var(--paper);
+  }
+  .btn-paper:hover {
+    background: var(--paper);
+    color: var(--ink);
   }
 </style>

@@ -13,12 +13,12 @@ const { Content } = await render(ozet);
 ---
 
 <Base title={ozet.data.baslik} description={ozet.data.ozet} type="article" tarih={ozet.data.tarih} image={`/og/ozet/${ozet.id}.png`}>
-  <article class="section container yazi">
-    <a href="/haftalik/" class="geri">← Haftalık özetler</a>
-    <p class="eyebrow">Haftalık özet</p>
-    <h1>{ozet.data.baslik}</h1>
-    <p class="muted"><time datetime={ozet.data.tarih.toISOString()}>{tarihTR(ozet.data.tarih)}</time></p>
-    <div class="prose"><Content /></div>
+  <article class="container section yazi">
+    <a href="/haftalik/" class="kicker geri">← Haftalık özetler</a>
+    <p class="kicker kicker-accent reveal">Pazar eki · <time datetime={ozet.data.tarih.toISOString()}>{tarihTR(ozet.data.tarih)}</time></p>
+    <h1 class="display reveal" style="--d:60ms">{ozet.data.baslik}</h1>
+    <p class="lead reveal" style="--d:120ms">{ozet.data.ozet}</p>
+    <div class="prose dropcap reveal rule" style="--d:180ms"><Content /></div>
   </article>
   <section class="container" style="padding-bottom:2rem">
     <Bulten />
@@ -27,15 +27,21 @@ const { Content } = await render(ozet);
 
 <style>
   .yazi {
-    max-width: 760px;
+    max-width: 800px;
   }
   .geri {
-    color: var(--muted);
-    font-size: 0.9rem;
     display: inline-block;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  .geri:hover {
+    color: var(--accent);
+  }
+  .yazi h1 {
+    text-transform: none;
+    font-size: clamp(2.4rem, 5.5vw, 4.6rem);
   }
   .prose {
-    margin-top: 2rem;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
   }
 </style>

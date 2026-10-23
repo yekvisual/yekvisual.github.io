@@ -8,23 +8,27 @@ const haberler = (await getCollection('haberler')).sort((a, b) => b.data.tarih.v
 ---
 
 <Base title="Gündem" description="Yapay zekâ görsel, video, ses ve otomasyon dünyasından yeni modeller, araçlar ve gelişmeler. Türkçe, güncel.">
-  <section class="section container">
-    <p class="eyebrow">Gündem</p>
-    <h1>Yeni çıkanlar, <span class="gradient-text">sade anlatım</span></h1>
-    <p class="muted giris">Her gün taranan onlarca kaynaktan süzülen gelişmeler. Yalnızca ne işine yarayacağı belli olanlar.</p>
+  <section class="container section sayfa-bas">
+    <p class="kicker kicker-accent reveal">Gündem · {haberler.length} haber</p>
+    <h1 class="display reveal" style="--d:60ms">Yeni çıkanlar,<br /><em>sade anlatım.</em></h1>
+    <p class="lead giris reveal" style="--d:120ms">Her gün taranan onlarca kaynaktan süzülen gelişmeler. Yalnızca ne işine yarayacağı belli olanlar.</p>
+  </section>
 
-    <div class="filtreler" id="filtreler" role="group" aria-label="Kategori filtresi">
+  <section class="container">
+    <div class="filtreler rule-double filtre-satir" id="filtreler" role="group" aria-label="Filtreler">
       <button class="cip" data-f="kategori" data-v="" aria-pressed="true">Tümü</button>
       {Object.entries(KATEGORILER).map(([id, k]) => (
-        <button class="cip cip-kategori" data-f="kategori" data-v={id} aria-pressed="false" style={`--k:${k.renk}`}>{k.ad}</button>
+        <button class="cip" data-f="kategori" data-v={id} aria-pressed="false">{k.ad}</button>
       ))}
       <span class="ayrac" aria-hidden="true"></span>
-      <button class="cip" data-f="ucretsiz" data-v="1" aria-pressed="false">🆓 Ücretsiz</button>
+      <button class="cip" data-f="ucretsiz" data-v="1" aria-pressed="false">Ücretsiz</button>
       <button class="cip" data-f="acik" data-v="1" aria-pressed="false">Açık kaynak</button>
     </div>
 
     {haberler.length ? (
-      <div class="grid" id="liste">{haberler.map((h) => <HaberKart haber={h} />)}</div>
+      <div class="cols liste" style="--n:3" id="liste">
+        {haberler.map((h, i) => <div><HaberKart haber={h} gecikme={(i % 3) * 90} /></div>)}
+      </div>
     ) : null}
     <p class="bos" id="bos" hidden>Bu filtreyle eşleşen haber yok.</p>
   </section>
@@ -37,12 +41,13 @@ const haberler = (await getCollection('haberler')).sort((a, b) => b.data.tarih.v
 
     function uygula() {
       let gorunen = 0;
-      liste?.querySelectorAll<HTMLElement>('article').forEach((a) => {
+      liste?.querySelectorAll<HTMLElement>(':scope > div').forEach((kap) => {
+        const a = kap.querySelector<HTMLElement>('article')!;
         const ok =
           (!durum.kategori || a.dataset.kategori === durum.kategori) &&
           (!durum.ucretsiz || a.dataset.ucretsiz === '1') &&
           (!durum.acik || a.dataset.acik === '1');
-        a.hidden = !ok;
+        kap.hidden = !ok;
         if (ok) gorunen++;
       });
       if (bos) bos.hidden = gorunen > 0;
@@ -71,14 +76,28 @@ const haberler = (await getCollection('haberler')).sort((a, b) => b.data.tarih.v
   </script>
 
   <style>
+    .sayfa-bas {
+      padding-bottom: 1.5rem;
+    }
+    .sayfa-bas h1 {
+      font-size: clamp(3.2rem, 8vw, 7rem);
+    }
+    .sayfa-bas em {
+      font-style: italic;
+      color: var(--accent);
+    }
     .giris {
       max-width: 60ch;
-      margin-bottom: 2rem;
+      margin: 0;
     }
-    .ayrac {
-      width: 1px;
-      background: var(--border-strong);
-      margin: 0 0.3rem;
+    .filtre-satir {
+      padding-top: 0.8rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 0.5rem;
+    }
+    .liste > div {
+      padding-block: 1.8rem;
     }
   </style>
 </Base>

@@ -4,99 +4,180 @@ import Base from '../layouts/Base.astro';
 import HaberKart from '../components/HaberKart.astro';
 import BilgiKart from '../components/BilgiKart.astro';
 import Bulten from '../components/Bulten.astro';
-import { SITE } from '../lib/site';
+import { haberYolu, kartYolu } from '../lib/site';
 
 const haberler = (await getCollection('haberler')).sort((a, b) => b.data.tarih.valueOf() - a.data.tarih.valueOf());
 const kartlar = (await getCollection('kartlar')).sort((a, b) => a.data.sira - b.data.sira);
-const oneCikan = haberler.find((h) => h.data.puan >= 5) ?? haberler[0];
-const sonHaberler = haberler.filter((h) => h !== oneCikan).slice(0, 6);
+const araclar = await getCollection('araclar');
+const ozetler = await getCollection('ozetler');
+
+const manset = haberler.find((h) => h.data.puan >= 5) ?? haberler[0];
+const digerleri = haberler.filter((h) => h !== manset);
+const ustSol = digerleri[0];
+const ustSag = digerleri[1];
+// Haber azken bölüm boş kalmasın: hepsini göster
+const sonHaberler = digerleri.length > 2 ? digerleri.slice(2, 8) : haberler.slice(0, 6);
+const ucretsizSayi = haberler.filter((h) => h.data.ucretsiz).length;
 ---
 
 <Base>
-  <section class="hero">
-    <div class="container">
-      <p class="eyebrow">Yapay zekâ ile üretim · Türkçe</p>
-      <h1>
-        Yapay zekâyla üretmeyi öğren.<br />
-        <span class="gradient-text">Yeni çıkanı kaçırma.</span>
-      </h1>
-      <p class="hero-aciklama">
-        Görsel, video, ses ve otomasyon. Sıfırdan başlayanlar ve içerik üreticileri için neyin mümkün
-        olduğunu anlatan kartlar; haberi geldikçe yeni modeller ve araçlar.
+  <!-- Üst şerit: iki küçük haber + ortada giriş -->
+  <section class="container ust-serit cols" style="--n:3">
+    <div>{ustSol && <HaberKart haber={ustSol} boyut="kucuk" />}</div>
+    <div class="ust-orta reveal">
+      <h1 class="display">Gündem!</h1>
+      <p class="lead">
+        Yapay zekâyla görsel, video ve içerik üretiminde <em>bu hafta</em> ne değişti; sıfırdan başlayana ne
+        işe yarar.
       </p>
-      <div class="hero-butonlar">
-        <a href="/bilmeniz-gerekenler/" class="btn btn-gradient">Buradan başla</a>
-        <a href="/gundem/" class="btn">Gündeme bak</a>
-      </div>
+      <p class="kicker"><strong>İpucu!</strong> Önce "Bilmeniz Gerekenler"e bak.</p>
+    </div>
+    <div>{ustSag && <HaberKart haber={ustSag} boyut="kucuk" gecikme={120} />}</div>
+  </section>
+
+  <!-- Dev masthead bandı -->
+  <section class="container">
+    <div class="band dev-band reveal">
+      <span class="display dev-yazi" aria-hidden="true">yekvisual</span>
+      <span class="sr-only">yekvisual</span>
     </div>
   </section>
 
-  <section class="section container" id="bilmeniz-gerekenler">
-    <div class="section-head">
-      <div>
-        <p class="eyebrow">Sıfırdan başlayanlar için</p>
-        <h2>Bilmeniz gerekenler</h2>
-      </div>
-      <a href="/bilmeniz-gerekenler/" class="more">Tümü →</a>
-    </div>
-    <div class="serit">
-      {kartlar.map((k) => <BilgiKart kart={k} />)}
-    </div>
-  </section>
-
-  {oneCikan && (
-    <section class="section container" style="padding-top:0">
+  <!-- Manşet -->
+  {manset && (
+    <section class="container section" style="padding-top:2rem">
       <div class="section-head">
-        <div>
-          <p class="eyebrow">Öne çıkan</p>
-          <h2>Bu hafta konuşulan</h2>
-        </div>
+        <h2 class="display">Manşet</h2>
+        <a href={haberYolu(manset.id)} class="more">Haberi oku</a>
       </div>
-      <div class="grid">
-        <HaberKart haber={oneCikan} buyuk />
-      </div>
+      <HaberKart haber={manset} boyut="manset" />
     </section>
   )}
 
-  <section class="section container" style="padding-top:0">
+  <!-- Bilmeniz gerekenler -->
+  <section class="container section" id="bilmeniz-gerekenler">
     <div class="section-head">
       <div>
-        <p class="eyebrow">Gündem</p>
-        <h2>Son gelişmeler</h2>
+        <p class="kicker kicker-accent">Sıfırdan başlayanlar için</p>
+        <h2 class="display">Bilmeniz gerekenler</h2>
       </div>
-      <a href="/gundem/" class="more">Tüm haberler →</a>
+      <a href="/bilmeniz-gerekenler/" class="more">Tüm kartlar</a>
+    </div>
+    <div class="cols kart-izgara" style="--n:4">
+      {kartlar.map((k, i) => <div><BilgiKart kart={k} gecikme={i * 70} /></div>)}
+    </div>
+  </section>
+
+  <!-- Sayaçlar -->
+  <section class="container">
+    <div class="sayaclar rule-double">
+      <div class="sayac reveal"><span class="kicker">Haber</span><span class="display" data-sayac={haberler.length}>00</span></div>
+      <div class="sayac reveal" style="--d:80ms"><span class="kicker">Ücretsiz</span><span class="display" data-sayac={ucretsizSayi}>00</span></div>
+      <div class="sayac reveal" style="--d:160ms"><span class="kicker">Araç</span><span class="display" data-sayac={araclar.length}>00</span></div>
+      <div class="sayac reveal" style="--d:240ms"><span class="kicker">Kart</span><span class="display" data-sayac={kartlar.length}>00</span></div>
+      <div class="sayac reveal" style="--d:320ms"><span class="kicker">Hafta</span><span class="display" data-sayac={ozetler.length}>00</span></div>
+    </div>
+  </section>
+
+  <!-- Son haberler -->
+  <section class="container section">
+    <div class="section-head">
+      <h2 class="display">Son gelişmeler</h2>
+      <a href="/gundem/" class="more">Tüm haberler</a>
     </div>
     {sonHaberler.length ? (
-      <div class="grid">{sonHaberler.map((h) => <HaberKart haber={h} />)}</div>
+      <div class="cols haber-izgara" style="--n:3">
+        {sonHaberler.map((h, i) => <div><HaberKart haber={h} gecikme={(i % 3) * 90} /></div>)}
+      </div>
     ) : (
-      <p class="bos">Henüz haber yok. Bot yakında devreye giriyor.</p>
+      <p class="bos">Bot çalışınca haberler burada birikecek.</p>
     )}
   </section>
 
-  <section class="section container" style="padding-top:0">
+  <section class="container" style="padding-bottom:1rem">
     <Bulten />
   </section>
 </Base>
 
 <style>
-  .hero {
-    padding: clamp(3.5rem, 10vw, 7rem) 0 clamp(2rem, 6vw, 4rem);
-    position: relative;
+  .ust-serit {
+    padding-top: 1.6rem;
   }
-  .hero h1 {
-    font-size: clamp(2.4rem, 7vw, 5rem);
-    max-width: 16ch;
-    margin-bottom: 1.2rem;
-  }
-  .hero-aciklama {
-    max-width: 58ch;
-    font-size: clamp(1rem, 1.6vw, 1.2rem);
-    color: var(--text-2);
-  }
-  .hero-butonlar {
+  .ust-orta {
+    text-align: center;
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    margin-top: 1.8rem;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.6rem;
+    padding-inline: 2rem !important;
+  }
+  .ust-orta h1 {
+    font-size: clamp(3rem, 5vw, 4.6rem);
+    margin: 0;
+  }
+  .ust-orta .lead {
+    margin: 0;
+    max-width: 30ch;
+    margin-inline: auto;
+  }
+  .ust-orta em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .dev-band {
+    margin-top: 1.6rem;
+    padding: 0.2em 0.1em 0.12em;
+    text-align: center;
+    overflow: hidden;
+  }
+  .dev-yazi {
+    display: block;
+    font-size: clamp(5rem, 19.5vw, 19rem);
+    line-height: 0.82;
+    letter-spacing: -0.03em;
+    white-space: nowrap;
+  }
+  .kart-izgara > div {
+    display: flex;
+  }
+  .sayaclar {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    padding-top: 1rem;
+    border-bottom: 1px solid var(--rule-strong);
+    padding-bottom: 1rem;
+  }
+  .sayac {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.6rem;
+    border-left: 1px solid var(--rule);
+  }
+  .sayac:first-child {
+    border-left: 0;
+  }
+  .sayac .display {
+    font-size: clamp(2.4rem, 5vw, 4.6rem);
+    line-height: 1;
+  }
+  @media (max-width: 860px) {
+    .ust-serit > div:nth-child(2) {
+      order: -1;
+    }
+    .ust-orta {
+      padding-inline: 0 !important;
+      padding-bottom: 1.5rem !important;
+    }
+    .sayaclar {
+      grid-template-columns: repeat(2, 1fr);
+      row-gap: 0.8rem;
+    }
+    .sayac:nth-child(3) {
+      border-left: 0;
+    }
+  }
+  .haber-izgara > div {
+    padding-bottom: 2rem;
   }
 </style>

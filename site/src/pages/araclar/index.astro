@@ -1,25 +1,26 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
-import Rozetler from '../../components/Rozetler.astro';
-import { KATEGORILER, ZORLUKLAR } from '../../lib/taxonomy';
+import { KATEGORILER, ZORLUKLAR, kategoriAdi, zorlukAdi } from '../../lib/taxonomy';
 
 const araclar = (await getCollection('araclar')).sort((a, b) => a.data.ad.localeCompare(b.data.ad, 'tr'));
 ---
 
 <Base title="Araç Dizini" description="Yapay zekâ ile görsel, video, ses ve otomasyon için araçlar: ücretsiz mi, açık kaynak mı, kimin için?">
-  <section class="section container">
-    <p class="eyebrow">Araç dizini</p>
-    <h1>Hangi araç, <span class="gradient-text">kime göre?</span></h1>
-    <p class="muted giris">Haberlerde geçen araçlar burada birikir. Ücretsiz ve açık kaynak olanları, zorluk seviyesini tek bakışta gör.</p>
+  <section class="container section sayfa-bas">
+    <p class="kicker kicker-accent reveal">Araç dizini · {araclar.length} araç</p>
+    <h1 class="display reveal" style="--d:60ms">Hangi araç,<br /><em>kime göre?</em></h1>
+    <p class="lead giris reveal" style="--d:120ms">Haberlerde geçen araçlar burada birikir. Ücretsiz ve açık kaynak olanları, zorluk seviyesini tek bakışta gör.</p>
+  </section>
 
-    <div class="filtreler" id="filtreler">
+  <section class="container">
+    <div class="filtreler rule-double filtre-satir" id="filtreler">
       <button class="cip" data-f="kategori" data-v="" aria-pressed="true">Tümü</button>
       {Object.entries(KATEGORILER).map(([id, k]) => (
-        <button class="cip cip-kategori" data-f="kategori" data-v={id} aria-pressed="false" style={`--k:${k.renk}`}>{k.ad}</button>
+        <button class="cip" data-f="kategori" data-v={id} aria-pressed="false">{k.ad}</button>
       ))}
       <span class="ayrac" aria-hidden="true"></span>
-      <button class="cip" data-f="ucretsiz" data-v="1" aria-pressed="false">🆓 Ücretsiz</button>
+      <button class="cip" data-f="ucretsiz" data-v="1" aria-pressed="false">Ücretsiz</button>
       <button class="cip" data-f="acik" data-v="1" aria-pressed="false">Açık kaynak</button>
       <span class="ayrac" aria-hidden="true"></span>
       {Object.entries(ZORLUKLAR).map(([id, z]) => (
@@ -27,24 +28,40 @@ const araclar = (await getCollection('araclar')).sort((a, b) => a.data.ad.locale
       ))}
     </div>
 
-    <ul class="liste" id="liste">
-      {araclar.map((a) => (
-        <li
-          class="arac"
-          data-kategori={a.data.kategori}
-          data-ucretsiz={a.data.ucretsiz === true ? '1' : '0'}
-          data-acik={a.data.acik_kaynak === true ? '1' : '0'}
-          data-zorluk={a.data.zorluk}
-        >
-          <div class="arac-ust">
-            <h3><a href={a.data.url} target="_blank" rel="noopener">{a.data.ad} <span class="ok">↗</span></a></h3>
-            <span class="muted small">{new URL(a.data.url).hostname.replace('www.', '')}</span>
-          </div>
-          <p>{a.data.aciklama}</p>
-          <Rozetler kategori={a.data.kategori} ucretsiz={a.data.ucretsiz} acikKaynak={a.data.acik_kaynak} zorluk={a.data.zorluk} />
-        </li>
-      ))}
-    </ul>
+    <table class="tablo" id="liste">
+      <thead>
+        <tr class="kicker">
+          <th>Araç</th>
+          <th>Ne işe yarar</th>
+          <th>Kategori</th>
+          <th>Ücret</th>
+          <th>Kaynak</th>
+          <th>Seviye</th>
+        </tr>
+      </thead>
+      <tbody>
+        {araclar.map((a, i) => (
+          <tr
+            class="arac reveal"
+            style={`--d:${(i % 6) * 40}ms`}
+            data-kategori={a.data.kategori}
+            data-ucretsiz={a.data.ucretsiz === true ? '1' : '0'}
+            data-acik={a.data.acik_kaynak === true ? '1' : '0'}
+            data-zorluk={a.data.zorluk}
+          >
+            <td class="ad">
+              <a href={a.data.url} target="_blank" rel="noopener">{a.data.ad} <span class="ok">↗</span></a>
+              <span class="kicker muted alan">{new URL(a.data.url).hostname.replace('www.', '')}</span>
+            </td>
+            <td class="aciklama">{a.data.aciklama}</td>
+            <td class="kicker">{kategoriAdi(a.data.kategori)}</td>
+            <td>{a.data.ucretsiz === true ? <span class="etiket">Ücretsiz</span> : a.data.ucretsiz === false ? <span class="etiket etiket-outline">Ücretli</span> : <span class="muted">—</span>}</td>
+            <td>{a.data.acik_kaynak === true ? <span class="etiket etiket-outline">Açık</span> : a.data.acik_kaynak === false ? <span class="muted">Kapalı</span> : <span class="muted">—</span>}</td>
+            <td class="kicker">{zorlukAdi(a.data.zorluk)}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
     <p class="bos" id="bos" hidden>Bu filtreyle eşleşen araç yok.</p>
   </section>
 
@@ -84,60 +101,83 @@ const araclar = (await getCollection('araclar')).sort((a, b) => a.data.ad.locale
   </script>
 
   <style>
+    .sayfa-bas {
+      padding-bottom: 1.5rem;
+    }
+    .sayfa-bas h1 {
+      font-size: clamp(3.2rem, 8vw, 7rem);
+    }
+    .sayfa-bas em {
+      font-style: italic;
+      color: var(--accent);
+    }
     .giris {
       max-width: 60ch;
-      margin-bottom: 2rem;
-    }
-    .ayrac {
-      width: 1px;
-      background: var(--border-strong);
-      margin: 0 0.3rem;
-    }
-    .liste {
-      list-style: none;
-      padding: 0;
       margin: 0;
-      display: grid;
-      gap: 1rem;
-      grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
     }
-    .arac {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.2rem 1.3rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-      transition: border-color 0.15s ease;
+    .filtre-satir {
+      padding-top: 0.8rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid var(--rule);
     }
-    .arac:hover {
-      border-color: var(--border-strong);
+    .tablo {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.5rem;
     }
-    .arac-ust {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 0.5rem;
+    .tablo th {
+      text-align: left;
+      font-weight: 400;
+      padding: 0.8rem 0.8rem 0.5rem 0;
+      border-bottom: 1px solid var(--ink);
     }
-    .arac h3 {
-      margin: 0;
-      font-size: 1.1rem;
+    .tablo td {
+      padding: 1rem 0.8rem 1rem 0;
+      border-bottom: 1px solid var(--rule);
+      vertical-align: top;
     }
-    .arac h3 a:hover {
-      color: var(--accent-2);
+    .ad a {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .ad a:hover {
+      color: var(--accent);
     }
     .ok {
-      color: var(--muted);
-      font-size: 0.85em;
+      font-size: 0.8em;
     }
-    .arac p {
-      margin: 0;
-      color: var(--text-2);
-      font-size: 0.93rem;
+    .alan {
+      display: block;
+      margin-top: 0.2rem;
     }
-    .arac .rozetler {
-      margin-top: auto;
+    .aciklama {
+      color: var(--ink-2);
+      max-width: 42ch;
+    }
+    .tablo tr.reveal {
+      transform: none;
+    }
+    @media (max-width: 800px) {
+      .tablo thead {
+        display: none;
+      }
+      .tablo tr {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.3rem 0.8rem;
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--rule);
+      }
+      .tablo td {
+        border: 0;
+        padding: 0;
+      }
+      .tablo td.ad,
+      .tablo td.aciklama {
+        grid-column: 1 / -1;
+      }
     }
   </style>
 </Base>

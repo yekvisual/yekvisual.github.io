@@ -8,63 +8,93 @@ const ozetler = (await getCollection('ozetler')).sort((a, b) => b.data.tarih.val
 ---
 
 <Base title="Haftalık Özet" description="Her pazar: haftanın en önemli yapay zekâ görsel, video ve otomasyon gelişmeleri tek yazıda.">
-  <section class="section container">
-    <p class="eyebrow">Her pazar</p>
-    <h1>Haftalık <span class="gradient-text">özet</span></h1>
-    <p class="muted giris">Haftayı kaçırdıysan tek yazı yeter. Bülten de bu yazıdan gönderilir.</p>
+  <section class="container section sayfa-bas">
+    <p class="kicker kicker-accent reveal">Pazar eki</p>
+    <h1 class="display reveal" style="--d:60ms">Haftalık <em>özet</em></h1>
+    <p class="lead giris reveal" style="--d:120ms">Haftayı kaçırdıysan tek yazı yeter. Bülten de bu yazıdan gönderilir.</p>
+  </section>
 
+  <section class="container">
     {ozetler.length ? (
-      <ul class="liste">
-        {ozetler.map((o) => (
-          <li>
+      <ol class="liste rule">
+        {ozetler.map((o, i) => (
+          <li class="reveal" style={`--d:${i * 60}ms`}>
             <a href={`/haftalik/${o.id}/`}>
-              <time class="muted small" datetime={o.data.tarih.toISOString()}>{tarihTR(o.data.tarih)}</time>
-              <h3>{o.data.baslik}</h3>
-              <p>{o.data.ozet}</p>
+              <span class="display no">{String(ozetler.length - i).padStart(2, '0')}</span>
+              <span class="icerik">
+                <time class="kicker muted" datetime={o.data.tarih.toISOString()}>{tarihTR(o.data.tarih)}</time>
+                <span class="display baslik">{o.data.baslik}</span>
+                <span class="ozet">{o.data.ozet}</span>
+              </span>
+              <span class="kicker oku">Oku →</span>
             </a>
           </li>
         ))}
-      </ul>
+      </ol>
     ) : (
       <p class="bos">İlk özet bu pazar.</p>
     )}
   </section>
-  <section class="container" style="padding-bottom:2rem">
+  <section class="container section">
     <Bulten />
   </section>
 </Base>
 
 <style>
+  .sayfa-bas {
+    padding-bottom: 1rem;
+  }
+  .sayfa-bas h1 {
+    font-size: clamp(3.2rem, 8vw, 7rem);
+  }
+  .sayfa-bas em {
+    font-style: italic;
+    color: var(--accent);
+  }
   .giris {
-    margin-bottom: 2rem;
+    max-width: 60ch;
+    margin: 0;
   }
   .liste {
     list-style: none;
     padding: 0;
     margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    max-width: 760px;
   }
   .liste a {
-    display: block;
-    padding: 1.3rem 1.5rem;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    background: var(--surface);
-    transition: border-color 0.15s ease, transform 0.15s ease;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 1.5rem;
+    align-items: center;
+    padding: 1.4rem 0;
+    border-bottom: 1px solid var(--rule);
   }
-  .liste a:hover {
-    border-color: var(--accent);
-    transform: translateY(-2px);
+  .liste a:hover .baslik {
+    color: var(--accent);
   }
-  .liste h3 {
-    margin: 0.3rem 0 0.4rem;
+  .no {
+    font-size: 3rem;
+    line-height: 0.9;
   }
-  .liste p {
-    margin: 0;
-    color: var(--text-2);
-    font-size: 0.95rem;
+  .icerik {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  .baslik {
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    text-transform: none;
+    line-height: 1;
+    transition: color 0.25s var(--ease);
+  }
+  .ozet {
+    color: var(--ink-2);
+  }
+  @media (max-width: 600px) {
+    .liste a {
+      grid-template-columns: auto 1fr;
+    }
+    .oku {
+      display: none;
+    }
   }
 </style>

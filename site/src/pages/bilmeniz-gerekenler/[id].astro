@@ -18,7 +18,6 @@ const tumKartlar = (await getCollection('kartlar')).sort((a, b) => a.data.sira -
 const i = tumKartlar.findIndex((k) => k.id === kart.id);
 const onceki = tumKartlar[i - 1];
 const sonraki = tumKartlar[i + 1];
-
 const araclar = (await getCollection('araclar')).filter((a) => d.araclar.includes(a.id));
 const haberler = (await getCollection('haberler'))
   .filter((h) => h.data.kart === kart.id || h.data.kategori === d.kategori)
@@ -27,40 +26,53 @@ const haberler = (await getCollection('haberler'))
 ---
 
 <Base title={d.baslik} description={d.ozet} image={`/og/kart/${kart.id}.png`}>
-  <article class="section container kart-sayfa">
-    <a href="/bilmeniz-gerekenler/" class="geri">← Bilmeniz gerekenler</a>
-    <header class="baslik">
-      <span class="ikon" aria-hidden="true">{d.ikon}</span>
-      <div>
-        <p class="eyebrow">{String(d.sira).padStart(2, '0')} / {String(tumKartlar.length).padStart(2, '0')}</p>
-        <h1>{d.baslik}</h1>
-        <p class="ozet">{d.ozet}</p>
+  <article class="container section kart-sayfa">
+    <header class="bas rule-double">
+      <div class="bas-sol">
+        <span class="display no">{String(d.sira).padStart(2, '0')}</span>
+        <span class="kicker">/ {String(tumKartlar.length).padStart(2, '0')}</span>
+      </div>
+      <div class="bas-orta reveal">
+        <p class="kicker kicker-accent">Bilmeniz gerekenler</p>
+        <h1 class="display">{d.baslik}</h1>
+        <p class="lead">{d.ozet}</p>
         <Rozetler kategori={d.kategori} zorluk={d.zorluk} />
       </div>
+      <div class="bas-sag" aria-hidden="true">{d.ikon}</div>
     </header>
 
-    <div class="icerik">
-      <div class="prose">
+    <div class="govde">
+      <div class="prose dropcap reveal" style="--d:100ms">
         <Content />
       </div>
-      <aside class="yan">
+      <aside class="yan reveal" style="--d:200ms">
         {araclar.length > 0 && (
           <div class="kutu">
             <p class="kutu-baslik">Araçlar</p>
             <ul class="arac-listesi">
               {araclar.map((a) => (
                 <li>
-                  <a href={a.data.url} target="_blank" rel="noopener">{a.data.ad}</a>
-                  <span class="muted small">{a.data.aciklama}</span>
+                  <a href={a.data.url} target="_blank" rel="noopener">{a.data.ad} ↗</a>
+                  <span class="small muted">{a.data.aciklama}</span>
                 </li>
               ))}
             </ul>
-            <a href="/araclar/" class="small">Tüm araçlar →</a>
+            <a href="/araclar/" class="kicker">Tüm araçlar →</a>
           </div>
         )}
-        <nav class="kutu gezin">
-          {onceki && <a href={kartYolu(onceki.id)}>← {onceki.data.baslik}</a>}
-          {sonraki && <a href={kartYolu(sonraki.id)}>{sonraki.data.baslik} →</a>}
+        <nav class="gezin">
+          {onceki && (
+            <a href={kartYolu(onceki.id)}>
+              <span class="kicker">← Önceki</span>
+              <span>{onceki.data.baslik}</span>
+            </a>
+          )}
+          {sonraki && (
+            <a href={kartYolu(sonraki.id)}>
+              <span class="kicker">Sonraki →</span>
+              <span>{sonraki.data.baslik}</span>
+            </a>
+          )}
         </nav>
       </aside>
     </div>
@@ -68,67 +80,75 @@ const haberler = (await getCollection('haberler'))
     {haberler.length > 0 && (
       <section class="ilgili">
         <div class="section-head">
-          <h2>Bu konuda son gelişmeler</h2>
-          <a href={`/gundem/kategori/${d.kategori}/`} class="more">Kategorideki tüm haberler →</a>
+          <h2 class="display">Bu konuda son gelişmeler</h2>
+          <a href={`/gundem/kategori/${d.kategori}/`} class="more">Kategorideki tüm haberler</a>
         </div>
-        <div class="grid">{haberler.map((h) => <HaberKart haber={h} />)}</div>
+        <div class="cols" style="--n:3">{haberler.map((h, i) => <div><HaberKart haber={h} gecikme={i * 90} /></div>)}</div>
       </section>
     )}
   </article>
 </Base>
 
 <style>
-  .geri {
-    color: var(--muted);
-    font-size: 0.9rem;
-    display: inline-block;
-    margin-bottom: 1.5rem;
-  }
-  .geri:hover {
-    color: var(--accent-2);
-  }
-  .baslik {
-    display: flex;
-    gap: 1.5rem;
-    align-items: flex-start;
+  .bas {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 2rem;
+    align-items: start;
+    padding-top: 1.4rem;
     margin-bottom: 2.5rem;
   }
-  .baslik .ikon {
-    font-size: 2.6rem;
-    width: 4.5rem;
-    height: 4.5rem;
-    flex: none;
-    display: grid;
-    place-items: center;
-    border-radius: 18px;
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
-    border: 1px solid var(--border);
+  .bas-sol {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
-  .baslik h1 {
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
+  .no {
+    font-size: clamp(3.5rem, 7vw, 6rem);
+    line-height: 0.9;
   }
-  .ozet {
-    font-size: 1.1rem;
-    color: var(--text-2);
-    max-width: 60ch;
+  .bas-orta h1 {
+    font-size: clamp(2.6rem, 5.5vw, 4.8rem);
+    text-transform: none;
   }
-  .icerik {
+  .bas-orta .lead {
+    max-width: 58ch;
+  }
+  .bas-sag {
+    font-size: 3rem;
+    filter: grayscale(1) contrast(1.2);
+  }
+  .govde {
     display: grid;
     gap: 2.5rem;
     grid-template-columns: minmax(0, 1fr);
   }
   @media (min-width: 900px) {
-    .icerik {
+    .govde {
       grid-template-columns: minmax(0, 1fr) 300px;
+    }
+  }
+  @media (max-width: 700px) {
+    .bas {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    .bas-sol {
+      flex-direction: row;
+      gap: 0.6rem;
+      align-items: baseline;
+    }
+    .bas-sag {
+      display: none;
     }
   }
   .yan {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.2rem;
     align-self: start;
     position: sticky;
-    top: 84px;
+    top: 1.5rem;
   }
   .arac-listesi {
     list-style: none;
@@ -139,27 +159,33 @@ const haberler = (await getCollection('haberler'))
     gap: 0.7rem;
   }
   .arac-listesi a {
-    font-weight: 600;
-    color: var(--accent-2);
+    font-family: var(--font-display);
+    font-size: 1.2rem;
     display: block;
+    line-height: 1.1;
+  }
+  .arac-listesi a:hover {
+    color: var(--accent);
   }
   .gezin {
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
-    font-size: 0.9rem;
-    color: var(--text-2);
+    border-top: 1px solid var(--ink);
+  }
+  .gezin a {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--rule);
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    line-height: 1.1;
   }
   .gezin a:hover {
-    color: var(--text);
+    color: var(--accent);
   }
   .ilgili {
     margin-top: 4rem;
-  }
-  @media (max-width: 600px) {
-    .baslik {
-      flex-direction: column;
-      gap: 1rem;
-    }
   }
 </style>

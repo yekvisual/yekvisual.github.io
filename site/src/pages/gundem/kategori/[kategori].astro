@@ -16,13 +16,14 @@ const haberler = (await getCollection('haberler'))
 ---
 
 <Base title={`${k.ad} haberleri`} description={k.aciklama}>
-  <section class="section container">
-    <a href="/gundem/" class="geri">← Gündem</a>
-    <p class="eyebrow" style={`color:${k.renk}`}>Kategori</p>
-    <h1>{k.ad}</h1>
-    <p class="muted giris">{k.aciklama}</p>
+  <section class="container section sayfa-bas">
+    <a href="/gundem/" class="kicker geri">← Gündem</a>
+    <h1 class="display reveal">{k.ad}</h1>
+    <p class="lead reveal" style="--d:80ms">{k.aciklama}</p>
+  </section>
+  <section class="container">
     {haberler.length ? (
-      <div class="grid">{haberler.map((h) => <HaberKart haber={h} />)}</div>
+      <div class="cols liste rule" style="--n:3">{haberler.map((h, i) => <div><HaberKart haber={h} gecikme={(i % 3) * 90} /></div>)}</div>
     ) : (
       <p class="bos">Bu kategoride henüz haber yok.</p>
     )}
@@ -30,13 +31,20 @@ const haberler = (await getCollection('haberler'))
 </Base>
 
 <style>
-  .geri {
-    color: var(--muted);
-    font-size: 0.9rem;
-    display: inline-block;
-    margin-bottom: 1.2rem;
+  .sayfa-bas {
+    padding-bottom: 1rem;
   }
-  .giris {
-    margin-bottom: 2rem;
+  .sayfa-bas h1 {
+    font-size: clamp(3.2rem, 8vw, 7rem);
+  }
+  .geri {
+    display: inline-block;
+    margin-bottom: 1rem;
+  }
+  .geri:hover {
+    color: var(--accent);
+  }
+  .liste > div {
+    padding-block: 1.8rem;
   }
 </style>

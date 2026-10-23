@@ -1,6 +1,6 @@
 ---
-// Haber/araç rozetleri: kategori, ücretsiz/ücretli, açık kaynak, zorluk, örnek.
-import { kategoriAdi, kategoriRenk, zorlukAdi } from '../lib/taxonomy';
+// Gazete etiketleri: kategori (kicker), ücretsiz/ücretli, açık kaynak, zorluk, örnek, yeni.
+import { kategoriAdi, zorlukAdi } from '../lib/taxonomy';
 
 interface Props {
   kategori?: string;
@@ -8,24 +8,25 @@ interface Props {
   acikKaynak?: boolean | null;
   zorluk?: string;
   ornek?: boolean;
+  yeni?: boolean;
   kategoriLink?: boolean;
 }
-const { kategori, ucretsiz, acikKaynak, zorluk, ornek, kategoriLink = true } = Astro.props;
+const { kategori, ucretsiz, acikKaynak, zorluk, ornek, yeni, kategoriLink = true } = Astro.props;
 ---
 
-<div class="rozetler">
-  {ornek && <span class="rozet rozet-ornek">Örnek içerik</span>}
-  {kategori && kategoriLink && (
-    <a href={`/gundem/kategori/${kategori}/`} class="rozet rozet-kategori" style={`--k:${kategoriRenk(kategori)}`}>
-      {kategoriAdi(kategori)}
-    </a>
-  )}
-  {kategori && !kategoriLink && (
-    <span class="rozet rozet-kategori" style={`--k:${kategoriRenk(kategori)}`}>{kategoriAdi(kategori)}</span>
-  )}
-  {ucretsiz === true && <span class="rozet rozet-ok">🆓 Ücretsiz</span>}
-  {ucretsiz === false && <span class="rozet rozet-ucretli">💳 Ücretli</span>}
-  {acikKaynak === true && <span class="rozet rozet-ok">Açık kaynak</span>}
-  {acikKaynak === false && <span class="rozet">Kapalı</span>}
-  {zorluk && <span class="rozet">{zorlukAdi(zorluk)}</span>}
+<div class="etiketler">
+  {kategori && kategoriLink && <a href={`/gundem/kategori/${kategori}/`} class="kicker kicker-link">{kategoriAdi(kategori)}</a>}
+  {kategori && !kategoriLink && <span class="kicker">{kategoriAdi(kategori)}</span>}
+  {yeni && <span class="etiket">Yeni</span>}
+  {ucretsiz === true && <span class="etiket">Ücretsiz</span>}
+  {ucretsiz === false && <span class="etiket etiket-outline">Ücretli</span>}
+  {acikKaynak === true && <span class="etiket etiket-outline">Açık kaynak</span>}
+  {zorluk && <span class="etiket etiket-ince">{zorlukAdi(zorluk)}</span>}
+  {ornek && <span class="etiket etiket-ornek">Örnek</span>}
 </div>
+
+<style>
+  .kicker-link:hover {
+    color: var(--accent);
+  }
+</style>

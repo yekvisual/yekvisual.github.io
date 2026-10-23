@@ -4,36 +4,53 @@ import Search from 'astro-pagefind/components/Search.astro';
 ---
 
 <Base title="Ara" description="Sitede ara">
-  <section class="section container yazi">
-    <p class="eyebrow">Arama</p>
-    <h1>Ne arıyorsun?</h1>
+  <section class="container section yazi">
+    <p class="kicker kicker-accent">Arama</p>
+    <h1 class="display">Ne arıyorsun?</h1>
     <Search id="ara" className="pagefind-ui" uiOptions={{ showImages: false, translations: { placeholder: 'Model, araç, konu...', zero_results: 'Sonuç yok: [SEARCH_TERM]', clear_search: 'Temizle', load_more: 'Daha fazla' } }} />
   </section>
 </Base>
 
 <style is:global>
   .yazi {
-    max-width: 760px;
+    max-width: 800px;
   }
   .pagefind-ui {
     --pagefind-ui-scale: 1;
-    --pagefind-ui-primary: var(--accent-2);
-    --pagefind-ui-text: var(--text);
-    --pagefind-ui-background: var(--surface);
-    --pagefind-ui-border: var(--border-strong);
-    --pagefind-ui-tag: var(--surface-2);
+    --pagefind-ui-primary: var(--accent);
+    --pagefind-ui-text: var(--ink);
+    --pagefind-ui-background: var(--paper);
+    --pagefind-ui-border: var(--ink);
+    --pagefind-ui-tag: var(--paper-2);
     --pagefind-ui-border-width: 1px;
-    --pagefind-ui-border-radius: 12px;
+    --pagefind-ui-border-radius: 0;
     --pagefind-ui-font: var(--font-body);
     margin-top: 1.5rem;
   }
+  .pagefind-ui__search-input {
+    font-family: var(--font-display) !important;
+    font-size: 1.4rem !important;
+  }
   .pagefind-ui__result-link {
-    color: var(--accent-2) !important;
+    font-family: var(--font-display) !important;
+    font-size: 1.5rem !important;
+    font-weight: 400 !important;
+    color: var(--ink) !important;
+  }
+  .pagefind-ui__result-link:hover {
+    color: var(--accent) !important;
   }
   .pagefind-ui__result-excerpt {
-    color: var(--text-2) !important;
+    color: var(--ink-2) !important;
   }
   .pagefind-ui__message {
     color: var(--muted) !important;
+    font-style: italic;
+  }
+  .pagefind-ui__button {
+    border-radius: 999px !important;
+    font-family: var(--font-display) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
   }
 </style>

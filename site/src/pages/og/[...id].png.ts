@@ -1,19 +1,22 @@
 // Sosyal paylaşım (Open Graph) kartları. Build sırasında her haber, kart ve
-// özet için sitenin koyu/neon stilinde 1200×630 PNG üretir.
+// özet için gazete stilinde (kâğıt zemin, mürekkep, turuncu çizgi) 1200×630 PNG üretir.
 import type { APIContext } from 'astro';
 import { getCollection } from 'astro:content';
 import satori from 'satori';
 import { Resvg } from '@resvg/resvg-js';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
-import { kategoriAdi, kategoriRenk } from '../../lib/taxonomy';
+import { kategoriAdi } from '../../lib/taxonomy';
 
 interface Veri {
   baslik: string;
   ustYazi: string;
-  renk: string;
   altYazi?: string;
 }
+
+const PAPER = '#d9d2c8';
+const INK = '#1d1d1b';
+const ACCENT = '#c03f13';
 
 export async function getStaticPaths() {
   const [haberler, kartlar, ozetler] = await Promise.all([
@@ -22,51 +25,34 @@ export async function getStaticPaths() {
     getCollection('ozetler'),
   ]);
   const yollar: { params: { id: string }; props: Veri }[] = [
-    {
-      params: { id: 'site' },
-      props: { baslik: 'Yapay zekâyla üretmeyi öğren. Yeni çıkanı kaçırma.', ustYazi: 'yekvisual', renk: '#a78bfa' },
-    },
-    {
-      params: { id: 'kart/liste' },
-      props: { baslik: 'Bilmeniz gerekenler', ustYazi: 'Sıfırdan başlayanlar için', renk: '#22d3ee' },
-    },
+    { params: { id: 'site' }, props: { baslik: 'Yapay zekâyla üretmeyi öğren. Yeni çıkanı kaçırma.', ustYazi: 'Yapay zekâ ile üretim · Türkçe' } },
+    { params: { id: 'kart/liste' }, props: { baslik: 'Bilmeniz gerekenler', ustYazi: 'Sıfırdan başlayanlar için' } },
   ];
   for (const h of haberler) {
-    yollar.push({
-      params: { id: h.id },
-      props: {
-        baslik: h.data.baslik,
-        ustYazi: kategoriAdi(h.data.kategori),
-        renk: kategoriRenk(h.data.kategori),
-        altYazi: h.data.sirket,
-      },
-    });
+    yollar.push({ params: { id: h.id }, props: { baslik: h.data.baslik, ustYazi: kategoriAdi(h.data.kategori), altYazi: h.data.sirket } });
   }
   for (const k of kartlar) {
-    yollar.push({
-      params: { id: `kart/${k.id}` },
-      props: { baslik: k.data.baslik, ustYazi: 'Bilmeniz gerekenler', renk: kategoriRenk(k.data.kategori) },
-    });
+    yollar.push({ params: { id: `kart/${k.id}` }, props: { baslik: k.data.baslik, ustYazi: `Bilmeniz gerekenler · ${String(k.data.sira).padStart(2, '0')}` } });
   }
   for (const o of ozetler) {
-    yollar.push({
-      params: { id: `ozet/${o.id}` },
-      props: { baslik: o.data.baslik, ustYazi: 'Haftalık özet', renk: '#f472b6' },
-    });
+    yollar.push({ params: { id: `ozet/${o.id}` }, props: { baslik: o.data.baslik, ustYazi: 'Pazar eki · Haftalık özet' } });
   }
   return yollar;
 }
 
 // Build sırasında import.meta.url dist/ içini gösterir; fontlar proje kökünden okunur.
 const fontlar = Promise.all([
-  readFile(path.resolve(process.cwd(), 'src/assets/fonts/Syne-800.ttf')),
-  readFile(path.resolve(process.cwd(), 'src/assets/fonts/Inter-600.ttf')),
+  readFile(path.resolve(process.cwd(), 'src/assets/fonts/InstrumentSerif-400.ttf')),
+  readFile(path.resolve(process.cwd(), 'src/assets/fonts/Newsreader-500.ttf')),
+  readFile(path.resolve(process.cwd(), 'src/assets/fonts/UnifrakturMaguntia-400.ttf')),
 ]);
 
 export async function GET({ props }: APIContext) {
-  const { baslik, ustYazi, renk, altYazi } = props as Veri;
-  const [syne, inter] = await fontlar;
-  const uzun = baslik.length > 60;
+  const { baslik, ustYazi, altYazi } = props as Veri;
+  const [instrument, newsreader, fraktur] = await fontlar;
+  const uzun = baslik.length > 55;
+
+  const cizgi = (kalin = 1) => ({ type: 'div', props: { style: { height: kalin, background: INK, width: '100%' } } });
 
   const svg = await satori(
     {
@@ -77,87 +63,46 @@ export async function GET({ props }: APIContext) {
           height: 630,
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'space-between',
-          padding: 64,
-          background: 'linear-gradient(160deg, #15152a 0%, #07070c 100%)',
-          color: '#fff',
-          fontFamily: 'Inter',
-          position: 'relative',
+          padding: '44px 64px 48px',
+          background: PAPER,
+          color: INK,
+          fontFamily: 'Newsreader',
         },
         children: [
           {
             type: 'div',
             props: {
-              style: {
-                position: 'absolute',
-                top: -200,
-                right: -150,
-                width: 700,
-                height: 700,
-                borderRadius: 9999,
-                background: renk,
-                opacity: 0.35,
-                filter: 'blur(120px)',
-              },
-            },
-          },
-          {
-            type: 'div',
-            props: {
-              style: {
-                position: 'absolute',
-                bottom: -250,
-                left: -100,
-                width: 600,
-                height: 600,
-                borderRadius: 9999,
-                background: '#a78bfa',
-                opacity: 0.22,
-                filter: 'blur(120px)',
-              },
-            },
-          },
-          {
-            type: 'div',
-            props: {
-              style: { display: 'flex', alignItems: 'center', gap: 16, fontSize: 26, fontWeight: 600, color: renk, letterSpacing: 2, textTransform: 'uppercase' },
+              style: { display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', fontSize: 22, letterSpacing: 2, textTransform: 'uppercase', fontFamily: 'Instrument Serif' },
               children: [
-                { type: 'div', props: { style: { width: 14, height: 14, borderRadius: 4, background: renk } } },
-                ustYazi,
+                { type: 'div', props: { children: 'Türkiye' } },
+                { type: 'div', props: { style: { fontFamily: 'UnifrakturMaguntia', fontSize: 64, textTransform: 'none', letterSpacing: 0 }, children: 'yekvisual' } },
+                { type: 'div', props: { children: 'yekvisual.github.io' } },
               ],
             },
           },
+          { type: 'div', props: { style: { display: 'flex', flexDirection: 'column', gap: 3, marginTop: 14 }, children: [cizgi(2), cizgi(1)] } },
           {
             type: 'div',
             props: {
-              style: {
-                fontFamily: 'Syne',
-                fontWeight: 800,
-                fontSize: uzun ? 56 : 68,
-                lineHeight: 1.08,
-                letterSpacing: -1.5,
-                maxWidth: 1000,
-                display: 'flex',
-              },
-              children: baslik,
+              style: { display: 'flex', alignItems: 'center', gap: 14, marginTop: 34, fontSize: 24, letterSpacing: 3, textTransform: 'uppercase', fontFamily: 'Instrument Serif', color: ACCENT },
+              children: [{ type: 'div', props: { style: { width: 36, height: 4, background: ACCENT } } }, ustYazi],
             },
           },
           {
             type: 'div',
             props: {
-              style: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: 28 },
+              style: { fontFamily: 'Instrument Serif', fontSize: uzun ? 70 : 86, lineHeight: 0.98, letterSpacing: -1, marginTop: 18, display: 'flex', flex: 1, alignItems: 'flex-start', maxWidth: 1060 },
+              children: baslik,
+            },
+          },
+          cizgi(1),
+          {
+            type: 'div',
+            props: {
+              style: { display: 'flex', justifyContent: 'space-between', marginTop: 14, fontSize: 24, fontStyle: 'italic' },
               children: [
-                {
-                  type: 'div',
-                  props: {
-                    style: { fontFamily: 'Syne', fontWeight: 800, fontSize: 36, letterSpacing: -1, display: 'flex' },
-                    children: [
-                      { type: 'span', props: { children: 'yek' } },
-                      { type: 'span', props: { style: { color: renk }, children: 'visual' } },
-                    ],
-                  },
-                },
-                { type: 'div', props: { style: { color: 'rgba(255,255,255,.6)' }, children: altYazi ?? 'yekvisual.github.io' } },
+                { type: 'div', props: { children: altYazi ?? 'Yapay zekâ ile görsel, video ve içerik üretimi' } },
+                { type: 'div', props: { style: { fontFamily: 'Instrument Serif', textTransform: 'uppercase', letterSpacing: 2, fontStyle: 'normal' }, children: 'Sıfırdan başlayanlar için' } },
               ],
             },
           },
@@ -168,8 +113,9 @@ export async function GET({ props }: APIContext) {
       width: 1200,
       height: 630,
       fonts: [
-        { name: 'Syne', data: syne, weight: 800, style: 'normal' },
-        { name: 'Inter', data: inter, weight: 600, style: 'normal' },
+        { name: 'Instrument Serif', data: instrument, weight: 400, style: 'normal' },
+        { name: 'Newsreader', data: newsreader, weight: 500, style: 'normal' },
+        { name: 'UnifrakturMaguntia', data: fraktur, weight: 400, style: 'normal' },
       ],
     },
   );
