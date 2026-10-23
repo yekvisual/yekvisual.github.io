@@ -1,0 +1,68 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Kapak from './Kapak.astro';
+import Rozetler from './Rozetler.astro';
+import { haberYolu, tarihTR } from '../lib/site';
+
+interface Props {
+  haber: CollectionEntry<'haberler'>;
+  buyuk?: boolean;
+}
+const { haber, buyuk = false } = Astro.props;
+const d = haber.data;
+const yol = haberYolu(haber.id);
+---
+
+<article
+  class:list={['card', { 'card-buyuk': buyuk }]}
+  data-kategori={d.kategori}
+  data-ucretsiz={d.ucretsiz === true ? '1' : '0'}
+  data-acik={d.acik_kaynak === true ? '1' : '0'}
+  data-zorluk={d.zorluk}
+>
+  <a href={yol} class="cover-link" tabindex="-1" aria-hidden="true">
+    <Kapak gorsel={d.kapak} kaynak={d.kapak_kaynak} baslik={d.baslik} kategori={d.kategori} genislik={buyuk ? 1200 : 640} oncelik={buyuk} />
+  </a>
+  <div class="card-body">
+    <div class="card-meta">
+      <time datetime={d.tarih.toISOString()}>{tarihTR(d.tarih)}</time>
+      {d.sirket && <span>· {d.sirket}</span>}
+      {d.puan >= 5 && <span class="one-cikan">★ Öne çıkan</span>}
+    </div>
+    <h3><a href={yol}>{d.baslik}</a></h3>
+    <p>{d.ozet}</p>
+    <Rozetler kategori={d.kategori} ucretsiz={d.ucretsiz} acikKaynak={d.acik_kaynak} zorluk={d.zorluk} ornek={d.ornek} kategoriLink={false} />
+  </div>
+</article>
+
+<style>
+  .one-cikan {
+    color: var(--accent-3);
+    font-weight: 600;
+  }
+  .card-buyuk {
+    grid-column: 1 / -1;
+  }
+  @media (min-width: 760px) {
+    .card-buyuk {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+    }
+    .card-buyuk :global(.kapak) {
+      height: 100%;
+      aspect-ratio: auto;
+      min-height: 340px;
+    }
+    .card-buyuk .card-body {
+      padding: 2rem;
+      justify-content: center;
+    }
+    .card-buyuk h3 {
+      font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+    }
+    .card-buyuk p {
+      font-size: 1.05rem;
+      -webkit-line-clamp: 5;
+    }
+  }
+</style>

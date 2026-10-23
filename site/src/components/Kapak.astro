@@ -1,0 +1,31 @@
+---
+// Haber kapağı: görsel varsa optimize edilmiş görsel, yoksa kategori rengine göre
+// üretilmiş gradyan kapak (sitenin kimliğiyle uyumlu).
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import { kategoriAdi, kategoriRenk } from '../lib/taxonomy';
+
+interface Props {
+  gorsel?: ImageMetadata;
+  kaynak?: string;
+  baslik: string;
+  kategori: string;
+  genislik?: number;
+  oncelik?: boolean;
+}
+const { gorsel, kaynak, baslik, kategori, genislik = 800, oncelik = false } = Astro.props;
+---
+
+{gorsel ? (
+  <div class="kapak">
+    <Image src={gorsel} alt="" width={genislik} widths={[480, 800, 1200]} sizes="(max-width: 700px) 100vw, 800px" loading={oncelik ? 'eager' : 'lazy'} />
+    {kaynak && <span class="kapak-kaynak">{kaynak}</span>}
+  </div>
+) : (
+  <div class="kapak kapak-uretilmis" style={`--k:${kategoriRenk(kategori)}`} aria-hidden="true">
+    <span class="kapak-marka">yekvisual</span>
+    <span class="kapak-sekil kapak-sekil-1"></span>
+    <span class="kapak-sekil kapak-sekil-2"></span>
+    <span class="kapak-baslik">{kategoriAdi(kategori)}</span>
+  </div>
+)}

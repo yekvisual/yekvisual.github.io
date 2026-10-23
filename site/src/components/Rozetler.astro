@@ -1,0 +1,31 @@
+---
+// Haber/araç rozetleri: kategori, ücretsiz/ücretli, açık kaynak, zorluk, örnek.
+import { kategoriAdi, kategoriRenk, zorlukAdi } from '../lib/taxonomy';
+
+interface Props {
+  kategori?: string;
+  ucretsiz?: boolean | null;
+  acikKaynak?: boolean | null;
+  zorluk?: string;
+  ornek?: boolean;
+  kategoriLink?: boolean;
+}
+const { kategori, ucretsiz, acikKaynak, zorluk, ornek, kategoriLink = true } = Astro.props;
+---
+
+<div class="rozetler">
+  {ornek && <span class="rozet rozet-ornek">Örnek içerik</span>}
+  {kategori && kategoriLink && (
+    <a href={`/gundem/kategori/${kategori}/`} class="rozet rozet-kategori" style={`--k:${kategoriRenk(kategori)}`}>
+      {kategoriAdi(kategori)}
+    </a>
+  )}
+  {kategori && !kategoriLink && (
+    <span class="rozet rozet-kategori" style={`--k:${kategoriRenk(kategori)}`}>{kategoriAdi(kategori)}</span>
+  )}
+  {ucretsiz === true && <span class="rozet rozet-ok">🆓 Ücretsiz</span>}
+  {ucretsiz === false && <span class="rozet rozet-ucretli">💳 Ücretli</span>}
+  {acikKaynak === true && <span class="rozet rozet-ok">Açık kaynak</span>}
+  {acikKaynak === false && <span class="rozet">Kapalı</span>}
+  {zorluk && <span class="rozet">{zorlukAdi(zorluk)}</span>}
+</div>

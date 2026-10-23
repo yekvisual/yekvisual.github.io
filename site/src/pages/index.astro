@@ -1,0 +1,102 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import HaberKart from '../components/HaberKart.astro';
+import BilgiKart from '../components/BilgiKart.astro';
+import Bulten from '../components/Bulten.astro';
+import { SITE } from '../lib/site';
+
+const haberler = (await getCollection('haberler')).sort((a, b) => b.data.tarih.valueOf() - a.data.tarih.valueOf());
+const kartlar = (await getCollection('kartlar')).sort((a, b) => a.data.sira - b.data.sira);
+const oneCikan = haberler.find((h) => h.data.puan >= 5) ?? haberler[0];
+const sonHaberler = haberler.filter((h) => h !== oneCikan).slice(0, 6);
+---
+
+<Base>
+  <section class="hero">
+    <div class="container">
+      <p class="eyebrow">Yapay zekâ ile üretim · Türkçe</p>
+      <h1>
+        Yapay zekâyla üretmeyi öğren.<br />
+        <span class="gradient-text">Yeni çıkanı kaçırma.</span>
+      </h1>
+      <p class="hero-aciklama">
+        Görsel, video, ses ve otomasyon. Sıfırdan başlayanlar ve içerik üreticileri için neyin mümkün
+        olduğunu anlatan kartlar; haberi geldikçe yeni modeller ve araçlar.
+      </p>
+      <div class="hero-butonlar">
+        <a href="/bilmeniz-gerekenler/" class="btn btn-gradient">Buradan başla</a>
+        <a href="/gundem/" class="btn">Gündeme bak</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section container" id="bilmeniz-gerekenler">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Sıfırdan başlayanlar için</p>
+        <h2>Bilmeniz gerekenler</h2>
+      </div>
+      <a href="/bilmeniz-gerekenler/" class="more">Tümü →</a>
+    </div>
+    <div class="serit">
+      {kartlar.map((k) => <BilgiKart kart={k} />)}
+    </div>
+  </section>
+
+  {oneCikan && (
+    <section class="section container" style="padding-top:0">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Öne çıkan</p>
+          <h2>Bu hafta konuşulan</h2>
+        </div>
+      </div>
+      <div class="grid">
+        <HaberKart haber={oneCikan} buyuk />
+      </div>
+    </section>
+  )}
+
+  <section class="section container" style="padding-top:0">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Gündem</p>
+        <h2>Son gelişmeler</h2>
+      </div>
+      <a href="/gundem/" class="more">Tüm haberler →</a>
+    </div>
+    {sonHaberler.length ? (
+      <div class="grid">{sonHaberler.map((h) => <HaberKart haber={h} />)}</div>
+    ) : (
+      <p class="bos">Henüz haber yok. Bot yakında devreye giriyor.</p>
+    )}
+  </section>
+
+  <section class="section container" style="padding-top:0">
+    <Bulten />
+  </section>
+</Base>
+
+<style>
+  .hero {
+    padding: clamp(3.5rem, 10vw, 7rem) 0 clamp(2rem, 6vw, 4rem);
+    position: relative;
+  }
+  .hero h1 {
+    font-size: clamp(2.4rem, 7vw, 5rem);
+    max-width: 16ch;
+    margin-bottom: 1.2rem;
+  }
+  .hero-aciklama {
+    max-width: 58ch;
+    font-size: clamp(1rem, 1.6vw, 1.2rem);
+    color: var(--text-2);
+  }
+  .hero-butonlar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.8rem;
+  }
+</style>

@@ -1,0 +1,143 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Rozetler from '../../components/Rozetler.astro';
+import { KATEGORILER, ZORLUKLAR } from '../../lib/taxonomy';
+
+const araclar = (await getCollection('araclar')).sort((a, b) => a.data.ad.localeCompare(b.data.ad, 'tr'));
+---
+
+<Base title="Araç Dizini" description="Yapay zekâ ile görsel, video, ses ve otomasyon için araçlar: ücretsiz mi, açık kaynak mı, kimin için?">
+  <section class="section container">
+    <p class="eyebrow">Araç dizini</p>
+    <h1>Hangi araç, <span class="gradient-text">kime göre?</span></h1>
+    <p class="muted giris">Haberlerde geçen araçlar burada birikir. Ücretsiz ve açık kaynak olanları, zorluk seviyesini tek bakışta gör.</p>
+
+    <div class="filtreler" id="filtreler">
+      <button class="cip" data-f="kategori" data-v="" aria-pressed="true">Tümü</button>
+      {Object.entries(KATEGORILER).map(([id, k]) => (
+        <button class="cip cip-kategori" data-f="kategori" data-v={id} aria-pressed="false" style={`--k:${k.renk}`}>{k.ad}</button>
+      ))}
+      <span class="ayrac" aria-hidden="true"></span>
+      <button class="cip" data-f="ucretsiz" data-v="1" aria-pressed="false">🆓 Ücretsiz</button>
+      <button class="cip" data-f="acik" data-v="1" aria-pressed="false">Açık kaynak</button>
+      <span class="ayrac" aria-hidden="true"></span>
+      {Object.entries(ZORLUKLAR).map(([id, z]) => (
+        <button class="cip" data-f="zorluk" data-v={id} aria-pressed="false">{z.ad}</button>
+      ))}
+    </div>
+
+    <ul class="liste" id="liste">
+      {araclar.map((a) => (
+        <li
+          class="arac"
+          data-kategori={a.data.kategori}
+          data-ucretsiz={a.data.ucretsiz === true ? '1' : '0'}
+          data-acik={a.data.acik_kaynak === true ? '1' : '0'}
+          data-zorluk={a.data.zorluk}
+        >
+          <div class="arac-ust">
+            <h3><a href={a.data.url} target="_blank" rel="noopener">{a.data.ad} <span class="ok">↗</span></a></h3>
+            <span class="muted small">{new URL(a.data.url).hostname.replace('www.', '')}</span>
+          </div>
+          <p>{a.data.aciklama}</p>
+          <Rozetler kategori={a.data.kategori} ucretsiz={a.data.ucretsiz} acikKaynak={a.data.acik_kaynak} zorluk={a.data.zorluk} />
+        </li>
+      ))}
+    </ul>
+    <p class="bos" id="bos" hidden>Bu filtreyle eşleşen araç yok.</p>
+  </section>
+
+  <script>
+    const cipler = [...document.querySelectorAll<HTMLButtonElement>('#filtreler .cip')];
+    const ogeler = [...document.querySelectorAll<HTMLElement>('#liste .arac')];
+    const bos = document.getElementById('bos');
+    const durum: Record<string, string> = { kategori: '', ucretsiz: '', acik: '', zorluk: '' };
+    function uygula() {
+      let n = 0;
+      ogeler.forEach((a) => {
+        const ok =
+          (!durum.kategori || a.dataset.kategori === durum.kategori) &&
+          (!durum.ucretsiz || a.dataset.ucretsiz === '1') &&
+          (!durum.acik || a.dataset.acik === '1') &&
+          (!durum.zorluk || a.dataset.zorluk === durum.zorluk);
+        a.hidden = !ok;
+        if (ok) n++;
+      });
+      if (bos) bos.hidden = n > 0;
+    }
+    cipler.forEach((c) =>
+      c.addEventListener('click', () => {
+        const f = c.dataset.f!;
+        const v = c.dataset.v ?? '';
+        if (f === 'kategori' || f === 'zorluk') {
+          durum[f] = durum[f] === v && f === 'zorluk' ? '' : v;
+          cipler.filter((x) => x.dataset.f === f).forEach((x) => x.setAttribute('aria-pressed', String(x === c && durum[f] === v)));
+          if (f === 'kategori' && !v) c.setAttribute('aria-pressed', 'true');
+        } else {
+          durum[f] = durum[f] ? '' : v;
+          c.setAttribute('aria-pressed', String(Boolean(durum[f])));
+        }
+        uygula();
+      }),
+    );
+  </script>
+
+  <style>
+    .giris {
+      max-width: 60ch;
+      margin-bottom: 2rem;
+    }
+    .ayrac {
+      width: 1px;
+      background: var(--border-strong);
+      margin: 0 0.3rem;
+    }
+    .liste {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+    }
+    .arac {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.2rem 1.3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      transition: border-color 0.15s ease;
+    }
+    .arac:hover {
+      border-color: var(--border-strong);
+    }
+    .arac-ust {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+    .arac h3 {
+      margin: 0;
+      font-size: 1.1rem;
+    }
+    .arac h3 a:hover {
+      color: var(--accent-2);
+    }
+    .ok {
+      color: var(--muted);
+      font-size: 0.85em;
+    }
+    .arac p {
+      margin: 0;
+      color: var(--text-2);
+      font-size: 0.93rem;
+    }
+    .arac .rozetler {
+      margin-top: auto;
+    }
+  </style>
+</Base>

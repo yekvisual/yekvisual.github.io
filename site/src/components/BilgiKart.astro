@@ -1,0 +1,21 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { kartYolu } from '../lib/site';
+import { zorlukAdi } from '../lib/taxonomy';
+
+interface Props {
+  kart: CollectionEntry<'kartlar'>;
+}
+const { kart } = Astro.props;
+const d = kart.data;
+---
+
+<article class="card bilgi-kart">
+  <span class="sira">{String(d.sira).padStart(2, '0')}</span>
+  <span class="ikon" aria-hidden="true">{d.ikon}</span>
+  <h3><a href={kartYolu(kart.id)}>{d.baslik}</a></h3>
+  <p>{d.ozet}</p>
+  <div class="rozetler">
+    <span class="rozet">{zorlukAdi(d.zorluk)}</span>
+  </div>
+</article>

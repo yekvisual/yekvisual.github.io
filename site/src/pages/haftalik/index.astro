@@ -1,0 +1,70 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Bulten from '../../components/Bulten.astro';
+import { tarihTR } from '../../lib/site';
+
+const ozetler = (await getCollection('ozetler')).sort((a, b) => b.data.tarih.valueOf() - a.data.tarih.valueOf());
+---
+
+<Base title="Haftalık Özet" description="Her pazar: haftanın en önemli yapay zekâ görsel, video ve otomasyon gelişmeleri tek yazıda.">
+  <section class="section container">
+    <p class="eyebrow">Her pazar</p>
+    <h1>Haftalık <span class="gradient-text">özet</span></h1>
+    <p class="muted giris">Haftayı kaçırdıysan tek yazı yeter. Bülten de bu yazıdan gönderilir.</p>
+
+    {ozetler.length ? (
+      <ul class="liste">
+        {ozetler.map((o) => (
+          <li>
+            <a href={`/haftalik/${o.id}/`}>
+              <time class="muted small" datetime={o.data.tarih.toISOString()}>{tarihTR(o.data.tarih)}</time>
+              <h3>{o.data.baslik}</h3>
+              <p>{o.data.ozet}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p class="bos">İlk özet bu pazar.</p>
+    )}
+  </section>
+  <section class="container" style="padding-bottom:2rem">
+    <Bulten />
+  </section>
+</Base>
+
+<style>
+  .giris {
+    margin-bottom: 2rem;
+  }
+  .liste {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 760px;
+  }
+  .liste a {
+    display: block;
+    padding: 1.3rem 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+  .liste a:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+  .liste h3 {
+    margin: 0.3rem 0 0.4rem;
+  }
+  .liste p {
+    margin: 0;
+    color: var(--text-2);
+    font-size: 0.95rem;
+  }
+</style>

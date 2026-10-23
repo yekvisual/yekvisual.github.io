@@ -1,0 +1,42 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../lib/site';
+---
+
+<Base title="Hakkında" description="yekvisual kimdir, bu site nasıl çalışır.">
+  <section class="section container yazi">
+    <p class="eyebrow">Hakkında</p>
+    <h1>Merhaba, ben <span class="gradient-text">yekvisual</span>.</h1>
+    <div class="prose">
+      <p>
+        Video ve görsel üretiyorum; son bir yıldır işimin büyük kısmını yapay zekâyla birlikte yapıyorum. Bu siteyi,
+        "nereden başlasam?" diye soran herkese aynı şeyleri tekrar tekrar anlatmak yerine tek bir yere yazmak için
+        kurdum.
+      </p>
+      <p>
+        Burada abartı yok: bir model çıkınca ne işe yaradığını, ücretsiz olup olmadığını ve denediysem ne gördüğümü
+        yazıyorum. Kaynaklar her zaman linkli.
+      </p>
+      <h2>Site nasıl çalışıyor?</h2>
+      <p>
+        Bu site kendisi de bir yapay zekâ otomasyonu örneği. Günde üç kez bir bot onlarca kaynağı (şirket blogları,
+        GitHub, Hugging Face, arXiv, topluluklar) tarıyor; alakalı olanları Claude Türkçe özetleyip puanlıyor. Puanı
+        yüksek haberler kendiliğinden yayınlanıyor, kararsız olanlar benim onayıma düşüyor. Yazıların altındaki
+        "yekvisual notu" benim ağzımdan yazılıyor ve her düzeltmemden öğreniyor.
+      </p>
+      <p>Kaynak kodu açık: <a href={SITE.github} target="_blank" rel="noopener">GitHub</a>.</p>
+      <h2>İletişim</h2>
+      <p>En hızlı yol Instagram: <a href={SITE.instagram} target="_blank" rel="noopener">{SITE.instagramKullanici}</a></p>
+    </div>
+    <a href={SITE.instagram} class="btn btn-gradient" target="_blank" rel="noopener">Instagram'da takip et</a>
+  </section>
+</Base>
+
+<style>
+  .yazi {
+    max-width: 720px;
+  }
+  .prose {
+    margin-bottom: 2rem;
+  }
+</style>

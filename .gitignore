@@ -1,0 +1,18 @@
+# Node / Astro
+node_modules/
+site/dist/
+site/.astro/
+.playwright-mcp/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Gizli
+.env
+.env.*
+!.env.example
+
+# İşletim sistemi
+.DS_Store

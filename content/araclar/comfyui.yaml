@@ -1,0 +1,9 @@
+ad: ComfyUI
+url: https://www.comfy.org
+aciklama: Açık kaynak görsel/video modellerini bilgisayarında çalıştıran düğüm tabanlı arayüz.
+kategori: acik-kaynak
+ucretsiz: true
+acik_kaynak: true
+zorluk: teknik
+eklenme: 2026-10-23
+etiketler: [yerel, flux, stable diffusion]

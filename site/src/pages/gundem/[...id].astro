@@ -1,0 +1,245 @@
+---
+import { getCollection, getEntry, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Kapak from '../../components/Kapak.astro';
+import Medya from '../../components/Medya.astro';
+import Rozetler from '../../components/Rozetler.astro';
+import HaberKart from '../../components/HaberKart.astro';
+import { SITE, kartYolu, tarihTR } from '../../lib/site';
+
+export async function getStaticPaths() {
+  const haberler = await getCollection('haberler');
+  return haberler.map((haber) => ({ params: { id: haber.id }, props: { haber } }));
+}
+
+const { haber } = Astro.props;
+const d = haber.data;
+const { Content } = await render(haber);
+const kart = d.kart ? await getEntry('kartlar', d.kart) : undefined;
+const ilgili = (await getCollection('haberler'))
+  .filter((h) => h.id !== haber.id && (h.data.kategori === d.kategori || h.data.kart === d.kart))
+  .sort((a, b) => b.data.tarih.valueOf() - a.data.tarih.valueOf())
+  .slice(0, 3);
+const ogYolu = `/og/${haber.id}.png`;
+---
+
+<Base title={d.baslik} description={d.ozet} image={ogYolu} type="article" tarih={d.tarih}>
+  <article class="haber">
+    <div class="container ust">
+      <a href="/gundem/" class="geri">← Gündem</a>
+      <Rozetler kategori={d.kategori} ucretsiz={d.ucretsiz} acikKaynak={d.acik_kaynak} zorluk={d.zorluk} ornek={d.ornek} />
+      <h1>{d.baslik}</h1>
+      <p class="meta">
+        <time datetime={d.tarih.toISOString()}>{tarihTR(d.tarih)}</time>
+        {d.sirket && <span>· {d.sirket}</span>}
+        {d.model && <span>· {d.model}</span>}
+      </p>
+    </div>
+
+    <div class="container kapak-alani">
+      <Kapak gorsel={d.kapak} kaynak={d.kapak_kaynak} baslik={d.baslik} kategori={d.kategori} genislik={1200} oncelik />
+    </div>
+
+    <div class="container govde">
+      <div class="ana">
+        <p class="lead">{d.ozet}</p>
+
+        {d.neden_onemli && (
+          <div class="kutu">
+            <p class="kutu-baslik">Neden önemli?</p>
+            <p class="son">{d.neden_onemli}</p>
+          </div>
+        )}
+
+        {d.yekvisual_notu && (
+          <div class="kutu kutu-not">
+            <p class="kutu-baslik"><span class="avatar">y</span> yekvisual notu</p>
+            <p class="son">{d.yekvisual_notu}</p>
+          </div>
+        )}
+
+        {d.medya.map((m) => <Medya medya={m} haberId={haber.id} />)}
+
+        <div class="prose">
+          <Content />
+        </div>
+
+        {d.denemeler.length > 0 && (
+          <section class="denemeler">
+            <h2>Ben denedim</h2>
+            {d.denemeler.map((m) => <Medya medya={m} haberId={haber.id} />)}
+          </section>
+        )}
+
+        {d.kaynaklar.length > 0 && (
+          <section class="kaynaklar">
+            <p class="kutu-baslik">Kaynaklar</p>
+            <ul>
+              {d.kaynaklar.map((k) => (
+                <li><a href={k.url} target="_blank" rel="noopener">{k.ad}</a> <span class="muted small">{new URL(k.url).hostname}</span></li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+        {d.etiketler.length > 0 && (
+          <div class="etiketler">
+            {d.etiketler.map((e) => <span class="rozet">#{e}</span>)}
+          </div>
+        )}
+      </div>
+
+      <aside class="yan">
+        {kart && (
+          <a href={kartYolu(kart.id)} class="kutu kart-link">
+            <p class="kutu-baslik">Başlangıç kartı</p>
+            <span class="ikon" aria-hidden="true">{kart.data.ikon}</span>
+            <strong>{kart.data.baslik}</strong>
+            <span class="muted small">{kart.data.ozet}</span>
+          </a>
+        )}
+        <div class="kutu">
+          <p class="kutu-baslik">Paylaş</p>
+          <div class="paylas">
+            <a class="btn" href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(d.baslik)}&url=${encodeURIComponent(new URL(Astro.url.pathname, Astro.site).toString())}`} target="_blank" rel="noopener">X</a>
+            <a class="btn" href={`https://wa.me/?text=${encodeURIComponent(d.baslik + ' ' + new URL(Astro.url.pathname, Astro.site).toString())}`} target="_blank" rel="noopener">WhatsApp</a>
+            <button class="btn" id="kopyala" type="button">Bağlantıyı kopyala</button>
+          </div>
+        </div>
+        <a href={SITE.instagram} class="btn btn-gradient ig" target="_blank" rel="noopener">Instagram'da takip et</a>
+      </aside>
+    </div>
+
+    {ilgili.length > 0 && (
+      <section class="container ilgili">
+        <div class="section-head">
+          <h2>İlgili haberler</h2>
+        </div>
+        <div class="grid">{ilgili.map((h) => <HaberKart haber={h} />)}</div>
+      </section>
+    )}
+  </article>
+
+  <script>
+    document.getElementById('kopyala')?.addEventListener('click', async (e) => {
+      const b = e.currentTarget as HTMLButtonElement;
+      try {
+        await navigator.clipboard.writeText(location.href);
+        b.textContent = 'Kopyalandı ✓';
+        setTimeout(() => (b.textContent = 'Bağlantıyı kopyala'), 1500);
+      } catch {}
+    });
+  </script>
+
+  <style>
+    .ust {
+      padding-top: 2.5rem;
+      max-width: 860px;
+    }
+    .geri {
+      color: var(--muted);
+      font-size: 0.9rem;
+      display: inline-block;
+      margin-bottom: 1.2rem;
+    }
+    .geri:hover {
+      color: var(--accent-2);
+    }
+    .ust h1 {
+      margin-top: 1rem;
+      font-size: clamp(1.9rem, 4.5vw, 3.2rem);
+    }
+    .meta {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    .kapak-alani {
+      margin-top: 1.5rem;
+    }
+    .kapak-alani :global(.kapak) {
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+    .kapak-alani :global(.kapak-uretilmis) {
+      aspect-ratio: 21 / 9;
+    }
+    .govde {
+      display: grid;
+      gap: 2.5rem;
+      grid-template-columns: minmax(0, 1fr);
+      margin-top: 2.5rem;
+    }
+    @media (min-width: 960px) {
+      .govde {
+        grid-template-columns: minmax(0, 1fr) 300px;
+      }
+    }
+    .ana {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+      max-width: 720px;
+    }
+    .lead {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: var(--text);
+      margin: 0;
+    }
+    .son {
+      margin: 0;
+      color: var(--text);
+    }
+    .kaynaklar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .kaynaklar a {
+      color: var(--accent-2);
+      font-weight: 600;
+    }
+    .etiketler {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .yan {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-self: start;
+      position: sticky;
+      top: 84px;
+    }
+    .kart-link {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .kart-link:hover {
+      border-color: var(--accent);
+    }
+    .kart-link .ikon {
+      font-size: 1.8rem;
+    }
+    .paylas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .paylas .btn {
+      padding: 0.45rem 0.9rem;
+      font-size: 0.85rem;
+    }
+    .ig {
+      justify-content: center;
+    }
+    .ilgili {
+      margin-top: 4rem;
+    }
+  </style>
+</Base>

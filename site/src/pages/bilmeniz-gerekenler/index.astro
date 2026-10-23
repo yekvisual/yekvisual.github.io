@@ -1,0 +1,32 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import BilgiKart from '../../components/BilgiKart.astro';
+
+const kartlar = (await getCollection('kartlar')).sort((a, b) => a.data.sira - b.data.sira);
+---
+
+<Base title="Bilmeniz Gerekenler" description="Yapay zekâ ile görsel, video ve içerik üretimine sıfırdan başlayanlar için: bugün neler mümkün, nereden başlanır." image="/og/kart/liste.png">
+  <section class="section container">
+    <p class="eyebrow">Sıfırdan başlayanlar için</p>
+    <h1>Bilmeniz <span class="gradient-text">gerekenler</span></h1>
+    <p class="giris muted">
+      Bugün yapay zekâyla nelerin mümkün olduğunu bilmeden "nereden başlasam" sorusu cevaplanmıyor. Her kart tek bir
+      şeyi anlatır: ne bu, ne işe yarar, ilk adım ne. Sırayla oku ya da ilgini çekenden başla.
+    </p>
+    <div class="grid kartlar">
+      {kartlar.map((k) => <BilgiKart kart={k} />)}
+    </div>
+  </section>
+</Base>
+
+<style>
+  .giris {
+    max-width: 62ch;
+    font-size: 1.05rem;
+    margin-bottom: 2.5rem;
+  }
+  .kartlar {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+  }
+</style>

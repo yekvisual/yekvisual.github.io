@@ -1,0 +1,235 @@
+---
+import '../styles/global.css';
+import { SITE } from '../lib/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: 'website' | 'article';
+  tarih?: Date;
+}
+
+const { title, description = SITE.aciklama, image, type = 'website', tarih } = Astro.props;
+const tamBaslik = title ? `${title} · ${SITE.ad}` : `${SITE.ad} · ${SITE.slogan}`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL(image ?? '/og/site.png', Astro.site);
+const yol = Astro.url.pathname;
+const nav = [
+  { href: '/bilmeniz-gerekenler/', ad: 'Bilmeniz Gerekenler' },
+  { href: '/gundem/', ad: 'Gündem' },
+  { href: '/araclar/', ad: 'Araçlar' },
+  { href: '/haftalik/', ad: 'Haftalık' },
+  { href: '/hakkinda/', ad: 'Hakkında' },
+];
+---
+
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{tamBaslik}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="alternate" type="application/rss+xml" title={SITE.ad} href="/rss.xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta property="og:site_name" content={SITE.ad} />
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={title ?? SITE.ad} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="tr_TR" />
+    {tarih && <meta property="article:published_time" content={tarih.toISOString()} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#07070c" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Syne:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <a class="skip" href="#icerik">İçeriğe geç</a>
+    <header class="header">
+      <div class="container header-ic">
+        <a href="/" class="logo" aria-label={`${SITE.ad} ana sayfa`}>
+          <span class="logo-isaret"></span><span>yek<span class="gradient-text">visual</span></span>
+        </a>
+        <nav class="nav" id="nav">
+          {nav.map((n) => (
+            <a href={n.href} aria-current={yol.startsWith(n.href) ? 'page' : undefined}>
+              {n.ad}
+            </a>
+          ))}
+          <a href="/ara/" class="nav-ara" aria-label="Ara">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>
+            <span class="nav-ara-yazi">Ara</span>
+          </a>
+          <a href={SITE.instagram} class="btn btn-gradient nav-ig" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" /></svg>
+            Instagram
+          </a>
+        </nav>
+        <button class="menu" id="menu" aria-expanded="false" aria-controls="nav" aria-label="Menü">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <main id="icerik">
+      <slot />
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-ic">
+        <div>
+          <a href="/" class="logo"><span>yek<span class="gradient-text">visual</span></span></a>
+          <p class="muted small">{SITE.slogan}</p>
+        </div>
+        <div class="footer-linkler">
+          <a href={SITE.instagram} target="_blank" rel="noopener">Instagram {SITE.instagramKullanici}</a>
+          <a href="/rss.xml">RSS</a>
+          <a href={SITE.github} target="_blank" rel="noopener">GitHub</a>
+          <a href="/hakkinda/">Hakkında</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const btn = document.getElementById('menu');
+      const nav = document.getElementById('nav');
+      btn?.addEventListener('click', () => {
+        const acik = nav?.classList.toggle('acik');
+        btn.setAttribute('aria-expanded', String(!!acik));
+      });
+    </script>
+
+    <style>
+      .header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: blur(14px);
+        background: rgba(7, 7, 12, 0.72);
+        border-bottom: 1px solid var(--border);
+      }
+      .header-ic {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        height: 64px;
+      }
+      .logo {
+        font-family: var(--font-display);
+        font-weight: 800;
+        font-size: 1.35rem;
+        letter-spacing: -0.03em;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .logo-isaret {
+        width: 10px;
+        height: 10px;
+        border-radius: 3px;
+        background: var(--gradient);
+        box-shadow: 0 0 16px rgba(167, 139, 250, 0.7);
+      }
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: 1.4rem;
+        font-weight: 500;
+        font-size: 0.93rem;
+        color: var(--text-2);
+      }
+      .nav a[aria-current='page'] {
+        color: var(--text);
+      }
+      .nav-ara {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+      }
+      .nav-ig {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+      }
+      .menu {
+        display: none;
+        background: none;
+        border: 0;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        padding: 8px;
+      }
+      .menu span {
+        height: 2px;
+        background: var(--text);
+        border-radius: 2px;
+      }
+      @media (max-width: 860px) {
+        .menu {
+          display: flex;
+        }
+        .nav {
+          display: none;
+          position: absolute;
+          top: 64px;
+          left: 0;
+          right: 0;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0;
+          background: rgba(7, 7, 12, 0.97);
+          border-bottom: 1px solid var(--border);
+          padding: 0.5rem var(--gutter) 1rem;
+        }
+        .nav.acik {
+          display: flex;
+        }
+        .nav a {
+          padding: 0.8rem 0.25rem;
+          border-bottom: 1px solid var(--border);
+          font-size: 1rem;
+        }
+        .nav-ig {
+          margin-top: 0.8rem;
+          justify-content: center;
+          border-bottom: 0 !important;
+        }
+      }
+      .footer {
+        border-top: 1px solid var(--border);
+        margin-top: 4rem;
+        padding: 2.5rem 0 3rem;
+      }
+      .footer-ic {
+        display: flex;
+        justify-content: space-between;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+      .footer-linkler {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.2rem;
+        align-items: center;
+        color: var(--text-2);
+        font-size: 0.9rem;
+      }
+      .footer-linkler a:hover {
+        color: var(--accent-2);
+      }
+    </style>
+  </body>
+</html>

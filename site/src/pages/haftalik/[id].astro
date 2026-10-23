@@ -1,0 +1,41 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Bulten from '../../components/Bulten.astro';
+import { tarihTR } from '../../lib/site';
+
+export async function getStaticPaths() {
+  const ozetler = await getCollection('ozetler');
+  return ozetler.map((ozet) => ({ params: { id: ozet.id }, props: { ozet } }));
+}
+const { ozet } = Astro.props;
+const { Content } = await render(ozet);
+---
+
+<Base title={ozet.data.baslik} description={ozet.data.ozet} type="article" tarih={ozet.data.tarih} image={`/og/ozet/${ozet.id}.png`}>
+  <article class="section container yazi">
+    <a href="/haftalik/" class="geri">← Haftalık özetler</a>
+    <p class="eyebrow">Haftalık özet</p>
+    <h1>{ozet.data.baslik}</h1>
+    <p class="muted"><time datetime={ozet.data.tarih.toISOString()}>{tarihTR(ozet.data.tarih)}</time></p>
+    <div class="prose"><Content /></div>
+  </article>
+  <section class="container" style="padding-bottom:2rem">
+    <Bulten />
+  </section>
+</Base>
+
+<style>
+  .yazi {
+    max-width: 760px;
+  }
+  .geri {
+    color: var(--muted);
+    font-size: 0.9rem;
+    display: inline-block;
+    margin-bottom: 1.2rem;
+  }
+  .prose {
+    margin-top: 2rem;
+  }
+</style>

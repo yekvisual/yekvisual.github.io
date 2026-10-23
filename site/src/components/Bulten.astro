@@ -1,0 +1,59 @@
+---
+import { SITE } from '../lib/site';
+const aktif = Boolean(SITE.bultenFormUrl);
+---
+
+<section class="bulten">
+  <div class="bulten-ic">
+    <p class="eyebrow">Haftalık bülten</p>
+    <h2>Haftada bir e-posta, <span class="gradient-text">sıfır gürültü</span>.</h2>
+    <p class="muted">Haftanın en önemli 5 gelişmesi, ne işine yarayacağıyla birlikte. Her pazar.</p>
+    {aktif ? (
+      <form action={SITE.bultenFormUrl} method="post" target="_blank" class="form">
+        <label class="sr-only" for="bulten-email">E-posta</label>
+        <input id="bulten-email" type="email" name="email" placeholder="e-posta adresin" required />
+        <button class="btn btn-primary" type="submit">Abone ol</button>
+      </form>
+    ) : (
+      <div class="form">
+        <a class="btn btn-gradient" href={SITE.instagram} target="_blank" rel="noopener">Şimdilik Instagram'dan takip et</a>
+        <span class="muted small">Bülten çok yakında.</span>
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  .bulten {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background:
+      radial-gradient(70% 100% at 100% 0%, rgba(34, 211, 238, 0.12), transparent 60%),
+      radial-gradient(60% 100% at 0% 100%, rgba(167, 139, 250, 0.14), transparent 60%),
+      var(--surface);
+    padding: clamp(1.5rem, 4vw, 3rem);
+  }
+  .bulten-ic {
+    max-width: 560px;
+  }
+  .form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    align-items: center;
+    margin-top: 1.2rem;
+  }
+  input {
+    flex: 1 1 220px;
+    padding: 0.7rem 1rem;
+    border-radius: 999px;
+    border: 1px solid var(--border-strong);
+    background: var(--bg-2);
+    color: var(--text);
+    font: inherit;
+  }
+  input:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+</style>

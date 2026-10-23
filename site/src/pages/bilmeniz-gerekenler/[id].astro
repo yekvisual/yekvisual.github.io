@@ -1,0 +1,165 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import HaberKart from '../../components/HaberKart.astro';
+import Rozetler from '../../components/Rozetler.astro';
+import { kartYolu } from '../../lib/site';
+
+export async function getStaticPaths() {
+  const kartlar = await getCollection('kartlar');
+  return kartlar.map((kart) => ({ params: { id: kart.id }, props: { kart } }));
+}
+
+const { kart } = Astro.props;
+const d = kart.data;
+const { Content } = await render(kart);
+
+const tumKartlar = (await getCollection('kartlar')).sort((a, b) => a.data.sira - b.data.sira);
+const i = tumKartlar.findIndex((k) => k.id === kart.id);
+const onceki = tumKartlar[i - 1];
+const sonraki = tumKartlar[i + 1];
+
+const araclar = (await getCollection('araclar')).filter((a) => d.araclar.includes(a.id));
+const haberler = (await getCollection('haberler'))
+  .filter((h) => h.data.kart === kart.id || h.data.kategori === d.kategori)
+  .sort((a, b) => b.data.tarih.valueOf() - a.data.tarih.valueOf())
+  .slice(0, 3);
+---
+
+<Base title={d.baslik} description={d.ozet} image={`/og/kart/${kart.id}.png`}>
+  <article class="section container kart-sayfa">
+    <a href="/bilmeniz-gerekenler/" class="geri">← Bilmeniz gerekenler</a>
+    <header class="baslik">
+      <span class="ikon" aria-hidden="true">{d.ikon}</span>
+      <div>
+        <p class="eyebrow">{String(d.sira).padStart(2, '0')} / {String(tumKartlar.length).padStart(2, '0')}</p>
+        <h1>{d.baslik}</h1>
+        <p class="ozet">{d.ozet}</p>
+        <Rozetler kategori={d.kategori} zorluk={d.zorluk} />
+      </div>
+    </header>
+
+    <div class="icerik">
+      <div class="prose">
+        <Content />
+      </div>
+      <aside class="yan">
+        {araclar.length > 0 && (
+          <div class="kutu">
+            <p class="kutu-baslik">Araçlar</p>
+            <ul class="arac-listesi">
+              {araclar.map((a) => (
+                <li>
+                  <a href={a.data.url} target="_blank" rel="noopener">{a.data.ad}</a>
+                  <span class="muted small">{a.data.aciklama}</span>
+                </li>
+              ))}
+            </ul>
+            <a href="/araclar/" class="small">Tüm araçlar →</a>
+          </div>
+        )}
+        <nav class="kutu gezin">
+          {onceki && <a href={kartYolu(onceki.id)}>← {onceki.data.baslik}</a>}
+          {sonraki && <a href={kartYolu(sonraki.id)}>{sonraki.data.baslik} →</a>}
+        </nav>
+      </aside>
+    </div>
+
+    {haberler.length > 0 && (
+      <section class="ilgili">
+        <div class="section-head">
+          <h2>Bu konuda son gelişmeler</h2>
+          <a href={`/gundem/kategori/${d.kategori}/`} class="more">Kategorideki tüm haberler →</a>
+        </div>
+        <div class="grid">{haberler.map((h) => <HaberKart haber={h} />)}</div>
+      </section>
+    )}
+  </article>
+</Base>
+
+<style>
+  .geri {
+    color: var(--muted);
+    font-size: 0.9rem;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+  }
+  .geri:hover {
+    color: var(--accent-2);
+  }
+  .baslik {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    margin-bottom: 2.5rem;
+  }
+  .baslik .ikon {
+    font-size: 2.6rem;
+    width: 4.5rem;
+    height: 4.5rem;
+    flex: none;
+    display: grid;
+    place-items: center;
+    border-radius: 18px;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
+    border: 1px solid var(--border);
+  }
+  .baslik h1 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+  }
+  .ozet {
+    font-size: 1.1rem;
+    color: var(--text-2);
+    max-width: 60ch;
+  }
+  .icerik {
+    display: grid;
+    gap: 2.5rem;
+    grid-template-columns: minmax(0, 1fr);
+  }
+  @media (min-width: 900px) {
+    .icerik {
+      grid-template-columns: minmax(0, 1fr) 300px;
+    }
+  }
+  .yan {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-self: start;
+    position: sticky;
+    top: 84px;
+  }
+  .arac-listesi {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 0.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  .arac-listesi a {
+    font-weight: 600;
+    color: var(--accent-2);
+    display: block;
+  }
+  .gezin {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    font-size: 0.9rem;
+    color: var(--text-2);
+  }
+  .gezin a:hover {
+    color: var(--text);
+  }
+  .ilgili {
+    margin-top: 4rem;
+  }
+  @media (max-width: 600px) {
+    .baslik {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+</style>

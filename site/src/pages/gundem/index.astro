@@ -1,0 +1,84 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import HaberKart from '../../components/HaberKart.astro';
+import { KATEGORILER } from '../../lib/taxonomy';
+
+const haberler = (await getCollection('haberler')).sort((a, b) => b.data.tarih.valueOf() - a.data.tarih.valueOf());
+---
+
+<Base title="Gündem" description="Yapay zekâ görsel, video, ses ve otomasyon dünyasından yeni modeller, araçlar ve gelişmeler. Türkçe, güncel.">
+  <section class="section container">
+    <p class="eyebrow">Gündem</p>
+    <h1>Yeni çıkanlar, <span class="gradient-text">sade anlatım</span></h1>
+    <p class="muted giris">Her gün taranan onlarca kaynaktan süzülen gelişmeler. Yalnızca ne işine yarayacağı belli olanlar.</p>
+
+    <div class="filtreler" id="filtreler" role="group" aria-label="Kategori filtresi">
+      <button class="cip" data-f="kategori" data-v="" aria-pressed="true">Tümü</button>
+      {Object.entries(KATEGORILER).map(([id, k]) => (
+        <button class="cip cip-kategori" data-f="kategori" data-v={id} aria-pressed="false" style={`--k:${k.renk}`}>{k.ad}</button>
+      ))}
+      <span class="ayrac" aria-hidden="true"></span>
+      <button class="cip" data-f="ucretsiz" data-v="1" aria-pressed="false">🆓 Ücretsiz</button>
+      <button class="cip" data-f="acik" data-v="1" aria-pressed="false">Açık kaynak</button>
+    </div>
+
+    {haberler.length ? (
+      <div class="grid" id="liste">{haberler.map((h) => <HaberKart haber={h} />)}</div>
+    ) : null}
+    <p class="bos" id="bos" hidden>Bu filtreyle eşleşen haber yok.</p>
+  </section>
+
+  <script>
+    const liste = document.getElementById('liste');
+    const bos = document.getElementById('bos');
+    const cipler = [...document.querySelectorAll<HTMLButtonElement>('#filtreler .cip')];
+    const durum: Record<string, string> = { kategori: '', ucretsiz: '', acik: '' };
+
+    function uygula() {
+      let gorunen = 0;
+      liste?.querySelectorAll<HTMLElement>('article').forEach((a) => {
+        const ok =
+          (!durum.kategori || a.dataset.kategori === durum.kategori) &&
+          (!durum.ucretsiz || a.dataset.ucretsiz === '1') &&
+          (!durum.acik || a.dataset.acik === '1');
+        a.hidden = !ok;
+        if (ok) gorunen++;
+      });
+      if (bos) bos.hidden = gorunen > 0;
+      const url = new URL(location.href);
+      durum.kategori ? url.searchParams.set('k', durum.kategori) : url.searchParams.delete('k');
+      history.replaceState(null, '', url);
+    }
+
+    cipler.forEach((c) => {
+      c.addEventListener('click', () => {
+        const f = c.dataset.f!;
+        const v = c.dataset.v ?? '';
+        if (f === 'kategori') {
+          durum.kategori = v;
+          cipler.filter((x) => x.dataset.f === 'kategori').forEach((x) => x.setAttribute('aria-pressed', String(x === c)));
+        } else {
+          durum[f] = durum[f] ? '' : v;
+          c.setAttribute('aria-pressed', String(Boolean(durum[f])));
+        }
+        uygula();
+      });
+    });
+
+    const k = new URLSearchParams(location.search).get('k');
+    if (k) cipler.find((c) => c.dataset.f === 'kategori' && c.dataset.v === k)?.click();
+  </script>
+
+  <style>
+    .giris {
+      max-width: 60ch;
+      margin-bottom: 2rem;
+    }
+    .ayrac {
+      width: 1px;
+      background: var(--border-strong);
+      margin: 0 0.3rem;
+    }
+  </style>
+</Base>

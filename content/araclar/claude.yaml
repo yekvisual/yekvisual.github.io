@@ -1,0 +1,9 @@
+ad: Claude
+url: https://claude.ai
+aciklama: Anthropic'in sohbet asistanı; bağlayıcılarla Canva, Drive, Gmail gibi uygulamalarda iş yapar.
+kategori: araclar
+ucretsiz: true
+acik_kaynak: false
+zorluk: yeni
+eklenme: 2026-10-23
+etiketler: [claude, sohbet, connector]
