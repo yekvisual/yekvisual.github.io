@@ -13,8 +13,6 @@ sirket: Örnek Lab
 model: Örnek-Video-1
 etiketler: [video, açık kaynak, comfyui, yerel]
 kart: acik-kaynak-modeller
-kapak: ./ornek-acik-video-modeli/kapak.webp
-kapak_kaynak: "Görsel: yekvisual"
 kaynaklar:
   - ad: GitHub
     url: https://github.com/

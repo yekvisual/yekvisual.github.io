@@ -1,5 +1,5 @@
 ---
-baslik: Bilgisayarını Claude'a toplatmak
+baslik: Dağınık bilgisayarını bir akşamda toplat
 ozet: >-
   "Masaüstünü düzenle, 6 aydır açılmayan büyük dosyaları bul, fotoğrafları tarihe göre klasörle." Dosyalarını konuşarak yönetiyorsun.
 ikon: 🧹

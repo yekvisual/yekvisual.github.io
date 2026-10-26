@@ -1,6 +1,6 @@
 ---
-baslik: DaVinci Resolve'u Claude'la kullanmak
-ozet: Kesme, renk, altyazı ve dışa aktarma gibi tekrar eden işleri konuşarak yaptırıyorsun; DaVinci bilgisayarında, Claude yanında.
+baslik: "Montajı konuşarak bitir: DaVinci + Claude"
+ozet: "\"Sessiz yerleri kes, altyazı ekle, 9:16 dışa aktar\" de, gerisini izle. DaVinci bilgisayarında, Claude yanında."
 ikon: 🎞️
 sira: 2
 zorluk: orta

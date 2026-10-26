@@ -1,5 +1,5 @@
 ---
-baslik: Ücretsiz ve açık kaynak modeller
+baslik: Abonelik ödemeden, kendi bilgisayarında üret
 ozet: Görsel ve video üretmek için abonelik şart değil. FLUX, Wan, Stable Diffusion gibi modeller kendi bilgisayarında, sınırsız ve ücretsiz çalışıyor.
 ikon: 🆓
 sira: 8

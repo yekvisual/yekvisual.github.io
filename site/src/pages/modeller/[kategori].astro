@@ -1,0 +1,342 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { tarihTR, tarihKisa } from '../../lib/site';
+import { erisimAdi, erisimSinif } from '../../lib/taxonomy';
+
+export async function getStaticPaths() {
+  const kategoriler = await getCollection('modeller');
+  return kategoriler.map((k) => ({ params: { kategori: k.id }, props: { k } }));
+}
+
+const { k } = Astro.props;
+const d = k.data;
+const hepsi = (await getCollection('modeller')).sort((a, b) => a.data.sira - b.data.sira);
+const liste = [...d.modeller].sort((a, b) => b.puan - a.puan);
+const puanlar = liste.map((m) => m.puan);
+const max = Math.max(...puanlar);
+const taban = Math.min(...puanlar) * 0.85;
+const yuzde = (p: number) => Math.round(((p - taban) / (max - taban)) * 100);
+const puanYaz = (p: number) => (Number.isInteger(p) ? p.toLocaleString('tr-TR') : p.toLocaleString('tr-TR', { minimumFractionDigits: 1, maximumFractionDigits: 1 }));
+const turkceAdi = { evet: 'Konuşuyor', kismen: 'Kısmen', yok: 'Yok' } as const;
+const ilkUc = liste.slice(0, 3);
+
+// Grafik: geçmiş varsa ilk beş modelin çizgileri
+const renkler = ['#c2540a', '#1f3a5f', '#4a3a86', '#1e6b3c', '#8a867f'];
+const grafik = (() => {
+  if (d.gecmis.length < 2) return null;
+  const adlar = liste.slice(0, 5).map((m) => m.ad).filter((ad) => d.gecmis.some((g) => ad in g.puanlar));
+  const degerler = d.gecmis.flatMap((g) => adlar.map((a) => g.puanlar[a]).filter((v) => v !== undefined));
+  const lo = Math.min(...degerler);
+  const hi = Math.max(...degerler);
+  const W = 760;
+  const H = 300;
+  const L = 64;
+  const R = 150;
+  const T = 24;
+  const B = 36;
+  const x = (i: number) => L + (i / (d.gecmis.length - 1)) * (W - L - R);
+  const y = (v: number) => T + (1 - (v - lo) / (hi - lo || 1)) * (H - T - B);
+  const cizgiler = adlar.map((ad, i) => {
+    const noktalar = d.gecmis.map((g, j) => (g.puanlar[ad] !== undefined ? `${x(j).toFixed(1)},${y(g.puanlar[ad]).toFixed(1)}` : null)).filter(Boolean);
+    const son = d.gecmis[d.gecmis.length - 1].puanlar[ad];
+    return { ad, renk: renkler[i % renkler.length], noktalar: noktalar.join(' '), sonY: son !== undefined ? y(son) : null };
+  });
+  const yEtiket = [0, 0.25, 0.5, 0.75, 1].map((t) => ({ v: lo + t * (hi - lo), y: y(lo + t * (hi - lo)) }));
+  const xEtiket = d.gecmis.map((g, j) => ({ x: x(j), ad: tarihKisa(g.tarih) }));
+  return { W, H, L, R, cizgiler, yEtiket, xEtiket };
+})();
+---
+
+<Base title={`${d.ad} modelleri`} description={`${d.ad} için şu an en iyi modeller: sıralama, hız, fiyat, Türkçe desteği ve yekvisual notu. Her Pazar güncellenir.`}>
+  <section class="container section sayfa-bas">
+    <p class="kicker kicker-accent reveal">Modeller · güncelleme {tarihTR(d.guncelleme)}</p>
+    <h1 class="reveal" style="--d:60ms">{d.ad} için bu hafta hangi modeli seçmelisin?</h1>
+    {d.aciklama && <p class="lead giris reveal" style="--d:120ms">{d.aciklama}{d.ornek && ' Değerler örnek, yapı gerçek.'}</p>}
+    <div class="filtreler reveal" style="--d:160ms">
+      {hepsi.map((x) => (
+        <a href={`/modeller/${x.id}/`} class:list={['cip', { on: x.id === k.id }]}>{x.data.ad}</a>
+      ))}
+    </div>
+  </section>
+
+  <section class="container ust-izgara">
+    {grafik ? (
+      <div class="kart grafik reveal">
+        <div class="grafik-bas">
+          <h2>Son {d.gecmis.length} haftada ilk {grafik.cizgiler.length}</h2>
+          <span class="muted small">{d.olcu} · yüksek iyi</span>
+        </div>
+        <svg viewBox={`0 0 ${grafik.W} ${grafik.H}`} role="img" aria-label={`Son haftalarda ilk ${grafik.cizgiler.length} ${d.ad} modelinin puan çizgileri`}>
+          <g stroke="#e7e3dc" stroke-width="1">
+            {grafik.yEtiket.map((e) => <line x1={grafik.L} y1={e.y} x2={grafik.W - grafik.R} y2={e.y} />)}
+          </g>
+          <g fill="#8a867f" font-size="11" text-anchor="end" font-family="Geist, sans-serif">
+            {grafik.yEtiket.map((e) => <text x={grafik.L - 8} y={e.y + 4}>{puanYaz(Math.round(e.v))}</text>)}
+          </g>
+          <g fill="#8a867f" font-size="11" text-anchor="middle" font-family="Geist, sans-serif">
+            {grafik.xEtiket.map((e) => <text x={e.x} y={grafik.H - 12}>{e.ad}</text>)}
+          </g>
+          {grafik.cizgiler.map((c, i) => <polyline fill="none" stroke={c.renk} stroke-width={i === 0 ? 3 : 2.5} stroke-linejoin="round" points={c.noktalar} />)}
+          <g font-size="12" font-weight="600" font-family="Geist, sans-serif">
+            {grafik.cizgiler.map((c) => c.sonY !== null && <text x={grafik.W - grafik.R + 8} y={c.sonY + 4} fill={c.renk}>{c.ad}</text>)}
+          </g>
+        </svg>
+      </div>
+    ) : (
+      <div class="kart grafik reveal bos-grafik">
+        <h2>Grafik ilk ölçümden sonra</h2>
+        <p class="muted">Haftalık ölçümler biriktikçe ilk beş modelin çizgisi burada görünecek.</p>
+      </div>
+    )}
+    <div class="yan-kutular">
+      {d.degisenler.length > 0 && (
+        <div class="kutu reveal" style="--d:80ms">
+          <p class="kutu-baslik">Bu hafta değişenler</p>
+          <ul class="degisenler">
+            {d.degisenler.map((x) => (
+              <li>
+                <span>{x.metin}</span>
+                {x.yon === 'yukari' && <span class="yuk">▲</span>}
+                {x.yon === 'asagi' && <span class="dus">▼</span>}
+                {x.yon === 'yeni' && <span class="etiket etiket-yeni">Yeni</span>}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+      {d.yontem && (
+        <div class="kutu reveal" style="--d:140ms">
+          <p class="kutu-baslik">Nasıl ölçüyoruz</p>
+          <p class="yontem">{d.yontem}</p>
+          {d.kaynak && <p class="muted small" style="margin:0.5rem 0 0">Kaynak: {d.kaynak}</p>}
+        </div>
+      )}
+    </div>
+  </section>
+
+  <section class="container section" style="padding-top:1.5rem">
+    <div class="kart tablo-kap reveal">
+      <div class="tablo-kaydir">
+        <table class="tablo">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Model</th>
+              <th>Puan</th>
+              <th class="sag">Değişim</th>
+              {liste.some((m) => m.hiz) && <th class="sag">Hız</th>}
+              {liste.some((m) => m.fiyat) && <th class="sag">Fiyat</th>}
+              <th>Erişim</th>
+              {liste.some((m) => m.turkce) && <th>Türkçe</th>}
+              <th>yekvisual notu</th>
+            </tr>
+          </thead>
+          <tbody>
+            {liste.map((m, i) => (
+              <tr>
+                <td class="num muted">{i + 1}</td>
+                <td class="model">
+                  <strong>{m.ad}</strong>
+                  <span class="muted small">{m.firma}</span>
+                </td>
+                <td class="puan">
+                  <div class="bar"><i style={`--w:${yuzde(m.puan)}%`}></i></div>
+                  <b class="num">{puanYaz(m.puan)}</b>
+                </td>
+                <td class="sag num">{m.yeni ? <span class="etiket etiket-yeni">Yeni</span> : m.degisim > 0 ? <span class="yuk">▲ {m.degisim}</span> : m.degisim < 0 ? <span class="dus">▼ {-m.degisim}</span> : <span class="muted">—</span>}</td>
+                {liste.some((x) => x.hiz) && <td class="sag num">{m.hiz ?? '—'}</td>}
+                {liste.some((x) => x.fiyat) && <td class="sag num">{m.fiyat ?? '—'}</td>}
+                <td><span class:list={['etiket', erisimSinif(m.erisim)]}>{erisimAdi(m.erisim)}</span></td>
+                {liste.some((x) => x.turkce) && <td>{m.turkce ? turkceAdi[m.turkce] : '—'}</td>}
+                <td class="not">{m.not}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="muted small tablo-alt">{liste.length} model{d.ornek && ' · örnek değerler'} · her Pazar güncellenir</p>
+    </div>
+  </section>
+
+  {ilkUc.length === 3 && (
+    <section class="container section" style="padding-top:0">
+      <h2 class="reveal">İlk üçün yakın analizi</h2>
+      <div class="cols" style="--n:3">
+        {ilkUc.map((m, i) => (
+          <article class="kart analiz reveal" style={`--d:${i * 70}ms`}>
+            <span class="kicker">{i + 1}. sıra · {m.firma}</span>
+            <h3>{m.ad}</h3>
+            <p>{m.not}</p>
+            <div class="etiketler">
+              <span class:list={['etiket', erisimSinif(m.erisim)]}>{erisimAdi(m.erisim)}</span>
+              {m.turkce && <span class="etiket etiket-ince">Türkçe: {turkceAdi[m.turkce]}</span>}
+              {m.fiyat && <span class="etiket etiket-ince">{m.fiyat}</span>}
+            </div>
+            {m.url && <a href={m.url} target="_blank" rel="noopener" class="more">Modelin sayfası →</a>}
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
+</Base>
+
+<style>
+  .sayfa-bas {
+    padding-bottom: 1.5rem;
+  }
+  .sayfa-bas h1 {
+    font-size: clamp(2.2rem, 4.6vw, 3.8rem);
+    max-width: 20ch;
+  }
+  .giris {
+    max-width: 66ch;
+    margin: 0 0 1.2rem;
+  }
+  .ust-izgara {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(280px, 2fr);
+    gap: 1.5rem;
+  }
+  @media (max-width: 900px) {
+    .ust-izgara {
+      grid-template-columns: 1fr;
+    }
+  }
+  .grafik {
+    padding: 1.4rem 1.5rem;
+    min-width: 0;
+  }
+  .grafik-bas {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.8rem;
+  }
+  .grafik h2 {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+  .grafik svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .bos-grafik p {
+    margin: 0;
+  }
+  .yan-kutular {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .degisenler {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+  }
+  .degisenler li {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.8rem;
+    align-items: center;
+  }
+  .yuk {
+    color: #1e6b3c;
+    font-weight: 600;
+  }
+  .dus {
+    color: #9b2c4a;
+    font-weight: 600;
+  }
+  .yontem {
+    margin: 0;
+    font-size: 0.92rem;
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+  .tablo-kap {
+    padding: 1rem 1.4rem 1.1rem;
+  }
+  .tablo-kaydir {
+    overflow-x: auto;
+  }
+  .tablo {
+    width: 100%;
+    min-width: 900px;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+  }
+  .tablo th {
+    text-align: left;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 0.5rem 0.6rem 0.5rem 0;
+  }
+  .tablo td {
+    padding: 0.7rem 0.6rem 0.7rem 0;
+    border-top: 1px solid var(--line);
+    vertical-align: middle;
+  }
+  .sag {
+    text-align: right;
+  }
+  .model strong {
+    display: block;
+    font-weight: 600;
+  }
+  .puan {
+    min-width: 180px;
+  }
+  .puan .bar {
+    display: inline-block;
+    width: calc(100% - 3.6rem);
+    vertical-align: middle;
+    margin-right: 0.5rem;
+  }
+  .puan b {
+    display: inline-block;
+    width: 3rem;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .not {
+    color: var(--ink-2);
+    font-size: 0.88rem;
+    max-width: 30ch;
+  }
+  .tablo-alt {
+    margin: 0.8rem 0 0;
+  }
+  .analiz {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.3rem 1.4rem 1.4rem;
+  }
+  .analiz h3 {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+  .analiz p {
+    margin: 0;
+    color: var(--ink-2);
+    font-size: 0.95rem;
+    flex: 1;
+  }
+  .analiz .more {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-top: 0.3rem;
+  }
+</style>

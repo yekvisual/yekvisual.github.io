@@ -1,0 +1,13 @@
+ad: Ses
+sira: 4
+olcu: "yekvisual Türkçe seslendirme testi, 5 üzerinden"
+guncelleme: 2026-10-26
+ornek: true
+aciklama: "Ses için güvenilir açık sıralama yok; aynı 60 saniyelik Türkçe metni her modele okutup doğallık, vurgu ve telaffuzu puanlıyoruz."
+yontem: "Üç dinleyici, kör; her modelin aynı Türkçe metni. Doğallık, vurgu, özel ad telaffuzu ve duygu kontrolü; ortalama 5 üzerinden."
+modeller:
+  - { ad: "ElevenLabs v3", firma: ElevenLabs, puan: 4.8, degisim: 0, erisim: sinirli, turkce: evet, fiyat: "aylık 10 dk ücretsiz", not: "Duygu etiketleri Türkçe'de de çalışıyor; Reels seslendirmesi için standart." }
+  - { ad: "Gemini TTS", firma: Google, puan: 4.3, degisim: 0, erisim: ucretsiz, turkce: evet, fiyat: "$0", not: "Ücretsiz ve iyi; vurgu kontrolü sınırlı." }
+  - { ad: "OpenAI TTS 2", firma: OpenAI, puan: 4.2, degisim: 0, erisim: ucretli, turkce: evet, fiyat: "$15 / M karakter", not: "Temiz ama biraz düz." }
+  - { ad: "Fish Speech 2", firma: Fish Audio, puan: 3.9, degisim: 0, erisim: acik, turkce: kismen, fiyat: "$0", not: "Evde çalışan en iyi Türkçe; özel adlarda takılıyor." }
+  - { ad: "macOS Yelda", firma: Apple, puan: 2.6, degisim: 0, erisim: ucretsiz, turkce: evet, fiyat: "$0", not: "Mac'te hazır; taslak için yeter, yayın için değil." }

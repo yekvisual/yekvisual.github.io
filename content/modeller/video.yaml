@@ -1,0 +1,33 @@
+ad: Video
+sira: 2
+olcu: "Karışık puan: kör oylama (LMArena, Artificial Analysis) + yekvisual Türkçe testi"
+kaynak: "LMArena Video Arena, Artificial Analysis"
+guncelleme: 2026-10-26
+ornek: true
+aciklama: "18 video modelini aynı 12 istemle çalıştırıyoruz; üstüne kör oylamaları ekliyoruz. Puan bu ikisinin karışımı."
+yontem: "Puanın yarısı kör oylama (LMArena, Artificial Analysis), yarısı 12 istemlik Türkçe testimiz: ürün çekimi, konuşan karakter, metin okunurluğu, hareket tutarlılığı. Hız ve fiyat ayrı sütunda; puana karışmaz."
+degisenler:
+  - { metin: "Hailuo 3 ikinciliğe yaklaştı", yon: yukari }
+  - { metin: "Wan 3.0 açık kaynaklarda birinci", yon: yukari }
+  - { metin: "Luma Ray 4 fiyat artınca geriledi", yon: asagi }
+  - { metin: "Veo 4 listeye yeni girdi", yon: yeni }
+modeller:
+  - { ad: "Kling 4.0", firma: Kuaishou, puan: 1310, degisim: 0, erisim: deneme, turkce: evet, hiz: "48 sn", fiyat: "$0,35 / 5 sn", not: "30 sn tek çekim; karakter tutarlılığı en iyi. Reels için ilk tercihim." }
+  - { ad: "Seedance 2.5", firma: ByteDance, puan: 1268, degisim: 0, erisim: ucretli, turkce: evet, hiz: "22 sn", fiyat: "$0,30 / 5 sn", not: "Ses senkronu çok iyi, hareket bazen abartılı." }
+  - { ad: "MiniMax Hailuo 3", firma: MiniMax, puan: 1236, degisim: 2, erisim: ucretli, turkce: kismen, hiz: "35 sn", fiyat: "$0,25 / 5 sn", not: "Kamera hareketleri sinematik; Türkçe dudak senkronu zayıf." }
+  - { ad: "Wan 3.0", firma: Alibaba, puan: 1171, degisim: 1, erisim: acik, turkce: yok, hiz: "4 dk (12 GB kart)", fiyat: "$0", not: "Ücretsiz ve sınırsız; sabır ister." }
+  - { ad: "Luma Ray 4", firma: Luma, puan: 1088, degisim: -3, erisim: ucretli, turkce: yok, hiz: "18 sn", fiyat: "$0,45 / 5 sn", not: "Hızlı ama pahalılaştı; ışık ve doku hâlâ çok iyi." }
+  - { ad: "Veo 4", firma: Google, puan: 1070, degisim: 0, erisim: sinirli, turkce: evet, hiz: "40 sn", fiyat: "$0,40 / 5 sn", not: "Gemini uygulamasında günde birkaç deneme ücretsiz.", yeni: true }
+  - { ad: "P-Video 2 Pro", firma: Prunaai, puan: 1041, degisim: 0, erisim: ucretli, turkce: yok, hiz: "12 sn", fiyat: "$0,12 / 5 sn", not: "En hızlı ve en ucuz; taslak denemeleri için." }
+  - { ad: "Runway Gen-5", firma: Runway, puan: 1022, degisim: -1, erisim: ucretli, turkce: yok, hiz: "30 sn", fiyat: "$0,50 / 5 sn", not: "Düzenleme araçları güçlü; ham üretimde geride." }
+  - { ad: "LTX-3", firma: Lightricks, puan: 960, degisim: 1, erisim: acik, turkce: yok, hiz: "1 dk (8 GB kart)", fiyat: "$0", not: "8 GB ekran kartında çalışan tek model; kalite orta." }
+  - { ad: "Pika 3", firma: Pika, puan: 918, degisim: 0, erisim: sinirli, turkce: yok, hiz: "15 sn", fiyat: "$0,20 / 5 sn", not: "Efekt şablonları eğlenceli; ciddi iş için değil." }
+gecmis:
+  - { tarih: 2026-09-01, puanlar: { "Kling 4.0": 1200, "Seedance 2.5": 1155, "MiniMax Hailuo 3": 1100, "Wan 3.0": 1075, "Luma Ray 4": 1130 } }
+  - { tarih: 2026-09-08, puanlar: { "Kling 4.0": 1215, "Seedance 2.5": 1175, "MiniMax Hailuo 3": 1120, "Wan 3.0": 1080, "Luma Ray 4": 1130 } }
+  - { tarih: 2026-09-15, puanlar: { "Kling 4.0": 1230, "Seedance 2.5": 1200, "MiniMax Hailuo 3": 1138, "Wan 3.0": 1090, "Luma Ray 4": 1125 } }
+  - { tarih: 2026-09-22, puanlar: { "Kling 4.0": 1240, "Seedance 2.5": 1225, "MiniMax Hailuo 3": 1175, "Wan 3.0": 1100, "Luma Ray 4": 1120 } }
+  - { tarih: 2026-09-29, puanlar: { "Kling 4.0": 1265, "Seedance 2.5": 1240, "MiniMax Hailuo 3": 1200, "Wan 3.0": 1125, "Luma Ray 4": 1115 } }
+  - { tarih: 2026-10-06, puanlar: { "Kling 4.0": 1290, "Seedance 2.5": 1255, "MiniMax Hailuo 3": 1220, "Wan 3.0": 1150, "Luma Ray 4": 1105 } }
+  - { tarih: 2026-10-13, puanlar: { "Kling 4.0": 1305, "Seedance 2.5": 1262, "MiniMax Hailuo 3": 1232, "Wan 3.0": 1165, "Luma Ray 4": 1095 } }
+  - { tarih: 2026-10-20, puanlar: { "Kling 4.0": 1310, "Seedance 2.5": 1268, "MiniMax Hailuo 3": 1236, "Wan 3.0": 1171, "Luma Ray 4": 1088 } }

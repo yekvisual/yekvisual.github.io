@@ -1,5 +1,5 @@
 ---
-baslik: Telefondan bilgisayarını çalıştırmak
+baslik: Yoldayken evdeki bilgisayara iş ver
 ozet: >-
   Evdeki bilgisayarda Claude Code açık; sen dışarıdan telefonla "şu videoyu render al, Drive'a yükle" diyorsun. İş bilgisayarda yapılıyor.
 ikon: 📱
@@ -27,4 +27,4 @@ Claude Code'un **uzaktan kontrol** özelliğiyle bilgisayarındaki oturumu telef
 2. Telefonda [claude.ai](https://claude.ai) uygulamasını aç, aynı hesapla giriş yap, oturumu seç.
 3. Bilgisayarın uykuya geçmesini kapat (Mac: Sistem Ayarları → Pil → Uyku). Deneme için: *"Masaüstüne 'merhaba.txt' adında bir dosya oluştur."*
 
-> Daha güçlü alternatif: işin bilgisayarda değil bulutta yapılması. Bu sitenin botları öyle çalışıyor; "Tekrar eden işleri yaptırmak" kartına bak.
+> Daha güçlü alternatif: işin bilgisayarda değil bulutta yapılması. "Her sabah 08:00'de hazır bir brifing al" kartına bak.

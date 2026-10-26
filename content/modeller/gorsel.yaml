@@ -1,0 +1,16 @@
+ad: Görsel
+sira: 1
+olcu: "Artificial Analysis Image Arena ELO + yekvisual Türkçe metin testi"
+kaynak: "Artificial Analysis, LMArena"
+guncelleme: 2026-10-26
+ornek: true
+aciklama: "Görsel modellerini aynı 10 istemle deniyoruz: ürün fotoğrafı, Türkçe yazı, aynı karakterin 5 sahnesi, fotoğraf düzenleme."
+yontem: "Puanın yarısı kör oylama (Artificial Analysis Image Arena), yarısı Türkçe testimiz: görsel içinde Türkçe yazı doğruluğu, karakter tutarlılığı, düzenleme komutlarına sadakat."
+modeller:
+  - { ad: "Nano Banana 2.1", firma: Google, puan: 1284, degisim: 0, erisim: sinirli, turkce: evet, hiz: "6 sn", fiyat: "$0,04", not: "Gemini uygulamasında ücretsiz; Türkçe yazıyı en doğru yazan." }
+  - { ad: "GPT Image 2", firma: OpenAI, puan: 1231, degisim: 0, erisim: ucretli, turkce: evet, hiz: "14 sn", fiyat: "$0,07", not: "Düzenleme komutlarında en sadık; biraz yavaş." }
+  - { ad: "Seedream 5.0", firma: ByteDance, puan: 1197, degisim: 1, erisim: ucretli, turkce: kismen, hiz: "5 sn", fiyat: "$0,03", not: "Çok hızlı, fotogerçekçi; yazıda hata yapıyor." }
+  - { ad: "FLUX 3", firma: Black Forest Labs, puan: 1160, degisim: 0, erisim: acik, turkce: kismen, hiz: "9 sn (24 GB kart)", fiyat: "$0", not: "Açık kaynaklarda birinci; ComfyUI ile evde çalışıyor.", yeni: true }
+  - { ad: "Krea 2 Medium", firma: Krea, puan: 1102, degisim: -1, erisim: acik, turkce: yok, hiz: "4 sn", fiyat: "$0", not: "Hafif ve hızlı; estetik tarafı güçlü." }
+  - { ad: "Midjourney v8", firma: Midjourney, puan: 1090, degisim: 0, erisim: ucretli, turkce: yok, hiz: "30 sn", fiyat: "abonelik", not: "Sanatsal tarzda hâlâ en iyilerden; yazı ve düzenleme zayıf." }
+  - { ad: "Ideogram 4", firma: Ideogram, puan: 1065, degisim: 0, erisim: sinirli, turkce: kismen, hiz: "8 sn", fiyat: "$0,05", not: "Afiş ve logo işlerinde güçlü." }

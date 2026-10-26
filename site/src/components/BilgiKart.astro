@@ -2,7 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import { Image } from 'astro:assets';
 import { kartYolu } from '../lib/site';
-import { zorlukAdi } from '../lib/taxonomy';
+import { zorlukAdi, kategoriAdi } from '../lib/taxonomy';
 
 interface Props {
   kart: CollectionEntry<'kartlar'>;
@@ -10,23 +10,29 @@ interface Props {
 }
 const { kart, gecikme = 0 } = Astro.props;
 const d = kart.data;
+const zeminler: Record<string, string> = {
+  video: '#e3ebf6',
+  gorsel: '#ffefb3',
+  araclar: '#fde3c8',
+  otomasyon: '#ebe6f5',
+  'acik-kaynak': '#e3f3e6',
+  ses: '#fbe4e8',
+};
+const zemin = zeminler[d.kategori] ?? '#f3f1ec';
 ---
 
-<article class="bilgi reveal" style={`--d:${gecikme}ms`}>
-  <div class="bilgi-ust">
-    <span class="bilgi-no display">{String(d.sira).padStart(2, '0')}</span>
-    <span class="bilgi-ikon" aria-hidden="true">{d.ikon}</span>
-  </div>
-  {d.gorsel && (
-    <div class="bilgi-gorsel">
+<article class="bilgi kart reveal" style={`--d:${gecikme}ms`}>
+  <div class="bilgi-gorsel" style={`background:${zemin}`}>
+    {d.gorsel ? (
       <Image src={d.gorsel} alt="" width={720} widths={[480, 720, 960]} sizes="(max-width: 860px) 100vw, 25vw" loading="lazy" />
-    </div>
-  )}
-  <h3><a href={kartYolu(kart.id)}>{d.baslik}</a></h3>
-  <p>{d.ozet}</p>
-  <div class="bilgi-alt">
-    <span class="etiket etiket-ince">{zorlukAdi(d.zorluk)}</span>
-    <span class="kicker oku">Oku →</span>
+    ) : (
+      <span class="bilgi-ikon" aria-hidden="true">{d.ikon}</span>
+    )}
+  </div>
+  <div class="bilgi-govde">
+    <span class="kicker">{String(d.sira).padStart(2, '0')} · {kategoriAdi(d.kategori)} · {zorlukAdi(d.zorluk)}</span>
+    <h3><a href={kartYolu(kart.id)}>{d.baslik}</a></h3>
+    <p>{d.ozet}</p>
   </div>
 </article>
 
@@ -35,69 +41,58 @@ const d = kart.data;
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
     height: 100%;
+    overflow: hidden;
+    transition: border-color 0.25s var(--ease), transform 0.25s var(--ease);
   }
-  .bilgi-ust {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    border-bottom: 1px solid var(--ink);
-    padding-bottom: 0.3rem;
-  }
-  .bilgi-no {
-    font-size: 2.6rem;
-    line-height: 0.9;
-  }
-  .bilgi-ikon {
-    font-size: 1.4rem;
-    filter: grayscale(1) contrast(1.2);
+  .bilgi:hover {
+    border-color: var(--line-2);
+    transform: translateY(-2px);
   }
   .bilgi-gorsel {
+    aspect-ratio: 5 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
-    border: 1px solid var(--ink);
-    aspect-ratio: 3 / 2;
-    background: var(--paper-2);
-    margin-top: 0.2rem;
   }
   .bilgi-gorsel img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     mix-blend-mode: multiply;
-    transition: transform 0.9s var(--ease);
+    opacity: 0.9;
   }
-  .bilgi:hover .bilgi-gorsel img {
-    transform: scale(1.04);
+  .bilgi-ikon {
+    font-size: 2.6rem;
+  }
+  .bilgi-govde {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    padding: 1rem 1.1rem 1.2rem;
   }
   .bilgi h3 {
-    margin: 0.2rem 0 0;
-    font-size: clamp(1.5rem, 1.8vw, 1.85rem);
-    line-height: 0.98;
+    margin: 0;
+    font-size: clamp(1.2rem, 1.4vw, 1.4rem);
+    line-height: 1.18;
   }
   .bilgi h3 a::after {
     content: '';
     position: absolute;
     inset: 0;
   }
+  .bilgi:hover h3 {
+    color: var(--accent);
+  }
   .bilgi p {
     margin: 0;
     color: var(--ink-2);
-    font-size: 0.96rem;
-    line-height: 1.4;
-  }
-  .bilgi-alt {
-    margin-top: auto;
-    padding-top: 0.6rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .oku {
-    transition: transform 0.3s var(--ease), color 0.3s var(--ease);
-  }
-  .bilgi:hover .oku {
-    transform: translateX(4px);
-    color: var(--accent);
+    font-size: 0.92rem;
+    line-height: 1.45;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 </style>

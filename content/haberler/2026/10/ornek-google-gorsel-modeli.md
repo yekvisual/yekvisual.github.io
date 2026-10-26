@@ -14,7 +14,7 @@ model: Gemini (görsel)
 etiketler: [google, gemini, görsel düzenleme, ücretsiz]
 kart: connectorler
 kapak: ./ornek-google-gorsel-modeli/kapak.webp
-kapak_kaynak: "Görsel: yekvisual"
+kapak_kaynak: "Görsel: Gemini ile üretildi (örnek)"
 kaynaklar:
   - ad: Google Blog
     url: https://blog.google/
@@ -23,7 +23,7 @@ kaynaklar:
 ornek: true
 ---
 
-Bu bir **örnek haberdir**; tasarımı görmek için elle yazıldı. Toplayıcı bot devreye girince gerçek haberler bu yapıda üretilecek.
+Bu bir **örnek haberdir**; tasarımı görmek için elle yazıldı. Gerçek haberler bu yapıda yayınlanacak.
 
 ## Neler yeni?
 

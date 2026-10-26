@@ -1,0 +1,13 @@
+ad: Müzik
+sira: 5
+olcu: "yekvisual Türkçe sözlü parça testi, 5 üzerinden"
+guncelleme: 2026-10-26
+ornek: true
+aciklama: "Aynı Türkçe sözleri ve aynı tarz tarifini her modele veriyoruz; söz anlaşılırlığı, melodi ve miks puanlanıyor."
+yontem: "Üç dinleyici, kör. Söz anlaşılırlığı, melodi, miks kalitesi ve istenen tarza uyum; ortalama 5 üzerinden."
+modeller:
+  - { ad: "Suno v5", firma: Suno, puan: 4.7, degisim: 0, erisim: sinirli, turkce: evet, fiyat: "günde 10 parça ücretsiz", not: "Türkçe sözleri en temiz söyleyen; Reels müziği için ilk durak." }
+  - { ad: "Lyria 3", firma: Google, puan: 4.5, degisim: 0, erisim: ucretsiz, turkce: kismen, fiyat: "$0", not: "Enstrümantalde çok iyi; Türkçe vokal bazen bozuk." }
+  - { ad: "Udio 2", firma: Udio, puan: 4.4, degisim: 0, erisim: sinirli, turkce: kismen, fiyat: "aylık 100 kredi ücretsiz", not: "Miks kalitesi en yüksek." }
+  - { ad: "ElevenLabs Music", firma: ElevenLabs, puan: 4.2, degisim: 0, erisim: ucretli, turkce: evet, fiyat: "abonelik", not: "Seslendirmeyle aynı hesapta; ticari kullanım net." }
+  - { ad: "ACE-Step 2", firma: "ACE Studio", puan: 3.8, degisim: 0, erisim: acik, turkce: kismen, fiyat: "$0", not: "Evde çalışan tek ciddi seçenek; 12 GB kart yeter." }

@@ -1,8 +1,7 @@
 ---
 import 'lenis/dist/lenis.css';
 import '../styles/global.css';
-import { getCollection } from 'astro:content';
-import { SITE, haberYolu, tarihTR } from '../lib/site';
+import { SITE } from '../lib/site';
 
 interface Props {
   title?: string;
@@ -18,15 +17,13 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL(image ?? '/og/site.png', Astro.site);
 const yol = Astro.url.pathname;
 const nav = [
-  { href: '/bilmeniz-gerekenler/', ad: 'Bilmeniz Gerekenler' },
   { href: '/gundem/', ad: 'Gündem' },
+  { href: '/modeller/', ad: 'Modeller' },
+  { href: '/bilmeniz-gerekenler/', ad: 'Bilmeniz Gerekenler' },
   { href: '/araclar/', ad: 'Araçlar' },
   { href: '/haftalik/', ad: 'Haftalık' },
-  { href: '/hakkinda/', ad: 'Hakkında' },
 ];
-const bugun = new Date();
-const sonHaberler = (await getCollection('haberler')).sort((a, b) => b.data.tarih.valueOf() - a.data.tarih.valueOf()).slice(0, 8);
-const sayi = (await getCollection('ozetler')).length + 1;
+const yil = new Date().getFullYear();
 ---
 
 <!doctype html>
@@ -49,52 +46,39 @@ const sayi = (await getCollection('ozetler')).length + 1;
     <meta property="og:locale" content="tr_TR" />
     {tarih && <meta property="article:published_time" content={tarih.toISOString()} />}
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="theme-color" content="#d9d2c8" />
+    <meta name="theme-color" content="#fbfaf8" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Grenze+Gotisch:wght@700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Geist:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
   <body>
     <a class="skip" href="#icerik">İçeriğe geç</a>
 
-    <header class="masthead">
-      <div class="container ust">
-        <div class="ust-sol kicker">
-          <span>Türkiye</span>
-          <span class="ust-tarih">{tarihTR(bugun)}</span>
-        </div>
-        <a href="/" class="logo" aria-label={`${SITE.ad} ana sayfa`}>yekvisual</a>
-        <div class="ust-sag kicker">
-          <span class="sayi">Sayı {String(sayi).padStart(2, '0')}</span>
+    <header class="ust">
+      <div class="container ust-ic">
+        <a href="/" class="logo" aria-label={`${SITE.ad} ana sayfa`}>yekvisual<span class="nokta">.</span></a>
+        <nav class="nav" id="nav" aria-label="Site">
+          {nav.map((n) => (
+            <a href={n.href} aria-current={yol.startsWith(n.href) ? 'page' : undefined}>{n.ad}</a>
+          ))}
+        </nav>
+        <div class="ust-sag">
+          <a href="/ara/" class="ara" aria-label="Ara">
+            <svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+            <span>Ara</span>
+          </a>
+          <a href={SITE.instagram} class="ig" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor"></circle></svg>
+          </a>
+          <a href="/haftalik/#bulten" class="btn btn-ink bulten-btn">Bülten</a>
           <button class="menu" id="menu" aria-expanded="false" aria-controls="nav" aria-label="Menü">
             <span></span><span></span>
           </button>
         </div>
       </div>
-      <nav class="nav rule-double" id="nav">
-        <div class="container nav-ic">
-          {nav.map((n) => (
-            <a href={n.href} aria-current={yol.startsWith(n.href) ? 'page' : undefined}>{n.ad}</a>
-          ))}
-          <a href="/ara/" class="nav-ara" aria-label="Ara">Ara</a>
-          <a href={SITE.instagram} class="nav-ig" target="_blank" rel="noopener">Instagram ↗</a>
-        </div>
-      </nav>
-      {sonHaberler.length > 0 && (
-        <div class="ticker" aria-label="Son haberler">
-          <div class="ticker-ic">
-            {[...sonHaberler, ...sonHaberler].map((h) => (
-              <a href={haberYolu(h.id)}>
-                <span class="ticker-nokta" aria-hidden="true"></span>
-                {h.data.baslik}
-              </a>
-            ))}
-          </div>
-        </div>
-      )}
     </header>
 
     <main id="icerik">
@@ -102,20 +86,15 @@ const sayi = (await getCollection('ozetler')).length + 1;
     </main>
 
     <footer class="footer">
-      <div class="container">
-        <div class="footer-ust rule-double">
-          <a href="/" class="logo logo-kucuk">yekvisual</a>
-          <p class="footer-slogan">{SITE.slogan}</p>
+      <div class="container footer-ic">
+        <a href="/" class="logo logo-kucuk">yekvisual<span class="nokta">.</span></a>
+        <div class="footer-linkler">
+          {nav.map((n) => <a href={n.href}>{n.ad}</a>)}
+          <a href="/hakkinda/">Hakkında</a>
+          <a href="/rss.xml">RSS</a>
+          <a href={SITE.instagram} target="_blank" rel="noopener">Instagram</a>
         </div>
-        <div class="footer-alt">
-          <div class="kicker">© {bugun.getFullYear()} yekvisual · Sayı {String(sayi).padStart(2, '0')}</div>
-          <div class="footer-linkler kicker">
-            <a href={SITE.instagram} target="_blank" rel="noopener">Instagram</a>
-            <a href="/rss.xml">RSS</a>
-            <a href={SITE.github} target="_blank" rel="noopener">GitHub</a>
-            <a href="/hakkinda/">Hakkında</a>
-          </div>
-        </div>
+        <div class="footer-not">Türkçe, bağımsız, her gün. © {yil} yekvisual</div>
       </div>
     </footer>
 
@@ -124,9 +103,8 @@ const sayi = (await getCollection('ozetler')).length + 1;
 
       const azHareket = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      // Yumuşak kaydırma
       if (!azHareket) {
-        const lenis = new Lenis({ lerp: 0.09, smoothWheel: true });
+        const lenis = new Lenis({ lerp: 0.1, smoothWheel: true });
         const raf = (t: number) => {
           lenis.raf(t);
           requestAnimationFrame(raf);
@@ -134,7 +112,6 @@ const sayi = (await getCollection('ozetler')).length + 1;
         requestAnimationFrame(raf);
       }
 
-      // Kaydırdıkça açılma
       const io = new IntersectionObserver(
         (girdiler) => {
           for (const g of girdiler) {
@@ -144,32 +121,10 @@ const sayi = (await getCollection('ozetler')).length + 1;
             }
           }
         },
-        { rootMargin: '0px 0px -8% 0px', threshold: 0.05 },
+        { rootMargin: '0px 0px -6% 0px', threshold: 0.05 },
       );
       document.querySelectorAll('.reveal, .reveal-img').forEach((el) => io.observe(el));
 
-      // Sayaçlar
-      const sayacIo = new IntersectionObserver((girdiler) => {
-        for (const g of girdiler) {
-          if (!g.isIntersecting) continue;
-          const el = g.target as HTMLElement;
-          const hedef = Number(el.dataset.sayac ?? el.textContent);
-          const basla = performance.now();
-          const sure = 1200;
-          const adim = (t: number) => {
-            const p = Math.min(1, (t - basla) / sure);
-            const e = 1 - Math.pow(1 - p, 3);
-            el.textContent = String(Math.round(hedef * e)).padStart(2, '0');
-            if (p < 1) requestAnimationFrame(adim);
-          };
-          if (azHareket) el.textContent = String(hedef).padStart(2, '0');
-          else requestAnimationFrame(adim);
-          sayacIo.unobserve(el);
-        }
-      });
-      document.querySelectorAll('[data-sayac]').forEach((el) => sayacIo.observe(el));
-
-      // Mobil menü
       const btn = document.getElementById('menu');
       const nav = document.getElementById('nav');
       btn?.addEventListener('click', () => {
@@ -179,35 +134,99 @@ const sayi = (await getCollection('ozetler')).length + 1;
     </script>
 
     <style>
-      .masthead {
+      .ust {
         position: relative;
         z-index: 20;
+        background: var(--bg);
       }
-      .ust {
-        display: grid;
-        grid-template-columns: 1fr auto 1fr;
-        align-items: center;
-        padding: 1.1rem 0 0.7rem;
-      }
-      .ust-sol,
-      .ust-sag {
+      .ust-ic {
         display: flex;
-        gap: 1.2rem;
         align-items: center;
-      }
-      .ust-sag {
-        justify-content: flex-end;
+        justify-content: space-between;
+        gap: 1.5rem;
+        padding: 1.1rem 0 0.9rem;
       }
       .logo {
-        font-family: var(--font-masthead);
-        font-weight: 700;
-        font-size: clamp(2.3rem, 4.4vw, 3.6rem);
+        font-family: var(--font-display);
+        font-weight: 500;
+        font-size: 1.75rem;
         line-height: 1;
+        letter-spacing: -0.01em;
         color: var(--ink);
-        letter-spacing: 0.01em;
+        white-space: nowrap;
+      }
+      .nokta {
+        color: var(--accent);
       }
       .logo-kucuk {
-        font-size: 2.1rem;
+        font-size: 1.4rem;
+      }
+      .nav {
+        display: flex;
+        gap: clamp(1rem, 2vw, 1.7rem);
+        font-size: 0.95rem;
+        font-weight: 500;
+      }
+      .nav a {
+        position: relative;
+        padding-bottom: 2px;
+      }
+      .nav a::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -3px;
+        height: 2px;
+        background: var(--accent);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s var(--ease);
+      }
+      .nav a:hover::after,
+      .nav a[aria-current='page']::after {
+        transform: scaleX(1);
+      }
+      .ust-sag {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+      .ara {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        height: 2.3rem;
+        padding: 0 0.9rem;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: var(--bg-2);
+        color: var(--muted);
+        font-size: 0.88rem;
+        font-weight: 500;
+      }
+      .ara:hover {
+        color: var(--ink);
+        border-color: var(--line-2);
+      }
+      .ig {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.3rem;
+        height: 2.3rem;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: var(--bg-2);
+      }
+      .ig:hover {
+        color: var(--accent);
+        border-color: var(--line-2);
+      }
+      .bulten-btn {
+        height: 2.3rem;
+        padding: 0 1rem;
+        font-size: 0.88rem;
       }
       .menu {
         display: none;
@@ -225,79 +244,9 @@ const sayi = (await getCollection('ozetler')).length + 1;
         height: 1.5px;
         background: var(--ink);
       }
-      .nav-ic {
-        display: flex;
-        justify-content: center;
-        gap: clamp(1rem, 2.5vw, 2.2rem);
-        padding: 0.7rem 0 0.55rem;
-        font-family: var(--font-display);
-        text-transform: uppercase;
-        letter-spacing: 0.12em;
-        font-size: 0.86rem;
-      }
-      .nav-ic a {
-        position: relative;
-        padding-bottom: 2px;
-      }
-      .nav-ic a::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: -2px;
-        height: 1px;
-        background: var(--ink);
-        transform: scaleX(0);
-        transform-origin: left;
-        transition: transform 0.35s var(--ease);
-      }
-      .nav-ic a:hover::after,
-      .nav-ic a[aria-current='page']::after {
-        transform: scaleX(1);
-      }
-      .nav-ig {
-        color: var(--accent);
-      }
-      .ticker {
-        overflow: hidden;
-        border-top: 1px solid var(--rule);
-        border-bottom: 1px solid var(--rule);
-        font-size: 0.92rem;
-        font-style: italic;
-      }
-      .ticker-ic {
-        display: flex;
-        gap: 2.5rem;
-        width: max-content;
-        padding: 0.45rem 0;
-        animation: kay 70s linear infinite;
-      }
-      .ticker:hover .ticker-ic {
-        animation-play-state: paused;
-      }
-      .ticker-ic a {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.6rem;
-        white-space: nowrap;
-      }
-      .ticker-ic a:hover {
-        color: var(--accent);
-      }
-      .ticker-nokta {
-        width: 6px;
-        height: 6px;
-        background: var(--accent);
-        border-radius: 50%;
-      }
-      @keyframes kay {
-        to {
-          transform: translateX(-50%);
-        }
-      }
-      @media (max-width: 860px) {
-        .ust-tarih,
-        .sayi {
+      @media (max-width: 900px) {
+        .ara span,
+        .bulten-btn {
           display: none;
         }
         .menu {
@@ -305,56 +254,59 @@ const sayi = (await getCollection('ozetler')).length + 1;
         }
         .nav {
           display: none;
-        }
-        .nav.acik {
-          display: block;
-        }
-        .nav-ic {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 100%;
           flex-direction: column;
           gap: 0;
-          padding: 0.3rem 0 0.6rem;
-          font-size: 1rem;
+          background: var(--bg);
+          border-top: 1px solid var(--line);
+          border-bottom: 1px solid var(--line);
+          padding: 0.4rem var(--gutter) 0.6rem;
+          font-size: 1.05rem;
         }
-        .nav-ic a {
+        .nav.acik {
+          display: flex;
+        }
+        .nav a {
           padding: 0.75rem 0;
-          border-bottom: 1px solid var(--rule);
+          border-bottom: 1px solid var(--line);
         }
-        .nav-ic a::after {
+        .nav a::after {
           display: none;
+        }
+        .ara {
+          width: 2.3rem;
+          padding: 0;
+          justify-content: center;
         }
       }
       .footer {
-        margin-top: 4rem;
-        padding-bottom: 2.5rem;
+        margin-top: 4.5rem;
+        border-top: 1px solid var(--line);
+        padding: 1.8rem 0 2.5rem;
       }
-      .footer-ust {
+      .footer-ic {
         display: flex;
         justify-content: space-between;
-        align-items: baseline;
-        gap: 1rem;
-        padding-top: 1.2rem;
+        align-items: center;
+        gap: 1.2rem;
         flex-wrap: wrap;
-      }
-      .footer-slogan {
-        font-style: italic;
-        color: var(--ink-2);
-        margin: 0;
-      }
-      .footer-alt {
-        display: flex;
-        justify-content: space-between;
-        gap: 1rem;
-        flex-wrap: wrap;
-        margin-top: 1.5rem;
-        padding-top: 0.6rem;
-        border-top: 1px solid var(--rule);
       }
       .footer-linkler {
         display: flex;
-        gap: 1.4rem;
+        flex-wrap: wrap;
+        gap: 1.2rem;
+        font-size: 0.9rem;
+        color: var(--ink-2);
       }
       .footer-linkler a:hover {
         color: var(--accent);
+      }
+      .footer-not {
+        font-size: 0.85rem;
+        color: var(--muted);
       }
     </style>
   </body>

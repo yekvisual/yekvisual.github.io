@@ -1,5 +1,5 @@
 ---
-// Gazete etiketleri: kategori (kicker), ücretsiz/ücretli, açık kaynak, zorluk, örnek, yeni.
+// Rozetler: kategori, yeni, ücretsiz/ücretli, açık kaynak, zorluk, örnek.
 import { kategoriAdi, zorlukAdi } from '../lib/taxonomy';
 
 interface Props {
@@ -17,10 +17,10 @@ const { kategori, ucretsiz, acikKaynak, zorluk, ornek, yeni, kategoriLink = true
 <div class="etiketler">
   {kategori && kategoriLink && <a href={`/gundem/kategori/${kategori}/`} class="kicker kicker-link">{kategoriAdi(kategori)}</a>}
   {kategori && !kategoriLink && <span class="kicker">{kategoriAdi(kategori)}</span>}
-  {yeni && <span class="etiket">Yeni</span>}
-  {ucretsiz === true && <span class="etiket">Ücretsiz</span>}
-  {ucretsiz === false && <span class="etiket etiket-outline">Ücretli</span>}
-  {acikKaynak === true && <span class="etiket etiket-outline">Açık kaynak</span>}
+  {yeni && <span class="etiket etiket-yeni">Yeni</span>}
+  {ucretsiz === true && <span class="etiket etiket-ucretsiz">Ücretsiz</span>}
+  {ucretsiz === false && <span class="etiket etiket-ucretli">Ücretli</span>}
+  {acikKaynak === true && <span class="etiket etiket-acik">Açık kaynak</span>}
   {zorluk && <span class="etiket etiket-ince">{zorlukAdi(zorluk)}</span>}
   {ornek && <span class="etiket etiket-ornek">Örnek</span>}
 </div>

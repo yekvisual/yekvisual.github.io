@@ -1,5 +1,5 @@
 ---
-baslik: Bağlayıcılarla tek konuşmada üretim
+baslik: Afişini, metnini ve dosyanı tek sohbette çıkar
 ozet: >-
   Canva, Adobe, Figma, Drive, Notion gibi uygulamaları Claude'a bağlayınca "şu tasarımı yap, Drive'a koy, Instagram boyutlarına çevir" tek cümle oluyor.
 ikon: 🔌

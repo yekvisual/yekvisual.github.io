@@ -1,9 +1,10 @@
 ---
-// Haber kapağı. Öncelik: haberin kendi görseli (kaynağın resmi görseli ya da deneme);
-// yoksa kategoriye özel gravür illüstrasyon (src/assets/kategori/*.webp). Böylece
-// hiçbir haber görselsiz kalmaz.
+// Haber kapağı. Sıra: 1) haberin kendi görseli (resmi görsel, modelin gerçek çıktısı
+// ya da kendi denemem), 2) hiçbiri yoksa kategoriye özel soyut kapak. Görselin
+// kaynağı küçük bir etiketle her zaman yazılır.
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
+import { kategoriAdi, kategoriGradyan } from '../lib/taxonomy';
 
 interface Props {
   gorsel?: ImageMetadata;
@@ -15,25 +16,14 @@ interface Props {
   oran?: string;
 }
 const { gorsel, kaynak, baslik, kategori, genislik = 800, oncelik = false, oran } = Astro.props;
-
-const kategoriGorselleri = import.meta.glob<{ default: ImageMetadata }>('../assets/kategori/*.webp', { eager: true });
-const yedek = kategoriGorselleri[`../assets/kategori/${kategori}.webp`]?.default ?? kategoriGorselleri['../assets/kategori/araclar.webp']?.default;
-
-const src = gorsel ?? yedek;
-const altyazi = gorsel ? kaynak : 'İllüstrasyon: yekvisual';
-const stil = oran ? `aspect-ratio:${oran}` : undefined;
+const stil = [oran ? `aspect-ratio:${oran}` : '', gorsel ? '' : `--kapak-gradyan:${kategoriGradyan(kategori)}`].filter(Boolean).join(';');
 ---
 
-<div class:list={['kapak', 'reveal-img', { 'kapak-yedek': !gorsel }]} style={stil}>
-  {src && (
-    <Image src={src} alt="" width={genislik} widths={[480, 800, 1200]} sizes="(max-width: 700px) 100vw, 800px" loading={oncelik ? 'eager' : 'lazy'} />
+<div class:list={['kapak', 'reveal-img', { 'kapak-yedek': !gorsel }]} style={stil || undefined}>
+  {gorsel ? (
+    <Image src={gorsel} alt="" width={genislik} widths={[480, 800, 1200]} sizes="(max-width: 700px) 100vw, 800px" loading={oncelik ? 'eager' : 'lazy'} />
+  ) : (
+    <span class="kapak-kategori" aria-hidden="true">{kategoriAdi(kategori)}</span>
   )}
-  {altyazi && <span class="kapak-kaynak">{altyazi}</span>}
+  {gorsel && kaynak && <span class="kapak-kaynak">{kaynak}</span>}
 </div>
-
-<style>
-  /* Kategori illüstrasyonları krem zeminli; kâğıda basılmış gibi görünsün */
-  .kapak-yedek img {
-    mix-blend-mode: multiply;
-  }
-</style>

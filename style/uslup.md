@@ -22,8 +22,14 @@ Elle de düzenleyebilirsin; kısa, somut kurallar yaz.
 
 ## Başlık
 
-- 50–80 karakter. Şirket/model adı + ne oldu + okur için anlamı. Örnek: "Google'ın yeni görsel modeli Gemini uygulamasında ücretsiz açıldı".
-- Soru başlığı ve tık tuzağı yok.
+- 50–80 karakter. Okurun kazancıyla kur: ne yapabilecek, ne kadar sürede, ücretsiz mi. Örnek: "Google'ın yeni görsel modeli Gemini'de ücretsiz: telefondan 2K görsel düzenleme".
+- Şirket/model adı başlıkta geçer ama başlık o adla başlamak zorunda değil; önce fayda, sonra ad da olur.
+- Tık tuzağı yok, boş soru başlığı yok. "Korkma, dene" tonunda: abartısız ama cesaretlendirici.
+
+## Yapılmayacaklar
+
+- Metinlerde "bot", "otomatik toplandı", "yapay zekâ tarafından yazıldı" gibi mutfak ifadeleri geçmez. Siteyi insan yazmış gibi okunur; "her Pazar güncellenir", "kaynaklardan derlendi" denir.
+- Görsel sırası: resmi görsel ya da modelin gerçek çıktısı > kendi denemem > soyut kapak. Kapak varsa altına kaynağı yaz ("Görsel: Black Forest Labs").
 
 ## Öğrenilen kurallar
 

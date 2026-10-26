@@ -1,6 +1,6 @@
 ---
-baslik: Instagram'ı doğrudan bağlamak
-ozet: Videoları bir klasöre atıyorsun, bot her gün belirlediğin saatte sıradakini Reels olarak paylaşıyor. Bilgisayarın kapalıyken bile.
+baslik: Reels'in kendi kendine paylaşılsın, sen sadece çek
+ozet: Videoları bir klasöre at; her gün aynı saatte sıradaki Reels olarak paylaşılsın, bilgisayarın kapalıyken bile.
 ikon: 📲
 sira: 4
 zorluk: orta
@@ -12,13 +12,13 @@ gorsel: ./medya/instagram-baglama.webp
 
 ## Ne bu?
 
-Instagram'ın **resmi API'si** üzerinden, şifre vermeden ve "bot gibi" giriş yapmadan, kendi hesabına otomatik Reels paylaşabiliyorsun. [reels-bot](https://github.com/yekvisual/reels-bot) tam olarak bunu yapan, ücretsiz ve açık bir araç: videoları `videos/` klasörüne numaralı koyuyorsun (`001_tanitim.mp4`, yanına `001_tanitim.txt` açıklama), GitHub Actions her gün saat 19:00'da sıradakini paylaşıyor.
+Instagram'ın **resmi API'si** üzerinden, şifre vermeden ve "bot gibi" giriş yapmadan, kendi hesabına otomatik Reels paylaşabiliyorsun. [reels-bot](https://github.com/yekvisual/reels-bot) tam olarak bunu yapan, ücretsiz ve açık bir araç: videoları `videos/` klasörüne numaralı koyuyorsun (`001_tanitim.mp4`, yanına `001_tanitim.txt` açıklama), GitHub Actions her gün saat 19:00'da sıradakini paylaşıyor; bilgisayarının açık olması gerekmiyor.
 
 ## Ne işe yarar?
 
 - Bir hafta sonu 30 video üretip bir ayı planlamak.
 - Tatildeyken bile hesabın düzenli paylaşım yapmak.
-- Üretim hattının sonuna takmak: Remotion video üretir → klasöre düşer → bot paylaşır.
+- Üretim hattının sonuna takmak: Remotion video üretir → klasöre düşer → paylaşım kendiliğinden olur.
 
 ## İlk adım
 

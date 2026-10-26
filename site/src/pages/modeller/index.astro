@@ -1,0 +1,78 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import ModelPaneli from '../../components/ModelPaneli.astro';
+import { tarihTR } from '../../lib/site';
+
+const kategoriler = (await getCollection('modeller')).sort((a, b) => a.data.sira - b.data.sira);
+const toplam = kategoriler.reduce((n, k) => n + k.data.modeller.length, 0);
+const guncelleme = kategoriler.reduce<Date | null>((en, k) => (!en || k.data.guncelleme > en ? k.data.guncelleme : en), null);
+---
+
+<Base title="Modeller" description="Görsel, video, dil, ses ve müzik için şu an en iyi modeller: her Pazar güncellenen sıralama, Türkçe testleri ve fiyatlarıyla.">
+  <section class="container section sayfa-bas">
+    <p class="kicker kicker-accent reveal">Modeller · {toplam} model{guncelleme && ` · ${tarihTR(guncelleme)}`}</p>
+    <h1 class="reveal" style="--d:60ms">Bu hafta hangi modeli seçmelisin?</h1>
+    <p class="lead giris reveal" style="--d:120ms">
+      Her kategoride aynı Türkçe istemlerle deniyoruz, üstüne kör oylamaları ekliyoruz. Sıralama her Pazar yenilenir;
+      değişenler ayrıca yazılır.
+    </p>
+  </section>
+
+  <section class="container">
+    <ModelPaneli varsayilan="video" adet={5} />
+  </section>
+
+  <section class="container section">
+    <div class="cols" style="--n:3">
+      {kategoriler.map((k, i) => (
+        <a href={`/modeller/${k.id}/`} class="kat kart reveal" style={`--d:${i * 60}ms`}>
+          <span class="kicker">{k.data.modeller.length} model{k.data.ornek && ' · örnek değerler'}</span>
+          <h2>{k.data.ad}</h2>
+          <p>{k.data.aciklama}</p>
+          <span class="more">Sıralama ve grafikler →</span>
+        </a>
+      ))}
+    </div>
+  </section>
+</Base>
+
+<style>
+  .sayfa-bas {
+    padding-bottom: 1.5rem;
+  }
+  .sayfa-bas h1 {
+    font-size: clamp(2.4rem, 5vw, 4.2rem);
+    max-width: 18ch;
+  }
+  .giris {
+    max-width: 62ch;
+    margin: 0;
+  }
+  .kat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.3rem 1.4rem 1.4rem;
+    transition: border-color 0.25s var(--ease), transform 0.25s var(--ease);
+  }
+  .kat:hover {
+    border-color: var(--line-2);
+    transform: translateY(-2px);
+  }
+  .kat h2 {
+    margin: 0;
+    font-size: 1.8rem;
+  }
+  .kat p {
+    margin: 0;
+    color: var(--ink-2);
+    font-size: 0.95rem;
+    flex: 1;
+  }
+  .kat .more {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent);
+  }
+</style>

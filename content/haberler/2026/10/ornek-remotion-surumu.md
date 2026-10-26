@@ -13,7 +13,7 @@ sirket: Remotion
 etiketler: [remotion, claude code, şablon, reels]
 kart: kodla-video
 kapak: ./ornek-remotion-surumu/kapak.webp
-kapak_kaynak: "Görsel: yekvisual"
+kapak_kaynak: "Görsel: Remotion ile üretildi"
 kaynaklar:
   - ad: Remotion Blog
     url: https://www.remotion.dev/blog

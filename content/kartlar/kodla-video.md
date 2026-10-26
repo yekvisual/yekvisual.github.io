@@ -1,6 +1,6 @@
 ---
-baslik: Kod yazmadan, kodla video üretmek
-ozet: Remotion ve HyperFrames ile videoyu bir web sayfası gibi tarif ediyorsun, gerisini yapay zekâ yazıyor.
+baslik: "5 dakikada grafik animasyonunu yap: Remotion"
+ozet: Videoyu kelimelerle tarif et, kodu Claude yazsın. Kod bilmene gerek yok; Remotion ve HyperFrames gerisini hallediyor.
 ikon: 🎬
 sira: 1
 zorluk: orta
@@ -26,4 +26,4 @@ Video kurgu programında saatlerce keyframe çekmek yerine videoyu **kodla tarif
 2. Boş bir klasörde Claude'a şunu de: *"Remotion ile 10 saniyelik, dikey (9:16), koyu arka planlı bir Reels videosu oluştur. Başlık 'Merhaba' olsun ve alttan yukarı kaysın."*
 3. `npm run dev` ile tarayıcıda önizle, beğenmediğin her şeyi Claude'a söyle, render al.
 
-> Bu sitedeki haber kapaklarının bir kısmı da aynı mantıkla, koddan üretiliyor.
+> Bu sitenin Instagram videoları da aynı mantıkla, koddan üretiliyor.

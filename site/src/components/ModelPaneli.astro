@@ -1,0 +1,185 @@
+---
+// "Şu an en iyi modeller" paneli: kategori sekmeleri, ilk beş model, çubuklar.
+import { getCollection } from 'astro:content';
+import { erisimAdi, erisimSinif } from '../lib/taxonomy';
+import { tarihTR } from '../lib/site';
+
+interface Props {
+  varsayilan?: string;
+  adet?: number;
+}
+const { varsayilan = 'video', adet = 5 } = Astro.props;
+
+const kategoriler = (await getCollection('modeller')).sort((a, b) => a.data.sira - b.data.sira);
+const guncelleme = kategoriler.reduce<Date | null>((en, k) => (!en || k.data.guncelleme > en ? k.data.guncelleme : en), null);
+
+function yuzde(puan: number, hepsi: number[]) {
+  const max = Math.max(...hepsi);
+  const taban = Math.min(...hepsi) * 0.85;
+  return Math.round(((puan - taban) / (max - taban)) * 100);
+}
+function puanYaz(p: number) {
+  return Number.isInteger(p) ? p.toLocaleString('tr-TR') : p.toLocaleString('tr-TR', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+}
+---
+
+<div class="panel kart" id="modeller">
+  <div class="panel-bas">
+    <div>
+      <p class="kicker">Bu hafta{guncelleme && ` · ${tarihTR(guncelleme)}`}</p>
+      <h2>Şu an en iyi modeller</h2>
+    </div>
+    <div class="sekmeler" role="tablist" aria-label="Kategori">
+      {kategoriler.map((k) => (
+        <button class:list={['sekme', { on: k.id === varsayilan }]} role="tab" aria-selected={k.id === varsayilan} data-sekme={k.id} id={`sekme-${k.id}`}>{k.data.ad}</button>
+      ))}
+    </div>
+  </div>
+
+  {kategoriler.map((k) => {
+    const liste = [...k.data.modeller].sort((a, b) => b.puan - a.puan).slice(0, adet);
+    const hepsi = liste.map((m) => m.puan);
+    return (
+      <div class="panel-ic" role="tabpanel" aria-labelledby={`sekme-${k.id}`} data-panel={k.id} hidden={k.id !== varsayilan}>
+        <div class="liste">
+          {liste.map((m) => (
+            <div class="satir">
+              <div class="ad">
+                <span class="ad-metin">{m.ad}{m.yeni && <span class="etiket etiket-yeni">Yeni</span>}</span>
+                <span class="firma">{m.firma}</span>
+              </div>
+              <div class="bar"><i style={`--w:${yuzde(m.puan, hepsi)}%`}></i></div>
+              <div class="puan num">{puanYaz(m.puan)}</div>
+              <div class="erisim"><span class:list={['etiket', erisimSinif(m.erisim)]}>{erisimAdi(m.erisim)}</span></div>
+            </div>
+          ))}
+        </div>
+        <div class="panel-alt">
+          <span class="kaynak">{k.data.ornek && 'Örnek değerler · '}Ölçü: {k.data.olcu} · her Pazar güncellenir</span>
+          <a href={`/modeller/${k.id}/`} class="genis">Tüm {k.data.modeller.length} modeli gör, grafiklerle →</a>
+        </div>
+      </div>
+    );
+  })}
+</div>
+
+<script>
+  const panel = document.getElementById('modeller');
+  panel?.querySelectorAll<HTMLButtonElement>('.sekme').forEach((b) => {
+    b.addEventListener('click', () => {
+      const id = b.dataset.sekme;
+      panel.querySelectorAll<HTMLButtonElement>('.sekme').forEach((x) => {
+        const on = x === b;
+        x.classList.toggle('on', on);
+        x.setAttribute('aria-selected', String(on));
+      });
+      panel.querySelectorAll<HTMLElement>('[data-panel]').forEach((p) => (p.hidden = p.dataset.panel !== id));
+    });
+  });
+</script>
+
+<style>
+  .panel {
+    padding: 1.5rem 1.7rem 1.3rem;
+  }
+  .panel-bas {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.6rem;
+  }
+  .panel-bas h2 {
+    margin: 0.3rem 0 0;
+    font-size: clamp(1.6rem, 2.4vw, 2.1rem);
+  }
+  .sekmeler {
+    display: flex;
+    gap: 2px;
+    padding: 3px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--bg);
+    flex-wrap: wrap;
+  }
+  .sekme {
+    height: 2.1rem;
+    padding: 0 0.95rem;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    font: 600 0.85rem var(--font-ui);
+    color: var(--ink-2);
+    cursor: pointer;
+  }
+  .sekme.on {
+    background: var(--ink);
+    color: var(--bg);
+  }
+  .satir {
+    display: grid;
+    grid-template-columns: minmax(170px, 1.2fr) 2fr 4.5rem 8rem;
+    gap: 1rem;
+    align-items: center;
+    padding: 0.7rem 0;
+    border-top: 1px solid var(--line);
+    font-size: 0.95rem;
+  }
+  .satir:first-child {
+    border-top: 0;
+  }
+  .ad {
+    min-width: 0;
+  }
+  .ad-metin {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .firma {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+  .puan {
+    text-align: right;
+    font-weight: 600;
+  }
+  .erisim {
+    text-align: right;
+  }
+  .panel-alt {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin-top: 0.8rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+  .genis {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .genis:hover {
+    color: var(--ink);
+  }
+  @media (max-width: 640px) {
+    .panel {
+      padding: 1.1rem 1rem 1rem;
+    }
+    .satir {
+      grid-template-columns: 1fr 1fr 3.2rem;
+    }
+    .erisim {
+      display: none;
+    }
+  }
+</style>

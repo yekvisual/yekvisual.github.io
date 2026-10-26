@@ -1,187 +1,403 @@
 ---
 import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import HaberKart from '../components/HaberKart.astro';
 import BilgiKart from '../components/BilgiKart.astro';
 import Bulten from '../components/Bulten.astro';
-import { haberYolu, kartYolu } from '../lib/site';
+import ModelPaneli from '../components/ModelPaneli.astro';
+import { SITE, haberYolu } from '../lib/site';
+import reelKling from '../assets/reels/kling-4.jpg';
+import reelKimi from '../assets/reels/kimi-3-1.jpg';
+import reelDiyalog from '../assets/reels/kling-4-diyalog.jpg';
 
 const haberler = (await getCollection('haberler')).sort((a, b) => b.data.tarih.valueOf() - a.data.tarih.valueOf());
 const kartlar = (await getCollection('kartlar')).sort((a, b) => a.data.sira - b.data.sira);
-const araclar = await getCollection('araclar');
-const ozetler = await getCollection('ozetler');
+const araclar = (await getCollection('araclar')).sort((a, b) => b.data.eklenme.valueOf() - a.data.eklenme.valueOf());
 
 const manset = haberler.find((h) => h.data.puan >= 5) ?? haberler[0];
 const digerleri = haberler.filter((h) => h !== manset);
-const ustSol = digerleri[0];
-const ustSag = digerleri[1];
-// Haber azken bölüm boş kalmasın: hepsini göster
-const sonHaberler = digerleri.length > 2 ? digerleri.slice(2, 8) : haberler.slice(0, 6);
-const ucretsizSayi = haberler.filter((h) => h.data.ucretsiz).length;
+const altikiKucuk = digerleri.slice(0, 2);
+const bugun = haberler.slice(0, 7);
+const oneCikanAraclar = araclar.slice(0, 4);
+
+const reels = [
+  { gorsel: reelKling, etiket: 'Kling 4.0 çıktı' },
+  { gorsel: reelKimi, etiket: 'Kimi K3.1 evde çalışır mı?' },
+  { gorsel: reelDiyalog, etiket: '30 sn tek çekim, Türkçe diyalog' },
+];
 ---
 
 <Base>
-  <!-- Üst şerit: iki küçük haber + ortada giriş -->
-  <section class="container ust-serit cols" style="--n:3">
-    <div>{ustSol && <HaberKart haber={ustSol} boyut="kucuk" />}</div>
-    <div class="ust-orta reveal">
-      <h1 class="display">Gündem!</h1>
-      <p class="lead">
-        Yapay zekâyla görsel, video ve içerik üretiminde <em>bu hafta</em> ne değişti; sıfırdan başlayana ne
-        işe yarar.
+  <!-- Giriş -->
+  <section class="giris" id="ust">
+    <div class="gunes" id="gunes" aria-hidden="true"></div>
+    <div class="container giris-ic">
+      <h1 class="reveal">Yapay zekâ korkutuyor mu?<br />Deneyince geçiyor.</h1>
+      <p class="lead giris-aciklama reveal" style="--d:80ms">
+        Herkes "ne olacak bu dünyanın hali" diyor. Takip edince, deneyince, bilince korku gidiyor; yerine "bununla ne
+        yapabilirim" geliyor. Görsel, video, ses ve otomasyonda her gün ne çıktı, hangisi gerçekten iyi, nereden başlanır.
+        Türkçe.
       </p>
-      <p class="kicker"><strong>İpucu!</strong> Önce "Bilmeniz Gerekenler"e bak.</p>
-    </div>
-    <div>{ustSag && <HaberKart haber={ustSag} boyut="kucuk" gecikme={120} />}</div>
-  </section>
-
-  <!-- Dev masthead bandı -->
-  <section class="container">
-    <div class="band dev-band reveal">
-      <!-- SVG: metin her genişlikte banda tam sığar, hiçbir harf kesilmez -->
-      <svg class="dev-yazi" viewBox="0 0 1000 150" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
-        <text x="500" y="128" text-anchor="middle" textLength="960" lengthAdjust="spacingAndGlyphs">YEKVISUAL</text>
-      </svg>
-      <span class="sr-only">yekvisual</span>
-    </div>
-  </section>
-
-  <!-- Manşet -->
-  {manset && (
-    <section class="container section" style="padding-top:2rem">
-      <div class="section-head">
-        <h2 class="display">Manşet</h2>
-        <a href={haberYolu(manset.id)} class="more">Haberi oku</a>
+      <div class="cipler reveal" style="--d:140ms">
+        <a href="/gundem/kategori/gorsel/" class="cip-renk" style="--c:#ffefb3;--t:#7a4b00">görsel</a>
+        <a href="/gundem/kategori/video/" class="cip-renk" style="--c:#e3ebf6;--t:#1f3a5f">video</a>
+        <a href="/gundem/kategori/ses/" class="cip-renk" style="--c:#fbe4e8;--t:#9b2c4a">ses</a>
+        <a href="/gundem/kategori/otomasyon/" class="cip-renk" style="--c:#fde3c8;--t:#8a3d00">otomasyon</a>
+        <a href="/gundem/kategori/acik-kaynak/" class="cip-renk" style="--c:#ebe6f5;--t:#4a3a86">açık kaynak</a>
       </div>
-      <HaberKart haber={manset} boyut="manset" />
-    </section>
-  )}
+      <div class="giris-dugmeler reveal" style="--d:200ms">
+        <a href="#bugun" class="btn btn-ink">Bugünün gündemi ↓</a>
+        <a href="#modeller" class="btn">En iyi modeller</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Model paneli -->
+  <section class="container panel-alani">
+    <ModelPaneli varsayilan="video" />
+  </section>
+
+  <!-- Ana yazı + Bugün -->
+  <section class="container section bugun-alani" id="bugun">
+    <div class="ana">
+      {manset && <HaberKart haber={manset} boyut="manset" />}
+      {altikiKucuk.length > 0 && (
+        <div class="alt-iki">
+          {altikiKucuk.map((h, i) => <HaberKart haber={h} boyut="kucuk" gecikme={i * 90} />)}
+        </div>
+      )}
+    </div>
+    <aside class="yan">
+      <div class="yan-bas">
+        <h2>Bugün</h2>
+        <a href="/gundem/" class="more">Tüm gündem →</a>
+      </div>
+      {bugun.length ? (
+        <div class="satirlar">{bugun.map((h, i) => <HaberKart haber={h} boyut="satir" gecikme={i * 50} />)}</div>
+      ) : (
+        <p class="bos">İlk haberler yolda.</p>
+      )}
+    </aside>
+  </section>
 
   <!-- Bilmeniz gerekenler -->
-  <section class="container section" id="bilmeniz-gerekenler">
+  <section class="container section" id="basla">
     <div class="section-head">
       <div>
         <p class="kicker kicker-accent">Sıfırdan başlayanlar için</p>
-        <h2 class="display">Bilmeniz gerekenler</h2>
+        <h2>Bu hafta sonu deneyebileceğin şeyler</h2>
       </div>
-      <a href="/bilmeniz-gerekenler/" class="more">Tüm kartlar</a>
+      <a href="/bilmeniz-gerekenler/" class="more">{kartlar.length} kartın tamamı →</a>
     </div>
-    <div class="cols kart-izgara" style="--n:4">
-      {kartlar.map((k, i) => <div><BilgiKart kart={k} gecikme={i * 70} /></div>)}
-    </div>
-  </section>
-
-  <!-- Sayaçlar -->
-  <section class="container">
-    <div class="sayaclar rule-double">
-      <div class="sayac reveal"><span class="kicker">Haber</span><span class="display" data-sayac={haberler.length}>00</span></div>
-      <div class="sayac reveal" style="--d:80ms"><span class="kicker">Ücretsiz</span><span class="display" data-sayac={ucretsizSayi}>00</span></div>
-      <div class="sayac reveal" style="--d:160ms"><span class="kicker">Araç</span><span class="display" data-sayac={araclar.length}>00</span></div>
-      <div class="sayac reveal" style="--d:240ms"><span class="kicker">Kart</span><span class="display" data-sayac={kartlar.length}>00</span></div>
-      <div class="sayac reveal" style="--d:320ms"><span class="kicker">Hafta</span><span class="display" data-sayac={ozetler.length}>00</span></div>
+    <div class="cols" style="--n:4">
+      {kartlar.slice(0, 4).map((k, i) => <BilgiKart kart={k} gecikme={i * 70} />)}
     </div>
   </section>
 
-  <!-- Son haberler -->
-  <section class="container section">
+  <!-- Araçlar -->
+  <section class="container section" id="araclar">
     <div class="section-head">
-      <h2 class="display">Son gelişmeler</h2>
-      <a href="/gundem/" class="more">Tüm haberler</a>
-    </div>
-    {sonHaberler.length ? (
-      <div class="cols haber-izgara" style="--n:3">
-        {sonHaberler.map((h, i) => <div><HaberKart haber={h} gecikme={(i % 3) * 90} /></div>)}
+      <div>
+        <p class="kicker kicker-accent">Araç dizini</p>
+        <h2>Hangi iş için hangi araç?</h2>
       </div>
-    ) : (
-      <p class="bos">Bot çalışınca haberler burada birikecek.</p>
-    )}
+      <a href="/araclar/" class="more">{araclar.length} aracın tamamı →</a>
+    </div>
+    <div class="cols" style="--n:4">
+      {oneCikanAraclar.map((a, i) => (
+        <a href={a.data.url} target="_blank" rel="noopener" class="arac kart reveal" style={`--d:${i * 70}ms`}>
+          <div class="arac-bas">
+            <strong>{a.data.ad}</strong>
+            <span class="muted small">{new URL(a.data.url).hostname.replace('www.', '')}</span>
+          </div>
+          <p>{a.data.aciklama}</p>
+          <div class="etiketler">
+            {a.data.ucretsiz === true && <span class="etiket etiket-ucretsiz">Ücretsiz</span>}
+            {a.data.ucretsiz === false && <span class="etiket etiket-ucretli">Ücretli</span>}
+            {a.data.acik_kaynak === true && <span class="etiket etiket-acik">Açık kaynak</span>}
+            <span class="etiket etiket-ince">{a.data.zorluk === 'yeni' ? 'Yeni başlayan' : a.data.zorluk === 'orta' ? 'Orta' : 'Teknik'}</span>
+          </div>
+        </a>
+      ))}
+    </div>
   </section>
 
-  <section class="container" style="padding-bottom:1rem">
+  <!-- Bülten + Instagram -->
+  <section class="container section son">
     <Bulten />
+    <div class="ig kart reveal" style="--d:80ms">
+      <div class="ig-bas">
+        <div>
+          <p class="kicker">Instagram</p>
+          <h2>{SITE.instagramKullanici}</h2>
+        </div>
+        <a href={SITE.instagram} target="_blank" rel="noopener" class="more">Takip et →</a>
+      </div>
+      <div class="reels">
+        {reels.map((r) => (
+          <a href={SITE.instagram} target="_blank" rel="noopener" class="reel">
+            <Image src={r.gorsel} alt={r.etiket} width={360} loading="lazy" />
+            <span>{r.etiket}</span>
+          </a>
+        ))}
+      </div>
+    </div>
   </section>
 </Base>
 
-<style>
-  .ust-serit {
-    padding-top: 1.6rem;
+<script>
+  // Giriş halkası: fare merkeze yaklaştıkça büyür ve parlar; hep ortada kalır.
+  const gunes = document.getElementById('gunes');
+  const ust = document.getElementById('ust');
+  const azHareket = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (gunes && ust && !azHareket && matchMedia('(pointer: fine)').matches) {
+    let raf = 0;
+    let son = 0;
+    window.addEventListener(
+      'mousemove',
+      (e) => {
+        const r = ust.getBoundingClientRect();
+        if (r.bottom < 0) return;
+        const cx = r.left + r.width / 2;
+        const cy = r.top + r.height / 2;
+        const d = Math.hypot(e.clientX - cx, e.clientY - cy);
+        const yakin = Math.max(0, 1 - d / Math.max(420, r.height * 0.9));
+        if (Math.abs(yakin - son) < 0.01 || raf) return;
+        raf = requestAnimationFrame(() => {
+          raf = 0;
+          son = yakin;
+          gunes.style.setProperty('--olcek', (0.8 + yakin * 0.6).toFixed(3));
+          gunes.style.setProperty('--opak', (0.62 + yakin * 0.3).toFixed(2));
+          gunes.style.setProperty('--doygun', (1 + yakin * 0.35).toFixed(2));
+        });
+      },
+      { passive: true },
+    );
   }
-  .ust-orta {
+</script>
+
+<style>
+  .giris {
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+    padding: clamp(3rem, 7vw, 6rem) 0 clamp(2.4rem, 4vw, 3.6rem);
     text-align: center;
+  }
+  .gunes {
+    --olcek: 1;
+    --opak: 0.78;
+    --doygun: 1;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: min(600px, 120vw);
+    height: min(600px, 120vw);
+    margin: calc(min(600px, 120vw) / -2) 0 0 calc(min(600px, 120vw) / -2);
+    border-radius: 50%;
+    pointer-events: none;
+    background: radial-gradient(closest-side, #fff4b0 0%, #ffd43b 26%, #ff9f1c 52%, #ff7a45 68%, rgba(251, 250, 248, 0) 82%);
+    opacity: var(--opak);
+    filter: blur(6px) saturate(var(--doygun));
+    transform: scale(var(--olcek));
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out, filter 0.3s ease-out;
+    will-change: transform;
+  }
+  .giris-ic {
+    position: relative;
+    z-index: 1;
+  }
+  .giris h1 {
+    margin: 0 auto;
+    max-width: 22ch;
+    font-size: clamp(2.6rem, 6.4vw, 5.6rem);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+  }
+  .giris-aciklama {
+    margin: 1.4rem auto 0;
+    max-width: 58ch;
+  }
+  .cipler {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 1.3rem;
+  }
+  .cip-renk {
+    display: inline-flex;
+    align-items: center;
+    height: 1.8rem;
+    padding: 0 0.8rem;
+    border-radius: 999px;
+    background: var(--c);
+    color: var(--t);
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: transform 0.2s var(--ease);
+  }
+  .cip-renk:hover {
+    transform: translateY(-1px);
+  }
+  .giris-dugmeler {
+    display: flex;
+    gap: 0.7rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+  .giris-dugmeler .btn {
+    height: 3rem;
+    padding: 0 1.4rem;
+    font-size: 0.95rem;
+  }
+  .panel-alani {
+    position: relative;
+    z-index: 1;
+    margin-top: 0.6rem;
+  }
+
+  .bugun-alani {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(300px, 4fr);
+    gap: 3rem;
+  }
+  .ana {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 0.6rem;
-    padding-inline: 2rem !important;
+    gap: 1.8rem;
+    min-width: 0;
   }
-  .ust-orta h1 {
-    font-size: clamp(3rem, 5vw, 4.6rem);
+  .alt-iki {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+  .yan {
+    min-width: 0;
+  }
+  .yan-bas {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.8rem;
+  }
+  .yan-bas h2 {
     margin: 0;
+    font-size: 1.6rem;
   }
-  .ust-orta .lead {
-    margin: 0;
-    max-width: 30ch;
-    margin-inline: auto;
-  }
-  .ust-orta em {
-    font-style: italic;
+  .yan-bas .more {
+    font-size: 0.88rem;
+    font-weight: 600;
     color: var(--accent);
   }
-  .dev-band {
-    margin-top: 1.6rem;
-    padding: 2% 2% 1.4%;
+  @media (max-width: 960px) {
+    .bugun-alani {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
   }
-  .dev-yazi {
-    display: block;
-    width: 100%;
-    height: auto;
+  @media (max-width: 560px) {
+    .alt-iki {
+      grid-template-columns: 1fr;
+    }
   }
-  .dev-yazi text {
-    font-family: var(--font-display);
-    font-size: 150px;
-    fill: var(--paper);
-  }
-  .kart-izgara > div {
+
+  .arac {
     display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem 1.1rem 1.1rem;
+    transition: border-color 0.25s var(--ease), transform 0.25s var(--ease);
   }
-  .sayaclar {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    padding-top: 1rem;
-    border-bottom: 1px solid var(--rule-strong);
-    padding-bottom: 1rem;
+  .arac:hover {
+    border-color: var(--line-2);
+    transform: translateY(-2px);
   }
-  .sayac {
+  .arac-bas {
     display: flex;
+    justify-content: space-between;
     align-items: baseline;
-    justify-content: center;
-    gap: 0.6rem;
-    border-left: 1px solid var(--rule);
+    gap: 0.5rem;
   }
-  .sayac:first-child {
-    border-left: 0;
+  .arac strong {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 500;
   }
-  .sayac .display {
-    font-size: clamp(2.4rem, 5vw, 4.6rem);
-    line-height: 1;
+  .arac p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--ink-2);
+    line-height: 1.45;
+    flex: 1;
+  }
+
+  .son {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
   }
   @media (max-width: 860px) {
-    .ust-serit > div:nth-child(2) {
-      order: -1;
-    }
-    .ust-orta {
-      padding-inline: 0 !important;
-      padding-bottom: 1.5rem !important;
-    }
-    .sayaclar {
-      grid-template-columns: repeat(2, 1fr);
-      row-gap: 0.8rem;
-    }
-    .sayac:nth-child(3) {
-      border-left: 0;
+    .son {
+      grid-template-columns: 1fr;
     }
   }
-  .haber-izgara > div {
-    padding-bottom: 2rem;
+  .ig {
+    padding: clamp(1.4rem, 3vw, 2.2rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .ig-bas {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+  }
+  .ig-bas h2 {
+    margin: 0.2rem 0 0;
+    font-size: clamp(1.7rem, 2.6vw, 2.3rem);
+    font-weight: 400;
+  }
+  .ig-bas .more {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .reels {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.6rem;
+  }
+  .reel {
+    position: relative;
+    aspect-ratio: 9 / 16;
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--ink);
+  }
+  .reel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s var(--ease);
+  }
+  .reel:hover img {
+    transform: scale(1.04);
+  }
+  .reel span {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 1.6rem 0.7rem 0.7rem;
+    background: linear-gradient(180deg, rgba(27, 26, 24, 0), rgba(27, 26, 24, 0.75));
+    color: var(--bg);
+    font-size: 0.8rem;
+    font-weight: 600;
+    line-height: 1.3;
   }
 </style>
