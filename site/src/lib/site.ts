@@ -11,7 +11,7 @@ export const SITE = {
   github: 'https://github.com/yekvisual/yekvisual.github.io',
   // Buttondown bülten kullanıcı adı (buttondown.com/<ad>). Form bu adrese gönderir;
   // haftalık gönderim için NEWSLETTER_API_KEY secret'ı gerekir.
-  bultenKullanici: 'yekvisual',
+  bultenKullanici: '', // Buttondown kullanıcı adı girilince form ve Cumartesi gönderimi açılır
   get bultenFormUrl() {
     return this.bultenKullanici ? `https://buttondown.com/api/emails/embed-subscribe/${this.bultenKullanici}` : '';
   },
