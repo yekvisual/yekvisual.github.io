@@ -73,6 +73,7 @@ const araclar = defineCollection({
     zorluk,
     eklenme: z.coerce.date(),
     etiketler: z.array(z.string()).default([]),
+    populer: z.number().int().default(0),
   }),
 });
 

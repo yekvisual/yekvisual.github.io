@@ -1,9 +1,9 @@
 name: Haftalık özet
 
-# Her pazar haftanın haberlerinden bir özet yazısı üretir ve (ayarlıysa) bülten gönderir.
+# Her pazar 20:00 (Türkiye) pazartesiden o ana kadarki haberlerden özet yazar ve (ayarlıysa) bülteni gönderir.
 on:
   schedule:
-    - cron: "0 7 * * 0" # Pazar 10:00 Türkiye
+    - cron: "0 17 * * 0" # Pazar 20:00 Türkiye (kış saati)
   workflow_dispatch:
 
 permissions:

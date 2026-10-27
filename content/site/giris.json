@@ -1,0 +1,12 @@
+{
+  "_not": "Ana sayfa girişi. Başlık sabit; metinler her hafta (\"baslangic\" tarihinden itibaren hafta sayısına göre) sırayla döner. Yeni cümle eklemek için listeye ekle.",
+  "baslik": "Girince alışıyorsun.",
+  "baslangic": "2026-10-26",
+  "metinler": [
+    "Gelişmeler sizi de korkutuyor mu? Takip edince, deneyince ve öğrenince korku yerini heyecana bırakıyor. Hoş geldiniz.",
+    "Her hafta yeni bir model, yeni bir \"ne olacak bu dünyanın hali\". Bir tanesini deneyin; korku gider, merak kalır.",
+    "Bilmediğimiz şey korkutur. Burada her gün bir şeyi biliyor, haftada bir şeyi deniyoruz. Hoş geldiniz.",
+    "Yapay zekâ sizin yerinize değil, sizinle üretiyor. Nereden başlanır, hangisi gerçekten iyi; hepsi burada, Türkçe.",
+    "Takip etmek zor değil, biz derliyoruz. Siz deneyin, gerisi alışkanlık. Hoş geldiniz."
+  ]
+}

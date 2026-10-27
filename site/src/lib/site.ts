@@ -7,8 +7,12 @@ export const SITE = {
   instagram: 'https://instagram.com/yekvisual',
   instagramKullanici: '@yekvisual',
   github: 'https://github.com/yekvisual/yekvisual.github.io',
-  // Buttondown benzeri bülten servisinin form adresi. Faz 5'te doldurulacak.
-  bultenFormUrl: '',
+  // Buttondown bülten kullanıcı adı (buttondown.com/<ad>). Form bu adrese gönderir;
+  // haftalık gönderim için NEWSLETTER_API_KEY secret'ı gerekir.
+  bultenKullanici: 'yekvisual',
+  get bultenFormUrl() {
+    return this.bultenKullanici ? `https://buttondown.com/api/emails/embed-subscribe/${this.bultenKullanici}` : '';
+  },
 };
 
 export function tarihTR(d: Date) {

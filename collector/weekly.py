@@ -11,6 +11,7 @@ import os
 import re
 import sys
 from datetime import datetime, timedelta, timezone
+from zoneinfo import ZoneInfo
 from pathlib import Path
 
 import anthropic
@@ -32,8 +33,15 @@ class Ozet(BaseModel):
     govde: str = Field(description="Markdown. Başlıklar: 'Haftanın en önemlisi', kategori bazlı 2–4 bölüm, 'Bu hafta ne denedim?' (yekvisual notlarından). Her habere /gundem/... linki ver. 200–400 kelime.")
 
 
-def haftanin_haberleri(gun: int = 7) -> list[dict]:
-    esik = datetime.now(timezone.utc) - timedelta(days=gun)
+def hafta_basi() -> datetime:
+    """Bu haftanın pazartesi 00:00'ı (Türkiye saati), UTC olarak. Özet pazartesiden pazara."""
+    simdi = datetime.now(ZoneInfo("Europe/Istanbul"))
+    pazartesi = (simdi - timedelta(days=simdi.weekday())).replace(hour=0, minute=0, second=0, microsecond=0)
+    return pazartesi.astimezone(timezone.utc)
+
+
+def haftanin_haberleri(gun: int | None = None) -> list[dict]:
+    esik = datetime.now(timezone.utc) - timedelta(days=gun) if gun else hafta_basi()
     liste = []
     for p in HABERLER.rglob("*.md"):
         m = re.match(r"^---\n(.*?)\n---\n(.*)$", p.read_text(), re.S)

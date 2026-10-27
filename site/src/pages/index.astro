@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 import Base from '../layouts/Base.astro';
 import HaberKart from '../components/HaberKart.astro';
 import BilgiKart from '../components/BilgiKart.astro';
@@ -10,10 +11,12 @@ import { SITE, haberYolu } from '../lib/site';
 import reelKling from '../assets/reels/kling-4.jpg';
 import reelKimi from '../assets/reels/kimi-3-1.jpg';
 import reelDiyalog from '../assets/reels/kling-4-diyalog.jpg';
+import giris from '../../../content/site/giris.json';
+import instagram from '../data/instagram.json';
 
 const haberler = (await getCollection('haberler')).sort((a, b) => b.data.tarih.valueOf() - a.data.tarih.valueOf());
 const kartlar = (await getCollection('kartlar')).sort((a, b) => a.data.sira - b.data.sira);
-const araclar = (await getCollection('araclar')).sort((a, b) => b.data.eklenme.valueOf() - a.data.eklenme.valueOf());
+const araclar = (await getCollection('araclar')).sort((a, b) => b.data.populer - a.data.populer || a.data.ad.localeCompare(b.data.ad, 'tr'));
 
 const manset = haberler.find((h) => h.data.puan >= 5) ?? haberler[0];
 const digerleri = haberler.filter((h) => h !== manset);
@@ -21,11 +24,18 @@ const altikiKucuk = digerleri.slice(0, 2);
 const bugun = haberler.slice(0, 7);
 const oneCikanAraclar = araclar.slice(0, 4);
 
-const reels = [
-  { gorsel: reelKling, etiket: 'Kling 4.0 çıktı' },
-  { gorsel: reelKimi, etiket: 'Kimi K3.1 evde çalışır mı?' },
-  { gorsel: reelDiyalog, etiket: '30 sn tek çekim, Türkçe diyalog' },
+// Giriş metni: başlangıç tarihinden itibaren her hafta sıradaki cümle
+const haftaNo = Math.max(0, Math.floor((Date.now() - new Date(giris.baslangic).valueOf()) / (7 * 86400000)));
+const girisMetni = giris.metinler[haftaNo % giris.metinler.length];
+
+// Instagram: build öncesi scripts/instagram.mjs gerçek paylaşımları yazar; yoksa kendi karelerimiz
+type Reel = { gorsel: ImageMetadata | string; etiket: string; href: string };
+const yedekReels: Reel[] = [
+  { gorsel: reelKling, etiket: 'Kling 4.0 çıktı', href: SITE.instagram },
+  { gorsel: reelKimi, etiket: 'Kimi K3.1 evde çalışır mı?', href: SITE.instagram },
+  { gorsel: reelDiyalog, etiket: '30 sn tek çekim, Türkçe diyalog', href: SITE.instagram },
 ];
+const reels: Reel[] = instagram.length >= 3 ? instagram.slice(0, 3).map((p) => ({ gorsel: p.gorsel, etiket: p.baslik, href: p.permalink })) : yedekReels;
 ---
 
 <Base>
@@ -33,12 +43,8 @@ const reels = [
   <section class="giris" id="ust">
     <div class="gunes" id="gunes" aria-hidden="true"></div>
     <div class="container giris-ic">
-      <h1 class="reveal">Yapay zekâ korkutuyor mu?<br />Deneyince geçiyor.</h1>
-      <p class="lead giris-aciklama reveal" style="--d:80ms">
-        Herkes "ne olacak bu dünyanın hali" diyor. Takip edince, deneyince, bilince korku gidiyor; yerine "bununla ne
-        yapabilirim" geliyor. Görsel, video, ses ve otomasyonda her gün ne çıktı, hangisi gerçekten iyi, nereden başlanır.
-        Türkçe.
-      </p>
+      <h1 class="reveal">{giris.baslik}</h1>
+      <p class="lead giris-aciklama reveal" style="--d:80ms">{girisMetni}</p>
       <div class="cipler reveal" style="--d:140ms">
         <a href="/gundem/kategori/gorsel/" class="cip-renk" style="--c:#ffefb3;--t:#7a4b00">görsel</a>
         <a href="/gundem/kategori/video/" class="cip-renk" style="--c:#e3ebf6;--t:#1f3a5f">video</a>
@@ -136,8 +142,8 @@ const reels = [
       </div>
       <div class="reels">
         {reels.map((r) => (
-          <a href={SITE.instagram} target="_blank" rel="noopener" class="reel">
-            <Image src={r.gorsel} alt={r.etiket} width={360} loading="lazy" />
+          <a href={r.href} target="_blank" rel="noopener" class="reel">
+            {typeof r.gorsel === 'string' ? <img src={r.gorsel} alt={r.etiket} loading="lazy" /> : <Image src={r.gorsel} alt={r.etiket} width={360} loading="lazy" />}
             <span>{r.etiket}</span>
           </a>
         ))}
@@ -210,7 +216,7 @@ const reels = [
   }
   .giris h1 {
     margin: 0 auto;
-    max-width: 22ch;
+    max-width: 16ch;
     font-size: clamp(2.6rem, 6.4vw, 5.6rem);
     line-height: 1.02;
     letter-spacing: -0.02em;

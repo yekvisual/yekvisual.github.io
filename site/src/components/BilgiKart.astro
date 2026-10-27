@@ -10,15 +10,7 @@ interface Props {
 }
 const { kart, gecikme = 0 } = Astro.props;
 const d = kart.data;
-const zeminler: Record<string, string> = {
-  video: '#e3ebf6',
-  gorsel: '#ffefb3',
-  araclar: '#fde3c8',
-  otomasyon: '#ebe6f5',
-  'acik-kaynak': '#e3f3e6',
-  ses: '#fbe4e8',
-};
-const zemin = zeminler[d.kategori] ?? '#f3f1ec';
+const zemin = '#fbfaf8';
 ---
 
 <article class="bilgi kart reveal" style={`--d:${gecikme}ms`}>
@@ -60,8 +52,10 @@ const zemin = zeminler[d.kategori] ?? '#f3f1ec';
     width: 100%;
     height: 100%;
     object-fit: cover;
-    mix-blend-mode: multiply;
-    opacity: 0.9;
+    transition: transform 0.6s var(--ease);
+  }
+  .bilgi:hover .bilgi-gorsel img {
+    transform: scale(1.03);
   }
   .bilgi-ikon {
     font-size: 2.6rem;
