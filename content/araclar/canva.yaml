@@ -1,6 +1,6 @@
 ad: Canva
 url: https://www.canva.com
-aciklama: Tarayıcıda tasarım; Claude bağlayıcısıyla konuşarak tasarım üretilebiliyor.
+aciklama: "Tarayıcıda tasarım; Claude bağlayıcısıyla tasarımı konuşarak üretebiliyorsunuz."
 kategori: araclar
 ucretsiz: true
 acik_kaynak: false
@@ -8,3 +8,8 @@ zorluk: yeni
 eklenme: 2026-10-23
 etiketler: [tasarım, connector]
 populer: 3
+kullanim: ["Afiş & tasarım", "Sosyal medya"]
+fiyat: "Ücretsiz; Pro aylık ücretli"
+turkce: evet
+analiz: "Bu sitenin kart illüstrasyonlarını Canva bağlayıcısıyla ürettim; tasarım bilmeyen biri için en kısa yol bu. Kapak, afiş ve Instagram gönderisini Claude'a tarif edip Canva'da son dokunuşu yapıyorsunuz. Marka kılavuzu olan kurumsal ekipler için Pro sürüm gerekiyor; ince tipografi işinde yine bir tasarımcı lazım."
+isakisi: connectorler

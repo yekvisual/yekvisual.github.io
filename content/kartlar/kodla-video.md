@@ -1,6 +1,6 @@
 ---
-baslik: "5 dakikada grafik animasyonunu yap: Remotion"
-ozet: Videoyu kelimelerle tarif et, kodu Claude yazsın. Kod bilmene gerek yok; Remotion ve HyperFrames gerisini hallediyor.
+baslik: "5 dakikada grafik animasyonu üretmek: Remotion"
+ozet: Videoyu kelimelerle tarif edin, kodu Claude yazsın. Kod bilmenize gerek yok; Remotion ve HyperFrames gerisini hallediyor.
 ikon: 🎬
 sira: 1
 zorluk: orta
@@ -12,18 +12,18 @@ gorsel: ./medya/kodla-video.webp
 
 ## Ne bu?
 
-Video kurgu programında saatlerce keyframe çekmek yerine videoyu **kodla tarif ediyorsun**: "3 saniye logo açılsın, sonra şu başlık alttan kaysın, arkada şu müzik çalsın." [Remotion](https://www.remotion.dev) bunu React ile, [HyperFrames](https://hyperframes.dev) ise düz HTML/CSS ile yapıyor. Kodu senin yazman gerekmiyor; Claude'a ne istediğini anlatıyorsun, o yazıyor, sen sonucu izleyip "başlığı büyüt, rengi değiştir" diyorsun.
+Video kurgu programında saatlerce keyframe çekmek yerine videoyu **kodla tarif ediyorsunuz**: "3 saniye logo açılsın, sonra şu başlık alttan kaysın, arkada şu müzik çalsın." [Remotion](https://www.remotion.dev) bunu React ile, [HyperFrames](https://hyperframes.dev) ise düz HTML/CSS ile yapıyor. Kodu sizin yazmanız gerekmiyor; Claude'a ne istediğinizi anlatıyorsunuz, o yazıyor, siz sonucu izleyip "başlığı büyüt, rengi değiştir" diyorsunuz.
 
 ## Ne işe yarar?
 
 - Aynı şablondan **onlarca farklı video** üretmek (her ürün, her şehir, her öğrenci için ayrı video).
-- Verilerden video yapmak: tablo veriyorsun, animasyonlu grafik videosu alıyorsun.
+- Verilerden video yapmak: tablo veriyorsunuz, animasyonlu grafik videosu alıyorsunuz.
 - Reels/Shorts için alt yazılı, logolu, tutarlı görünümlü içerikleri dakikalar içinde çıkarmak.
 
 ## İlk adım
 
-1. Bilgisayarına [Claude Code](https://claude.com/claude-code) ve Node.js kur.
-2. Boş bir klasörde Claude'a şunu de: *"Remotion ile 10 saniyelik, dikey (9:16), koyu arka planlı bir Reels videosu oluştur. Başlık 'Merhaba' olsun ve alttan yukarı kaysın."*
-3. `npm run dev` ile tarayıcıda önizle, beğenmediğin her şeyi Claude'a söyle, render al.
+1. Bilgisayarınıza [Claude Code](https://claude.com/claude-code) ve Node.js kurun.
+2. Boş bir klasörde Claude'a şunu deyin: *"Remotion ile 10 saniyelik, dikey (9:16), koyu arka planlı bir Reels videosu oluştur. Başlık 'Merhaba' olsun ve alttan yukarı kaysın."*
+3. `npm run dev` ile tarayıcıda önizleyin, beğenmediğiniz her şeyi Claude'a söyleyin, render alın.
 
 > Bu sitenin Instagram videoları da aynı mantıkla, koddan üretiliyor.

@@ -34,8 +34,8 @@ const haberler = (await getCollection('haberler'))
         <span class="kicker">/ {String(tumKartlar.length).padStart(2, '0')}</span>
       </div>
       <div class="bas-orta reveal">
-        <p class="kicker kicker-accent">Bilmeniz gerekenler</p>
-        <h1 class="display">{d.baslik}</h1>
+        <p class="kicker kicker-accent">İş akışı · vaka analizi</p>
+        <h1>{d.baslik}</h1>
         <p class="lead">{d.ozet}</p>
         <Rozetler kategori={d.kategori} zorluk={d.zorluk} />
       </div>

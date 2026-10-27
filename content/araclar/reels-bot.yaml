@@ -1,6 +1,6 @@
 ad: reels-bot
 url: https://github.com/yekvisual/reels-bot
-aciklama: Klasördeki videoları resmi Instagram API'siyle her gün otomatik Reels olarak paylaşan açık araç.
+aciklama: "Klasördeki videoları resmi Instagram API'siyle her gün zamanlanmış Reels olarak paylaşan açık araç."
 kategori: otomasyon
 ucretsiz: true
 acik_kaynak: true
@@ -8,3 +8,8 @@ zorluk: orta
 eklenme: 2026-10-23
 etiketler: [instagram, github actions]
 populer: 2
+kullanim: ["Sosyal medya", "Otomasyon"]
+fiyat: "Ücretsiz"
+turkce: evet
+analiz: "Kendi hesabım bununla paylaşıyor: videoyu klasöre atıyorum, her akşam sıradaki çıkıyor. Kurulum Meta'nın geliştirici panelinde 10–15 dakika alıyor, README'de adım adım anlattım. Birden fazla hesabı yönetiyorsanız ya da yorumları takip etmek istiyorsanız bu araç yetmez, bir sosyal medya yönetim servisi gerekir."
+isakisi: instagram-baglama

@@ -1,6 +1,6 @@
 ad: Replicate
 url: https://replicate.com
-aciklama: Yeni çıkan açık modelleri kurulum yapmadan tarayıcıda çalıştır; saniye başı ödeme, abonelik yok.
+aciklama: "Yeni çıkan açık modelleri kurulum yapmadan tarayıcıda çalıştırın; saniye başı ödeme, abonelik yok."
 kategori: araclar
 ucretsiz: false
 acik_kaynak: false
@@ -8,3 +8,8 @@ zorluk: orta
 eklenme: 2026-10-27
 etiketler: [api, açık modeller, bulut gpu]
 populer: 3
+kullanim: ["API & entegrasyon", "Yerel çalışma"]
+fiyat: "Kullandıkça öde, saniye başı"
+turkce: yok
+analiz: "Güçlü ekran kartı olmayanlar için açık modelleri denemenin en kısa yolu; Wan ya da FLUX'ı birkaç kuruşa tarayıcıda çalıştırıyorsunuz. Geliştiriciler için API'si kendi uygulamanıza model bağlamakta işe yarıyor. Yoğun üretimde maliyet hızla büyüyor; düzenli kullanımda yerel kurulum ya da abonelik daha hesaplı."
+isakisi: acik-kaynak-modeller

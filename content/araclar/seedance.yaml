@@ -1,6 +1,6 @@
 ad: Seedance 2.5
 url: https://seed.bytedance.com/seedance
-aciklama: ByteDance'in video modeli; görüntüyle sesi aynı anda üretiyor, müzikli kısa kliplerde en iyisi.
+aciklama: "ByteDance'in video modeli; görüntüyle sesi aynı anda üretiyor, müzikli kısa kliplerde en iyisi."
 kategori: video
 ucretsiz: false
 acik_kaynak: false
@@ -8,3 +8,7 @@ zorluk: yeni
 eklenme: 2026-10-27
 etiketler: [video, ses senkronu, bytedance]
 populer: 9
+kullanim: ["Sinematik video", "Müzik"]
+fiyat: "Fiyat değişken"
+turkce: kismen
+analiz: "Görüntü ve sesi aynı anda üretmesi müzikli, ritimli kısa kliplerde fark yaratıyor; dans ve ürün tanıtımı gibi işler için bakmaya değer. Türkçe diyalog ve seslendirme kalitesini henüz denemedim, yorum yapmadan önce test etmek lazım. Uzun ve diyaloglu sahnelerde Kling daha güvenli."

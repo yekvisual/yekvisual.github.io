@@ -1,6 +1,6 @@
 ad: ElevenLabs
 url: https://elevenlabs.io
-aciklama: Türkçe seslendirme ve ses klonlama; duygu etiketleri Türkçe'de de çalışıyor. Aylık sınırlı ücretsiz süre.
+aciklama: "Türkçe seslendirme ve ses klonlama; duygu etiketleri Türkçe'de de çalışıyor. Aylık sınırlı ücretsiz süre."
 kategori: ses
 ucretsiz: null
 acik_kaynak: false
@@ -8,3 +8,7 @@ zorluk: yeni
 eklenme: 2026-10-27
 etiketler: [seslendirme, tts, ses klonlama]
 populer: 5
+kullanim: ["Seslendirme", "Konuşan karakter"]
+fiyat: "Aylık sınırlı ücretsiz; sonra abonelik"
+turkce: evet
+analiz: "Türkçe seslendirmede duyduğum en doğal sonuç; vurgu ve duygu etiketleri gerçekten işliyor. Reels anlatımı ve kurumsal tanıtım için kendi sesinizi klonlayıp metni değiştirmek büyük zaman kazandırıyor. Ücretsiz süre küçük, düzenli üretim yapıyorsanız abonelik kaçınılmaz."

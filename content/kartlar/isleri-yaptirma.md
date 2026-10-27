@@ -1,6 +1,6 @@
 ---
-baslik: Her sabah 08:00'de hazır bir brifing al
-ozet: Takvim, e-posta, raporlar, haftalık kontroller. Bir kez tarif ediyorsun, her gün ya da her hafta kendi kendine çalışıyor.
+baslik: "Her sabah 08:00'de hazır bir brifing almak"
+ozet: Takvim, e-posta, raporlar, haftalık kontroller. Bir kez tarif ediyorsunuz, her gün ya da her hafta kendiliğinden çalışıyor.
 ikon: ⏰
 sira: 6
 zorluk: yeni
@@ -12,7 +12,7 @@ gorsel: ./medya/isleri-yaptirma.webp
 
 ## Ne bu?
 
-Claude'a bir işi **tarif edip zamanlayabiliyorsun**: "Her pazartesi 08:00'de bu haftaki takvimimi özetle ve hazırlık listesi çıkar", "Her akşam Drive'daki yeni dosyaları kontrol et", "Her ayın 1'inde şu klasörden rapor üret". İş buluttaki bir Claude tarafından yapılıyor; bilgisayarının açık olması gerekmiyor.
+Claude'a bir işi **tarif edip zamanlayabiliyorsunuz**: "Her pazartesi 08:00'de bu haftaki takvimimi özetle ve hazırlık listesi çıkar", "Her akşam Drive'daki yeni dosyaları kontrol et", "Her ayın 1'inde şu klasörden rapor üret". İş buluttaki bir Claude tarafından yapılıyor; bilgisayarınızın açık olması gerekmiyor.
 
 ## Ne işe yarar?
 
@@ -23,6 +23,6 @@ Claude'a bir işi **tarif edip zamanlayabiliyorsun**: "Her pazartesi 08:00'de bu
 
 ## İlk adım
 
-1. [claude.ai](https://claude.ai) üzerinde Google Takvim ve Gmail bağlayıcılarını aç.
-2. Claude Code'da `/schedule` yazıp şöyle bir görev tarif et: *"Her sabah 08:00'de bugünkü takvimimi ve okunmamış önemli e-postaları 5 maddede özetle."*
-3. Birkaç gün izle, isteğini düzelt. Sonra ikinci işi ekle.
+1. [claude.ai](https://claude.ai) üzerinde Google Takvim ve Gmail bağlayıcılarını açın.
+2. Claude Code'da `/schedule` yazıp şöyle bir görev tarif edin: *"Her sabah 08:00'de bugünkü takvimimi ve okunmamış önemli e-postaları 5 maddede özetle."*
+3. Birkaç gün izleyin, isteğinizi düzeltin. Sonra ikinci işi ekleyin.

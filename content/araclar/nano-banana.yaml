@@ -1,6 +1,6 @@
 ad: Nano Banana
 url: https://gemini.google.com
-aciklama: Google'ın görsel modeli, Gemini uygulamasında ücretsiz. Türkçe yazıyı doğru yazan, fotoğrafı komutla düzenleyen model.
+aciklama: "Google'ın görsel modeli, Gemini uygulamasında ücretsiz. Türkçe yazıyı doğru yazan, fotoğrafı komutla düzenleyen model."
 kategori: gorsel
 ucretsiz: true
 acik_kaynak: false
@@ -8,3 +8,7 @@ zorluk: yeni
 eklenme: 2026-10-27
 etiketler: [görsel, gemini, google, düzenleme]
 populer: 6
+kullanim: ["Türkçe yazı", "Ürün görseli", "Sosyal medya"]
+fiyat: "Gemini uygulamasında ücretsiz"
+turkce: evet
+analiz: "Sıfırdan başlayan birine önerdiğim ilk görsel aracı: telefondan, Türkçe komutla, ücretsiz. Fotoğrafı \"arka planı değiştir, gömleği maviye çevir\" diye düzenlemek ve kapak görseline Türkçe yazı koymak için kullanıyorum. Sanatsal stil ve ince kontrol isteyen işlerde Midjourney ya da FLUX daha iyi."

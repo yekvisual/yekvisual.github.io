@@ -6,13 +6,13 @@ import BilgiKart from '../../components/BilgiKart.astro';
 const kartlar = (await getCollection('kartlar')).sort((a, b) => a.data.sira - b.data.sira);
 ---
 
-<Base title="Bilmeniz Gerekenler" description="Yapay zekâ ile görsel, video ve içerik üretimine sıfırdan başlayanlar için: bugün neler mümkün, nereden başlanır." image="/og/kart/liste.png">
+<Base title="İş Akışları" description="Prodüksiyon ve içerik ekipleri için yapay zekâ iş akışları: ne yapar, nasıl kurulur, ilk adım ne." image="/og/kart/liste.png">
   <section class="container section sayfa-bas">
-    <p class="kicker kicker-accent reveal">Sıfırdan başlayanlar için · {kartlar.length} kart</p>
-    <h1 class="display reveal" style="--d:60ms">Bilmeniz<br />gerekenler</h1>
+    <p class="kicker kicker-accent reveal">İş akışları & otomasyon · {kartlar.length} vaka</p>
+    <h1 class="reveal" style="--d:60ms">Hafta sonu laboratuvarı</h1>
     <p class="lead giris reveal" style="--d:120ms">
-      Bugün yapay zekâyla nelerin mümkün olduğunu bilmeden "nereden başlasam?" sorusu cevaplanmıyor. Her kart tek bir
-      şeyi anlatır: ne bu, ne işe yarar, ilk adım ne. Sırayla oku ya da ilgini çekenden başla.
+      Her kart, kendi işimizde kurduğumuz bir iş akışını anlatır: ne yapar, kimin işine yarar, ilk adım nedir. Bir hafta
+      sonunda kurulabilir; şirketler için aynı akışları ekibinizle birlikte kuruyoruz.
     </p>
   </section>
   <section class="container" style="padding-bottom:2rem">

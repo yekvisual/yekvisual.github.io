@@ -1,5 +1,5 @@
 ---
-baslik: Afişini, metnini ve dosyanı tek sohbette çıkar
+baslik: Afişi, metni ve dosyayı tek sohbette çıkarmak
 ozet: >-
   Canva, Adobe, Figma, Drive, Notion gibi uygulamaları Claude'a bağlayınca "şu tasarımı yap, Drive'a koy, Instagram boyutlarına çevir" tek cümle oluyor.
 ikon: 🔌
@@ -13,7 +13,7 @@ gorsel: ./medya/connectorler.webp
 
 ## Ne bu?
 
-Claude'a bir uygulamayı **bağlayıcı (connector)** olarak eklediğinde Claude o uygulamanın içinde iş yapabiliyor: Canva'da tasarım oluşturuyor, Adobe'de fotoğrafı rötuşluyor, Figma'daki tasarımı okuyor, Drive'daki dosyaları buluyor, Notion'a not yazıyor. Kurulum genellikle "Bağlan" düğmesine basıp hesabına giriş yapmaktan ibaret.
+Claude'a bir uygulamayı **bağlayıcı (connector)** olarak eklediğinizde Claude o uygulamanın içinde iş yapabiliyor: Canva'da tasarım oluşturuyor, Adobe'de fotoğrafı rötuşluyor, Figma'daki tasarımı okuyor, Drive'daki dosyaları buluyor, Notion'a not yazıyor. Kurulum genellikle "Bağlan" düğmesine basıp hesabınıza giriş yapmaktan ibaret.
 
 ## Ne işe yarar?
 
@@ -24,6 +24,6 @@ Claude'a bir uygulamayı **bağlayıcı (connector)** olarak eklediğinde Claude
 
 ## İlk adım
 
-1. [claude.ai](https://claude.ai) → Ayarlar → Bağlayıcılar. Canva ve Google Drive ile başla; ikisi de ücretsiz hesapla çalışıyor.
-2. Claude'a sor: *"Canva'da 1080×1350 bir Instagram gönderisi oluştur; koyu arka plan, ortada 'Yeni başlayanlar için yapay zekâ' yazsın."*
-3. Sonucu Canva'da aç, elle son dokunuşu yap. Her seferinde sıfırdan başlamıyorsun; fark bu.
+1. [claude.ai](https://claude.ai) → Ayarlar → Bağlayıcılar. Canva ve Google Drive ile başlayın; ikisi de ücretsiz hesapla çalışıyor.
+2. Claude'a sorun: *"Canva'da 1080×1350 bir Instagram gönderisi oluştur; koyu arka plan, ortada 'Yeni başlayanlar için yapay zekâ' yazsın."*
+3. Sonucu Canva'da açın, elle son dokunuşu yapın. Her seferinde sıfırdan başlamıyorsunuz; fark bu.

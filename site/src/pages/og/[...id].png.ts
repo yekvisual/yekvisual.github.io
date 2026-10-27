@@ -28,21 +28,21 @@ export async function getStaticPaths() {
     getCollection('modeller'),
   ]);
   const yollar: { params: { id: string }; props: Veri }[] = [
-    { params: { id: 'site' }, props: { baslik: 'Yapay zekâ korkutuyor mu? Deneyince geçiyor.', ustYazi: 'Görsel · Video · Ses · Otomasyon' } },
-    { params: { id: 'kart/liste' }, props: { baslik: 'Bu hafta sonu deneyebileceğin şeyler', ustYazi: 'Sıfırdan başlayanlar için' } },
-    { params: { id: 'modeller' }, props: { baslik: 'Bu hafta hangi modeli seçmelisin?', ustYazi: 'Şu an en iyi modeller' } },
+    { params: { id: 'site' }, props: { baslik: 'Girince alışıyorsun.', ustYazi: 'Yapay zekâ · Gündem · Modeller · İş akışları' } },
+    { params: { id: 'kart/liste' }, props: { baslik: 'Hafta sonu laboratuvarı', ustYazi: 'İş akışları & otomasyon' } },
+    { params: { id: 'modeller' }, props: { baslik: 'Bu hafta hangi model?', ustYazi: 'Şu an en iyi modeller' } },
   ];
   for (const h of haberler) {
     yollar.push({ params: { id: h.id }, props: { baslik: h.data.baslik, ustYazi: kategoriAdi(h.data.kategori), altYazi: h.data.sirket } });
   }
   for (const k of kartlar) {
-    yollar.push({ params: { id: `kart/${k.id}` }, props: { baslik: k.data.baslik, ustYazi: `Bilmeniz gerekenler · ${String(k.data.sira).padStart(2, '0')}` } });
+    yollar.push({ params: { id: `kart/${k.id}` }, props: { baslik: k.data.baslik, ustYazi: `İş akışı · ${String(k.data.sira).padStart(2, '0')}` } });
   }
   for (const o of ozetler) {
     yollar.push({ params: { id: `ozet/${o.id}` }, props: { baslik: o.data.baslik, ustYazi: 'Haftalık özet' } });
   }
   for (const m of modeller) {
-    yollar.push({ params: { id: `modeller/${m.id}` }, props: { baslik: `${m.data.ad} için bu hafta hangi modeli seçmelisin?`, ustYazi: 'Şu an en iyi modeller' } });
+    yollar.push({ params: { id: `modeller/${m.id}` }, props: { baslik: `${m.data.ad} için bu hafta hangi model?`, ustYazi: 'Şu an en iyi modeller' } });
   }
   return yollar;
 }
@@ -90,7 +90,7 @@ export async function GET({ props }: APIContext) {
             type: 'div',
             props: {
               style: { display: 'flex', alignItems: 'center', gap: 4, fontSize: 40, fontWeight: 500 },
-              children: [{ type: 'span', props: { children: 'yekvisual' } }, { type: 'span', props: { style: { color: ACCENT }, children: '.' } }],
+              children: [{ type: 'span', props: { children: 'YEK Lab' } }, { type: 'span', props: { style: { color: ACCENT }, children: '.' } }],
             },
           },
           {
@@ -113,7 +113,7 @@ export async function GET({ props }: APIContext) {
               style: { display: 'flex', justifyContent: 'space-between', marginTop: 14, fontSize: 24, color: INK2 },
               children: [
                 { type: 'div', props: { children: altYazi ?? 'Yapay zekâ ile görsel, video ve içerik üretimi' } },
-                { type: 'div', props: { style: { color: MUTED }, children: 'yekvisual.github.io' } },
+                { type: 'div', props: { style: { color: MUTED }, children: 'yeklab.com.tr' } },
               ],
             },
           },

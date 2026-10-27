@@ -1,6 +1,6 @@
 ad: Ideogram
 url: https://ideogram.ai
-aciklama: Afiş, logo ve yazılı görselde güçlü; metni görselin içine doğru yerleştiriyor. Günlük ücretsiz hak.
+aciklama: "Afiş, logo ve yazılı görselde güçlü; metni görselin içine doğru yerleştiriyor. Günlük ücretsiz hak."
 kategori: gorsel
 ucretsiz: null
 acik_kaynak: false
@@ -8,3 +8,7 @@ zorluk: yeni
 eklenme: 2026-10-27
 etiketler: [görsel, afiş, logo, tipografi]
 populer: 3
+kullanim: ["Afiş & tasarım", "Türkçe yazı"]
+fiyat: "Günlük ücretsiz hak; sonra abonelik"
+turkce: kismen
+analiz: "Görselin içine yazı yazdırmak istediğinizde ilk baktığım araç; afiş ve logo taslağında Midjourney'den çok daha güvenilir. Türkçe karakterleri (ş, ğ, ı) çoğu zaman doğru yazıyor ama her çıktıyı kontrol edin. Fotoğraf gerçekçiliği ve sanatsal stil için başka araçlar daha iyi."

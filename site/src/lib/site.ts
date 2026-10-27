@@ -1,9 +1,13 @@
 export const SITE = {
-  ad: 'yekvisual',
-  slogan: 'Yapay zekâ ile görsel, video ve içerik üretimi. Sıfırdan başlayanlar için.',
+  ad: 'YEK Lab',
+  slogan: 'Yapay zekâ ile görsel, video ve içerik üretimi: gündem, model sıralaması, iş akışları.',
   aciklama:
-    'Yeni çıkan görsel, video ve ses modelleri; ücretsiz araçlar; Claude ile otomasyon. Türkçe, sade ve güncel.',
-  url: 'https://yekvisual.github.io',
+    'Yeni çıkan görsel, video ve ses modelleri; her Pazar güncellenen model sıralaması; prodüksiyon ekipleri için yapay zekâ iş akışları. Türkçe, sade, güncel.',
+  url: 'https://yeklab.com.tr',
+  alanAdi: 'yeklab.com.tr',
+  kurucu: 'Yunus Emre Kaplan',
+  // Danışmanlık ve konuşma davetleri için e-posta; boşsa yalnızca Instagram gösterilir.
+  iletisimEposta: '',
   instagram: 'https://instagram.com/yekvisual',
   instagramKullanici: '@yekvisual',
   github: 'https://github.com/yekvisual/yekvisual.github.io',

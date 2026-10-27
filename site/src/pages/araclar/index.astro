@@ -6,11 +6,11 @@ import { KATEGORILER, ZORLUKLAR, kategoriAdi, zorlukAdi } from '../../lib/taxono
 const araclar = (await getCollection('araclar')).sort((a, b) => a.data.ad.localeCompare(b.data.ad, 'tr'));
 ---
 
-<Base title="Araç Dizini" description="Yapay zekâ ile görsel, video, ses ve otomasyon için araçlar: ücretsiz mi, açık kaynak mı, kimin için?">
+<Base title="Araç Dizini" description="Yapay zekâ ile görsel, video, ses ve otomasyon araçları: hangi iş için, ücretsiz mi, Türkçe var mı; her biri için YEK Lab incelemesi.">
   <section class="container section sayfa-bas">
     <p class="kicker kicker-accent reveal">Araç dizini · {araclar.length} araç</p>
-    <h1 class="display reveal" style="--d:60ms">Hangi araç,<br /><em>kime göre?</em></h1>
-    <p class="lead giris reveal" style="--d:120ms">Haberlerde geçen araçlar burada birikir. Ücretsiz ve açık kaynak olanları, zorluk seviyesini tek bakışta gör.</p>
+    <h1 class="reveal" style="--d:60ms">Hangi iş için hangi araç?</h1>
+    <p class="lead giris reveal" style="--d:120ms">Her araç için kullanım alanı, fiyat, Türkçe desteği ve YEK Lab incelemesi. Resmi siteye bağlantı inceleme sayfasının sonunda.</p>
   </section>
 
   <section class="container">
@@ -33,7 +33,7 @@ const araclar = (await getCollection('araclar')).sort((a, b) => a.data.ad.locale
         <tr class="kicker">
           <th>Araç</th>
           <th>Ne işe yarar</th>
-          <th>Kategori</th>
+          <th>Kullanım alanı</th>
           <th>Ücret</th>
           <th>Kaynak</th>
           <th>Seviye</th>
@@ -50,11 +50,11 @@ const araclar = (await getCollection('araclar')).sort((a, b) => a.data.ad.locale
             data-zorluk={a.data.zorluk}
           >
             <td class="ad">
-              <a href={a.data.url} target="_blank" rel="noopener">{a.data.ad} <span class="ok">↗</span></a>
-              <span class="kicker muted alan">{new URL(a.data.url).hostname.replace('www.', '')}</span>
+              <a href={`/araclar/${a.id}/`}>{a.data.ad}</a>
+              <span class="kicker muted alan">İncelemeyi gör →</span>
             </td>
             <td class="aciklama">{a.data.aciklama}</td>
-            <td class="kicker">{kategoriAdi(a.data.kategori)}</td>
+            <td><div class="etiketler">{a.data.kullanim.length ? a.data.kullanim.map((k) => <span class="etiket etiket-acik">{k}</span>) : <span class="kicker">{kategoriAdi(a.data.kategori)}</span>}</div></td>
             <td>{a.data.ucretsiz === true ? <span class="etiket">Ücretsiz</span> : a.data.ucretsiz === false ? <span class="etiket etiket-outline">Ücretli</span> : <span class="muted">—</span>}</td>
             <td>{a.data.acik_kaynak === true ? <span class="etiket etiket-outline">Açık</span> : a.data.acik_kaynak === false ? <span class="muted">Kapalı</span> : <span class="muted">—</span>}</td>
             <td class="kicker">{zorlukAdi(a.data.zorluk)}</td>

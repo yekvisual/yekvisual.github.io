@@ -1,6 +1,6 @@
 ad: Adobe Express
 url: https://www.adobe.com/express
-aciklama: Adobe'nin hızlı tasarım aracı; Claude bağlayıcısıyla fotoğraf rötuşu ve sosyal medya boyutlandırma.
+aciklama: "Adobe'nin hızlı tasarım aracı; Claude bağlayıcısıyla fotoğraf rötuşu ve sosyal medya boyutlandırmayı konuşarak yaptırabiliyorsunuz."
 kategori: araclar
 ucretsiz: true
 acik_kaynak: false
@@ -8,3 +8,8 @@ zorluk: yeni
 eklenme: 2026-10-23
 etiketler: [tasarım, connector, adobe]
 populer: 1
+kullanim: ["Afiş & tasarım", "Sosyal medya"]
+fiyat: "Ücretsiz; Premium aylık ücretli"
+turkce: evet
+analiz: "Canva kadar yaygın değil ama Adobe hesabınız varsa fotoğraf rötuşu ve toplu boyutlandırma için bağlayıcı üzerinden çağırmak pratik. Tasarımı sıfırdan burada kurmak yerine, elinizdeki görseli hızlıca sosyal medya formatlarına çevirmek için kullanıyorum. Figma veya Photoshop kullanan ekipler için fazla basit kalır."
+isakisi: connectorler

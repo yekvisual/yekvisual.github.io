@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import pagefind from 'astro-pagefind';
 
 export default defineConfig({
-  site: 'https://yekvisual.github.io',
+  site: 'https://yeklab.com.tr',
   trailingSlash: 'always',
   integrations: [sitemap(), pagefind()],
   vite: {

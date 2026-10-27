@@ -1,0 +1,205 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import HaberKart from '../../components/HaberKart.astro';
+import { kartYolu } from '../../lib/site';
+import { kategoriAdi, zorlukAdi } from '../../lib/taxonomy';
+
+export async function getStaticPaths() {
+  const araclar = await getCollection('araclar');
+  return araclar.map((arac) => ({ params: { id: arac.id }, props: { arac } }));
+}
+
+const { arac } = Astro.props;
+const d = arac.data;
+const alan = new URL(d.url).hostname.replace('www.', '');
+const kart = d.isakisi ? await getEntry('kartlar', d.isakisi) : undefined;
+const adKucuk = d.ad.toLowerCase();
+const haberler = (await getCollection('haberler'))
+  .filter((h) => {
+    const metin = `${h.data.baslik} ${h.data.sirket ?? ''} ${h.data.model ?? ''} ${h.data.etiketler.join(' ')}`.toLowerCase();
+    return metin.includes(adKucuk.split(' ')[0]) || h.data.kategori === d.kategori;
+  })
+  .sort((a, b) => b.data.tarih.valueOf() - a.data.tarih.valueOf())
+  .slice(0, 3);
+const benzerler = (await getCollection('araclar'))
+  .filter((a) => a.id !== arac.id && (a.data.kategori === d.kategori || a.data.kullanim.some((k) => d.kullanim.includes(k))))
+  .sort((a, b) => b.data.populer - a.data.populer)
+  .slice(0, 4);
+const turkceAdi = { evet: 'Türkçe destekli', kismen: 'Kısmen Türkçe', yok: 'Türkçe yok' } as const;
+---
+
+<Base title={`${d.ad} incelemesi`} description={d.aciklama}>
+  <article class="container section arac">
+    <header class="bas">
+      <a href="/araclar/" class="kicker geri">← Araç dizini</a>
+      <p class="kicker kicker-accent reveal">{kategoriAdi(d.kategori)} · YEK Lab incelemesi</p>
+      <h1 class="reveal" style="--d:60ms">{d.ad}</h1>
+      <p class="lead reveal" style="--d:120ms">{d.aciklama}</p>
+      <div class="etiketler reveal" style="--d:160ms">
+        {d.kullanim.map((k) => <span class="etiket etiket-acik">{k}</span>)}
+        {d.ucretsiz === true && <span class="etiket etiket-ucretsiz">Ücretsiz</span>}
+        {d.ucretsiz === false && <span class="etiket etiket-ucretli">Ücretli</span>}
+        {d.acik_kaynak === true && <span class="etiket etiket-acik">Açık kaynak</span>}
+        {d.turkce && <span class="etiket etiket-ince">{turkceAdi[d.turkce]}</span>}
+        <span class="etiket etiket-ince">{zorlukAdi(d.zorluk)}</span>
+      </div>
+    </header>
+
+    <div class="govde">
+      <div class="ana">
+        {d.analiz && (
+          <div class="kutu kutu-not reveal">
+            <p class="kutu-baslik">YEK Lab analizi</p>
+            <p class="son">{d.analiz}</p>
+          </div>
+        )}
+        <dl class="bilgi reveal" style="--d:80ms">
+          <div><dt>Fiyat</dt><dd>{d.fiyat ?? (d.ucretsiz === true ? 'Ücretsiz' : d.ucretsiz === false ? 'Ücretli' : 'Fiyat değişken')}</dd></div>
+          <div><dt>Türkçe</dt><dd>{d.turkce ? turkceAdi[d.turkce] : 'Belirtilmedi'}</dd></div>
+          <div><dt>Seviye</dt><dd>{zorlukAdi(d.zorluk)}</dd></div>
+          <div><dt>Kategori</dt><dd><a href={`/gundem/kategori/${d.kategori}/`}>{kategoriAdi(d.kategori)}</a></dd></div>
+        </dl>
+        {kart && (
+          <a href={kartYolu(kart.id)} class="kutu akis reveal" style="--d:120ms">
+            <p class="kutu-baslik">İlgili iş akışı</p>
+            <strong class="akis-ad">{kart.data.baslik}</strong>
+            <span class="muted small">{kart.data.ozet}</span>
+          </a>
+        )}
+        <div class="resmi reveal" style="--d:160ms">
+          <a href={d.url} target="_blank" rel="noopener" class="btn btn-ink">Resmi site: {alan} ↗</a>
+        </div>
+      </div>
+      <aside class="yan reveal" style="--d:200ms">
+        {benzerler.length > 0 && (
+          <div class="kutu">
+            <p class="kutu-baslik">Benzer araçlar</p>
+            <ul class="liste">
+              {benzerler.map((b) => (
+                <li>
+                  <a href={`/araclar/${b.id}/`}>{b.data.ad}</a>
+                  <span class="muted small">{b.data.kullanim.slice(0, 2).join(' · ')}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </aside>
+    </div>
+
+    {haberler.length > 0 && (
+      <section class="ilgili">
+        <div class="section-head">
+          <h2>İlgili gelişmeler</h2>
+          <a href={`/gundem/kategori/${d.kategori}/`} class="more">Kategorideki tüm haberler →</a>
+        </div>
+        <div class="cols" style="--n:3">{haberler.map((h, i) => <HaberKart haber={h} gecikme={i * 90} />)}</div>
+      </section>
+    )}
+  </article>
+</Base>
+
+<style>
+  .bas {
+    max-width: 860px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  .geri:hover {
+    color: var(--accent);
+  }
+  .bas h1 {
+    margin: 0;
+    font-size: clamp(2.4rem, 5vw, 4rem);
+  }
+  .bas .lead {
+    margin: 0;
+    max-width: 62ch;
+  }
+  .govde {
+    display: grid;
+    gap: 2.5rem;
+    grid-template-columns: minmax(0, 1fr);
+    margin-top: 2.2rem;
+  }
+  @media (min-width: 960px) {
+    .govde {
+      grid-template-columns: minmax(0, 1fr) 300px;
+    }
+  }
+  .ana {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+    max-width: 720px;
+  }
+  .son {
+    margin: 0;
+  }
+  .bilgi {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+    margin: 0;
+    padding: 1.1rem 1.25rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--bg-2);
+  }
+  .bilgi dt {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .bilgi dd {
+    margin: 0.2rem 0 0;
+    font-weight: 500;
+  }
+  .bilgi dd a:hover {
+    color: var(--accent);
+  }
+  .akis {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    transition: border-color 0.25s var(--ease);
+  }
+  .akis:hover {
+    border-color: var(--accent);
+  }
+  .akis-ad {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.35rem;
+    line-height: 1.1;
+  }
+  .liste {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  .liste a {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    line-height: 1.1;
+  }
+  .liste a:hover {
+    color: var(--accent);
+  }
+  .yan {
+    align-self: start;
+    position: sticky;
+    top: 1.5rem;
+  }
+  .ilgili {
+    margin-top: 4rem;
+  }
+</style>

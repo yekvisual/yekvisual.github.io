@@ -1,6 +1,6 @@
 ad: Krea
 url: https://www.krea.ai
-aciklama: Birçok görsel ve video modelini tek arayüzde deneme alanı; gerçek zamanlı çizimden görsel üretimi.
+aciklama: "Birçok görsel ve video modelini tek arayüzde deneme alanı; gerçek zamanlı çizimden görsel üretimi."
 kategori: araclar
 ucretsiz: null
 acik_kaynak: false
@@ -8,3 +8,7 @@ zorluk: yeni
 eklenme: 2026-10-27
 etiketler: [görsel, video, deneme alanı]
 populer: 3
+kullanim: ["Sinematik video", "Ürün görseli"]
+fiyat: "Sınırlı ücretsiz; sonra abonelik"
+turkce: yok
+analiz: "Hangi modelin işinize yaradığını anlamak için tek abonelikle hepsini deneyebildiğiniz bir alan; yeni bir model çıkınca önce burada bakıyorum. Gerçek zamanlı çizimden görsel üretme özelliği konsept aşamasında eğlenceli. Tek bir modeli yoğun kullanacaksanız doğrudan o modelin sitesi daha ucuza geliyor."

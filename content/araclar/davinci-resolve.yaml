@@ -1,6 +1,6 @@
 ad: DaVinci Resolve
 url: https://www.blackmagicdesign.com/products/davinciresolve
-aciklama: Profesyonel kurgu ve renk programı; ücretsiz sürümü çoğu iş için yeterli, Claude ile scriptlenebilir.
+aciklama: "Profesyonel kurgu ve renk programı; ücretsiz sürümü çoğu iş için yeterli ve Claude ile scriptleyebiliyorsunuz."
 kategori: video
 ucretsiz: true
 acik_kaynak: false
@@ -8,3 +8,8 @@ zorluk: orta
 eklenme: 2026-10-23
 etiketler: [kurgu, renk, scripting]
 populer: 3
+kullanim: ["Kurgu & kod", "Sinematik video"]
+fiyat: "Ücretsiz; Studio tek seferlik ücret"
+turkce: kismen
+analiz: "12 yıldır post-prodüksiyonda kullandığım program; ücretsiz sürümü Reels ve YouTube işinin tamamına yetiyor. Asıl yenilik, Claude'un scripting arayüzüyle tekrar eden işleri (toplu dışa aktarma, altyazı, sessiz kesme) devralabilmesi. Yalnızca telefonda kurgu yapan biriyseniz CapCut daha hızlı; ekip işi ve renk için Resolve."
+isakisi: ai-ile-video-edit

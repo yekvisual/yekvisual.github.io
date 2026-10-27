@@ -1,6 +1,6 @@
 ad: ComfyUI
 url: https://www.comfy.org
-aciklama: Açık kaynak görsel/video modellerini bilgisayarında çalıştıran düğüm tabanlı arayüz.
+aciklama: "Açık kaynak görsel/video modellerini bilgisayarınızda çalıştıran düğüm tabanlı arayüz."
 kategori: acik-kaynak
 ucretsiz: true
 acik_kaynak: true
@@ -8,3 +8,8 @@ zorluk: teknik
 eklenme: 2026-10-23
 etiketler: [yerel, flux, stable diffusion]
 populer: 4
+kullanim: ["Yerel çalışma", "Karakter tutarlılığı"]
+fiyat: "Ücretsiz"
+turkce: yok
+analiz: "Açık modellerle çalışmanın standart aracı; FLUX ve Wan'ı ben burada çalıştırıyorum. İlk gün düğüm karmaşası gözünüzü korkutabilir, şablonlarla başlarsanız bir akşamda ilk görseli alırsınız. Güçlü bir ekran kartınız yoksa ya da teknik işle uğraşmak istemiyorsanız size göre değil."
+isakisi: acik-kaynak-modeller

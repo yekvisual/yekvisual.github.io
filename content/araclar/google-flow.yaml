@@ -1,6 +1,6 @@
 ad: Google Flow
 url: https://labs.google/flow
-aciklama: "Google'ın film aracı: Veo ile sahne sahne video kuruyor, kamerayı ve karakteri sen yönetiyorsun. Gemini aboneliğiyle."
+aciklama: "Google'ın film aracı: Veo ile sahne sahne video kuruyor, kamerayı ve karakteri siz yönetiyorsunuz. Gemini aboneliğiyle."
 kategori: video
 ucretsiz: null
 acik_kaynak: false
@@ -8,3 +8,7 @@ zorluk: yeni
 eklenme: 2026-10-27
 etiketler: [video, veo, google, film]
 populer: 10
+kullanim: ["Sinematik video", "Karakter tutarlılığı"]
+fiyat: "Gemini aboneliğiyle"
+turkce: kismen
+analiz: "Tek klip üretmek yerine sahne sahne film kurmak isteyenler için şu an en düzenli arayüz; kamera açısı ve karakteri sahneler arasında taşıyabiliyorsunuz. Kısa reklam filmi ve storyboard'dan ön izleme için prodüksiyon ekiplerine önerebilirim. Gemini aboneliği olmadan giremiyorsunuz; sadece bir iki Reels denemesi için pahalı."

@@ -1,6 +1,6 @@
 ad: Claude
 url: https://claude.ai
-aciklama: Anthropic'in sohbet asistanı; bağlayıcılarla Canva, Drive, Gmail gibi uygulamalarda iş yapar.
+aciklama: "Anthropic'in sohbet asistanı; bağlayıcılarla Canva, Drive, Gmail gibi uygulamalarda iş yapıyor."
 kategori: araclar
 ucretsiz: true
 acik_kaynak: false
@@ -8,3 +8,8 @@ zorluk: yeni
 eklenme: 2026-10-23
 etiketler: [claude, sohbet, connector]
 populer: 8
+kullanim: ["Araştırma", "Türkçe yazı", "Otomasyon"]
+fiyat: "Ücretsiz; Pro aylık 20 $"
+turkce: evet
+analiz: "Günlük işimde ana asistan: metin, araştırma ve bağlayıcılarla uygulama içi iş. Türkçesi doğal, uzun belgeyle çalışmak rahat. Görsel üretmiyor; görsel için Nano Banana ya da Midjourney gibi ayrı bir araca ihtiyacınız var."
+isakisi: connectorler

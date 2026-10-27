@@ -36,7 +36,7 @@ const yeni = Date.now() - d.tarih.valueOf() < 3 * 86400_000;
         {d.model && <span class="muted">· {d.model}</span>}
       </div>
       <div class="reveal">
-        <Rozetler kategori={d.kategori} yeni={yeni} ornek={d.ornek} />
+        <Rozetler kategori={d.kategori} yeni={yeni} />
       </div>
       <h1 class="display reveal" style="--d:60ms">{d.baslik}</h1>
       <p class="lead reveal" style="--d:120ms">{d.ozet}</p>
@@ -66,7 +66,7 @@ const yeni = Date.now() - d.tarih.valueOf() < 3 * 86400_000;
 
         {d.yekvisual_notu && (
           <div class="kutu kutu-not reveal">
-            <p class="kutu-baslik">yekvisual analizi</p>
+            <p class="kutu-baslik">YEK Lab analizi</p>
             <p class="son">{d.yekvisual_notu}</p>
           </div>
         )}
@@ -102,7 +102,7 @@ const yeni = Date.now() - d.tarih.valueOf() < 3 * 86400_000;
       <aside class="yan reveal" style="--d:200ms">
         {kart && (
           <a href={kartYolu(kart.id)} class="kutu kart-link">
-            <p class="kutu-baslik">Başlangıç kartı {String(kart.data.sira).padStart(2, '0')}</p>
+            <p class="kutu-baslik">İş akışı {String(kart.data.sira).padStart(2, '0')}</p>
             <strong class="kart-baslik">{kart.data.baslik}</strong>
             <span class="muted small">{kart.data.ozet}</span>
           </a>

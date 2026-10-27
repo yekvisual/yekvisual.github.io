@@ -1,6 +1,6 @@
 ad: MiniMax Hailuo
 url: https://hailuoai.video
-aciklama: Sinematik kamera hareketleri için en ucuz yol; dron çekimi, dönüş, ışık. Konuşan karakter için değil.
+aciklama: "Sinematik kamera hareketleri için en ucuz yol; dron çekimi, dönüş, ışık. Konuşan karakter için değil."
 kategori: video
 ucretsiz: null
 acik_kaynak: false
@@ -8,3 +8,7 @@ zorluk: yeni
 eklenme: 2026-10-27
 etiketler: [video, minimax, sinematik]
 populer: 4
+kullanim: ["Sinematik video"]
+fiyat: "Deneme kredisi, sonra abonelik"
+turkce: kismen
+analiz: "Dron, kaydırma ve dönüş gibi kamera hareketlerini bütçeyi zorlamadan denemek için kullanıyorum; B-roll ve atmosfer sahnesinde fiyat/performansı iyi. Diyalog ve dudak senkronu istiyorsanız Kling'e bakın. Karakter tutarlılığında zayıf, seri içerik için denemek lazım."

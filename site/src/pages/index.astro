@@ -95,10 +95,10 @@ const reels: Reel[] = instagram.length >= 3 ? instagram.slice(0, 3).map((p) => (
   <section class="container section" id="basla">
     <div class="section-head">
       <div>
-        <p class="kicker kicker-accent">Sıfırdan başlayanlar için</p>
-        <h2>Bu hafta sonu deneyebileceğin şeyler</h2>
+        <p class="kicker kicker-accent">İş akışları &amp; otomasyon</p>
+        <h2>Hafta sonu laboratuvarı</h2>
       </div>
-      <a href="/bilmeniz-gerekenler/" class="more">{kartlar.length} kartın tamamı →</a>
+      <a href="/bilmeniz-gerekenler/" class="more">{kartlar.length} iş akışının tamamı →</a>
     </div>
     <div class="cols" style="--n:4">
       {kartlar.slice(0, 4).map((k, i) => <BilgiKart kart={k} gecikme={i * 70} />)}
@@ -116,20 +116,35 @@ const reels: Reel[] = instagram.length >= 3 ? instagram.slice(0, 3).map((p) => (
     </div>
     <div class="cols" style="--n:4">
       {oneCikanAraclar.map((a, i) => (
-        <a href={a.data.url} target="_blank" rel="noopener" class="arac kart reveal" style={`--d:${i * 70}ms`}>
-          <div class="arac-bas">
-            <strong>{a.data.ad}</strong>
-            <span class="muted small">{new URL(a.data.url).hostname.replace('www.', '')}</span>
-          </div>
-          <p>{a.data.aciklama}</p>
+        <a href={`/araclar/${a.id}/`} class="arac kart reveal" style={`--d:${i * 70}ms`}>
           <div class="etiketler">
+            {a.data.kullanim.slice(0, 2).map((k) => <span class="etiket etiket-acik">{k}</span>)}
             {a.data.ucretsiz === true && <span class="etiket etiket-ucretsiz">Ücretsiz</span>}
-            {a.data.ucretsiz === false && <span class="etiket etiket-ucretli">Ücretli</span>}
-            {a.data.acik_kaynak === true && <span class="etiket etiket-acik">Açık kaynak</span>}
-            <span class="etiket etiket-ince">{a.data.zorluk === 'yeni' ? 'Yeni başlayan' : a.data.zorluk === 'orta' ? 'Orta' : 'Teknik'}</span>
+            {a.data.acik_kaynak === true && <span class="etiket etiket-ucretsiz">Açık kaynak</span>}
           </div>
+          <strong>{a.data.ad}</strong>
+          <p>{a.data.aciklama}</p>
+          <span class="arac-link">YEK Lab incelemesi →</span>
         </a>
       ))}
+    </div>
+  </section>
+
+  <!-- Kurucu / Lab notu -->
+  <section class="container section" style="padding-bottom:0">
+    <div class="kurucu kart reveal">
+      <div class="kurucu-metin">
+        <p class="kicker">Kurucu · Lab notu</p>
+        <h2>{SITE.kurucu}: 12 yıl sinema ve post-prodüksiyon, iki yıldır yapay zekâ ile.</h2>
+        <p>
+          Kurgu, renk ve teslim hattını yapay zekâ araçlarıyla yeniden kurdum; aynı dönüşümü şirketlere ve ekiplere
+          taşıyorum. Bu sitedeki her analiz kendi denemelerime dayanır.
+        </p>
+      </div>
+      <div class="kurucu-eylem">
+        <a href="/danismanlik/" class="btn btn-ink">Ekibiniz için danışmanlık</a>
+        <a href="/danismanlik/#konusma" class="btn">Konuşmacı daveti</a>
+      </div>
     </div>
   </section>
 
@@ -347,11 +362,11 @@ const reels: Reel[] = instagram.length >= 3 ? instagram.slice(0, 3).map((p) => (
     border-color: var(--line-2);
     transform: translateY(-2px);
   }
-  .arac-bas {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 0.5rem;
+  .arac-link {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-top: 0.2rem;
   }
   .arac strong {
     font-family: var(--font-display);
@@ -366,6 +381,33 @@ const reels: Reel[] = instagram.length >= 3 ? instagram.slice(0, 3).map((p) => (
     flex: 1;
   }
 
+  .kurucu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding: clamp(1.4rem, 3vw, 2.2rem);
+  }
+  .kurucu-metin {
+    max-width: 640px;
+  }
+  .kurucu-metin h2 {
+    margin: 0.3rem 0 0.5rem;
+    font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+    font-weight: 400;
+  }
+  .kurucu-metin p {
+    margin: 0;
+    color: var(--ink-2);
+    font-size: 0.98rem;
+  }
+  .kurucu-eylem {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    flex: 0 0 auto;
+  }
   .son {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));

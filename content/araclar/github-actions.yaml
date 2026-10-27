@@ -1,6 +1,6 @@
 ad: GitHub Actions
 url: https://github.com/features/actions
-aciklama: Bulutta zamanlanmış görev çalıştırma; kişisel projelerde ücretsiz. Bu sitenin botları burada çalışır.
+aciklama: "Bulutta zamanlanmış görev çalıştırma; kişisel projelerde ücretsiz. Bu sitenin zamanlanmış işleri burada çalışıyor."
 kategori: otomasyon
 ucretsiz: true
 acik_kaynak: false
@@ -8,3 +8,8 @@ zorluk: teknik
 eklenme: 2026-10-23
 etiketler: [cron, bulut]
 populer: 1
+kullanim: ["Otomasyon", "API & entegrasyon"]
+fiyat: "Kişisel projelerde ücretsiz"
+turkce: yok
+analiz: "Günlük Reels paylaşımı ve bu sitenin güncellemesi GitHub Actions'ta dönüyor; bilgisayarım kapalıyken de çalışıyor. YAML dosyasıyla uğraşmak gerekiyor, Claude Code'a yazdırırsanız dert değil. Hiç teknik işe girmek istemiyorsanız Claude'un zamanlanmış görevleri daha kolay bir başlangıç."
+isakisi: instagram-baglama

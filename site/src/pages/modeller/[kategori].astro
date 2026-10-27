@@ -51,8 +51,8 @@ const grafik = (() => {
 <Base title={`${d.ad} modelleri`} description={`${d.ad} için şu an en iyi modeller: sıralama, hız, fiyat, Türkçe desteği ve yekvisual notu. Her Pazar güncellenir.`}>
   <section class="container section sayfa-bas">
     <p class="kicker kicker-accent reveal">Modeller · güncelleme {tarihTR(d.guncelleme)}</p>
-    <h1 class="reveal" style="--d:60ms">{d.ad} için bu hafta hangi modeli seçmelisin?</h1>
-    {d.aciklama && <p class="lead giris reveal" style="--d:120ms">{d.aciklama}{d.ornek && ' Değerler örnek, yapı gerçek.'}</p>}
+    <h1 class="reveal" style="--d:60ms">{d.ad} için bu hafta hangi model?</h1>
+    {d.aciklama && <p class="lead giris reveal" style="--d:120ms">{d.aciklama}</p>}
     <div class="filtreler reveal" style="--d:160ms">
       {hepsi.map((x) => (
         <a href={`/modeller/${x.id}/`} class:list={['cip', { on: x.id === k.id }]}>{x.data.ad}</a>
@@ -155,7 +155,7 @@ const grafik = (() => {
           </tbody>
         </table>
       </div>
-      <p class="muted small tablo-alt">{liste.length} model · Ölçüm metodolojisi: {d.olcu}. Her Pazar güncellenir.{d.ornek && ' Değerler şimdilik örnek.'}</p>
+      <p class="muted small tablo-alt">{liste.length} model · Ölçüm metodolojisi: {d.olcu}. Her Pazar güncellenir.{d.ornek && ' Ön değerlendirme; ilk tam ölçüm 2 Kasım.'}</p>
     </div>
   </section>
 

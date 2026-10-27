@@ -3,15 +3,16 @@ import Base from '../layouts/Base.astro';
 import { SITE } from '../lib/site';
 ---
 
-<Base title="Hakkında" description="yekvisual kimdir, bu site nasıl çalışır.">
+<Base title="Hakkında" description="YEK Lab nedir, kim yapıyor, site nasıl çalışır.">
   <section class="container section yazi">
     <p class="kicker kicker-accent reveal">Künye</p>
-    <h1 class="reveal" style="--d:60ms">Merhaba, ben <em>yekvisual.</em></h1>
+    <h1 class="reveal" style="--d:60ms">YEK Lab nedir?</h1>
     <div class="prose dropcap reveal rule" style="--d:120ms">
       <p>
-        Video ve görsel üretiyorum; son bir yıldır işimin büyük kısmını yapay zekâyla birlikte yapıyorum. Bu siteyi,
-        "nereden başlasam?" diye soran herkese aynı şeyleri tekrar tekrar anlatmak yerine tek bir yere yazmak için
-        kurdum.
+        YEK Lab, Yunus Emre Kaplan'ın kurduğu bir yapay zekâ ve prodüksiyon laboratuvarı. On iki yıl sinema ve
+        post-prodüksiyonda çalıştıktan sonra üretim hattının her adımını yapay zekâ araçlarıyla yeniden kurdu; bu site o
+        çalışmanın kamuya açık kısmı. "Nereden başlasam?" diye soran herkese aynı şeyleri tekrar tekrar anlatmak yerine
+        tek bir yere yazıyoruz.
       </p>
       <p>
         Burada abartı yok: bir model çıkınca ne işe yaradığını, ücretsiz olup olmadığını ve denediysem ne gördüğümü
@@ -19,14 +20,14 @@ import { SITE } from '../lib/site';
       </p>
       <h2>Site nasıl çalışıyor?</h2>
       <p>
-        Bu site de "Bilmeniz Gerekenler"deki yöntemlerle kurulu. Onlarca kaynak (şirket blogları, GitHub, Hugging
+        Bu site de "İş Akışları"ndaki yöntemlerle kurulu. Onlarca kaynak (şirket blogları, GitHub, Hugging
         Face, arXiv, topluluklar) günde üç kez taranıyor; işe yarayanlar Türkçe yazılıyor, kararsız kaldıklarım bana
-        soruluyor. Model sıralamaları her Pazar yenileniyor. "yekvisual notu" benim; denediğimi yazıyorum, denemediğimi
-        "denemek lazım" diye bırakıyorum.
+        soruluyor. Model sıralamaları her Pazar yenileniyor. "YEK Lab analizi" kurucunun kendi denemesine dayanır; denenmeyen
+        "denemek lazım" diye bırakılır.
       </p>
       <p>Kaynak kodu açık: <a href={SITE.github} target="_blank" rel="noopener">GitHub</a>.</p>
       <h2>İletişim</h2>
-      <p>En hızlı yol Instagram: <a href={SITE.instagram} target="_blank" rel="noopener">{SITE.instagramKullanici}</a></p>
+      <p>Danışmanlık ve konuşma davetleri için <a href="/danismanlik/">Danışmanlık</a> sayfasına bakın; en hızlı yol Instagram: <a href={SITE.instagram} target="_blank" rel="noopener">{SITE.instagramKullanici}</a></p>
     </div>
     <a href={SITE.instagram} class="btn btn-ink" target="_blank" rel="noopener">Instagram'da takip et</a>
   </section>

@@ -1,6 +1,6 @@
 ad: Kimi
 url: https://kimi.com
-aciklama: Moonshot'ın dil modeli; K3.1 Pro açık kaynak ve Claude'un hemen arkasında. Uygulamada sınırlı ücretsiz.
+aciklama: "Moonshot'ın dil modeli; K3.1 Pro açık kaynak ve Claude'un hemen arkasında. Uygulamada sınırlı ücretsiz."
 kategori: acik-kaynak
 ucretsiz: null
 acik_kaynak: true
@@ -8,3 +8,8 @@ zorluk: yeni
 eklenme: 2026-10-27
 etiketler: [dil modeli, açık kaynak, moonshot]
 populer: 3
+kullanim: ["Araştırma", "Türkçe yazı", "API & entegrasyon"]
+fiyat: "Uygulamada sınırlı ücretsiz; API milyon token başına 2 $ giriş / 10 $ çıkış"
+turkce: evet
+analiz: "K3.1 Pro'yu henüz denemedim; benchmark tablosuna göre uzun belge ve araştırma işinde Claude'a yakın. Asıl değeri, ağırlıkları açılınca şirketlerin kendi sunucusunda güçlü bir model çalıştırabilmesi. Evde çalıştırmayı düşünmeyin, 500 GB'ın üstünde bellek istiyor."
+isakisi: acik-kaynak-modeller

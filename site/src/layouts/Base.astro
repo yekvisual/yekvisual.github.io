@@ -19,9 +19,10 @@ const yol = Astro.url.pathname;
 const nav = [
   { href: '/gundem/', ad: 'Gündem' },
   { href: '/modeller/', ad: 'Modeller' },
-  { href: '/bilmeniz-gerekenler/', ad: 'Bilmeniz Gerekenler' },
+  { href: '/bilmeniz-gerekenler/', ad: 'İş Akışları' },
   { href: '/araclar/', ad: 'Araçlar' },
   { href: '/haftalik/', ad: 'Haftalık' },
+  { href: '/danismanlik/', ad: 'Danışmanlık' },
 ];
 const yil = new Date().getFullYear();
 ---
@@ -59,7 +60,7 @@ const yil = new Date().getFullYear();
 
     <header class="ust">
       <div class="container ust-ic">
-        <a href="/" class="logo" aria-label={`${SITE.ad} ana sayfa`}>yekvisual<span class="nokta">.</span></a>
+        <a href="/" class="logo" aria-label={`${SITE.ad} ana sayfa`}>YEK Lab<span class="nokta">.</span></a>
         <nav class="nav" id="nav" aria-label="Site">
           {nav.map((n) => (
             <a href={n.href} aria-current={yol.startsWith(n.href) ? 'page' : undefined}>{n.ad}</a>
@@ -87,14 +88,14 @@ const yil = new Date().getFullYear();
 
     <footer class="footer">
       <div class="container footer-ic">
-        <a href="/" class="logo logo-kucuk">yekvisual<span class="nokta">.</span></a>
+        <a href="/" class="logo logo-kucuk">YEK Lab<span class="nokta">.</span></a>
         <div class="footer-linkler">
           {nav.map((n) => <a href={n.href}>{n.ad}</a>)}
           <a href="/hakkinda/">Hakkında</a>
           <a href="/rss.xml">RSS</a>
           <a href={SITE.instagram} target="_blank" rel="noopener">Instagram</a>
         </div>
-        <div class="footer-not">Türkçe, bağımsız, her gün. © {yil} yekvisual</div>
+        <div class="footer-not">Türkçe, bağımsız, her gün. © {yil} YEK Lab · {SITE.kurucu}</div>
       </div>
     </footer>
 

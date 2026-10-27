@@ -1,6 +1,6 @@
 ad: Remotion
 url: https://www.remotion.dev
-aciklama: React ile programatik video. Şablondan yüzlerce video üretmek için.
+aciklama: "React ile programatik video. Şablondan yüzlerce video üretmek için."
 kategori: video
 ucretsiz: true
 acik_kaynak: true
@@ -8,3 +8,8 @@ zorluk: teknik
 eklenme: 2026-10-23
 etiketler: [kod, motion graphics, react]
 populer: 4
+kullanim: ["Motion graphics", "Kurgu & kod"]
+fiyat: "Bireysel ve küçük ekipler için ücretsiz; şirket lisansı ücretli"
+turkce: yok
+analiz: "Bu sitenin Instagram videoları Remotion'la üretiliyor; şablonu bir kez kurunca her haber için yeni video dakikalar alıyor. Kodu Claude Code yazıyor, siz tarif ediyorsunuz. Tek seferlik bir video için fazla, aynı formatta düzenli içerik üreten ekipler için en verimli yol."
+isakisi: kodla-video

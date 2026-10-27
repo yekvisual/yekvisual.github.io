@@ -74,6 +74,11 @@ const araclar = defineCollection({
     eklenme: z.coerce.date(),
     etiketler: z.array(z.string()).default([]),
     populer: z.number().int().default(0),
+    kullanim: z.array(z.string()).default([]),
+    fiyat: z.string().optional(),
+    turkce: z.enum(['evet', 'kismen', 'yok']).optional(),
+    analiz: z.string().optional(),
+    isakisi: z.string().optional(),
   }),
 });
 

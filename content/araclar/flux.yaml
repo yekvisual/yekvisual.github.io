@@ -1,6 +1,6 @@
 ad: FLUX
 url: https://bfl.ai
-aciklama: Black Forest Labs'in görsel üretme modelleri; açık ağırlıklı sürümleri ComfyUI'de çalışır.
+aciklama: "Black Forest Labs'in görsel üretme modelleri; açık ağırlıklı sürümlerini ComfyUI'de çalıştırabiliyorsunuz."
 kategori: gorsel
 ucretsiz: true
 acik_kaynak: true
@@ -8,3 +8,8 @@ zorluk: teknik
 eklenme: 2026-10-23
 etiketler: [görsel, açık ağırlık]
 populer: 4
+kullanim: ["Yerel çalışma", "Ürün görseli"]
+fiyat: "Açık sürümler ücretsiz; Pro sürümler API ile ücretli"
+turkce: yok
+analiz: "Yerelde çalışan görsel modelleri arasında ilk tercihim; fotoğraf gerçekçiliği ve kompozisyon kontrolü iyi. Kendi karakterinizi ya da ürününüzü öğreten LoRA eğitimleri için uygun. Türkçe yazıyı görsele doğru yazdırmak istiyorsanız Nano Banana ya da Ideogram daha güvenli."
+isakisi: acik-kaynak-modeller

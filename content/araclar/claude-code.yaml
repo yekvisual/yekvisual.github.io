@@ -1,6 +1,6 @@
 ad: Claude Code
 url: https://claude.com/claude-code
-aciklama: Bilgisayarında çalışan Claude; dosya, terminal ve uygulama bağlayıcılarıyla iş yapar.
+aciklama: "Bilgisayarınızda çalışan Claude; dosya, terminal ve uygulama bağlayıcılarıyla iş yapıyor."
 kategori: otomasyon
 ucretsiz: false
 acik_kaynak: false
@@ -8,3 +8,8 @@ zorluk: orta
 eklenme: 2026-10-23
 etiketler: [claude, terminal, ajan]
 populer: 4
+kullanim: ["Kurgu & kod", "Otomasyon", "Dosya düzeni"]
+fiyat: "Claude aboneliği (Pro/Max) ya da API kullanımı"
+turkce: evet
+analiz: "Bu sitedeki akışların neredeyse hepsi Claude Code üzerinden dönüyor: Remotion videoları, DaVinci bağlantısı, dosya düzeni. Kod yazmayı bilmeniz gerekmiyor ama terminal penceresinden ürkmemeniz gerekiyor. Yalnızca sohbet istiyorsanız Claude uygulaması yeter; bilgisayarınızda iş yaptırmak istiyorsanız bu."
+isakisi: bilgisayar-kontrolu

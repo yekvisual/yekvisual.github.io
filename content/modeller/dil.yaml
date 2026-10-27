@@ -4,7 +4,7 @@ olcu: "Terminal-Bench 4.0 ajan görevleri puanı"
 kaynak: "Moonshot AI duyurusu (23 Ekim 2026), model kartları"
 guncelleme: 2026-10-26
 ornek: true
-aciklama: "Yazı, kod ve ajan görevlerinde dil modelleri. İlk üçün puanı Moonshot duyurusundan; diğerleri örnek."
+aciklama: "Yazı, kod ve ajan görevlerinde dil modelleri. İlk üçün puanı Moonshot duyurusundan; diğerleri ön değerlendirme."
 yontem: "Terminal-Bench 4.0, modelin bir bilgisayarda gerçek işleri bitirme oranını ölçer. İçerik üreticisi için anlamı: montaj, dosya düzenleme, otomasyon gibi işleri ne kadar güvenle verebileceğin."
 degisenler:
   - { metin: "Kimi K3.1 Pro açık kaynaklarda zirveye çıktı", yon: yeni }
@@ -12,5 +12,5 @@ modeller:
   - { ad: "Claude Opus 5.5", firma: Anthropic, puan: 66.4, degisim: 0, erisim: ucretli, turkce: evet, fiyat: "$5 / $25 (M token)", not: "Uzun işlerde en güvenilir; bu site onunla yazılıyor." }
   - { ad: "Kimi K3.1 Pro", firma: Moonshot, puan: 65.7, degisim: 0, erisim: acik, turkce: evet, fiyat: "$2 / $10 (M token)", not: "2,8 T parametre, 1M bağlam. Evde çalışmaz: 500 GB+ RAM ister.", yeni: true }
   - { ad: "GPT-6 Astra", firma: OpenAI, puan: 58.2, degisim: 0, erisim: ucretli, turkce: evet, fiyat: "$4 / $16 (M token)", not: "Sohbet ve yazıda akıcı; uzun ajan görevlerinde geride." }
-  - { ad: "Gemini 3.5 Pro", firma: Google, puan: 56.9, degisim: 0, erisim: sinirli, turkce: evet, fiyat: "$2,5 / $12 (M token)", not: "Örnek değer. Görsel ve videoyu aynı anda anlıyor." }
-  - { ad: "DeepSeek V4", firma: DeepSeek, puan: 52.3, degisim: 0, erisim: acik, turkce: kismen, fiyat: "$0,5 / $2 (M token)", not: "Örnek değer. Fiyat/performansta açık ara." }
+  - { ad: "Gemini 3.5 Pro", firma: Google, puan: 56.9, degisim: 0, erisim: sinirli, turkce: evet, fiyat: "$2,5 / $12 (M token)", not: "Görsel ve videoyu aynı anda anlıyor." }
+  - { ad: "DeepSeek V4", firma: DeepSeek, puan: 52.3, degisim: 0, erisim: acik, turkce: kismen, fiyat: "$0,5 / $2 (M token)", not: "Fiyat/performansta açık ara." }

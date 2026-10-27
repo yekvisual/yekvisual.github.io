@@ -1,6 +1,6 @@
 ad: HyperFrames
 url: https://hyperframes.dev
-aciklama: HTML/CSS ile video; yapay zekâ ajanlarıyla birlikte kullanılmak üzere tasarlandı.
+aciklama: "HTML/CSS ile video; yapay zekâ ajanlarıyla birlikte kullanılmak üzere tasarlandı."
 kategori: video
 ucretsiz: true
 acik_kaynak: true
@@ -8,3 +8,8 @@ zorluk: orta
 eklenme: 2026-10-23
 etiketler: [kod, html, ajan]
 populer: 1
+kullanim: ["Motion graphics", "Kurgu & kod"]
+fiyat: "Ücretsiz"
+turkce: yok
+analiz: "Remotion'un React bilgisi istemeyen kardeşi; Claude Code'a tarif edip düz HTML ile animasyon alıyorsunuz. Alt yazı, başlık animasyonu ve veri grafiği gibi işlerde hızlı. Henüz genç bir proje, büyük prodüksiyon hattına bağlamadan önce birkaç hafta denemek lazım."
+isakisi: kodla-video
