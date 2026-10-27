@@ -30,6 +30,8 @@ Elle de düzenleyebilirsin; kısa, somut kurallar yaz.
 
 ## Yapılmayacaklar
 
+- Ticari vurgu yok: danışmanlık, hizmet, fiyat teklifi, "bize ulaşın" çağrısı yazılmaz. YEK Lab bağımsız bir test laboratuvarıdır; otorite satışla değil analizle kurulur.
+
 - Metinlerde "bot", "otomatik toplandı", "yapay zekâ tarafından yazıldı" gibi mutfak ifadeleri geçmez. Siteyi insan yazmış gibi okunur; "her Pazar güncellenir", "kaynaklardan derlendi" denir.
 - Görsel sırası: resmi görsel ya da modelin gerçek çıktısı > kendi denemem > soyut kapak. Kapak varsa altına kaynağı yaz ("Görsel: Black Forest Labs").
 

@@ -6,8 +6,6 @@ export const SITE = {
   url: import.meta.env.SITE_URL || 'https://yekvisual.github.io',
   alanAdi: 'yeklab.com.tr',
   kurucu: 'Yunus Emre Kaplan',
-  // Danışmanlık ve konuşma davetleri için e-posta; boşsa yalnızca Instagram gösterilir.
-  iletisimEposta: '',
   instagram: 'https://instagram.com/yekvisual',
   instagramKullanici: '@yekvisual',
   github: 'https://github.com/yekvisual/yekvisual.github.io',
