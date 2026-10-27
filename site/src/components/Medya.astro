@@ -1,6 +1,10 @@
 ---
 // Haber içindeki medya: görsel, video dosyası ya da YouTube gömme.
-// `src` içerik dosyasına göreli bir yol ise content/ altından okunur.
+// `src` içerik dosyasına göreli bir yol ise (./<slug>/deneme-1.webp) content/haberler
+// altından build sırasında alınır: görseller astro:assets ile, videolar Vite ?url ile.
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
 interface Medya {
   tip: 'gorsel' | 'video' | 'youtube';
   src: string;
@@ -13,13 +17,21 @@ interface Props {
 }
 const { medya, haberId } = Astro.props;
 
+const gorseller = import.meta.glob<ImageMetadata>('../../../content/haberler/**/*.{webp,png,jpg,jpeg,gif}', { eager: true, import: 'default' });
+const videolar = import.meta.glob<string>('../../../content/haberler/**/*.{mp4,webm}', { eager: true, query: '?url', import: 'default' });
+
 function youtubeId(url: string) {
   const m = url.match(/(?:v=|youtu\.be\/|shorts\/|embed\/)([\w-]{6,})/);
   return m?.[1];
 }
 
-// Göreli medya yolları build sırasında /medya/<haber-id>/<dosya> olarak kopyalanır (bkz. public/medya).
-const yerel = medya.src.startsWith('./') && haberId ? `/medya/${haberId}/${medya.src.slice(2)}` : medya.src;
+// Göreli yol → content/haberler/<haber klasörü>/<dosya>
+const goreli = medya.src.startsWith('./') && Boolean(haberId);
+const klasor = haberId ? haberId.split('/').slice(0, -1).join('/') : '';
+const anahtar = goreli ? `../../../content/haberler/${klasor ? klasor + '/' : ''}${medya.src.slice(2)}` : '';
+const yerelGorsel = goreli ? gorseller[anahtar] : undefined;
+const yerelVideo = goreli ? videolar[anahtar] : undefined;
+const uzak = goreli ? undefined : medya.src;
 ---
 
 <figure class="medya">
@@ -34,8 +46,11 @@ const yerel = medya.src.startsWith('./') && haberId ? `/medya/${haberId}/${medya
       />
     </div>
   )}
-  {medya.tip === 'video' && <video src={yerel} controls muted loop playsinline preload="metadata" />}
-  {medya.tip === 'gorsel' && <img src={yerel} alt={medya.alt ?? ''} loading="lazy" />}
+  {medya.tip === 'video' && (yerelVideo || uzak) && <video src={yerelVideo ?? uzak} controls muted loop playsinline preload="metadata" />}
+  {medya.tip === 'gorsel' && yerelGorsel && (
+    <Image src={yerelGorsel} alt={medya.alt ?? ''} width={1400} widths={[700, 1000, 1400]} sizes="(max-width: 760px) 100vw, 720px" loading="lazy" />
+  )}
+  {medya.tip === 'gorsel' && !yerelGorsel && uzak && <img src={uzak} alt={medya.alt ?? ''} loading="lazy" />}
   {(medya.alt || medya.kaynak) && (
     <figcaption>
       {medya.alt}
@@ -51,14 +66,14 @@ const yerel = medya.src.startsWith('./') && haberId ? `/medya/${haberId}/${medya
   .medya img,
   .medya video {
     width: 100%;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
   }
   .video-cerceve {
     aspect-ratio: 16 / 9;
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius);
     overflow: hidden;
-    border: 1px solid var(--border);
+    border: 1px solid var(--line);
     background: #000;
   }
   .video-cerceve iframe {
@@ -67,8 +82,8 @@ const yerel = medya.src.startsWith('./') && haberId ? `/medya/${haberId}/${medya
     border: 0;
   }
   figcaption {
-    font-size: 0.82rem;
-    color: var(--text-2);
+    font-size: 0.85rem;
+    color: var(--muted);
     margin-top: 0.5rem;
   }
 </style>
