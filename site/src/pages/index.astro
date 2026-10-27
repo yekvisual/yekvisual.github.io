@@ -18,7 +18,8 @@ const haberler = (await getCollection('haberler')).sort((a, b) => b.data.tarih.v
 const kartlar = (await getCollection('kartlar')).sort((a, b) => a.data.sira - b.data.sira);
 const araclar = (await getCollection('araclar')).sort((a, b) => b.data.populer - a.data.populer || a.data.ad.localeCompare(b.data.ad, 'tr'));
 
-const manset = haberler.find((h) => h.data.puan >= 5) ?? haberler[0];
+// Manşet: puanı 5 olan ve görseli olan en yeni haber; yoksa puanı 5 olan; yoksa en yeni
+const manset = haberler.find((h) => h.data.puan >= 5 && h.data.kapak) ?? haberler.find((h) => h.data.puan >= 5) ?? haberler[0];
 const digerleri = haberler.filter((h) => h !== manset);
 const altikiKucuk = digerleri.slice(0, 2);
 const bugun = haberler.slice(0, 7);
