@@ -1,6 +1,6 @@
 ---
-baslik: "Montajı konuşarak bitir: DaVinci + Claude"
-ozet: "\"Sessiz yerleri kes, altyazı ekle, 9:16 dışa aktar\" de, gerisini izle. DaVinci bilgisayarında, Claude yanında."
+baslik: "DaVinci ve Claude ile kurguyu otomatize edin"
+ozet: "\"Sessiz yerleri kes, altyazı ekle, 9:16 dışa aktar\" komutunu verin, angarya işleri sisteme devredin."
 ikon: 🎞️
 sira: 2
 zorluk: orta

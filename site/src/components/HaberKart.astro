@@ -44,7 +44,7 @@ const yeni = Date.now() - d.tarih.valueOf() < 3 * 86400_000;
         <span class="kicker">
           <time datetime={d.tarih.toISOString()}>{tarihTR(d.tarih)}</time>
           {d.sirket && <span> · {d.sirket}</span>}
-          {d.yekvisual_notu && <span class="not-var"> · yekvisual notu var</span>}
+          {d.yekvisual_notu && <span class="not-var"> · yekvisual analizi</span>}
         </span>
       </div>
       <h3><a href={yol}>{d.baslik}</a></h3>

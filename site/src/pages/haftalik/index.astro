@@ -7,9 +7,9 @@ import { tarihTR } from '../../lib/site';
 const ozetler = (await getCollection('ozetler')).sort((a, b) => b.data.tarih.valueOf() - a.data.tarih.valueOf());
 ---
 
-<Base title="Haftalık Özet" description="Her pazar: haftanın en önemli yapay zekâ görsel, video ve otomasyon gelişmeleri tek yazıda.">
+<Base title="Haftalık Özet" description="Her cumartesi 14:00: haftanın en önemli yapay zekâ görsel, video ve otomasyon gelişmeleri tek yazıda.">
   <section class="container section sayfa-bas">
-    <p class="kicker kicker-accent reveal">Pazar eki</p>
+    <p class="kicker kicker-accent reveal">Her Cumartesi 14:00</p>
     <h1 class="display reveal" style="--d:60ms">Haftalık <em>özet</em></h1>
     <p class="lead giris reveal" style="--d:120ms">Haftayı kaçırdıysan tek yazı yeter. Bülten de bu yazıdan gönderilir.</p>
   </section>
@@ -32,7 +32,7 @@ const ozetler = (await getCollection('ozetler')).sort((a, b) => b.data.tarih.val
         ))}
       </ol>
     ) : (
-      <p class="bos">İlk özet bu pazar.</p>
+      <p class="bos">İlk özet bu cumartesi.</p>
     )}
   </section>
   <section class="container section">

@@ -15,7 +15,7 @@ const { Content } = await render(ozet);
 <Base title={ozet.data.baslik} description={ozet.data.ozet} type="article" tarih={ozet.data.tarih} image={`/og/ozet/${ozet.id}.png`}>
   <article class="container section yazi">
     <a href="/haftalik/" class="kicker geri">← Haftalık özetler</a>
-    <p class="kicker kicker-accent reveal">Pazar eki · <time datetime={ozet.data.tarih.toISOString()}>{tarihTR(ozet.data.tarih)}</time></p>
+    <p class="kicker kicker-accent reveal">Haftalık özet · <time datetime={ozet.data.tarih.toISOString()}>{tarihTR(ozet.data.tarih)}</time></p>
     <h1 class="display reveal" style="--d:60ms">{ozet.data.baslik}</h1>
     <p class="lead reveal" style="--d:120ms">{ozet.data.ozet}</p>
     <div class="prose dropcap reveal rule" style="--d:180ms"><Content /></div>

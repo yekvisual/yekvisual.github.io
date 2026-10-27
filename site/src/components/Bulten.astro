@@ -1,5 +1,5 @@
 ---
-// Haftalık özet kutusu: e-posta (Buttondown) ve Instagram, yan yana.
+// Haftalık özet kutusu: tek ana eylem, e-posta kaydı (Buttondown).
 import { SITE } from '../lib/site';
 const formUrl = SITE.bultenFormUrl;
 ---
@@ -7,23 +7,18 @@ const formUrl = SITE.bultenFormUrl;
 <section class="bulten band reveal" id="bulten">
   <div class="parilti" aria-hidden="true"></div>
   <div class="bulten-ic">
-    <p class="kicker kicker-acik">Haftalık özet · her Pazar 20:00</p>
-    <h2>Pazar akşamı kahvenle: haftanın tamamı, 5 dakikada.</h2>
-    <p class="aciklama">Pazartesiden pazara ne çıktı, hangisini denedim, gelecek hafta ne var. Reklam yok, spam yok.</p>
+    <p class="kicker kicker-acik">Haftalık özet · her Cumartesi 14:00</p>
+    <h2>Cumartesi öğleden sonra: haftanın tamamı, 5 dakikada.</h2>
+    <p class="aciklama">Pazartesiden cumartesiye ne çıktı, hangisini denedim, gelecek hafta ne var.</p>
     {formUrl ? (
       <form action={formUrl} method="post" target="_blank" class="form">
         <label class="sr-only" for="bulten-email">E-posta</label>
         <input id="bulten-email" type="email" name="email" placeholder="e-posta adresin" autocomplete="email" required />
-        <button class="btn btn-accent" type="submit">E-postayla al</button>
+        <button class="btn btn-accent" type="submit">Bültene katıl</button>
       </form>
-    ) : null}
-    <div class="ya-da">
-      <span class="muted-acik">ya da</span>
-      <a class="btn btn-acik" href={SITE.instagram} target="_blank" rel="noopener">
-        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor"></circle></svg>
-        Instagram'da takip et
-      </a>
-    </div>
+    ) : (
+      <p class="aciklama">Bülten çok yakında.</p>
+    )}
   </div>
 </section>
 
@@ -85,26 +80,5 @@ const formUrl = SITE.bultenFormUrl;
   input:focus {
     outline: 1px solid var(--sari);
     outline-offset: 2px;
-  }
-  .ya-da {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    margin-top: 0.9rem;
-    flex-wrap: wrap;
-  }
-  .muted-acik {
-    font-size: 0.85rem;
-    color: #8a867f;
-  }
-  .btn-acik {
-    background: transparent;
-    border-color: #45433f;
-    color: var(--bg);
-  }
-  .btn-acik:hover {
-    background: var(--bg);
-    color: var(--ink);
-    border-color: var(--bg);
   }
 </style>

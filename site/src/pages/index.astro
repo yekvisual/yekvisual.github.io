@@ -7,7 +7,7 @@ import HaberKart from '../components/HaberKart.astro';
 import BilgiKart from '../components/BilgiKart.astro';
 import Bulten from '../components/Bulten.astro';
 import ModelPaneli from '../components/ModelPaneli.astro';
-import { SITE, haberYolu } from '../lib/site';
+import { SITE } from '../lib/site';
 import reelKling from '../assets/reels/kling-4.jpg';
 import reelKimi from '../assets/reels/kimi-3-1.jpg';
 import reelDiyalog from '../assets/reels/kling-4-diyalog.jpg';
@@ -52,10 +52,14 @@ const reels: Reel[] = instagram.length >= 3 ? instagram.slice(0, 3).map((p) => (
         <a href="/gundem/kategori/otomasyon/" class="cip-renk" style="--c:#fde3c8;--t:#8a3d00">otomasyon</a>
         <a href="/gundem/kategori/acik-kaynak/" class="cip-renk" style="--c:#ebe6f5;--t:#4a3a86">açık kaynak</a>
       </div>
-      <div class="giris-dugmeler reveal" style="--d:200ms">
-        <a href="#bugun" class="btn btn-ink">Bugünün gündemi ↓</a>
-        <a href="#modeller" class="btn">En iyi modeller</a>
-      </div>
+      {SITE.bultenFormUrl && (
+        <form action={SITE.bultenFormUrl} method="post" target="_blank" class="giris-form reveal" style="--d:200ms">
+          <label class="sr-only" for="giris-email">E-posta adresiniz</label>
+          <input id="giris-email" type="email" name="email" placeholder="E-posta adresinizi girin" autocomplete="email" required />
+          <button class="btn btn-ink" type="submit">Bültene katıl</button>
+        </form>
+      )}
+      <p class="giris-not reveal" style="--d:240ms">Her Cumartesi 14:00'te haftanın özeti.</p>
     </div>
   </section>
 
@@ -247,17 +251,38 @@ const reels: Reel[] = instagram.length >= 3 ? instagram.slice(0, 3).map((p) => (
   .cip-renk:hover {
     transform: translateY(-1px);
   }
-  .giris-dugmeler {
+  .giris-form {
     display: flex;
-    gap: 0.7rem;
+    gap: 0.5rem;
     justify-content: center;
     flex-wrap: wrap;
-    margin-top: 2rem;
+    margin: 2rem auto 0;
+    max-width: 520px;
   }
-  .giris-dugmeler .btn {
+  .giris-form input {
+    flex: 1 1 240px;
+    height: 3rem;
+    padding: 0 1.1rem;
+    font: inherit;
+    font-size: 0.98rem;
+    border: 1px solid var(--line-2);
+    border-radius: 999px;
+    background: var(--bg-2);
+    color: var(--ink);
+    box-shadow: var(--golge);
+  }
+  .giris-form input::placeholder {
+    color: var(--muted);
+  }
+  .giris-form .btn {
     height: 3rem;
     padding: 0 1.4rem;
     font-size: 0.95rem;
+  }
+  .giris-not {
+    margin: 0.7rem 0 0;
+    font-size: 0.82rem;
+    color: var(--muted);
   }
   .panel-alani {
     position: relative;

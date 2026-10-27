@@ -1,6 +1,6 @@
 ad: Ses
 sira: 4
-olcu: "yekvisual Türkçe seslendirme testi, 5 üzerinden"
+olcu: "yekvisual Türkçe seslendirme testi (5 üzerinden)"
 guncelleme: 2026-10-26
 ornek: true
 aciklama: "Ses için güvenilir açık sıralama yok; aynı 60 saniyelik Türkçe metni her modele okutup doğallık, vurgu ve telaffuzu puanlıyoruz."
