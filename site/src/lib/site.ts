@@ -3,7 +3,7 @@ export const SITE = {
   slogan: 'Yapay zekâ ile görsel, video ve içerik üretimi: gündem, model sıralaması, iş akışları.',
   aciklama:
     'Yeni çıkan görsel, video ve ses modelleri; her Pazar güncellenen model sıralaması; prodüksiyon ekipleri için yapay zekâ iş akışları. Türkçe, sade, güncel.',
-  url: 'https://yeklab.com.tr',
+  url: import.meta.env.SITE_URL || 'https://yekvisual.github.io',
   alanAdi: 'yeklab.com.tr',
   kurucu: 'Yunus Emre Kaplan',
   // Danışmanlık ve konuşma davetleri için e-posta; boşsa yalnızca Instagram gösterilir.
