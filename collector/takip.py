@@ -6,6 +6,9 @@ ve "tetik" kelimelerinden biri yeni cümlelerde geçiyorsa issue açılır.
 
   python -m collector.takip            # kontrol et, değişiklik varsa issue aç
   python -m collector.takip --kuru     # yalnızca göster
+
+Not: Durum dosyası GitHub sunucusunun gördüğü (İngilizce) sayfaya göre tutulur; yerelde
+--kuru dışında çalıştırma, yoksa dil farkı yanlış alarm üretir.
 """
 from __future__ import annotations
 
@@ -96,7 +99,7 @@ def cumleler(url: str, anahtar: str) -> list[str]:
             return []
     else:
         try:
-            r = httpx.get(url, headers={"User-Agent": UA, "Accept-Language": "tr,en;q=0.8"}, timeout=30, follow_redirects=True)
+            r = httpx.get(url, headers={"User-Agent": UA, "Accept-Language": "en-US,en;q=0.9"}, timeout=30, follow_redirects=True)
             r.raise_for_status()
             metin = r.text
         except Exception as e:  # noqa: BLE001
