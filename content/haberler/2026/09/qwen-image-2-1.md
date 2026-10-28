@@ -5,7 +5,7 @@ kategori: acik-kaynak
 puan: 4
 ozet: "Alibaba'nın Qwen ekibi, görsel üretimi ve düzenlemeyi tek modelde birleştiren 7 milyar parametreli Qwen-Image-2.1'i Hugging Face'te yayınladı. Doğrudan şeffaf arka planlı (RGBA) görsel üretebiliyor, 10 referans görsele kadar alıyor. Ağırlıklar açık ama lisans araştırma amaçlı; ticari kullanım için Alibaba ile ayrı anlaşma gerekiyor. 9 Ekim'de 8 adımda üreten Turbo sürümü eklendi."
 neden_onemli: "Şeffaf arka planlı görseli doğrudan üretmek, arka plan silme adımını ortadan kaldırıyor; logo, çıkartma, kapak öğesi işlerinde bu başlı başına zaman. Üretim ve düzenlemenin aynı 7 milyarlık modelde olması, iki ayrı model indirip bellekte tutma yükünü kaldırıyor. Turbo sürümü 40 yerine 8 adımda çalıştığı için zayıf kartlarda bekleme süresini kısaltıyor."
-yekvisual_notu: "2.1'i henüz kurmadım; Türkçe metin basma ve şeffaf çıkartma testini ComfyUI'de yapıp paylaşacağım. Model kartı VRAM rakamı vermiyor, CPU'ya aktarma seçeneği var; 16 GB kartta kaç saniye sürdüğünü ölçmeden yorum yapmıyorum. Lisansın araştırma amaçlı olduğunu müşteri işinde kullanmadan önce not edin."
+yekvisual_notu: "Mac Studio'da Diffusers ile denedim: şeffaf logo gerçekten tek adımda, temiz kenarlarla çıkıyor; kısa Türkçe yazı da hatasız. Ama 1K görsel 2 dakika sürüyor ve kaplan gibi canlılarda anatomi bozulabiliyor. Logo ve çıkartma için işime yarar. 16 GB kartta deneyemedim. Lisansın araştırma amaçlı olduğunu müşteri işinde kullanmadan önce not edin."
 ucretsiz: true
 acik_kaynak: true
 zorluk: teknik
@@ -15,6 +15,13 @@ etiketler: [qwen, alibaba, açık kaynak, görsel üretim, görsel düzenleme, �
 kart: acik-kaynak-modeller
 kapak: ./qwen-image-2-1/kapak.webp
 kapak_kaynak: "Görsel: Qwen (Alibaba)"
+denemeler:
+  - { tip: gorsel, src: ./qwen-image-2-1/deneme-1.webp, alt: "1024×1024, 40 adım: 2 dk 2 sn. İstem: “Küçük bir atölye kapısında ahşap tabela, üzerinde 'YEK Lab' yazıyor, altında küçük harflerle 'görsel · video · ses', sıcak akşam ışığı, fotoğraf”. Yazı doğru, akşam ışığı var; tabela kapıda değil, duvarın önünde.", kaynak: "YEK Lab denemesi" }
+  - { tip: gorsel, src: ./qwen-image-2-1/deneme-2.webp, alt: "Şeffaf arka planlı logo, 1024×1024: 2 dk 3 sn. Dosyanın arka planı gerçekten şeffaf (piksellerin %95'i), arka plan silme yapılmadı.", kaynak: "YEK Lab denemesi" }
+  - { tip: gorsel, src: ./qwen-image-2-1/deneme-3.webp, alt: "1024×1024: 2 dk 2 sn. Beyaz zeminde seramik kahve fincanı; istemde kahve vardı, fincan boş.", kaynak: "YEK Lab denemesi" }
+  - { tip: gorsel, src: ./qwen-image-2-1/deneme-4.webp, alt: "Düzenleme: önceki fincana “fincanı maviye çevir” dedim, 2 dk 21 sn. Fincanın biçimi ve çiçekleri korundu ama bütün görsel maviye boyandı, zemin pütürlü bir dokuya döndü.", kaynak: "YEK Lab denemesi" }
+  - { tip: gorsel, src: ./qwen-image-2-1/deneme-5.webp, alt: "1024×1024: 2 dk 1 sn. Karda kaplan: kırağı ve tüy dokusu iyi, gövde ve ön bacaklarda anatomi bozuk.", kaynak: "YEK Lab denemesi" }
+  - { tip: gorsel, src: ./qwen-image-2-1/deneme-6.webp, alt: "768×1024: 1 dk 28 sn. Başlık “Hafta Sonu Laboratuvarı” doğru, geri kalan yazıların hepsi anlamsız.", kaynak: "YEK Lab denemesi" }
 kaynaklar:
   - { ad: "Hugging Face: Qwen/Qwen-Image-2.1", url: "https://huggingface.co/Qwen/Qwen-Image-2.1" }
   - { ad: "Hugging Face: Qwen/Qwen-Image-2.1-Turbo", url: "https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo" }
@@ -45,4 +52,10 @@ Ağırlıklar [Hugging Face'te](https://huggingface.co/Qwen/Qwen-Image-2.1). Dif
 
 ## Sınırlar
 
-Model kartı VRAM gereksinimi ve karşılaştırma tablosu yayımlamıyor. ComfyUI'de resmî düğüm olup olmadığını doğrulamadım; önceki Qwen-Image sürümleri destekleniyordu.
+Model kartı VRAM gereksinimi ve karşılaştırma tablosu yayımlamıyor. ComfyUI'nin 0.43.0 sürümünün kaynak kodunda Qwen-Image-2.1 desteği var; ben Diffusers ile denedim.
+
+## Ben denedim
+
+Mac Studio'da (M3 Ultra, 256 GB) Diffusers ile bf16 ve 40 adımda denedim. 1024×1024 görsel yaklaşık 2 dakika sürdü; aynı istemlerle denediğim [FLUX 3 Image Klein](/gundem/2026/10/flux-3-image-klein/) 16 adımda 34 saniyede bitiyor. Üretim sırasında model grafik belleğinde yaklaşık 49 GB yer kaplıyor.
+
+Şeffaflık iddiası doğru: "YEK Lab" logosunu arka plan silmeden, temiz kenarlı bir PNG olarak verdi. Tabeladaki kısa Türkçe yazı da hatasız, ışık FLUX'tan daha doğal. Zayıf tarafları da var: afişte başlık dışındaki her yazı anlamsız, kaplanın anatomisi bozuk. "Fincanı maviye çevir" düzenlemesinde fincan korunsa da bütün görsel maviye boyandı. Turbo sürümünü ve 16 GB'lık kartı denemedim.

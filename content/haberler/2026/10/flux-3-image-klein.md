@@ -5,7 +5,7 @@ kategori: gorsel
 puan: 5
 ozet: "Black Forest Labs, 5,6 milyar parametreli FLUX 3 Image Klein'ın ağırlıklarını açtı. Model 4K üretiyor, 10 referans görsele kadar alıyor ve INT8 sürümü 8 GB VRAM'li ekran kartında çalışıyor. Yıllık geliri 5 milyon doların altındaki kişi ve şirketler ticari olarak ücretsiz kullanabiliyor."
 neden_onemli: "İndirip kendi bilgisayarınızda çalıştırabildiğiniz bir görsel modelinin 4K çıktı, referansla düzenleme ve kutuyla konum kontrolü sunması, abonelik ödemeden ürün görseli ve kapak üretmek isteyenler için somut bir seçenek. ComfyUI ve Diffusers desteği ilk günden geldiği için mevcut iş akışlarına eklemek de kolay."
-yekvisual_notu: "Henüz indirmedim; ComfyUI'de denemek için sıraya aldım. Asıl merak ettiğim şey 8 GB kartta 4K üretimin kaç dakika sürdüğü ve Türkçe karakterli metni görsele ne kadar doğru bastığı; ikisini de ölçmeden yorum yapmıyorum. Lisans eşiği bireysel üretici için rahat, ama metni okuyun."
+yekvisual_notu: "Mac Studio'da ComfyUI ile denedim: 1K görsel yarım dakikada, 4K görsel 10 dakikada çıkıyor. Tabela, logo gibi kısa Türkçe yazıyı hatasız basıyor; takvim gibi yazısı çok bir afişte dağılıyor. Reels kapağı ve ürün görseli için işime yarar. 8 GB kart iddiasını elimde öyle bir kart olmadığı için ölçemedim."
 ucretsiz: true
 acik_kaynak: true
 zorluk: orta
@@ -15,6 +15,13 @@ etiketler: [flux, black forest labs, görsel üretim, açık kaynak, comfyui, 4k
 kart: acik-kaynak-modeller
 kapak: ./flux-3-image-klein/kapak.webp
 kapak_kaynak: "Görsel: Black Forest Labs"
+denemeler:
+  - { tip: gorsel, src: ./flux-3-image-klein/deneme-1.webp, alt: "2048×2048, 16 adım: 3 dk 26 sn. İstem: “Küçük bir atölye kapısında ahşap tabela, üzerinde 'YEK Lab' yazıyor, altında küçük harflerle 'görsel · video · ses', sıcak akşam ışığı, fotoğraf”. Yazı harfi harfine doğru; tabela kapıda değil, duvarda.", kaynak: "YEK Lab denemesi" }
+  - { tip: gorsel, src: ./flux-3-image-klein/deneme-2.webp, alt: "3840×2160 (4K), 16 adım: 10 dk 22 sn. Gün batımında Boğaz, vapur ve martılar. Siluette iki Galata Kulesi var.", kaynak: "YEK Lab denemesi" }
+  - { tip: gorsel, src: ./flux-3-image-klein/deneme-3.webp, alt: "Aynı 4K görselden küçültmeden kırpılmış 1200×1200 piksellik bölüm: kule ve minarelerde ayrıntı net.", kaynak: "YEK Lab denemesi" }
+  - { tip: gorsel, src: ./flux-3-image-klein/deneme-4.webp, alt: "1024×1024: 34 sn. Karda yürüyen kaplan, gün doğumu, bıyıklarda kırağı.", kaynak: "YEK Lab denemesi" }
+  - { tip: gorsel, src: ./flux-3-image-klein/deneme-5.webp, alt: "1024×1024: 34 sn. Beyaz zeminde seramik kahve fincanı, e-ticaret fotoğrafı.", kaynak: "YEK Lab denemesi" }
+  - { tip: gorsel, src: ./flux-3-image-klein/deneme-6.webp, alt: "768×1024: 25 sn. Başlık “Hafta Sonu Laboratuvarı” doğru; istemdeki “Kasım ayı atölye takvimi afişi” ifadesini afişe yazmış, takvimdeki sayılar ve gün adları anlamsız.", kaynak: "YEK Lab denemesi" }
 kaynaklar:
   - { ad: "Black Forest Labs duyurusu", url: "https://bfl.ai/blog/flux-3-image-klein" }
   - { ad: "Hugging Face: flux-3-image-klein", url: "https://huggingface.co/black-forest-labs/flux-3-image-klein" }
@@ -43,4 +50,10 @@ En kolay yol ComfyUI: model ilk günden destekleniyor. Ağırlıklar Hugging Fac
 
 ## Sınırlar
 
-Hugging Face'teki depoya erişim için kısa bir form istendiğine dair haberler var; indirmeden önce lisans metnini okuyun. Görsel içine metin basma kalitesine dair resmi bir iddia yok.
+Hugging Face'teki depo indirmeden önce kısa bir lisans formu ve Hugging Face hesabıyla oturum açmayı istiyor; formu doldurduğumda erişim hemen açıldı. Lisans metnini okuyun. Görsel içine metin basma kalitesine dair resmi bir iddia yok.
+
+## Ben denedim
+
+Mac Studio'da (M3 Ultra, 256 GB) ComfyUI ile bf16 sürümünü resmi iş akışının ayarlarıyla denedim: 16 adım, istem geliştirici kapalı. 1024×1024 görsel 33–34 saniye, 2048×2048 görsel 3 dakika 26 saniye, 3840×2160 görsel 10 dakika 22 saniye sürdü. Mac'te INT8 sürümü çalışmadığı için bu süreler NVIDIA'nın RTX 4070 ölçümünün (1 MP'de 8,9 sn, 2048×2048'de 50,4 sn) yaklaşık dört katı. 2048 ve üstünde ComfyUI son adımda hata verdi; VAE Decode yerine VAE Decode (Tiled) düğümünü kullanınca düzeldi.
+
+Kısa Türkçe yazıda başarılı: tabeladaki "YEK Lab" ve "görsel · video · ses" iki çözünürlükte de hatasız çıktı, "ö" dahil. Yazı çoğalınca dağılıyor: afişte başlık doğru ama takvimdeki sayılar anlamsız. İstemdeki tarifi de afişe yazı olarak bastı. İstanbul görselinde ayrıntı net, ama siluette iki Galata Kulesi var; gerçek bir yeri çizdirirken dikkat edin. 8 GB'lık ekran kartında deneyemedim.

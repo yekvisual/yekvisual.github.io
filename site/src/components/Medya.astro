@@ -66,6 +66,7 @@ const uzak = goreli ? undefined : medya.src;
   .medya img,
   .medya video {
     width: 100%;
+    height: auto; /* width/height özniteliği oranı bozmasın */
     border-radius: var(--radius);
     border: 1px solid var(--line);
   }
