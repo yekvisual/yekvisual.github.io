@@ -32,7 +32,7 @@ class Oge:
     """Bir kaynaktan gelen ham öğe. AI katmanına bu haliyle gider."""
 
     kaynak: str
-    tur: str  # rss | github | huggingface | arxiv | reddit
+    tur: str  # rss | github | huggingface | arxiv | reddit | sayfa
     baslik: str
     url: str
     metin: str = ""

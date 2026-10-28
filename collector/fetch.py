@@ -236,7 +236,52 @@ def reddit(k: dict, since: datetime) -> list[Oge]:
     return ogeler
 
 
-ADAPTORLER = {"rss": rss, "github": github, "huggingface": huggingface, "arxiv": arxiv, "reddit": reddit}
+def sayfa(k: dict, since: datetime) -> list[Oge]:
+    """RSS vermeyen şirket haber sayfaları: sayfadaki yazı bağlantılarını okur.
+
+    Tarih bilgisi olmadığından her bağlantı yeni sayılır; tekrar ayıklama seen.json ile yapılır
+    (ilk çalıştırmada var olanlar da aday olur, puanlama eleği eskiyi düşürür).
+    k: ad, url, kategori, desen (bağlantı yolu için regex), dom (true: başsız Chrome).
+    """
+    import html as _html
+    import re as _re
+    from urllib.parse import urljoin, urlparse
+
+    try:
+        if k.get("dom"):
+            from .kapak import _dom
+            metin = _dom(k["url"]) or ""
+        else:
+            with _istemci() as c:
+                r = c.get(k["url"])
+                r.raise_for_status()
+                metin = r.text
+    except Exception as e:  # noqa: BLE001
+        son_hatalar[k["ad"]] = str(e)[:120]
+        return []
+    if not metin:
+        son_hatalar[k["ad"]] = "sayfa boş"
+        return []
+    desen = _re.compile(k.get("desen", r"/(blog|news|research|changelog|updates?)/[^/?#]+"), _re.I)
+    alan = urlparse(k["url"]).netloc.removeprefix("www.")
+    gorulen: set[str] = set()
+    ogeler: list[Oge] = []
+    for m in _re.finditer(r'<a\b[^>]*href=["\']([^"\'#]+)["\'][^>]*>(.*?)</a>', metin, _re.S | _re.I):
+        url = urljoin(k["url"], m.group(1))
+        u = urlparse(url)
+        if u.netloc.removeprefix("www.") != alan or not desen.search(u.path) or url.rstrip("/") == k["url"].rstrip("/"):
+            continue
+        baslik = _re.sub(r"\s+", " ", _html.unescape(_re.sub(r"<[^>]+>", " ", m.group(2)))).strip()
+        if len(baslik) < 12 or url in gorulen:
+            continue
+        gorulen.add(url)
+        ogeler.append(Oge(kaynak=k["ad"], tur="sayfa", baslik=baslik[:200], url=url, metin="", tarih="", kategori=k["kategori"]))
+        if len(ogeler) >= k.get("limit", 12):
+            break
+    return ogeler
+
+
+ADAPTORLER = {"rss": rss, "github": github, "huggingface": huggingface, "arxiv": arxiv, "reddit": reddit, "sayfa": sayfa}
 
 
 def hepsini_topla(kaynaklar: dict, since: datetime) -> tuple[list[Oge], dict[str, int]]:

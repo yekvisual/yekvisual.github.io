@@ -2,13 +2,31 @@
 # url ya da tür'e özel alanlar, varsayılan kategori ve isteğe bağlı anahtar kelime filtresi.
 # `python -m collector --check` her kaynağın çalışıp çalışmadığını listeler.
 #
-# RSS vermeyen kaynaklar (sonraki faz, sayfa izleme): Anthropic, Meta AI, Black Forest Labs,
-# Runway, Luma, Ideogram, Adobe, Krea, Suno, Midjourney, Stability AI.
+# RSS vermeyen şirketler `sayfa` türüyle izlenir (haber sayfasındaki yazı bağlantıları).
+# Okunamayanlar (dışarıdan erişimi engelliyor): Ideogram, Adobe — The Verge/TechCrunch üzerinden gelir.
 #
 # kategori değerleri site/src/lib/taxonomy.ts ile aynı:
 #   gorsel, video, ses, 3d, araclar, acik-kaynak, otomasyon, arastirma
 
 rss:
+  # Haber siteleri ve bültenler (28 Ekim 2026, kullanıcı onayıyla)
+  - ad: The Rundown AI
+    url: https://www.therundown.ai/feed
+    kategori: araclar
+  - ad: TLDR AI
+    url: https://tldr.tech/api/rss/ai
+    kategori: araclar
+  - ad: The Verge AI
+    url: https://www.theverge.com/rss/ai-artificial-intelligence/index.xml
+    kategori: araclar
+    anahtar: [image, video, music, audio, voice, model, gemini, veo, sora, midjourney, runway, kling, flux, adobe, firefly, claude, open source, open-source]
+  - ad: TechCrunch AI
+    url: https://techcrunch.com/category/artificial-intelligence/feed/
+    kategori: araclar
+    anahtar: [image, video, music, audio, voice, model, launch, releases, open source, open-source, generative]
+  - ad: Midjourney
+    url: https://updates.midjourney.com/rss/
+    kategori: gorsel
   - ad: OpenAI
     url: https://openai.com/news/rss.xml
     kategori: araclar
@@ -106,3 +124,44 @@ reddit:
     sub: ClaudeAI
     kategori: otomasyon
     limit: 8
+
+# Şirket haber sayfaları (RSS yok). dom: true → başsız Chrome ile okunur.
+sayfa:
+  - ad: Anthropic
+    url: https://www.anthropic.com/news
+    kategori: araclar
+    desen: /news/[a-z0-9-]{8,}
+  - ad: Meta AI
+    url: https://ai.meta.com/blog/
+    kategori: arastirma
+    dom: true
+    desen: /blog/[a-z0-9-]{8,}
+  - ad: Black Forest Labs
+    url: https://bfl.ai/blog
+    kategori: gorsel
+    desen: /blog/[a-z0-9-]{6,}
+  - ad: Runway
+    url: https://runwayml.com/news
+    kategori: video
+    desen: /(news|research)/[a-z0-9-]{8,}
+  - ad: Luma
+    url: https://lumalabs.ai/news
+    kategori: video
+    dom: true
+    desen: /(news|blog)/[a-z0-9-]{8,}
+  - ad: Kling AI
+    url: https://klingai.com/global/
+    kategori: video
+    dom: true
+    desen: /(blog|news|release|notice)
+  - ad: Suno
+    url: https://suno.com/blog
+    kategori: ses
+    dom: true
+    desen: /blog/[a-z0-9-]{6,}
+  - ad: Udio
+    url: https://www.udio.com/blog
+    kategori: ses
+    dom: true
+    desen: /blog/[a-z0-9-]{6,}
+
