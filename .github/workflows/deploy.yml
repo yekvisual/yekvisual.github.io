@@ -37,6 +37,7 @@ jobs:
         env:
           # Repo değişkenleri: SITE_URL=https://yeklab.com.tr, SITE_CNAME=yeklab.com.tr (DNS hazır olunca)
           SITE_URL: ${{ vars.SITE_URL }}
+          GITHUB_TOKEN: ${{ github.token }}
       - name: Özel alan adı
         if: vars.SITE_CNAME != ''
         run: echo "${{ vars.SITE_CNAME }}" > site/dist/CNAME

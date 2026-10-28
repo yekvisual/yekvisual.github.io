@@ -4,7 +4,10 @@
 import { mkdir, writeFile, readFile } from 'node:fs/promises';
 import path from 'node:path';
 
-const KAYNAK = process.env.INSTAGRAM_JSON ?? 'https://raw.githubusercontent.com/yekvisual/reels-bot/main/instagram/son.json';
+// Ham dosya sunucusu birkaç dakika önbellekler; GitHub API (önbelleksiz) ile en son commit'in dosyası okunur.
+const API = 'https://api.github.com/repos/yekvisual/reels-bot/contents/instagram';
+const KAYNAK = process.env.INSTAGRAM_JSON ?? `${API}/son.json`;
+const BASLIK = { Accept: 'application/vnd.github.raw', 'User-Agent': 'yeklab-site', ...(process.env.GITHUB_TOKEN ? { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` } : {}) };
 const KOK = process.cwd();
 const hedefJson = path.join(KOK, 'src/data/instagram.json');
 const hedefDizin = path.join(KOK, 'public/instagram');
@@ -12,7 +15,7 @@ const hedefDizin = path.join(KOK, 'public/instagram');
 async function calistir() {
   let liste;
   try {
-    const r = await fetch(KAYNAK, { signal: AbortSignal.timeout(15000) });
+    const r = await fetch(KAYNAK, { headers: BASLIK, signal: AbortSignal.timeout(15000) });
     if (!r.ok) throw new Error(`HTTP ${r.status}`);
     liste = await r.json();
   } catch (e) {
@@ -26,8 +29,8 @@ async function calistir() {
     if (!o.id || !o.permalink) continue;
     const dosya = `${o.id}.jpg`;
     try {
-      const gorselUrl = o.yerel ?? `${KAYNAK.replace(/son\.json$/, '')}${dosya}`;
-      const r = await fetch(gorselUrl, { signal: AbortSignal.timeout(20000) });
+      const gorselUrl = o.yerel ?? `${API}/${dosya}`;
+      const r = await fetch(gorselUrl, { headers: BASLIK, signal: AbortSignal.timeout(20000) });
       if (!r.ok) throw new Error(`HTTP ${r.status}`);
       await writeFile(path.join(hedefDizin, dosya), Buffer.from(await r.arrayBuffer()));
     } catch (e) {

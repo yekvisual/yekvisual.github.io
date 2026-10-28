@@ -25,7 +25,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          yeni=$(curl -fsSL https://raw.githubusercontent.com/yekvisual/reels-bot/main/instagram/son.json | sha256sum | cut -c1-16)
+          yeni=$(gh api repos/yekvisual/reels-bot/contents/instagram/son.json --jq .sha | cut -c1-16)
           eski=$(cat data/instagram-sha 2>/dev/null || echo yok)
           echo "eski=$eski yeni=$yeni"
           [ "$yeni" = "$eski" ] && { echo "Değişiklik yok."; exit 0; }
