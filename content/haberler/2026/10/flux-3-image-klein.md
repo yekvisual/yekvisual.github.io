@@ -29,7 +29,7 @@ Black Forest Labs, 15 Ekim'de FLUX 3 Image Klein'ın ağırlıklarını yayınla
 - **Üretim ve düzenleme tek modelde.** Metinden görsel, mevcut görseli değiştirme ve 10'a kadar referans görselle yönlendirme aynı modelde.
 - **Sınırlayıcı kutu (bounding box).** Bir öğenin nereye yerleşeceğini ya da düzenlemenin hangi alanla sınırlı kalacağını kutu çizerek belirliyorsunuz.
 
-Bellek ihtiyacı sürüme göre değişiyor: BF16 11,2 GB, FP8 5,6 GB; INT8 sürümü 8 GB VRAM'li GeForce RTX kartlarda çalışıyor. Şirket, modelin açık kaynaklı rakipler arasında metinden görsel, çoklu referans ve düzenlemede ilk sırada olduğunu söylüyor; bu iddia kendi ölçümlerine dayanıyor.
+Bellek ihtiyacı sürüme göre değişiyor: BF16 11,2 GB, FP8 5,6 GB; INT8 sürümü 8 GB VRAM'li GeForce RTX kartlarda çalışıyor. Hız tarafında NVIDIA'nın ComfyUI ölçümü (damıtılmış model, 16 adım, INT8, 1 MP görsel): RTX 5090'da 4,1 sn, RTX 5070'te 7,7 sn, RTX 4070'te 8,9 sn. 2048×2048'de RTX 4070 için süre 50,4 sn. Şirket, modelin açık kaynaklı rakipler arasında metinden görsel, çoklu referans ve düzenlemede ilk sırada olduğunu söylüyor; bu iddia kendi ölçümlerine dayanıyor.
 
 ## Kimin işine yarar?
 
