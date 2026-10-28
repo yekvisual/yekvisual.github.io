@@ -1,11 +1,11 @@
 ad: Video
 sira: 2
-olcu: "LMArena ve Artificial Analysis kör oylama verileri ile YEK Lab Türkçe yeterlilik testi"
+olcu: "LMArena ve Artificial Analysis kör oylama verileri ile YEK Lab testi"
 kaynak: "LMArena Video Arena, Artificial Analysis"
 guncelleme: 2026-10-26
 ornek: true
 aciklama: "18 video modelini aynı 12 istemle çalıştırıyoruz; üstüne kör oylamaları ekliyoruz."
-yontem: "Puanın yarısı kör oylama (LMArena, Artificial Analysis), yarısı 12 istemlik Türkçe testimiz: ürün çekimi, konuşan karakter, metin okunurluğu, hareket tutarlılığı. Hız ve fiyat ayrı sütunda; puana karışmaz."
+yontem: "Puanın yarısı kör oylama (LMArena, Artificial Analysis), yarısı 12 istemlik kendi testimiz: ürün çekimi, konuşan karakter, metin okunurluğu, hareket tutarlılığı. Hız ve fiyat ayrı sütunda; puana karışmaz."
 degisenler:
   - { metin: "Hailuo 3 ikinciliğe yaklaştı", yon: yukari }
   - { metin: "Wan 3.0 açık kaynaklarda birinci", yon: yukari }

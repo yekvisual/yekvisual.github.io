@@ -1,9 +1,9 @@
 ad: Müzik
 sira: 5
-olcu: "YEK Lab Türkçe sözlü parça testi (5 üzerinden)"
+olcu: "YEK Lab sözlü parça testi (5 üzerinden)"
 guncelleme: 2026-10-26
 ornek: true
-aciklama: "Aynı Türkçe sözleri ve aynı tarz tarifini her modele veriyoruz; söz anlaşılırlığı, melodi ve miks puanlanıyor."
+aciklama: "Aynı sözleri ve aynı tarz tarifini her modele veriyoruz; söz anlaşılırlığı, melodi ve miks puanlanıyor."
 yontem: "Üç dinleyici, kör. Söz anlaşılırlığı, melodi, miks kalitesi ve istenen tarza uyum; ortalama 5 üzerinden."
 modeller:
   - { ad: "Suno v5", firma: Suno, puan: 4.7, degisim: 0, erisim: sinirli, turkce: evet, fiyat: "günde 10 parça ücretsiz", not: "Türkçe sözleri en temiz söyleyen; Reels müziği için ilk durak." }

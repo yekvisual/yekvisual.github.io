@@ -1,11 +1,11 @@
 ad: Görsel
 sira: 1
-olcu: "Artificial Analysis Image Arena verileri ile YEK Lab Türkçe yazı testi"
+olcu: "Artificial Analysis Image Arena verileri ile YEK Lab yazı testi"
 kaynak: "Artificial Analysis, LMArena"
 guncelleme: 2026-10-26
 ornek: true
 aciklama: "Görsel modellerini aynı 10 istemle deniyoruz: ürün fotoğrafı, Türkçe yazı, aynı karakterin 5 sahnesi, fotoğraf düzenleme."
-yontem: "Puanın yarısı kör oylama (Artificial Analysis Image Arena), yarısı Türkçe testimiz: görsel içinde Türkçe yazı doğruluğu, karakter tutarlılığı, düzenleme komutlarına sadakat."
+yontem: "Puanın yarısı kör oylama (Artificial Analysis Image Arena), yarısı kendi testimiz: görsel içinde Türkçe yazı doğruluğu, karakter tutarlılığı, düzenleme komutlarına sadakat."
 modeller:
   - { ad: "Nano Banana 2.1", firma: Google, puan: 1284, degisim: 0, erisim: sinirli, turkce: evet, hiz: "6 sn", fiyat: "$0,04", not: "Gemini uygulamasında ücretsiz; Türkçe yazıyı en doğru yazan." }
   - { ad: "GPT Image 2", firma: OpenAI, puan: 1231, degisim: 0, erisim: ucretli, turkce: evet, hiz: "14 sn", fiyat: "$0,07", not: "Düzenleme komutlarında en sadık; biraz yavaş." }

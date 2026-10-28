@@ -6,7 +6,7 @@ Elle de düzenleyebilirsin; kısa, somut kurallar yaz.
 
 ## Temel
 
-- Dil: Türkçe. Sade, bilgilendirici, abartısız. "Devrim", "çığır açan", "oyunun kurallarını değiştiren" gibi kalıplar yasak.
+- Dil: Türkçe yazılır ama "Türkçe" bir satış noktası olarak vurgulanmaz ("Türkçe kaynak", "Türkçesi burada" gibi cümleler yok). Bir aracın Türkçe desteği yalnızca okur için pratik bir bilgi olarak, tabloda ya da tek cümlede verilir. Sade, bilgilendirici, abartısız. "Devrim", "çığır açan", "oyunun kurallarını değiştiren" gibi kalıplar yasak.
 - Okur: Sıfırdan başlayanlar, içerik üreticileri, prodüksiyon ekipleri ve kurumsal karar vericiler. Teknik terim geçiyorsa bir cümleyle açıkla, geçmesi gerekmiyorsa kullanma.
 - Okura "siz" diye hitap edilir ("deneyin", "yapabiliyorsunuz"); "sen" dili kullanılmaz. Başlıklar mastar/eylem biçiminde ("...kurguyu otomatize etmek") ya da okurun kazancını söyleyen bir fayda cümlesi olur.
 - Marka adı "YEK Lab" (alan adı yeklab.com.tr). "yekvisual" yalnızca Instagram hesabı için yazılır (@yekvisual); başka yerde marka adı olarak kullanılmaz.

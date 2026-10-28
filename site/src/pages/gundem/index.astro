@@ -7,7 +7,7 @@ import { KATEGORILER } from '../../lib/taxonomy';
 const haberler = (await getCollection('haberler')).sort((a, b) => b.data.tarih.valueOf() - a.data.tarih.valueOf());
 ---
 
-<Base title="Gündem" description="Yapay zekâ görsel, video, ses ve otomasyon dünyasından yeni modeller, araçlar ve gelişmeler. Türkçe, güncel.">
+<Base title="Gündem" description="Yapay zekâ görsel, video, ses ve otomasyon dünyasından yeni modeller, araçlar ve gelişmeler; sade ve güncel.">
   <section class="container section sayfa-bas">
     <p class="kicker kicker-accent reveal">Gündem · {haberler.length} haber</p>
     <h1 class="display reveal" style="--d:60ms">Yeni çıkanlar,<br /><em>sade anlatım.</em></h1>

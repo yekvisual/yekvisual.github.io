@@ -6,11 +6,11 @@ import { KATEGORILER, ZORLUKLAR, kategoriAdi, zorlukAdi } from '../../lib/taxono
 const araclar = (await getCollection('araclar')).sort((a, b) => a.data.ad.localeCompare(b.data.ad, 'tr'));
 ---
 
-<Base title="Araç Dizini" description="Yapay zekâ ile görsel, video, ses ve otomasyon araçları: hangi iş için, ücretsiz mi, Türkçe var mı; her biri için YEK Lab incelemesi.">
+<Base title="Araç Dizini" description="Yapay zekâ ile görsel, video, ses ve otomasyon araçları: hangi iş için, ücretsiz mi; her biri için YEK Lab incelemesi.">
   <section class="container section sayfa-bas">
     <p class="kicker kicker-accent reveal">Araç dizini · {araclar.length} araç</p>
     <h1 class="reveal" style="--d:60ms">Hangi iş için hangi araç?</h1>
-    <p class="lead giris reveal" style="--d:120ms">Her araç için kullanım alanı, fiyat, Türkçe desteği ve YEK Lab incelemesi. Resmi siteye bağlantı inceleme sayfasının sonunda.</p>
+    <p class="lead giris reveal" style="--d:120ms">Her araç için kullanım alanı, fiyat ve YEK Lab incelemesi. Resmi siteye bağlantı inceleme sayfasının sonunda.</p>
   </section>
 
   <section class="container">

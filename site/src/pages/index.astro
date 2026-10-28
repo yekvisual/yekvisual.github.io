@@ -34,7 +34,7 @@ type Reel = { gorsel: ImageMetadata | string; etiket: string; href: string };
 const yedekReels: Reel[] = [
   { gorsel: reelKling, etiket: 'Kling 4.0 çıktı', href: SITE.instagram },
   { gorsel: reelKimi, etiket: 'Kimi K3.1 evde çalışır mı?', href: SITE.instagram },
-  { gorsel: reelDiyalog, etiket: '30 sn tek çekim, Türkçe diyalog', href: SITE.instagram },
+  { gorsel: reelDiyalog, etiket: '30 sn tek çekim, konuşan karakter', href: SITE.instagram },
 ];
 const reels: Reel[] = instagram.length >= 3 ? instagram.slice(0, 3).map((p) => ({ gorsel: p.gorsel, etiket: p.baslik, href: p.permalink })) : yedekReels;
 ---
