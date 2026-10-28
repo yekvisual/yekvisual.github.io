@@ -38,17 +38,77 @@ TAKIPLER = [
             "https://labs.google/projectgenie",
         ],
     },
+    {
+        "ad": "kimi-k3-1-agirliklar",
+        "haber": "content/haberler/2026/10/kimi-k3-1-pro.md",
+        "baslik": "Kimi K3.1 ağırlıkları Hugging Face'te: boyut ve evde çalışma iddiasını doğrula",
+        "anahtar": r"K3",
+        "tetik": r"K3\.?1",
+        "her_degisiklik": True,
+        "sayfalar": [
+            "https://huggingface.co/api/models?author=moonshotai&search=K3",
+            "https://huggingface.co/moonshotai",
+        ],
+    },
+    {
+        "ad": "eleven-v4-plan",
+        "haber": "content/haberler/2026/09/eleven-v4.md",
+        "baslik": "Eleven v4 planlarında değişiklik: ücretsiz planda var mı?",
+        "anahtar": r"v4|free|ücretsiz",
+        "tetik": r"v4",
+        "sayfalar": ["https://elevenlabs.io/pricing", "https://elevenlabs.io/docs/overview/models"],
+    },
+    {
+        "ad": "kling-4-fiyat",
+        "haber": "content/haberler/2026/10/kling-4-0.md",
+        "baslik": "Kling 4.0 fiyat/kredi değişti: haber ve model tablosunu güncelle",
+        "anahtar": r"credit|kredi|\$|month|aylık|free|4\.0",
+        "tetik": r"credit|kredi|\$|free|4\.0",
+        "sayfalar": ["dom:https://klingai.com/global/membership/membership-plan"],
+    },
+    {
+        "ad": "nano-banana-gemini",
+        "haber": "content/haberler/2026/10/nano-banana-2-1.md",
+        "baslik": "Nano Banana erişimi/sınırı değişti (Gemini)",
+        "anahtar": r"nano banana",
+        "tetik": r"nano banana",
+        "sayfalar": ["https://gemini.google/overview/image-generation/", "https://gemini.google/subscriptions/"],
+    },
+    {
+        "ad": "davinci-mcp-ucretsiz",
+        "haber": "content/haberler/2026/09/davinci-resolve-21-1.md",
+        "baslik": "DaVinci Resolve: yapay zekâ asistanı/MCP bağlantısı ücretsiz sürüme gelmiş olabilir",
+        "anahtar": r"MCP|assistant|asistan|Claude|Studio",
+        "tetik": r"MCP|assistant|Claude",
+        "sayfalar": ["https://www.blackmagicdesign.com/products/davinciresolve/whatsnew", "https://www.blackmagicdesign.com/products/davinciresolve"],
+    },
 ]
 
 
 def cumleler(url: str, anahtar: str) -> list[str]:
-    try:
-        r = httpx.get(url, headers={"User-Agent": UA, "Accept-Language": "tr,en;q=0.8"}, timeout=30, follow_redirects=True)
-        r.raise_for_status()
-    except Exception as e:  # noqa: BLE001
-        print(f"  alınamadı {url}: {e}", file=sys.stderr)
-        return []
-    t = re.sub(r"<(script|style)[^>]*>.*?</\1>", " ", r.text, flags=re.S | re.I)
+    dom = url.startswith("dom:")
+    url = url.removeprefix("dom:")
+    if dom:
+        from .kapak import _dom
+        metin = _dom(url) or ""
+        if not metin:
+            print(f"  DOM alınamadı {url}", file=sys.stderr)
+            return []
+    else:
+        try:
+            r = httpx.get(url, headers={"User-Agent": UA, "Accept-Language": "tr,en;q=0.8"}, timeout=30, follow_redirects=True)
+            r.raise_for_status()
+            metin = r.text
+        except Exception as e:  # noqa: BLE001
+            print(f"  alınamadı {url}: {e}", file=sys.stderr)
+            return []
+    if metin.lstrip().startswith("["):
+        # JSON liste (ör. Hugging Face API): her öğenin kimliği bir "cümle"
+        try:
+            return sorted({str(o.get("id") or o.get("modelId")) for o in json.loads(metin) if re.search(anahtar, str(o.get("id") or o.get("modelId")), re.I)})
+        except Exception:  # noqa: BLE001
+            pass
+    t = re.sub(r"<(script|style)[^>]*>.*?</\1>", " ", metin, flags=re.S | re.I)
     t = html.unescape(re.sub(r"<[^>]+>", " ", t))
     t = re.sub(r"\s+", " ", t)
     parca = re.split(r"(?<=[.!?])\s+", t)
@@ -80,7 +140,9 @@ def main(argv: list[str]) -> int:
                 continue  # ilk görüş: yalnızca kaydet
             eklenen = [x for x in c if x not in eski[url]]
             cikan = [x for x in eski[url] if x not in c]
-            if any(re.search(t["tetik"], x, re.I) for x in eklenen) or any(re.search(r"yalnızca google ai ultra|only .*ultra|coming soon|yakında", x, re.I) for x in cikan):
+            if not (eklenen or cikan):
+                continue
+            if t.get("her_degisiklik") or any(re.search(t["tetik"], x, re.I) for x in eklenen) or any(re.search(t.get("kalkan", r"yalnızca google ai ultra|only .*ultra|coming soon|yakında"), x, re.I) for x in cikan):
                 rapor.append(f"### {url}\n\n**Yeni:**\n" + "\n".join(f"- {x}" for x in eklenen) + "\n\n**Kalkan:**\n" + "\n".join(f"- {x}" for x in cikan))
         if rapor:
             govde = (f"`{t['haber']}` haberini güncelleyip ana sayfada öne çıkarma zamanı olabilir.\n\n" + "\n\n".join(rapor))

@@ -62,5 +62,119 @@
    "Project Genie is available to Google AI Ultra subscribers (18+).",
    "Rollerball The blank space is your canvas, as your blue orb leaves a trail of paint everywhere you go, testing Genie's memory of your actions, reflections in the environment, and the physics of water."
   ]
+ },
+ "eleven-v4-plan": {
+  "https://elevenlabs.io/pricing": [
+   "After that, your account will be downgraded to the Free plan and any unused paid credits will expire.",
+   "Annual billing works out to two months free — you pay for 10 months (annual price = monthly price × 10).",
+   "Calculate your costs based on your usage needs Monthly billing Monthly billing Yearly billing Startup Grants Program Build intelligent, real-time conversational AI agents into your new product or startup for free with an ElevenLabs Grant.",
+   "ElevenLabs Pricing for Creators & Businesses of All Sizes &)]:tw-overflow-x-hidden\"> 30,000 credits for $1 Start with 30,000 credits for only $1 Ends in 0d 00h 00m 00s Subscribe for $1 30,000 credits for $1 Start with 30,000 credits for only $1 Ends September 30 Subscribe for $1 strong]:tw-font-norm",
+   "If you are not satisfied with the output, a limited number of free regenerations may be available as long as the content and certain settings do not change.",
+   "Monthly price and included credits per plan: Free $0 (10,000 credits); Starter $6 (30,000 credits); Creator $22 (121,000 credits, $11 for the first month); Pro $99 (600,000 credits); Scale $299 (1,800,000 credits, 3 seats); Business $990 (6,000,000 credits, 10 seats); Enterprise is custom.",
+   "Rollover does not apply to the Free plan.",
+   "The limit depends on whether you are on the Free tier or a paid subscription.",
+   "Whether a regeneration is free is indicated before generating.",
+   "Your subscription will remain active until the end of your current billing cycle, after which it will not renew and your account will be downgraded to the Free plan."
+  ],
+  "https://elevenlabs.io/docs/overview/models": [
+   "\",(0,s.jsx)(n,{children:(0,s.jsx)(t,{href:\"/docs/overview/models#eleven-v4\",target:\"_blank\",children:\"Learn more\"})})]})}function l(e={}){let{wrapper:o}={...d(),...e.components};return o?(0,s.jsx)(o,{...e,children:(0,s.jsx)(f,{...e})}):f(e)}function x(e,o){throw new Error(\"Expected \"+(o?\"component\":",
+   "Agents Platform Use eleven_v4_turbo , eleven_flash_v2_5 , eleven_flash_v2 or eleven_multilingual_v2 Perfect for real-time conversational applications.",
+   "Eleven v4 Turbo Eleven v4 Turbo is our state of the art model for real-time speech synthesis, delivering high quality audio, expressiveness, and control over how voices are performed.",
+   "Eleven v4 Turbo is available via the Text to Dialogue websocket .",
+   "Eleven v4 Turbo supports high-fidelity voice cloning and delivers results in median inference latency of ~100ms latency.",
+   "Eleven v4 is available via the Text to Dialogue API .",
+   "Eleven v4 supports high-fidelity voice cloning with reliable speaker preservation across long text generations.",
+   "Model ID Character limit Approximate audio duration eleven_v4 10,000 ~10 minutes eleven_v3 5,000 ~5 minutes eleven_flash_v2_5 40,000 ~40 minutes eleven_flash_v2 30,000 ~30 minutes eleven_multilingual_v2 10,000 ~10 minutes eleven_multilingual_v1 10,000 ~10 minutes eleven_english_sts_v2 10,000 ~10 min",
+   "Plan Concurrency Limit (Multilingual v2) Concurrency Limit (Flash) STT Concurrency Limit Realtime STT Concurrency limit Music Concurrency limit Priority level Free 2 4 8 6 0 3 Starter 3 6 12 9 2 4 Creator 5 10 20 15 2 5 Pro 10 20 40 30 2 5 Scale 15 30 60 45 5 5 Business 15 30 60 45 5 5 Enterprise El",
+   "Plan WebSocket Sessions Free 14 Starter 21 Creator 35 Pro 70 Scale 105 Business 105 Enterprise Elevated If you open a connection while all of your workspace’s dialogue sessions are in use, the new connection is rejected with a too_many_concurrent_requests error.",
+   "Requirements Quality Use eleven_v4 or eleven_multilingual_v2 Best for high-fidelity audio output with rich emotional expression Low-latency Use eleven_v4_turbo Optimized for real-time applications (~100ms latency) Use case Content creation Use eleven_v4 or eleven_multilingual_v2 Ideal for profession",
+   "See the Eleven v4 language list .",
+   "To free sessions, close connections you no longer need — a connection also closes automatically after 20 seconds of inactivity unless you send keep_alive messages.",
+   "Use eleven_v4_turbo for the most expressive delivery."
+  ]
+ },
+ "kling-4-fiyat": {
+  "dom:https://klingai.com/global/membership/membership-plan": [
+   "Create Now Kling 4.0 Audio-Visual Performance for Realistic Results Stable Dynamic Motions and an immersive audio-visual experience, taking video generation to professional-grade production.",
+   "Freely arrange and edit nodes at any time, while preserving your creative flow and context throughout, so your ideas never lose momentum.",
+   "Partnerships All-New Kling 4.0 Try Now Creative Studio Image Generation Video Generation Motion Control Agent More Tools API API Platform Pricing Documentation Resources Release History Kling AI User Guide Blog Features AI Video Generator Image to Video Motion Control Video 3.0 About Us Affiliate Pr"
+  ]
+ },
+ "nano-banana-gemini": {
+  "https://gemini.google/overview/image-generation/": [
+   "1 2 3 4 5 İhtiyaçlarınıza en uygun modeli seçin Nano Banana 2 Görüntü üretme ve düzenleme modeli Ücretsiz Karakter Tutarlılığı Metin oluşturma Fotoğrafları birleştirme Hassas düzenleme 2K çözünürlük Dünya bilgisi Nano Banana 2.1 En iyi görüntü üretme ve düzenleme modelimiz Google AI planı ile Karakt",
+   "Gelişmiş kalite, akıl yürütme ve görsel tasarıma sahip en üst düzey görüntü modelimiz Nano Banana 2.1'e erişmek için bir Google AI planına yükseltin.",
+   "Gemini Live Görüntü Üretme Video Üretimi Müzik Üretimi Deep Research Personal Intelligence Canvas Productivity Abonelikler Yenilikler Masaüstü için Gemini Gemini Drops Son Haberler Gemini'ı deneyin Nano Banana 2.1 çıktı.",
+   "Google AI Pro, Plus ve Ultra kullanıcıları, en iyi görüntü modelimiz olan Nano Banana 2.1'e erişebilir ve üç nokta menüsünü seçip ardından \"Pro ile yeniden yap\" seçeneğini tıklayarak Nano Banana Pro ile görüntüleri yeniden üretebilirler.",
+   "Nano Banana 2.1'i deneyin Nano Banana ile her ayrıntıya hayat verin.",
+   "Nano Banana 2: Gemini'ın yapay zeka görüntü üretme aracı ve fotoğraf düzenleyicisi Öğrenciler: Plus planı ile Nano Banana'ya bir yıl boyunca ücretsiz olarak daha kapsamlı erişimden yararlanın.",
+   "Nano Banana ile en çılgın fikirlerinizi istediğiniz hız ve kalitede hayata geçirin.",
+   "Nano Banana'ya erişmek için araçlar menüsünden \"🍌Görüntü oluştur\"u seçin."
+  ],
+  "https://gemini.google/subscriptions/": [
+   "AI Modu'nda Gemini 4 Argon kullanılabilen ülkelerin tam listesini ve AI Modu'nda Nano Banana Pro'nun kullanılabildiği ülkelerin tam listesini inceleyin.",
+   "Gemini 4 Argon, Nano Banana Pro ve AI Modu'nda Deep Search belirli ülkelerde kullanılabilir.",
+   "Google Arama 4 Arama’da Nano Banana’ya daha kapsamlı erişim elde edin.",
+   "Google Arama 4 Gemini 4 Argon, Nano Banana, ajan tabanlı yetenekler ve daha birçok özelliğe daha yüksek düzeyde erişim.",
+   "Google Arama 4 Gemini 4 Argon, Nano Banana, ajan tabanlı yetenekler ve daha birçok özelliğe en yüksek düzeyde erişim.",
+   "Google Hesabı ile ayda ₺ 0 TRY Başlayın Gemini uygulaması Kişisel, proaktif ve güçlü yapay zeka asistanınız Flash-Lite modelimize erişim Görüntü üretme ve düzenleme Deep Research Gemini Live Canvas Gem'ler Google Flow 3 Nano Banana Pro’ya sınırlı erişim dahil olmak üzere, sinematik sahneler ve hikay"
+  ]
+ },
+ "davinci-mcp-ucretsiz": {
+  "https://www.blackmagicdesign.com/products/davinciresolve/whatsnew": [
+   "$1,525 Find Reseller Fairlight Studio Console Unpopulated Chassis Fairlight Console Chassis 2 Bay Empty 2 bay Fairlight studio console chassis that can be populated with various faders, channel controls, edit and LCD monitors.",
+   "$10,795 Find Reseller Fairlight Console Chassis 4 Bay Empty 4 bay Fairlight studio console chassis that can be populated with various faders, channel controls, edit and LCD monitors.",
+   "$13,985 Find Reseller Fairlight Console Chassis 5 Bay Empty 5 bay Fairlight studio console chassis that can be populated with various faders, channel controls, edit and LCD monitors.",
+   "$14,625 Find Reseller Accessories For Custom Furniture Fairlight HDMI Monitor Interface Use alternative HDMI or SDI televisions and monitors when building a Fairlight studio console.",
+   "$225 Find Reseller Fairlight Console LCD Monitor Blank Blank panel to fill in the LCD monitor area of the Fairlight studio console when you're not using the standard Fairlight LCD monitor.",
+   "$24,745 Find Reseller Fairlight Console Bundle 3 Bay Complete Fairlight studio console with 2 channel faders, 2 channel controls, 1 audio editor, 3 LCD monitors and 3 bay chassis.",
+   "$289 Find Reseller Fairlight Console Channel Control Blank Blank panel to fill in the channel control area of the Fairlight studio console.",
+   "$33,745 Find Reseller Fairlight Console Bundle 4 Bay Complete Fairlight studio console with 3 channel faders, 3 channel controls, 1 audio editor, 4 LCD monitors and 4 bay chassis.",
+   "$44,995 Find Reseller Fairlight Console Bundle 5 Bay Complete Fairlight studio console with 4 channel faders, 4 channel controls, 1 audio editor, 5 LCD monitors and 5 bay chassis.",
+   "$445 Find Reseller Fairlight Studio Console Individual Modules Fairlight Console Channel Fader Features 12 motorized faders, rotary control knobs illuminated buttons for pan, solo, mute and call, plus bank select buttons.",
+   "$475 Find Reseller Fairlight Console Chassis Leg Kit 8 Deg Fairlight studio console legs at 8º angle for when you require a slightly angled working surface.",
+   "$479 Find Reseller Fairlight Console Channel Fader Blank Blank panel to fill in the fader control area of the Fairlight studio console.",
+   "$55,125 Find Reseller Fairlight Console Chassis Leg Kit 0 Deg Fairlight studio console legs at 0º angle for when you require a flat working surface.",
+   "$559 Find Reseller Fairlight Console Channel Rack Kit Allows mounting standard 19 inch rack mount equipment in the channel control area of the Fairlight studio console.",
+   "$9,675 Find Reseller Fairlight Console Chassis 3 Bay Empty 3 bay Fairlight studio console chassis that can be populated with various faders, channel controls, edit and LCD monitors.",
+   "Free Free Download Now Save 20% DaVinci Resolve Studio 21 The most powerful DaVinci Resolve adds DaVinci Neural Engine for automatic AI region tracking, stereoscopic tools, more Resolve FX filters, more Fairlight FX audio plugins and advanced HDR grading.",
+   "From $24,745 Find Reseller --> Find Reseller Fairlight Studio Console Bundles Fairlight Console Bundle 2 Bay Complete Fairlight studio console with 1 channel fader, 1 channel control, 1 audio editor, 2 LCD monitors and 2 bay chassis.",
+   "Required for all Fairlight Studio Consoles.",
+   "download icon Davinci Resolve Free Download Now cart icon Davinci Resolve Studio Buy Online Now $236 download icon Davinci Resolve Studio Download Latest Update Watch What's New in 21.1 AI Tools Search Content with AI IntelliSearch Instantly search for people and content with AI IntelliSearch!"
+  ],
+  "https://www.blackmagicdesign.com/products/davinciresolve": [
+   "$1,525 Find Reseller Fairlight Studio Console Unpopulated Chassis Fairlight Console Chassis 2 Bay Empty 2 bay Fairlight studio console chassis that can be populated with various faders, channel controls, edit and LCD monitors.",
+   "$10,795 Find Reseller Fairlight Console Chassis 4 Bay Empty 4 bay Fairlight studio console chassis that can be populated with various faders, channel controls, edit and LCD monitors.",
+   "$13,985 Find Reseller Fairlight Console Chassis 5 Bay Empty 5 bay Fairlight studio console chassis that can be populated with various faders, channel controls, edit and LCD monitors.",
+   "$14,625 Find Reseller Accessories For Custom Furniture Fairlight HDMI Monitor Interface Use alternative HDMI or SDI televisions and monitors when building a Fairlight studio console.",
+   "$225 Find Reseller Fairlight Console LCD Monitor Blank Blank panel to fill in the LCD monitor area of the Fairlight studio console when you're not using the standard Fairlight LCD monitor.",
+   "$24,745 Find Reseller Fairlight Console Bundle 3 Bay Complete Fairlight studio console with 2 channel faders, 2 channel controls, 1 audio editor, 3 LCD monitors and 3 bay chassis.",
+   "$289 Find Reseller Fairlight Console Channel Control Blank Blank panel to fill in the channel control area of the Fairlight studio console.",
+   "$33,745 Find Reseller Fairlight Console Bundle 4 Bay Complete Fairlight studio console with 3 channel faders, 3 channel controls, 1 audio editor, 4 LCD monitors and 4 bay chassis.",
+   "$44,995 Find Reseller Fairlight Console Bundle 5 Bay Complete Fairlight studio console with 4 channel faders, 4 channel controls, 1 audio editor, 5 LCD monitors and 5 bay chassis.",
+   "$445 Find Reseller Fairlight Studio Console Individual Modules Fairlight Console Channel Fader Features 12 motorized faders, rotary control knobs illuminated buttons for pan, solo, mute and call, plus bank select buttons.",
+   "$475 Find Reseller Fairlight Console Chassis Leg Kit 8 Deg Fairlight studio console legs at 8º angle for when you require a slightly angled working surface.",
+   "$479 Find Reseller Fairlight Console Channel Fader Blank Blank panel to fill in the fader control area of the Fairlight studio console.",
+   "$55,125 Find Reseller Fairlight Console Chassis Leg Kit 0 Deg Fairlight studio console legs at 0º angle for when you require a flat working surface.",
+   "$559 Find Reseller Fairlight Console Channel Rack Kit Allows mounting standard 19 inch rack mount equipment in the channel control area of the Fairlight studio console.",
+   "$9,675 Find Reseller Fairlight Console Chassis 3 Bay Empty 3 bay Fairlight studio console chassis that can be populated with various faders, channel controls, edit and LCD monitors.",
+   "DaVinci Resolve Studio features over 100 GPU and CPU accelerated Resolve FX such as blurs, light effects, noise, image restoration, lens flare, stylize and more!",
+   "Free Download Now DaVinci Resolve Studio Includes everything in the free version plus the DaVinci AI Neural Engine, dozens of additional Resolve FX, temporal and AI spatial noise reduction, text based editing, magic mask, film grain, optical blur and more.",
+   "Free Free Download Now Save 20% DaVinci Resolve Studio 21 The most powerful DaVinci Resolve adds DaVinci Neural Engine for automatic AI region tracking, stereoscopic tools, more Resolve FX filters, more Fairlight FX audio plugins and advanced HDR grading.",
+   "From $24,745 Find Reseller --> Find Reseller Fairlight Studio Console Bundles Fairlight Console Bundle 2 Bay Complete Fairlight studio console with 1 channel fader, 1 channel control, 1 audio editor, 2 LCD monitors and 2 bay chassis.",
+   "It’s like having your own post production studio in a single app!",
+   "Learn More --> Update Notifications Clips and Bin Locking Multi User Timelines Share Cloud Folders Blackmagic Cloud Multi User Collaboration DaVinci Resolve is the only solution that lets you grow and build your own multi user post production studio!",
+   "Once you learn the software and start using it for more work, you can purchase DaVinci Resolve Studio which adds tons of additional effects, 3D and more.",
+   "Required for all Fairlight Studio Consoles.",
+   "The Fairlight Desktop Console is a complete mixing console that’s ideal for use in home studios, small suites or on the road.",
+   "You can also install Fairlight Studio Console components into your own desk or purchase a pre-configured multi bay Fairlight console for dedicated audio suites and scoring stages!",
+   "download icon Davinci Resolve Free Download Now cart icon Davinci Resolve Studio Buy Online Now $236 download icon Davinci Resolve Studio Download Latest Update Hollywood's #1 Post Solution High end professionals working on feature films and television shows use DaVinci Resolve more than any other s"
+  ]
+ },
+ "kimi-k3-1-agirliklar": {
+  "https://huggingface.co/api/models?author=moonshotai&search=K3": [
+   "moonshotai/Kimi-K3"
+  ],
+  "https://huggingface.co/moonshotai": []
  }
 }
