@@ -5,7 +5,7 @@ kategori: araclar
 puan: 5
 ozet: "Eylül 2025'ten bu yana yapay zekâ ile üretimde öne çıkan 10 değişiklik: 30 saniyelik tek seferde video, konuşarak video düzenleme, Sora'nın kapanışı, okunur yazılı görseller, eskizden görsel, evde 4K, 10 saniyelik kayıttan ses klonu, lisanslı müzik ve komut alan programlar. Sonunda 25 aracın güncel erişim listesi var."
 neden_onemli: "Bir yıl önce sesli video 8 saniyeydi, görsellerdeki yazılar çoğunlukla bozuktu, yapay zekâ ayrı sitelerde duruyordu. Bugün bu işlerin bir kısmı ücretsiz planlarda, bir kısmı her gün açtığınız programların içinde. Hangisinin ücretsiz, hangisinin Türkiye'de açık olduğunu bilmek deneme sürecini kısaltıyor."
-yekvisual_notu: "Bu listedeki araçların çoğunu henüz kendim denemedim; buradaki bilgiler şirketlerin kendi duyuru ve yardım sayfalarından. Sırayla deneyip sonuçları burada paylaşacağım. Ücretsiz planlar sık değişiyor; denemeden önce aracın kendi sayfasına bakın."
+yekvisual_notu: "Bu listedeki araçların çoğunu denedim, bir kısmını her gün kullanıyorum. Her şey çok sık değişiyor; uzun süredir uzak kalanlar takipte kalabilsin diye bu tür toplu güncellemeleri düzenli olarak paylaşacağım. Ücretsiz planlar da sık değiştiği için denemeden önce aracın kendi sayfasına bakın."
 ucretsiz: null
 acik_kaynak: null
 zorluk: yeni
