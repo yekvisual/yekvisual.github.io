@@ -12,6 +12,8 @@ zorluk: orta
 sirket: Google DeepMind
 model: Genie 4
 etiketler: [genie, deepmind, dünya modeli, simülasyon, previz, google]
+kapak: ./genie-4/kapak.webp
+kapak_kaynak: "Görsel: Google DeepMind, Genie 4 tanıtım videosu"
 kaynaklar:
   - { ad: "Google DeepMind duyurusu", url: "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/" }
 ---
