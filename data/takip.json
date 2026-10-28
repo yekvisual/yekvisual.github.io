@@ -1,0 +1,65 @@
+{
+ "genie-4-erisim": {
+  "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/": [
+   "Acknowledgements Genie 4 was made possible by core contributions from Hang Qi, Diego Rivas, Aleksander Hołyński, Inbar Mosseri, Jack Parker-Holder, Shlomi Fruchter, Tejas Kulkarni, James Assiene, Philip Ball, Jakob Bauer, Eddie Cao, Lucy Chai, Harris Chan, Kleopatra Chatziprimou, Hao Chen, Yoni Chou",
+   "All accompanying sounds featured above are produced directly by Genie 4.",
+   "As part of exploring this capability, we have also been experimenting with Gemini 4 Argon and Genie 4 to bring our frontier research together with Gemini Robotics .",
+   "Because Genie 4 can be steered in real-time with text captions using Gemini, this now unlocks the path of adapting the simulation as it progresses towards the completion of that task.",
+   "Before launching this preview, we evaluated Genie 4 through internal rigorous safety evaluations to prevent the generation of harmful or malicious content.",
+   "Bringing Genie and Gemini models closer together is an early step in this direction.",
+   "Building world models responsibly Genie 4 marks a new area of frontier research that merges real-time generation and photorealism, introducing a new range of capabilities and dimensions that we want to roll out and explore in a responsible way.",
+   "Built on an advanced physical understanding of the world, Genie 4 simulates real-world physics scenarios, such as aerodynamics, collisions, and more.",
+   "Gemini 4 Argon and Genie 4 work together to simulate Apptronik's Apollo humanoid playing a game of checkers, breaking the task down into real-time steps.",
+   "Gemini works behind the scenes to map the structure and plan the narrative timeline, while Genie generates the immediate physical reality—rendering how the world looks, sounds, and responds, pixel by pixel.",
+   "Genie 4 advances four key capabilities The following are recordings of real-time interactions from Genie 4, where users use standard keyboard controls for navigation and camera control, and text prompts to steer the scene as it evolves.",
+   "Genie 4 advances our ability to create safe, infinitely variable simulations that can help with everything from developing training environments for robots and agents to unlocking the creation of new interactive experiences.",
+   "Genie 4 also required close collaborations across partner teams, we thank all our cross-functional partners that made this launch possible: Dina Bashkirova, Emil Bergner, Greta Borisko, Irina Blok, Melissa Byun, Gabe Clapper, Viral Carpenter, Michael Y.",
+   "Genie 4 delivers enhanced photorealism, fluid movement, and native audio.",
+   "Genie 4 includes strict safety guardrails that are consistent with our safety policies across other models.",
+   "Genie 4 introduces interactive dialogue that adapts on the fly.",
+   "Genie 4 is natively multimodal, enabling audio-like music, ambient noises, and interactive dialogue to be simultaneously generated with the world.",
+   "In the example below, Argon breaks down a user-instructed task into steps for Genie to render.",
+   "Interactive experience concept design : Game developers and creative technologists are testing Genie 4 to go from an initial idea to an explorable prototype in seconds, testing visual styles, material aesthetics, and interactive mechanics through natural language prompts before writing a single line",
+   "Join the waitlist for Genie 4 in Project Genie here .",
+   "Learnings from trusted testers While Genie 4 is a major research milestone, it remains an early, experimental model.",
+   "Modeling how the world sounds Genie 4 is our first real-time world model to generate audio natively.",
+   "Next steps for Genie 4 Genie 4 has been released as a research preview to trusted testers, and is coming soon to Google AI Ultra subscribers in Project Genie and early access partners in the Gemini API and Google AI Studio.",
+   "Pushing the frontier in realism for physics and human action Genie 4 introduces a new standard of realism to real-time interactive simulation.",
+   "Related posts Genie 4 Learn more Genie 3: A new frontier for world models August 2025 Models Learn more How to create effective prompts with Genie Learn more Follow us Sign up for updates on our latest innovations I accept Google's Terms and Conditions and acknowledge that my information will be use",
+   "Shaping world simulation in real-time With Genie 4, you can use natural language to modify a simulation in real-time — like changing the weather, moving the camera, or introducing a new person or object — and Gemini will contextually adapt your prompt to match the surrounding scene.",
+   "Sign up Build AI responsibly to benefit humanity Models Gemini Gemini Omni Nano Banana Gemini Audio Gemma Genie Lyria Veo Research Gemini Robotics Breakthroughs Evals Publications Frontier safety Responsibility Science AlphaFold AlphaGenome WeatherNext AlphaEarth AlphaEvolve Products Gemini app Goog",
+   "Simulating complex events with Gemini models Bringing Gemini and Genie 4 together adds a new layer of reasoning to world simulation, allowing us to model complex, multi-step events and test how AI systems navigate different environments before bringing them to the real world.",
+   "Simulation : Aside from our robotics research, enterprise partners across industries are evaluating Genie 4 as a tool for rapid \"zero-to-one\" scenario generation, and identifying gaps to further improve Genie to best fulfill that simulation need.",
+   "Testers highlighted how the leap in photorealism, native audio, and real-time steering allows ideas and concepts to be turned into realistic simulations, unlocking new abilities across disciplines: Creative direction : Creatives and technologists are testing Genie 4 as a rapid \"draft mode\" for pre-v",
+   "The Genie 4 model incorporates and builds on capabilities from the Gemini family: Gemini Omni anchors the simulations in real-world appearance and behavior, while other Gemini models provide the complex reasoning needed to help maintain a simulation’s coherence and continuity.",
+   "The most dramatic leap is how Genie 4 simulates people, creating characters that move naturally, respond organically to their environments, and can be interactively steered in real-time.",
+   "These steps are interleaved as text captions to Genie 4 as the simulation is rendering.",
+   "This capability becomes a path for simulating a breadth of scenarios in imagined worlds, using Gemini 4 Argon and Genie 4.",
+   "To achieve this in real-time, Gemini 3.8 Flash serves as a guiding agent in the loop: as Genie 4 generates a world in real-time, Gemini continuously observes the scene, breaks down goals into a sequence of steps, and reviews incoming frames to track the progress and verify that each step succeeded.",
+   "To maintain transparency, all video and audio generated by Genie 4 will include SynthID, our imperceptible digital watermarking technology that helps identify AI-generated content across visual and audio modalities.",
+   "Today, we are announcing Genie 4, our new world model, which unlocks unprecedented realism and improves real-time interactive simulation.",
+   "Turn on audio to hear Genie 4 worlds.",
+   "Understanding current limitations Genie 4 remains an early, evolving area of research.",
+   "We are sharing Genie 4 as a preview to learn alongside our community and safely advance the frontier of interactive simulation.",
+   "We have started rolling Genie 4 out as a research preview for trusted testers — gathering feedback before we release it to consumers and developers, starting with Google AI Ultra subscribers in Project Genie and early access partners of the Gemini API and Google AI Studio.",
+   "With this foundation, you can set an event in motion, and Genie 4 simulates what happens next: how the world responds, how it sounds, and how the people in it move, react, and speak."
+  ],
+  "https://one.google.com/about/google-ai-plans/": [
+   "5 Project Genie 7 , 140'tan fazla ülkede kullanılabilir.",
+   "Project Genie ile gerçek zamanlı olarak etkileşimli dünyalar oluşturun ve keşfedin.",
+   "Project Genie, 140+ ülkede kullanılabilir."
+  ],
+  "https://gemini.google/subscriptions/": [
+   "Project Genie, 140 üzeri ülkede kullanılabilir."
+  ],
+  "https://labs.google/projectgenie": [
+   "As you move, Genie creates the world around you in real-time.",
+   "Explore Google Al Ultra or Pro Learn more about Genie Already have access?",
+   "Go to Project Genie Other teams and product areas Google AI Google Cloud Google Research Google DeepMind About Google Google Products Privacy Terms Help Cookies controls",
+   "Project Genie Overview Capabilities Gallery Access Help center Send app feedback Report legal issue Interactive worlds.",
+   "Project Genie is an early research prototype that lets you create and explore infinitely diverse worlds.",
+   "Project Genie is available to Google AI Ultra subscribers (18+).",
+   "Rollerball The blank space is your canvas, as your blue orb leaves a trail of paint everywhere you go, testing Genie's memory of your actions, reflections in the environment, and the physics of water."
+  ]
+ }
+}

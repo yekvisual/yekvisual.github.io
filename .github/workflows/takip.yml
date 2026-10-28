@@ -1,0 +1,35 @@
+name: Haber takibi
+
+# Her sabah takip edilen konuların resmi sayfalarını kontrol eder (collector/takip.py).
+# Erişim/sürüm değişince issue açar; GitHub bunu e-postayla bildirir.
+on:
+  schedule:
+    - cron: "0 6 * * *" # 09:00 Türkiye
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  takip:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install httpx
+      - name: Kontrol
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh label create takip --color c2540a --description "Takip edilen haber güncellemesi" 2>/dev/null || true
+          python -m collector.takip
+      - name: Durumu kaydet
+        run: |
+          git config user.name "yekvisual-bot"
+          git config user.email "yekvisual-bot@users.noreply.github.com"
+          git add data/takip.json
+          git diff --cached --quiet || { git commit -m "Takip durumu [skip ci]"; git push; }
