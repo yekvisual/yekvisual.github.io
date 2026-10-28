@@ -1,0 +1,38 @@
+name: Instagram bölümünü güncel tut
+
+# reels-bot'un instagram/son.json dosyasını saatte bir kontrol eder; değiştiyse siteyi yeniden kurar
+# (site build öncesi scripts/instagram.mjs son paylaşımları ve küçük görselleri çeker).
+on:
+  schedule:
+    - cron: "40 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: instagram-yenile
+  cancel-in-progress: true
+
+jobs:
+  kontrol:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Değişti mi?
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          yeni=$(curl -fsSL https://raw.githubusercontent.com/yekvisual/reels-bot/main/instagram/son.json | sha256sum | cut -c1-16)
+          eski=$(cat data/instagram-sha 2>/dev/null || echo yok)
+          echo "eski=$eski yeni=$yeni"
+          [ "$yeni" = "$eski" ] && { echo "Değişiklik yok."; exit 0; }
+          echo "$yeni" > data/instagram-sha
+          git config user.name "yekvisual-bot"
+          git config user.email "yekvisual-bot@users.noreply.github.com"
+          git add data/instagram-sha
+          git commit -m "Instagram listesi değişti [skip ci]"
+          git push
+          gh workflow run deploy.yml --ref main
