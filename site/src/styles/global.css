@@ -469,6 +469,8 @@ a:hover .kapak img,
   color: inherit;
 }
 .prose img {
+  height: auto;
+  margin: 1.4rem 0 0.4rem;
   border-radius: var(--radius);
 }
 .prose strong {
