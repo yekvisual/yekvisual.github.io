@@ -14,6 +14,8 @@ model: Genie 4
 etiketler: [genie, deepmind, dünya modeli, simülasyon, previz, google]
 kapak: ./genie-4/kapak.webp
 kapak_kaynak: "Görsel: Google DeepMind, Genie 4 tanıtım videosu"
+medya:
+  - { tip: video, src: "./genie-4/genie3-genie4-karsilastirma.mp4", alt: "Genie 3 ile Genie 4 aynı istemle yan yana", kaynak: "Google DeepMind" }
 kaynaklar:
   - { ad: "Google DeepMind duyurusu", url: "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/" }
 ---

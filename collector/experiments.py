@@ -124,15 +124,21 @@ def isle_klasor(klasor: Path, client: anthropic.Anthropic) -> None:
         if src.suffix.lower() in GORSEL:
             out = medya_dir / f"deneme-{i}.webp"
             _gorsel_sikistir(src, out)
-            girdiler.append({"tip": "gorsel", "src": f"./{hedef.stem}/{out.name}", "alt": f"Deneme {i}", "kaynak": "yekvisual"})
+            girdiler.append({"tip": "gorsel", "src": f"./{hedef.stem}/{out.name}", "alt": f"Deneme {i}", "kaynak": "YEK Lab"})
         else:
             out = medya_dir / f"deneme-{i}.mp4"
             try:
                 _video_sikistir(src, out)
-                girdiler.append({"tip": "video", "src": f"./{hedef.stem}/{out.name}", "alt": f"Deneme {i}", "kaynak": "yekvisual"})
+                girdiler.append({"tip": "video", "src": f"./{hedef.stem}/{out.name}", "alt": f"Deneme {i}", "kaynak": "YEK Lab"})
             except Exception as e:  # noqa: BLE001
                 print(f"  video sıkıştırılamadı {src.name}: {e}", file=sys.stderr)
     fm["denemeler"] = girdiler
+    # Yeni deneme yazısının kapağı: ilk deneme görseli (görselsiz haber yayınlanmaz)
+    if not fm.get("kapak"):
+        ilk = next((g for g in girdiler if g["tip"] == "gorsel"), None)
+        if ilk:
+            fm["kapak"] = ilk["src"]
+            fm["kapak_kaynak"] = "Görsel: YEK Lab denemesi"
     fm["yekvisual_notu"] = fm.get("yekvisual_notu") or es.metin
     if "## Ben denedim" not in govde:
         govde = govde.rstrip() + f"\n\n## Ben denedim\n\n{es.metin}\n" + (f"\n**Prompt:** {prompt.strip()}\n" if prompt.strip() else "")

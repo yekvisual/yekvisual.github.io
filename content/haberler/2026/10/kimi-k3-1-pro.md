@@ -13,6 +13,8 @@ sirket: Moonshot AI
 model: Kimi K3.1 Pro
 etiketler: [kimi, moonshot, açık kaynak, dil modeli, api]
 kart: acik-kaynak-modeller
+kapak: ./kimi-k3-1-pro/kapak.webp
+kapak_kaynak: "Görsel: Moonshot AI"
 kaynaklar:
   - ad: Moonshot AI duyurusu
     url: https://moonshot.ai

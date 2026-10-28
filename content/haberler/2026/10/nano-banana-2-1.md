@@ -12,6 +12,8 @@ zorluk: yeni
 sirket: Google
 model: Nano Banana 2.1
 etiketler: [nano banana, google, gemini, görsel düzenleme, karakter tutarlılığı, 4k]
+kapak: ./nano-banana-2-1/kapak.webp
+kapak_kaynak: "Görsel: Google"
 kaynaklar:
   - { ad: "Google DeepMind model kartı", url: "https://deepmind.google/models/model-cards/nano-banana-2-1/" }
   - { ad: "Gemini API değişiklik günlüğü", url: "https://ai.google.dev/gemini-api/docs/changelog" }

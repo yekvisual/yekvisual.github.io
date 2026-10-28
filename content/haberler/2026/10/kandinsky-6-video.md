@@ -13,6 +13,8 @@ sirket: Kandinsky Lab
 model: Kandinsky 6.0 Video
 etiketler: [kandinsky, açık kaynak, video üretim, ses, dudak eşleme, comfyui]
 kart: acik-kaynak-modeller
+kapak: ./kandinsky-6-video/kapak.webp
+kapak_kaynak: "Görsel: Kandinsky Lab, makale kapağı"
 kaynaklar:
   - { ad: "arXiv: Kandinsky 6.0 Video makalesi", url: "https://arxiv.org/abs/2610.05608" }
   - { ad: "GitHub: kandinskylab/kandinsky-6", url: "https://github.com/kandinskylab/kandinsky-6" }

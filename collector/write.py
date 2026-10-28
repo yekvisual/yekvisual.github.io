@@ -122,12 +122,27 @@ def uygula(sonuclar: list[tuple[Eleme, Haber | None]], gruplar: list[list[Oge]],
 
         kapak = kapak_kaynak = None
         if not dry_run:
+            kapak_yolu = hedef.parent / hedef.stem / "kapak.webp"
             gorsel_url = o.gorsel or (fetch.og_gorsel(o.url) if o.tur in ("rss", "github", "huggingface") else None)
-            if gorsel_url and _kapak_indir(gorsel_url, hedef.parent / hedef.stem / "kapak.webp"):
+            if gorsel_url and _kapak_indir(gorsel_url, kapak_yolu):
                 kapak = f"./{hedef.stem}/kapak.webp"
                 kapak_kaynak = f"Görsel: {h.sirket or o.kaynak}"
+            else:
+                # Betikle yüklenen sayfalar için başsız Chrome + video karesi
+                from . import kapak as kapak_bulucu
+                if kapak_bulucu.bul([k.url for k in grup if k.url], kapak_yolu):
+                    kapak = f"./{hedef.stem}/kapak.webp"
+                    kapak_kaynak = f"Görsel: {h.sirket or o.kaynak}"
             _yaz(hedef, _frontmatter(h, grup, e, kapak, kapak_kaynak), h.govde)
 
+        # Kural: görselsiz haber yayınlanmaz. Kapak yoksa puanı ne olursa olsun onaya düşer;
+        # onay PR'ında kapak eklenmeden birleştirilirse site derlemesi başarısız olur.
+        if not dry_run and not kapak:
+            print(f"    ! kapak bulunamadı, onaya düştü: {hedef.name}", file=sys.stderr)
+            onay.append(hedef)
+            for k in grup:
+                dedupe.isaretle(seen, k, "onay", {"puan": e.puan, "dosya": str(hedef.relative_to(KOK)), "kapak": False})
+            continue
         (yayin if e.puan >= YAYIN_ESIGI else onay).append(hedef)
         for k in grup:
             dedupe.isaretle(seen, k, "yayin" if e.puan >= YAYIN_ESIGI else "onay", {"puan": e.puan, "dosya": str(hedef.relative_to(KOK))})

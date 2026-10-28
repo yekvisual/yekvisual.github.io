@@ -13,6 +13,8 @@ sirket: Blackmagic Design
 model: DaVinci Resolve 21.1
 etiketler: [davinci resolve, blackmagic, kurgu, claude, mcp, otomasyon, render]
 kart: ai-ile-video-edit
+kapak: ./davinci-resolve-21-1/kapak.webp
+kapak_kaynak: "Görsel: Blackmagic Design"
 kaynaklar:
   - { ad: "Blackmagic Design basın bülteni", url: "https://www.blackmagicdesign.com/media/partial/release/20260908-03" }
   - { ad: "DaVinci Resolve: Yenilikler", url: "https://www.blackmagicdesign.com/products/davinciresolve/whatsnew" }

@@ -12,6 +12,8 @@ zorluk: yeni
 sirket: Google
 model: Gemini Omni Flash
 etiketler: [gemini, omni flash, veo, video üretim, video düzenleme, google]
+kapak: ./gemini-omni-flash/kapak.webp
+kapak_kaynak: "Görsel: Google"
 kaynaklar:
   - { ad: "Gemini API: Video üretimi belgeleri", url: "https://ai.google.dev/gemini-api/docs/video" }
   - { ad: "Gemini uygulaması: Video üretimi", url: "https://gemini.google/overview/video-generation/" }

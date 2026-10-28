@@ -13,6 +13,8 @@ sirket: Alibaba (Qwen)
 model: Qwen-Image-2.1
 etiketler: [qwen, alibaba, açık kaynak, görsel üretim, görsel düzenleme, şeffaf png, comfyui]
 kart: acik-kaynak-modeller
+kapak: ./qwen-image-2-1/kapak.webp
+kapak_kaynak: "Görsel: Qwen (Alibaba)"
 kaynaklar:
   - { ad: "Hugging Face: Qwen/Qwen-Image-2.1", url: "https://huggingface.co/Qwen/Qwen-Image-2.1" }
   - { ad: "Hugging Face: Qwen/Qwen-Image-2.1-Turbo", url: "https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo" }

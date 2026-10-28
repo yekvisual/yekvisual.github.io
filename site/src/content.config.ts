@@ -36,8 +36,9 @@ const haberler = defineCollection({
       model: z.string().optional(),
       etiketler: z.array(z.string()).default([]),
       kart: z.string().optional(),
-      kapak: image().optional(),
-      kapak_kaynak: z.string().optional(),
+      // Kapak zorunlu: görselsiz haber derlenmez, yayınlanamaz.
+      kapak: image(),
+      kapak_kaynak: z.string(),
       medya: z.array(medya).default([]),
       kaynaklar: z.array(kaynak).default([]),
       denemeler: z.array(medya).default([]),
