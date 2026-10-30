@@ -1,0 +1,78 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../lib/site';
+---
+
+<Base title="Gizlilik" description="YEK Lab sitesi ve Instagram otomatik yanıtları hangi verileri işler, nasıl silinir.">
+  <section class="container section yazi">
+    <p class="kicker kicker-accent reveal">Gizlilik</p>
+    <h1 class="reveal" style="--d:60ms">Gizlilik ve veri silme</h1>
+    <div class="prose reveal rule" style="--d:120ms">
+      <p>
+        Bu sayfa, yeklab.com.tr'nin ve {SITE.instagramKullanici} Instagram hesabının otomatik yanıtlarının hangi
+        verileri işlediğini anlatır. Veri sorumlusu: {SITE.kurucu} (YEK Lab). Son güncelleme: 30 Ekim 2026.
+      </p>
+
+      <h2>Site</h2>
+      <p>
+        Sitede üyelik, reklam ya da çerez yoktur. Ziyaret sayısını GoatCounter ile sayıyoruz; çerez kullanmaz,
+        sizi tanımlayan bir bilgi tutmaz. Yazılardaki YouTube videoları YouTube'un çerezsiz (youtube-nocookie.com)
+        adresinden gösterilir; oynattığınızda YouTube'un kendi kuralları geçerlidir.
+      </p>
+
+      <h2>Instagram otomatik yanıtları</h2>
+      <p>
+        Bir paylaşımın altına açıklamada yazan kelimeyi yorum olarak yazarsanız ya da aynı kelimeyi bize mesaj
+        olarak gönderirseniz, istediğiniz bağlantılar size Instagram'ın resmi mesajlaşma arayüzü üzerinden otomatik
+        olarak gönderilir. Bunun için Instagram'dan şunlar okunur:
+      </p>
+      <ul>
+        <li>yorumunuzun ya da mesajınızın metni (kelimeyi tanımak için),</li>
+        <li>Instagram kullanıcı kimliğiniz (yanıtı size gönderebilmek için),</li>
+        <li>hesabı takip edip etmediğiniz (bağlantılar takipçilere gönderiliyor).</li>
+      </ul>
+      <p>
+        Bu bilgiler yalnızca o anda yanıtı hazırlamak için kullanılır; kopyalanmaz, saklanmaz, kimseyle paylaşılmaz,
+        reklam ya da profil çıkarmak için kullanılmaz. Aynı yoruma iki kez yanıt gitmesin diye yalnızca yorumun
+        kimliğinden üretilmiş geri çevrilemez bir özet (hash) ve paylaşımların yorum sayısı tutulur. Yazışmanın
+        kendisi Instagram'da, Meta'nın <a href="https://privacycenter.instagram.com/policy" target="_blank" rel="noopener">gizlilik ilkesine</a>{" "}
+        göre durur.
+      </p>
+      <p>Otomatik yanıt istemiyorsanız kelimeyi yorum ya da mesaj olarak yazmamanız yeterli.</p>
+
+      <h2 id="veri-silme">Verilerinizin silinmesi</h2>
+      <p>Sizinle ilgili tutulan tek kayıt, yukarıdaki yorum özetidir. Silinmesini istiyorsanız:</p>
+      <ol>
+        <li>
+          Instagram'da <a href={SITE.instagram} target="_blank" rel="noopener">{SITE.instagramKullanici}</a> hesabına
+          "verilerimi sil" yazın.
+        </li>
+        <li>Kayıt en geç 7 gün içinde silinir ve size mesajla bildirilir.</li>
+      </ol>
+      <p>
+        Yorumunuzu ya da yazışmayı Instagram'dan kendiniz de silebilirsiniz. Uygulamanın hesabınıza eriştiği bir izin
+        yoktur; yanıtlar yalnızca {SITE.instagramKullanici} hesabı adına gönderilir.
+      </p>
+
+      <h2>İletişim</h2>
+      <p>
+        Sorularınız için Instagram'dan yazabilirsiniz:{" "}
+        <a href={SITE.instagram} target="_blank" rel="noopener">{SITE.instagramKullanici}</a>.
+      </p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .yazi {
+    max-width: 760px;
+  }
+  .yazi h1 {
+    text-transform: none;
+    font-size: clamp(2.4rem, 5.5vw, 4.4rem);
+  }
+  .prose {
+    margin: 1.5rem 0 2rem;
+    padding-top: 1.5rem;
+  }
+</style>
