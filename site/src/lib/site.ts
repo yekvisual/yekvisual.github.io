@@ -8,6 +8,8 @@ export const SITE = {
   kurucu: 'Yunus Emre Kaplan',
   instagram: 'https://instagram.com/yekvisual',
   instagramKullanici: '@yekvisual',
+  x: 'https://x.com/yekvisual',
+  xKullanici: '@yekvisual',
   github: 'https://github.com/yekvisual/yekvisual.github.io',
   // Buttondown bülten kullanıcı adı (buttondown.com/<ad>). Form bu adrese gönderir;
   // haftalık gönderim için NEWSLETTER_API_KEY secret'ı gerekir.

@@ -46,6 +46,7 @@ const yil = new Date().getFullYear();
     <meta property="og:locale" content="tr_TR" />
     {tarih && <meta property="article:published_time" content={tarih.toISOString()} />}
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content={SITE.xKullanici} />
     <meta name="theme-color" content="#fbfaf8" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -75,6 +76,9 @@ const yil = new Date().getFullYear();
           <a href={SITE.instagram} class="ig" target="_blank" rel="noopener" aria-label="Instagram">
             <svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor"></circle></svg>
           </a>
+          <a href={SITE.x} class="ig" target="_blank" rel="noopener" aria-label="X">
+            <svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.75 3h3.07l-6.7 7.66L22 21h-6.17l-4.83-6.32L5.47 21H2.4l7.17-8.2L2 3h6.33l4.37 5.77L17.75 3zm-1.08 16.2h1.7L7.42 4.72H5.6l11.07 14.48z"></path></svg>
+          </a>
           <a href="/haftalik/#bulten" class="btn btn-ink bulten-btn">Bülten</a>
           <button class="menu" id="menu" aria-expanded="false" aria-controls="nav" aria-label="Menü">
             <span></span><span></span>
@@ -95,6 +99,7 @@ const yil = new Date().getFullYear();
           <a href="/hakkinda/">Hakkında</a>
           <a href="/rss.xml">RSS</a>
           <a href={SITE.instagram} target="_blank" rel="noopener">Instagram</a>
+          <a href={SITE.x} target="_blank" rel="noopener">X</a>
         </div>
         <div class="footer-not">Bağımsız, her gün. © {yil} YEK Lab · {SITE.kurucu}</div>
       </div>

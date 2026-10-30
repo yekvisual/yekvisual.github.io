@@ -110,12 +110,13 @@ const yeni = Date.now() - d.tarih.valueOf() < 3 * 86400_000;
         <div class="kutu">
           <p class="kutu-baslik">Paylaş</p>
           <div class="paylas">
-            <a class="btn" href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(d.baslik)}&url=${encodeURIComponent(paylasUrl)}`} target="_blank" rel="noopener">X</a>
+            <a class="btn" href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(d.baslik)}&url=${encodeURIComponent(paylasUrl)}&via=yekvisual`} target="_blank" rel="noopener">X</a>
             <a class="btn" href={`https://wa.me/?text=${encodeURIComponent(d.baslik + ' ' + paylasUrl)}`} target="_blank" rel="noopener">WhatsApp</a>
             <button class="btn" id="kopyala" type="button">Kopyala</button>
           </div>
         </div>
         <a href={SITE.instagram} class="btn btn-ink ig" target="_blank" rel="noopener">Instagram'da takip et</a>
+        <a href={SITE.x} class="btn ig" target="_blank" rel="noopener">X'te takip et</a>
       </aside>
     </div>
 
