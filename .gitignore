@@ -16,3 +16,6 @@ __pycache__/
 
 # İşletim sistemi
 .DS_Store
+
+# Derlemede Instagram API'den indirilir
+site/public/instagram/
