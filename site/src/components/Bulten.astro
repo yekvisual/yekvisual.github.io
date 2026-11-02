@@ -1,5 +1,5 @@
 ---
-// Haftalık özet kutusu: tek ana eylem, e-posta kaydı (Buttondown).
+// Haftalık özet kutusu: Buttondown kullanıcı adı varsa e-posta kaydı, yoksa Instagram/X takip.
 import { SITE } from '../lib/site';
 const formUrl = SITE.bultenFormUrl;
 ---
@@ -9,7 +9,7 @@ const formUrl = SITE.bultenFormUrl;
   <div class="bulten-ic">
     <p class="kicker kicker-acik">Haftalık özet · her Cumartesi 14:00</p>
     <h2>Cumartesi öğleden sonra: haftanın tamamı, 5 dakikada.</h2>
-    <p class="aciklama">Pazartesiden cumartesiye ne çıktı, hangisini denedim, gelecek hafta ne var.</p>
+    <p class="aciklama">Pazartesiden cumartesiye ne çıktı, hangisini denedim, gelecek hafta ne var.{!formUrl && ' Özet bu sitede yayımlanır; duyurusu Instagram ve X\'te.'}</p>
     {formUrl ? (
       <form action={formUrl} method="post" target="_blank" class="form">
         <label class="sr-only" for="bulten-email">E-posta</label>
@@ -17,7 +17,10 @@ const formUrl = SITE.bultenFormUrl;
         <button class="btn btn-accent" type="submit">Bültene katıl</button>
       </form>
     ) : (
-      <p class="aciklama">Bülten çok yakında.</p>
+      <div class="form">
+        <a href={SITE.instagram} target="_blank" rel="noopener" class="btn btn-accent">Instagram'da takip et</a>
+        <a href={SITE.x} target="_blank" rel="noopener" class="btn ikincil">X'te takip et</a>
+      </div>
     )}
   </div>
 </section>
@@ -73,6 +76,14 @@ const formUrl = SITE.bultenFormUrl;
     background: #2a2926;
     color: var(--bg);
     border-radius: 10px;
+  }
+  .ikincil {
+    background: transparent;
+    border-color: #45433f;
+    color: var(--bg);
+  }
+  .ikincil:hover {
+    border-color: var(--sari);
   }
   input::placeholder {
     color: #8a867f;

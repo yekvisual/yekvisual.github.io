@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import Bulten from '../../components/Bulten.astro';
-import { tarihTR } from '../../lib/site';
+import { SITE, tarihTR } from '../../lib/site';
 
 const ozetler = (await getCollection('ozetler')).sort((a, b) => b.data.tarih.valueOf() - a.data.tarih.valueOf());
 ---
@@ -11,7 +11,7 @@ const ozetler = (await getCollection('ozetler')).sort((a, b) => b.data.tarih.val
   <section class="container section sayfa-bas">
     <p class="kicker kicker-accent reveal">Her Cumartesi 14:00</p>
     <h1 class="display reveal" style="--d:60ms">Haftalık <em>özet</em></h1>
-    <p class="lead giris reveal" style="--d:120ms">Haftayı kaçırdıysan tek yazı yeter. Bülten de bu yazıdan gönderilir.</p>
+    <p class="lead giris reveal" style="--d:120ms">Haftayı kaçırdıysan tek yazı yeter.{SITE.bultenFormUrl && ' Bülten de bu yazıdan gönderilir.'}</p>
   </section>
 
   <section class="container">
