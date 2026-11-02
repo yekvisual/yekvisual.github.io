@@ -3,6 +3,18 @@ import Base from '../layouts/Base.astro';
 ---
 
 <Base title="Sayfa bulunamadı">
+  <!-- Instagram DM'lerinde gönderilen kısa linkler (yeklab.com.tr/l/<kod>) buraya düşer: adresi Worker'dan alıp yönlendirir -->
+  <script is:inline>
+    (function () {
+      var m = location.pathname.match(/^\/l\/([a-z0-9]{4,16})\/?$/);
+      if (!m) return;
+      document.documentElement.style.visibility = "hidden";
+      fetch("https://yeklab-dm.yeklab.workers.dev/l/" + m[1] + "?json=1", { credentials: "omit" })
+        .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+        .then(function (v) { if (v && v.url) location.replace(v.url); else throw 0; })
+        .catch(function () { document.documentElement.style.visibility = ""; });
+    })();
+  </script>
   <section class="container section" style="text-align:center;padding-block:5rem">
     <p class="kicker kicker-accent">404</p>
     <h1 class="display" style="font-size:clamp(2.6rem,6vw,5rem)">Bu sayfa<br /><em style="color:var(--accent)">basılmamış.</em></h1>
