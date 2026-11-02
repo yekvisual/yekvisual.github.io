@@ -42,6 +42,11 @@ export function zorlukAdi(id: string) {
 export function erisimAdi(id: string) {
   return ERISIM[id]?.ad ?? id;
 }
+// Panel sırası: YEK Lab seçimiyse YAML sırası, değilse puana göre
+export function modelSirasi<T extends { puan: number | null }>(modeller: T[], yeklabSirasi: boolean): T[] {
+  return yeklabSirasi ? [...modeller] : [...modeller].sort((a, b) => (b.puan ?? -Infinity) - (a.puan ?? -Infinity));
+}
+
 export function erisimSinif(id: string) {
   return ERISIM[id]?.sinif ?? 'etiket-ucretli';
 }

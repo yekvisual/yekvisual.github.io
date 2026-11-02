@@ -1,7 +1,7 @@
 ---
 // "Şu an en iyi modeller" paneli: kategori sekmeleri, ilk beş model, çubuklar.
 import { getCollection } from 'astro:content';
-import { erisimAdi, erisimSinif } from '../lib/taxonomy';
+import { erisimAdi, erisimSinif, modelSirasi } from '../lib/taxonomy';
 import { tarihTR } from '../lib/site';
 
 interface Props {
@@ -13,12 +13,14 @@ const { varsayilan = 'video', adet = 5 } = Astro.props;
 const kategoriler = (await getCollection('modeller')).sort((a, b) => a.data.sira - b.data.sira);
 const guncelleme = kategoriler.reduce<Date | null>((en, k) => (!en || k.data.guncelleme > en ? k.data.guncelleme : en), null);
 
-function yuzde(puan: number, hepsi: number[]) {
+function yuzde(puan: number | null, hepsi: number[]) {
+  if (puan === null) return 0;
   const max = Math.max(...hepsi);
   const taban = Math.min(...hepsi) * 0.85;
   return Math.round(((puan - taban) / (max - taban)) * 100);
 }
-function puanYaz(p: number) {
+function puanYaz(p: number | null) {
+  if (p === null) return '—';
   return Number.isInteger(p) ? p.toLocaleString('tr-TR') : p.toLocaleString('tr-TR', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 }
 ---
@@ -37,8 +39,8 @@ function puanYaz(p: number) {
   </div>
 
   {kategoriler.map((k) => {
-    const liste = [...k.data.modeller].sort((a, b) => b.puan - a.puan).slice(0, adet);
-    const hepsi = liste.map((m) => m.puan);
+    const liste = modelSirasi(k.data.modeller, k.data.yeklab_sirasi).slice(0, adet);
+    const hepsi = liste.flatMap((m) => (m.puan === null ? [] : [m.puan]));
     return (
       <div class="panel-ic" role="tabpanel" aria-labelledby={`sekme-${k.id}`} data-panel={k.id} hidden={k.id !== varsayilan}>
         <div class="liste">
@@ -55,7 +57,7 @@ function puanYaz(p: number) {
           ))}
         </div>
         <div class="panel-alt">
-          <span class="kaynak">Ölçüm metodolojisi: {k.data.olcu}. Her Pazar güncellenir.{k.data.ornek && ' Ön değerlendirme; ilk tam ölçüm 2 Kasım.'}</span>
+          <span class="kaynak">Ölçüm metodolojisi: {k.data.olcu}. Her Cumartesi güncellenir.{k.data.ornek && ' Ön değerlendirme; ilk tam ölçüm 2 Kasım.'}</span>
           <a href={`/modeller/${k.id}/`} class="genis">Tüm {k.data.modeller.length} modeli gör, grafiklerle →</a>
         </div>
       </div>

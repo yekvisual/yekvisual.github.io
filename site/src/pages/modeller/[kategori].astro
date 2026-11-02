@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import { tarihTR, tarihKisa } from '../../lib/site';
-import { erisimAdi, erisimSinif } from '../../lib/taxonomy';
+import { erisimAdi, erisimSinif, modelSirasi } from '../../lib/taxonomy';
 
 export async function getStaticPaths() {
   const kategoriler = await getCollection('modeller');
@@ -12,12 +12,12 @@ export async function getStaticPaths() {
 const { k } = Astro.props;
 const d = k.data;
 const hepsi = (await getCollection('modeller')).sort((a, b) => a.data.sira - b.data.sira);
-const liste = [...d.modeller].sort((a, b) => b.puan - a.puan);
-const puanlar = liste.map((m) => m.puan);
+const liste = modelSirasi(d.modeller, d.yeklab_sirasi);
+const puanlar = liste.flatMap((m) => (m.puan === null ? [] : [m.puan]));
 const max = Math.max(...puanlar);
 const taban = Math.min(...puanlar) * 0.85;
-const yuzde = (p: number) => Math.round(((p - taban) / (max - taban)) * 100);
-const puanYaz = (p: number) => (Number.isInteger(p) ? p.toLocaleString('tr-TR') : p.toLocaleString('tr-TR', { minimumFractionDigits: 1, maximumFractionDigits: 1 }));
+const yuzde = (p: number | null) => p === null ? 0 : Math.round(((p - taban) / (max - taban)) * 100);
+const puanYaz = (p: number | null) => p === null ? '—' : (Number.isInteger(p) ? p.toLocaleString('tr-TR') : p.toLocaleString('tr-TR', { minimumFractionDigits: 1, maximumFractionDigits: 1 }));
 const turkceAdi = { evet: 'Konuşuyor', kismen: 'Kısmen', yok: 'Yok' } as const;
 const ilkUc = liste.slice(0, 3);
 
@@ -48,7 +48,7 @@ const grafik = (() => {
 })();
 ---
 
-<Base title={`${d.ad} modelleri`} description={`${d.ad} için şu an en iyi modeller: sıralama, hız, fiyat ve YEK Lab notu. Her Pazar güncellenir.`}>
+<Base title={`${d.ad} modelleri`} description={`${d.ad} için şu an en iyi modeller: sıralama, hız, fiyat ve YEK Lab notu. Her Cumartesi güncellenir.`}>
   <section class="container section sayfa-bas">
     <p class="kicker kicker-accent reveal">Modeller · güncelleme {tarihTR(d.guncelleme)}</p>
     <h1 class="reveal" style="--d:60ms">{d.ad} için bu hafta hangi model?</h1>
@@ -129,7 +129,7 @@ const grafik = (() => {
               {liste.some((m) => m.fiyat) && <th class="sag">Fiyat</th>}
               <th>Erişim</th>
               {liste.some((m) => m.turkce) && <th>Türkçe</th>}
-              <th>yekvisual notu</th>
+              <th>YEK Lab notu</th>
             </tr>
           </thead>
           <tbody>
@@ -155,7 +155,7 @@ const grafik = (() => {
           </tbody>
         </table>
       </div>
-      <p class="muted small tablo-alt">{liste.length} model · Ölçüm metodolojisi: {d.olcu}. Her Pazar güncellenir.{d.ornek && ' Ön değerlendirme; ilk tam ölçüm 2 Kasım.'}</p>
+      <p class="muted small tablo-alt">{liste.length} model · Ölçüm metodolojisi: {d.olcu}. Her Cumartesi güncellenir.{d.ornek && ' Ön değerlendirme; ilk tam ölçüm 2 Kasım.'}</p>
     </div>
   </section>
 

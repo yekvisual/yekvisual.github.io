@@ -1,16 +1,24 @@
 ad: Görsel
 sira: 1
-olcu: "Artificial Analysis Image Arena verileri ile YEK Lab yazı testi"
-kaynak: "Artificial Analysis, LMArena"
-guncelleme: 2026-10-26
-ornek: true
-aciklama: "Görsel modellerini aynı 10 istemle deniyoruz: ürün fotoğrafı, Türkçe yazı, aynı karakterin 5 sahnesi, fotoğraf düzenleme."
-yontem: "Puanın yarısı kör oylama (Artificial Analysis Image Arena), yarısı kendi testimiz: görsel içinde Türkçe yazı doğruluğu, karakter tutarlılığı, düzenleme komutlarına sadakat."
+olcu: "Artificial Analysis Image Arena, metinden görsel (kör oylama Elo puanı)"
+kaynak: "Artificial Analysis Text-to-Image Leaderboard, 2 Kasım 2026'da okundu"
+guncelleme: 2026-11-02
+aciklama: "Metinden görsel üreten modeller, kör oylamayla sıralanıyor. Puanlar Artificial Analysis'ten aynen alındı."
+yontem: "Kullanıcılar aynı istemle üretilmiş iki görseli adını görmeden karşılaştırıyor; oylardan Elo puanı çıkıyor. FLUX.2 [dev] bu ölçekte 1000 puanlık çapa model. Fiyat görsel başına API fiyatı; puana karışmaz. LMArena'da da ilk sırada aynı model var (GPT Image 2.5 Sunburst)."
+degisenler:
+  - { metin: "İlk gerçek ölçüm: puanlar artık tamamen kamu verisi", yon: yeni }
+  - { metin: "OpenAI GPT Image 2.5 iki arenada da birinci", yon: yukari }
+  - { metin: "En iyi açık model FLUX 3 Image Klein, 21. sırada", yon: asagi }
 modeller:
-  - { ad: "Nano Banana 2.1", firma: Google, puan: 1284, degisim: 0, erisim: sinirli, turkce: evet, hiz: "6 sn", fiyat: "$0,04", not: "Gemini uygulamasında ücretsiz; Türkçe yazıyı en doğru yazan." }
-  - { ad: "GPT Image 2", firma: OpenAI, puan: 1231, degisim: 0, erisim: ucretli, turkce: evet, hiz: "14 sn", fiyat: "$0,07", not: "Düzenleme komutlarında en sadık; biraz yavaş." }
-  - { ad: "Seedream 5.0", firma: ByteDance, puan: 1197, degisim: 1, erisim: ucretli, turkce: kismen, hiz: "5 sn", fiyat: "$0,03", not: "Çok hızlı, fotogerçekçi; yazıda hata yapıyor." }
-  - { ad: "FLUX 3", firma: Black Forest Labs, puan: 1160, degisim: 0, erisim: acik, turkce: kismen, hiz: "9 sn (24 GB kart)", fiyat: "$0", not: "Açık kaynaklarda birinci; ComfyUI ile evde çalışıyor.", yeni: true }
-  - { ad: "Krea 2 Medium", firma: Krea, puan: 1102, degisim: -1, erisim: acik, turkce: yok, hiz: "4 sn", fiyat: "$0", not: "Hafif ve hızlı; estetik tarafı güçlü." }
-  - { ad: "Midjourney v8", firma: Midjourney, puan: 1090, degisim: 0, erisim: ucretli, turkce: yok, hiz: "30 sn", fiyat: "abonelik", not: "Sanatsal tarzda hâlâ en iyilerden; yazı ve düzenleme zayıf." }
-  - { ad: "Ideogram 4", firma: Ideogram, puan: 1065, degisim: 0, erisim: sinirli, turkce: kismen, hiz: "8 sn", fiyat: "$0,05", not: "Afiş ve logo işlerinde güçlü." }
+  - { ad: "GPT Image 2.5 Sunburst", firma: OpenAI, puan: 1222, erisim: ucretli, fiyat: "$0,21" }
+  - { ad: "GPT Image 2.5 Flare", firma: OpenAI, puan: 1207, erisim: ucretli, fiyat: "$0,21" }
+  - { ad: "GPT Image 2", firma: OpenAI, puan: 1186, erisim: ucretli, fiyat: "$0,21" }
+  - { ad: "Nano Banana 2.1", firma: Google, puan: 1176, erisim: sinirli, turkce: evet, fiyat: "$0,034", not: "Gemini uygulamasında ücretsiz." }
+  - { ad: "MAI-Image-2.6", firma: Microsoft AI, puan: 1166, erisim: ucretli, fiyat: "$0,039" }
+  - { ad: "Grok Imagine Image 2.0", firma: xAI, puan: 1166, erisim: ucretli, fiyat: "$0,06" }
+  - { ad: "Nano Banana 2", firma: Google, puan: 1140, erisim: ucretli, fiyat: "$0,067" }
+  - { ad: "Muse Image", firma: Meta, puan: 1127, erisim: ucretli, fiyat: "$0,01" }
+  - { ad: "GPT Image 1.5", firma: OpenAI, puan: 1123, erisim: ucretli, fiyat: "$0,13" }
+  - { ad: "MAI-Image-2.6-Flash", firma: Microsoft AI, puan: 1119, erisim: ucretli, fiyat: "$0,019" }
+gecmis:
+  - { tarih: 2026-11-02, puanlar: { "GPT Image 2.5 Sunburst": 1222, "GPT Image 2.5 Flare": 1207, "GPT Image 2": 1186, "Nano Banana 2.1": 1176, "MAI-Image-2.6": 1166 } }

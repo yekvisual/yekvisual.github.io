@@ -1,13 +1,24 @@
 ad: Ses
 sira: 4
-olcu: "YEK Lab seslendirme testi (5 üzerinden)"
-guncelleme: 2026-10-26
-ornek: true
-aciklama: "Ses için güvenilir açık sıralama yok; aynı 60 saniyelik metni her modele okutup doğallık, vurgu ve telaffuzu puanlıyoruz."
-yontem: "Üç dinleyici, kör; her modele aynı metin. Doğallık, vurgu, özel ad telaffuzu ve duygu kontrolü; ortalama 5 üzerinden."
+olcu: "Artificial Analysis Speech Arena, metinden ses (kör oylama Elo puanı)"
+kaynak: "Artificial Analysis Text-to-Speech Leaderboard, 2 Kasım 2026'da okundu"
+guncelleme: 2026-11-02
+aciklama: "Metni sese çeviren modeller, kör dinleme oylarıyla sıralanıyor. Puanlar Artificial Analysis'ten aynen alındı."
+yontem: "Dinleyiciler aynı metnin iki seslendirmesini adını bilmeden karşılaştırıyor; oylardan Elo puanı çıkıyor. Oylama ağırlıkla İngilizce metinlerle yapılıyor; Türkçe performansı ayrıca denemek gerekir. Fiyat milyon karakter başına."
+degisenler:
+  - { metin: "İlk gerçek ölçüm: puanlar artık tamamen kamu verisi", yon: yeni }
+  - { metin: "ElevenLabs Eleven v4 ilk iki sırada", yon: yukari }
+  - { metin: "Fish Audio Drama 3 açık ağırlıklı modellerde birinci", yon: yeni }
 modeller:
-  - { ad: "ElevenLabs v3", firma: ElevenLabs, puan: 4.8, degisim: 0, erisim: sinirli, turkce: evet, fiyat: "aylık 10 dk ücretsiz", not: "Duygu etiketleri Türkçe'de de çalışıyor; Reels seslendirmesi için standart." }
-  - { ad: "Gemini TTS", firma: Google, puan: 4.3, degisim: 0, erisim: ucretsiz, turkce: evet, fiyat: "$0", not: "Ücretsiz ve iyi; vurgu kontrolü sınırlı." }
-  - { ad: "OpenAI TTS 2", firma: OpenAI, puan: 4.2, degisim: 0, erisim: ucretli, turkce: evet, fiyat: "$15 / M karakter", not: "Temiz ama biraz düz." }
-  - { ad: "Fish Speech 2", firma: Fish Audio, puan: 3.9, degisim: 0, erisim: acik, turkce: kismen, fiyat: "$0", not: "Evde çalışan en iyi Türkçe; özel adlarda takılıyor." }
-  - { ad: "macOS Yelda", firma: Apple, puan: 2.6, degisim: 0, erisim: ucretsiz, turkce: evet, fiyat: "$0", not: "Mac'te hazır; taslak için yeter, yayın için değil." }
+  - { ad: "Eleven v4 Turbo", firma: ElevenLabs, puan: 1336, erisim: sinirli, turkce: evet, fiyat: "$40 / M karakter" }
+  - { ad: "Eleven v4", firma: ElevenLabs, puan: 1334, erisim: sinirli, turkce: evet, fiyat: "$80 / M karakter" }
+  - { ad: "Qwen-Audio-3.1-TTS-Plus", firma: Alibaba, puan: 1305, erisim: ucretli, fiyat: "$19,31 / M karakter" }
+  - { ad: "Sonic 3.6", firma: Cartesia, puan: 1296, erisim: ucretli, fiyat: "$49 / M karakter" }
+  - { ad: "Gemini 3.8 Flash TTS", firma: Google, puan: 1283, erisim: ucretli, fiyat: "$16,49 / M karakter" }
+  - { ad: "Fish Audio Drama 3", firma: Fish Audio, puan: 1278, erisim: acik, fiyat: "$15 / M karakter", not: "Listedeki tek açık ağırlıklı model." }
+  - { ad: "Qwen-Audio-3.0-TTS-Plus", firma: Alibaba, puan: 1269, erisim: ucretli, fiyat: "$19,31 / M karakter" }
+  - { ad: "Inworld Realtime TTS-2", firma: Inworld, puan: 1267, erisim: ucretli, fiyat: "$20,83 / M karakter" }
+  - { ad: "Lightning V3.1 Pro", firma: Smallest.ai, puan: 1266, erisim: ucretli, fiyat: "$19,50 / M karakter" }
+  - { ad: "Gemini 3.8 Flash-Lite TTS", firma: Google, puan: 1259, erisim: ucretli, fiyat: "$11,03 / M karakter" }
+gecmis:
+  - { tarih: 2026-11-02, puanlar: { "Eleven v4 Turbo": 1336, "Eleven v4": 1334, "Qwen-Audio-3.1-TTS-Plus": 1305, "Sonic 3.6": 1296, "Gemini 3.8 Flash TTS": 1283 } }

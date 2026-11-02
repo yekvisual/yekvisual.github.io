@@ -9,12 +9,12 @@ const toplam = kategoriler.reduce((n, k) => n + k.data.modeller.length, 0);
 const guncelleme = kategoriler.reduce<Date | null>((en, k) => (!en || k.data.guncelleme > en ? k.data.guncelleme : en), null);
 ---
 
-<Base title="Modeller" description="Görsel, video, dil, ses ve müzik için şu an en iyi modeller: her Pazar güncellenen sıralama, test sonuçları ve fiyatlarıyla.">
+<Base title="Modeller" description="Görsel, video, dil, ses ve müzik için şu an en iyi modeller: her Cumartesi güncellenen sıralama, arena puanları ve fiyatlarıyla.">
   <section class="container section sayfa-bas">
     <p class="kicker kicker-accent reveal">Modeller · {toplam} model{guncelleme && ` · ${tarihTR(guncelleme)}`}</p>
     <h1 class="reveal" style="--d:60ms">Bu hafta hangi model?</h1>
     <p class="lead giris reveal" style="--d:120ms">
-      Her kategoride aynı istemlerle deniyoruz, üstüne kör oylamaları ekliyoruz. Sıralama her Pazar yenilenir;
+      Puanlar bağımsız sıralamalardan (Artificial Analysis) aynen alınır; video ve dilde sıra bizim seçimimiz, notlarda nedeni yazar. Sıralama her Cumartesi yenilenir;
       değişenler ayrıca yazılır.
     </p>
   </section>

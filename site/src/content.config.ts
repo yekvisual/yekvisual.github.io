@@ -43,6 +43,7 @@ const haberler = defineCollection({
       kaynaklar: z.array(kaynak).default([]),
       denemeler: z.array(medya).default([]),
       ornek: z.boolean().default(false),
+    yeklab_sirasi: z.boolean().default(false),
     }),
 });
 
@@ -93,7 +94,8 @@ const ozetler = defineCollection({
 });
 
 // Model sıralamaları: her kategori bir YAML (content/modeller/<kategori>.yaml).
-// Her Pazar güncellenir; `ornek: true` olanlar henüz gerçek ölçüm değildir.
+// Her Cumartesi güncellenir; `ornek: true` olanlar henüz gerçek ölçüm değildir.
+// `yeklab_sirasi: true`: sıra YAML'daki sıradır (YEK Lab seçimi), puan yalnız bilgi; puanı olmayan model `puan: null`.
 const modeller = defineCollection({
   loader: glob({ pattern: '*.yaml', base: '../content/modeller' }),
   schema: z.object({
@@ -103,6 +105,7 @@ const modeller = defineCollection({
     kaynak: z.string().optional(),
     guncelleme: z.coerce.date(),
     ornek: z.boolean().default(false),
+    yeklab_sirasi: z.boolean().default(false),
     aciklama: z.string().optional(),
     yontem: z.string().optional(),
     degisenler: z.array(z.object({ metin: z.string(), yon: z.enum(['yukari', 'asagi', 'yeni']) })).default([]),
@@ -110,7 +113,7 @@ const modeller = defineCollection({
       z.object({
         ad: z.string(),
         firma: z.string(),
-        puan: z.number(),
+        puan: z.number().nullable(),
         degisim: z.number().int().default(0),
         erisim,
         turkce: z.enum(['evet', 'kismen', 'yok']).optional(),

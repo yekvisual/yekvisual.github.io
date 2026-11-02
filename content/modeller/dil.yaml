@@ -1,16 +1,30 @@
 ad: Dil
 sira: 3
-olcu: "Terminal-Bench 4.0 ajan görevleri puanı"
-kaynak: "Moonshot AI duyurusu (23 Ekim 2026), model kartları"
-guncelleme: 2026-10-26
-ornek: true
-aciklama: "Yazı, kod ve ajan görevlerinde dil modelleri. İlk üçün puanı Moonshot duyurusundan; diğerleri ön değerlendirme."
-yontem: "Terminal-Bench 4.0, modelin bir bilgisayarda gerçek işleri bitirme oranını ölçer. İçerik üreticisi için anlamı: montaj, dosya düzenleme, otomasyon gibi işleri ne kadar güvenle verebileceğin."
+olcu: "Sıra YEK Lab seçimi; puan Artificial Analysis Intelligence Index v5 (her modelin en yüksek ayarı)"
+yeklab_sirasi: true
+kaynak: "Artificial Analysis LLM Leaderboard, 2 Kasım 2026'da okundu"
+guncelleme: 2026-11-02
+aciklama: "Yazı, kod ve ajan görevlerinde dil modelleri. Birinci sıra bizim seçimimiz: içerik üretiminde Claude. Gerisi Artificial Analysis'in zekâ endeksine göre."
+yontem: "Intelligence Index; bilgi, akıl yürütme, kod ve ajan görevlerindeki bağımsız testlerin ortalaması. Aynı model farklı düşünme ayarlarıyla birden çok kez ölçülüyor; burada her modelin en yüksek puanlı ayarı var. Fiyat, milyon token başına giriş / çıkış."
 degisenler:
-  - { metin: "Kimi K3.1 Pro, Claude'un bir puan gerisinde; ağırlıklar 4 Kasım'da", yon: yeni }
+  - { metin: "İlk gerçek ölçüm: puanlar artık tamamen kamu verisi", yon: yeni }
+  - { metin: "Gemini 4 Carbon endekste birinci, Claude Opus 5.5 bir puan geride", yon: yukari }
+  - { metin: "Kimi K3.1 Pro ilk 10'da; ağırlıklar 4 Kasım'da", yon: yeni }
 modeller:
-  - { ad: "Claude Opus 5.5", firma: Anthropic, puan: 66.4, degisim: 0, erisim: ucretli, turkce: evet, fiyat: "$5 / $25 (M token)", not: "Uzun işlerde en güvenilir; bu site onunla yazılıyor." }
-  - { ad: "Kimi K3.1 Pro", firma: Moonshot, puan: 65.7, degisim: 0, erisim: sinirli, turkce: evet, fiyat: "$2 / $10 (M token)", not: "Ağırlıklar 4 Kasım'da açılıyor. 2,8 T parametre, 1M bağlam. Evde çalışmaz: 500 GB+ RAM ister.", yeni: true }
-  - { ad: "GPT-6 Astra", firma: OpenAI, puan: 58.2, degisim: 0, erisim: ucretli, turkce: evet, fiyat: "$4 / $16 (M token)", not: "Sohbet ve yazıda akıcı; uzun ajan görevlerinde geride." }
-  - { ad: "Gemini 3.5 Pro", firma: Google, puan: 56.9, degisim: 0, erisim: sinirli, turkce: evet, fiyat: "$2,5 / $12 (M token)", not: "Görsel ve videoyu aynı anda anlıyor." }
-  - { ad: "DeepSeek V4", firma: DeepSeek, puan: 52.3, degisim: 0, erisim: acik, turkce: kismen, fiyat: "$0,5 / $2 (M token)", not: "Fiyat/performansta açık ara." }
+  - { ad: "Claude Opus 5.5", firma: Anthropic, puan: 58.4, erisim: ucretli, fiyat: "$4 / $20 (M token)", not: "Bence içerik ve yazı için hâlâ en iyisi; bu site onunla yazılıyor." }
+  - { ad: "Gemini 4 Carbon", firma: Google, puan: 59.4, erisim: ucretli, fiyat: "$4 / $20 (M token)", not: "Endekste birinci; henüz denemedik." }
+  - { ad: "GPT-6 Astra", firma: OpenAI, puan: 56.9, erisim: ucretli, fiyat: "$10 / $50 (M token)" }
+  - { ad: "GPT-6.1 Sol", firma: OpenAI, puan: 54.5, erisim: ucretli, fiyat: "$2 / $10 (M token)" }
+  - { ad: "Claude Sonnet 5.5", firma: Anthropic, puan: 54.2, erisim: ucretli, fiyat: "$2 / $10 (M token)" }
+  - { ad: "GPT-6.1 Terra", firma: OpenAI, puan: 51.0, erisim: ucretli }
+  - { ad: "Gemini 4 Argon", firma: Google, puan: 50.4, erisim: ucretli }
+  - { ad: "Muse Wonder", firma: Meta, puan: 49.7, erisim: ucretli }
+  - { ad: "Claude Fable 5.1", firma: Anthropic, puan: 49.7, erisim: ucretli }
+  - { ad: "Kimi K3.1 Pro", firma: Moonshot, puan: 46.0, erisim: sinirli, turkce: evet, fiyat: "$2 / $10 (M token)", not: "Ağırlıklar 4 Kasım'da açılıyor. Evde çalışmaz: 500 GB+ RAM ister." }
+  - { ad: "Claude Haiku 5.5", firma: Anthropic, puan: 36.2, erisim: ucretli }
+  - { ad: "Grok 4.7", firma: xAI, puan: 35.0, erisim: ucretli }
+  - { ad: "Qwen3.8 Max", firma: Alibaba, puan: 33.6, erisim: ucretli }
+  - { ad: "DeepSeek V4.1 Flash", firma: DeepSeek, puan: 32.5, erisim: acik, fiyat: "$0,3 / $1,2 (M token)", not: "Açık ağırlıklı modellerde birinci; çok ucuz." }
+  - { ad: "GLM-5.3", firma: Zhipu, puan: 31.7, erisim: acik }
+gecmis:
+  - { tarih: 2026-11-02, puanlar: { "Gemini 4 Carbon": 59.4, "Claude Opus 5.5": 58.4, "GPT-6 Astra": 56.9, "GPT-6.1 Sol": 54.5, "Claude Sonnet 5.5": 54.2 } }
