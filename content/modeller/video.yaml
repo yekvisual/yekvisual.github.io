@@ -1,26 +1,25 @@
 ad: Video
 sira: 2
-olcu: "Sıra YEK Lab seçimi; puan Artificial Analysis Video Arena, metinden sesli video (kör oylama Elo)"
+olcu: "Sıra YEK Lab seçimi; puan Artificial Analysis Video Arena, görselden sesli video (kör oylama Elo)"
 yeklab_sirasi: true
-kaynak: "Artificial Analysis Text-to-Video Leaderboard (Eylül 2026 yenilemesi), 2 Kasım 2026'da okundu"
+kaynak: "Artificial Analysis Image-to-Video Leaderboard (Ekim 2026 yenilemesi), 2 Kasım 2026'da okundu"
 guncelleme: 2026-11-02
-aciklama: "İlk iki sıra bizim seçimimiz: kendi işlerimizde en çok güvendiğimiz modeller. Gerisi Artificial Analysis'in kör oylama puanına göre; puanlar aynen alındı."
-yontem: "Artificial Analysis kullanıcılara aynı istemle üretilmiş iki videoyu adını göstermeden izletip hangisinin daha iyi olduğunu soruyor; oylardan satranç benzeri bir Elo puanı çıkıyor. Kling 3.0 bu ölçekte 1000 puanlık çapa model. Seedance ve Kling'i deneyimimize göre öne aldık; puanları değiştirmedik. Fiyat, Artificial Analysis'in API fiyatı (dakika başına); puana karışmaz."
+aciklama: "Görselden sesli video üreten modeller: bir kare verip onu canlandırıyorsunuz. Gerçek işlerde en çok bu yol kullanılıyor. Seedance ölçümde de birinci; Kling 4.0'ı deneyimimize göre ikinci sıraya koyduk. Gerisi Artificial Analysis'in kör oylama puanına göre."
+yontem: "Metinden video yerine görselden videoyu esas aldık: kareyi siz belirlediğiniz için sonuç daha gerçekçi ve kontrol edilebilir oluyor. Artificial Analysis kullanıcılara aynı görselden üretilmiş iki videoyu adını göstermeden izletiyor; oylardan Elo puanı çıkıyor. Kling 3.0 bu ölçekte 1000 puanlık çapa model. Herkese açık API'si olmayan Utopai X listeye alınmadı. Fiyat dakika başına API fiyatı; puana karışmaz."
 degisenler:
-  - { metin: "İlk gerçek ölçüm: puanlar artık tamamen kamu verisi", yon: yeni }
-  - { metin: "Seedance 2.5 görselden video sıralamasında birinci", yon: yukari }
+  - { metin: "Tablo artık görselden video sıralamasına göre", yon: yeni }
+  - { metin: "Seedance 2.5 görselden videoda birinci", yon: yukari }
   - { metin: "Kling 4.0 Design Arena'da görselden videoda ikinci", yon: yeni }
 modeller:
-  - { ad: "Seedance 2.5", firma: ByteDance, puan: 1157, erisim: ucretli, fiyat: "$34,12 / dk", not: "Bence şu an en iyi video modeli; görselden video sıralamasında da birinci." }
-  - { ad: "Kling 4.0", firma: Kuaishou, puan: null, erisim: deneme, fiyat: "Deneme kredisi, sonra abonelik", not: "Artificial Analysis'te henüz yok, puanı yok. Design Arena'da görselden videoda 2., metinden videoda 9. Tek çekimde 30 saniye, karakter tutarlılığı güçlü." }
-  - { ad: "Wan 3.0", firma: Alibaba, puan: 1175, erisim: ucretli, fiyat: "$12 / dk" }
-  - { ad: "Utopai X", firma: Utopai Studios, puan: 1166, erisim: ucretli, fiyat: "API yok", not: "MiniMax H3 tabanlı." }
-  - { ad: "MiniMax H3 (768p)", firma: MiniMax, puan: 1161, erisim: acik, fiyat: "$4,80 / dk", not: "İlk 10'daki tek açık ağırlıklı model." }
-  - { ad: "FLUX 3 Max", firma: Fal, puan: 1157, erisim: ucretli, fiyat: "$4,35 / dk" }
-  - { ad: "HeyGen Video 1", firma: HeyGen, puan: 1156, erisim: ucretli, fiyat: "$2,40 / dk" }
-  - { ad: "MiniMax H3 Max", firma: Fal, puan: 1149, erisim: ucretli, fiyat: "$9,60 / dk" }
-  - { ad: "FLUX 3", firma: Black Forest Labs, puan: 1144, erisim: ucretli, fiyat: "$17,40 / dk" }
+  - { ad: "Seedance 2.5", firma: ByteDance, puan: 1153, erisim: ucretli, fiyat: "$34,12 / dk", not: "Bence şu an en iyi video modeli; ölçümde de birinci." }
+  - { ad: "Kling 4.0", firma: Kuaishou, puan: null, erisim: deneme, fiyat: "Deneme kredisi, sonra abonelik", not: "Artificial Analysis'te henüz yok, puanı yok. Design Arena'da görselden videoda 2. Tek çekimde 30 saniye, karakter tutarlılığı güçlü." }
   - { ad: "Seedance 2.0", firma: ByteDance, puan: 1136, erisim: ucretli, fiyat: "$22,45 / dk" }
-  - { ad: "Gemini Omni Flash 1.1", firma: Google, puan: 1128, erisim: ucretli, fiyat: "$9,12 / dk" }
+  - { ad: "MiniMax H3 (768p)", firma: MiniMax, puan: 1128, erisim: acik, fiyat: "$4,80 / dk", not: "İlk 10'daki tek açık ağırlıklı model." }
+  - { ad: "Hyperflow H3", firma: Video Rebirth, puan: 1124, erisim: ucretli, fiyat: "$9 / dk" }
+  - { ad: "HeyGen Video 1", firma: HeyGen, puan: 1120, erisim: ucretli, fiyat: "$2,40 / dk" }
+  - { ad: "P-Video-2-Pro", firma: Pruna AI, puan: 1119, erisim: ucretli, fiyat: "$5,70 / dk" }
+  - { ad: "MiniMax H3 Max", firma: Fal, puan: 1117, erisim: ucretli, fiyat: "$9,60 / dk" }
+  - { ad: "Wan 3.0", firma: Alibaba, puan: 1111, erisim: ucretli, fiyat: "$12 / dk" }
+  - { ad: "Agnes-Video-2.5", firma: Sapiens AI, puan: 1100, erisim: ucretli, fiyat: "$2,40 / dk" }
 gecmis:
-  - { tarih: 2026-11-02, puanlar: { "Wan 3.0": 1175, "Utopai X": 1166, "MiniMax H3 (768p)": 1161, "Seedance 2.5": 1157, "FLUX 3 Max": 1157 } }
+  - { tarih: 2026-11-02, puanlar: { "Seedance 2.5": 1153, "Seedance 2.0": 1136, "MiniMax H3 (768p)": 1128, "Hyperflow H3": 1124, "HeyGen Video 1": 1120 } }
