@@ -9,10 +9,10 @@ yontem: "Artificial Analysis kullanıcılara aynı istemle üretilmiş iki video
 degisenler:
   - { metin: "İlk gerçek ölçüm: puanlar artık tamamen kamu verisi", yon: yeni }
   - { metin: "Seedance 2.5 görselden video sıralamasında birinci", yon: yukari }
-  - { metin: "Kling 4.0 arenalarda henüz yok; bizim listemizde ikinci", yon: yeni }
+  - { metin: "Kling 4.0 Design Arena'da görselden videoda ikinci", yon: yeni }
 modeller:
   - { ad: "Seedance 2.5", firma: ByteDance, puan: 1157, erisim: ucretli, fiyat: "$34,12 / dk", not: "Bence şu an en iyi video modeli; görselden video sıralamasında da birinci." }
-  - { ad: "Kling 4.0", firma: Kuaishou, puan: null, erisim: deneme, fiyat: "Deneme kredisi, sonra abonelik", not: "Arenalara henüz girmedi, puanı yok. Tek çekimde 30 saniye, karakter tutarlılığı güçlü." }
+  - { ad: "Kling 4.0", firma: Kuaishou, puan: null, erisim: deneme, fiyat: "Deneme kredisi, sonra abonelik", not: "Artificial Analysis'te henüz yok, puanı yok. Design Arena'da görselden videoda 2., metinden videoda 9. Tek çekimde 30 saniye, karakter tutarlılığı güçlü." }
   - { ad: "Wan 3.0", firma: Alibaba, puan: 1175, erisim: ucretli, fiyat: "$12 / dk" }
   - { ad: "Utopai X", firma: Utopai Studios, puan: 1166, erisim: ucretli, fiyat: "API yok", not: "MiniMax H3 tabanlı." }
   - { ad: "MiniMax H3 (768p)", firma: MiniMax, puan: 1161, erisim: acik, fiyat: "$4,80 / dk", not: "İlk 10'daki tek açık ağırlıklı model." }

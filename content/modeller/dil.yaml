@@ -5,14 +5,14 @@ yeklab_sirasi: true
 kaynak: "Artificial Analysis LLM Leaderboard, 2 Kasım 2026'da okundu"
 guncelleme: 2026-11-02
 aciklama: "Yazı, kod ve ajan görevlerinde dil modelleri. Birinci sıra bizim seçimimiz: içerik üretiminde Claude. Gerisi Artificial Analysis'in zekâ endeksine göre."
-yontem: "Intelligence Index; bilgi, akıl yürütme, kod ve ajan görevlerindeki bağımsız testlerin ortalaması. Aynı model farklı düşünme ayarlarıyla birden çok kez ölçülüyor; burada her modelin en yüksek puanlı ayarı var. Fiyat, milyon token başına giriş / çıkış."
+yontem: "Claude'u birinci sıraya içerik üretimindeki deneyimimizle koyduk; Gemini 4 Carbon herkese açık değil. Intelligence Index; bilgi, akıl yürütme, kod ve ajan görevlerindeki bağımsız testlerin ortalaması. Aynı model farklı düşünme ayarlarıyla birden çok kez ölçülüyor; burada her modelin en yüksek puanlı ayarı var. Fiyat, milyon token başına giriş / çıkış."
 degisenler:
   - { metin: "İlk gerçek ölçüm: puanlar artık tamamen kamu verisi", yon: yeni }
   - { metin: "Gemini 4 Carbon endekste birinci, Claude Opus 5.5 bir puan geride", yon: yukari }
   - { metin: "Kimi K3.1 Pro ilk 10'da; ağırlıklar 4 Kasım'da", yon: yeni }
 modeller:
-  - { ad: "Claude Opus 5.5", firma: Anthropic, puan: 58.4, erisim: ucretli, fiyat: "$4 / $20 (M token)", not: "Bence içerik ve yazı için hâlâ en iyisi; bu site onunla yazılıyor." }
-  - { ad: "Gemini 4 Carbon", firma: Google, puan: 59.4, erisim: ucretli, fiyat: "$4 / $20 (M token)", not: "Endekste birinci; henüz denemedik." }
+  - { ad: "Claude Opus 5.5", firma: Anthropic, puan: 58.4, erisim: ucretli, fiyat: "$4 / $20 (M token)", not: "Bence içerik ve yazı için hâlâ en iyisi; bu site onunla yazılıyor. Uzun metin yazımında (EQ-Bench) 3., LiveBench'te 3." }
+  - { ad: "Gemini 4 Carbon", firma: Google, puan: 59.4, erisim: ucretli, fiyat: "$4 / $20 (M token)", not: "Endekste birinci. Google onu siber güvenlik ve uzun ajan görevleri için tanıtıyor; şimdilik yalnız seçili güvenlik uzmanlarına açık. Henüz denemedik." }
   - { ad: "GPT-6 Astra", firma: OpenAI, puan: 56.9, erisim: ucretli, fiyat: "$10 / $50 (M token)" }
   - { ad: "GPT-6.1 Sol", firma: OpenAI, puan: 54.5, erisim: ucretli, fiyat: "$2 / $10 (M token)" }
   - { ad: "Claude Sonnet 5.5", firma: Anthropic, puan: 54.2, erisim: ucretli, fiyat: "$2 / $10 (M token)" }
