@@ -1,5 +1,5 @@
 ---
-baslik: "Kimi K3.1 Pro çıktı: Claude'a en yakın açık model, ama evde çalışmıyor"
+baslik: "Kimi K3.1 Pro çıktı: Claude'a en yakın açık ağırlıklı model, ama evde çalışmıyor"
 tarih: 2026-10-23
 kategori: acik-kaynak
 puan: 5
@@ -7,7 +7,7 @@ ozet: "Moonshot AI'ın 2,8 trilyon parametreli yeni modeli Terminal-Bench 4.0'da
 neden_onemli: "Açık ağırlıklı bir modelin en iyi kapalı modellerle aynı masaya oturması, API fiyatını ve şirketlerin kendi sunucusunda çalıştırma seçeneğini doğrudan etkiliyor. Ekipler için bu, veriyi dışarı çıkarmadan güçlü bir model kullanma ihtimali demek; bireysel kullanıcı için de Kimi uygulamasında ücretsiz deneyebileceği bir Claude alternatifi."
 yekvisual_notu: "Henüz denemedim; benchmark tablosu etkileyici ama kurgu ve metin işlerinde Claude'dan nerede ayrıldığını görmek için birkaç haftalık deneme lazım. Evde çalıştırma hayalini şimdilik unutun: en küçük hali bile 500 GB'ın üstünde, 256 GB RAM'li Mac Studio dahi yetmiyor."
 ucretsiz: null
-acik_kaynak: true
+acik_kaynak: null  # 4 Kasım'da ağırlıklar açılınca true yap
 zorluk: teknik
 sirket: Moonshot AI
 model: Kimi K3.1 Pro

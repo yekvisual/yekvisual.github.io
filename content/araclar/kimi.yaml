@@ -1,12 +1,12 @@
 ad: Kimi
 url: https://kimi.com
-aciklama: "Moonshot'ın dil modeli; K3.1 Pro açık kaynak ve Claude'un hemen arkasında. Uygulamada sınırlı ücretsiz."
+aciklama: "Moonshot'ın dil modeli; K3.1 Pro Claude'un hemen arkasında, ağırlıkları 4 Kasım'da açılıyor. Uygulamada sınırlı ücretsiz."
 kategori: acik-kaynak
 ucretsiz: null
-acik_kaynak: true
+acik_kaynak: false  # 4 Kasım'da ağırlıklar açılınca true yap
 zorluk: yeni
 eklenme: 2026-10-27
-etiketler: [dil modeli, açık kaynak, moonshot]
+etiketler: [dil modeli, açık ağırlık, moonshot]
 populer: 3
 kullanim: ["Araştırma", "Türkçe yazı", "API & entegrasyon"]
 fiyat: "Uygulamada sınırlı ücretsiz; API milyon token başına 2 $ giriş / 10 $ çıkış"

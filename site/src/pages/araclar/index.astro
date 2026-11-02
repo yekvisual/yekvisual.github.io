@@ -55,7 +55,7 @@ const araclar = (await getCollection('araclar')).sort((a, b) => a.data.ad.locale
             </td>
             <td class="aciklama">{a.data.aciklama}</td>
             <td><div class="etiketler">{a.data.kullanim.length ? a.data.kullanim.map((k) => <span class="etiket etiket-acik">{k}</span>) : <span class="kicker">{kategoriAdi(a.data.kategori)}</span>}</div></td>
-            <td>{a.data.ucretsiz === true ? <span class="etiket">Ücretsiz</span> : a.data.ucretsiz === false ? <span class="etiket etiket-outline">Ücretli</span> : <span class="muted">—</span>}</td>
+            <td>{a.data.ucretsiz === true ? <span class="etiket">Ücretsiz</span> : a.data.ucretsiz === false ? <span class="etiket etiket-outline">Ücretli</span> : <span class="etiket etiket-outline" title={a.data.fiyat}>Kısmen ücretsiz</span>}</td>
             <td>{a.data.acik_kaynak === true ? <span class="etiket etiket-outline">Açık</span> : a.data.acik_kaynak === false ? <span class="muted">Kapalı</span> : <span class="muted">—</span>}</td>
             <td class="kicker">{zorlukAdi(a.data.zorluk)}</td>
           </tr>
