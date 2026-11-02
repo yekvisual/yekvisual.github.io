@@ -10,6 +10,7 @@ export const SITE = {
   instagramKullanici: '@yekvisual',
   x: 'https://x.com/yekvisual',
   xKullanici: '@yekvisual',
+  eposta: 'iletisim@yeklab.com.tr',
   github: 'https://github.com/yekvisual/yekvisual.github.io',
   // Buttondown bülten kullanıcı adı (buttondown.com/<ad>). Form bu adrese gönderir;
   // haftalık gönderim için NEWSLETTER_API_KEY secret'ı gerekir.
