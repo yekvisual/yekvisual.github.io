@@ -174,7 +174,8 @@
  },
  "kimi-k3-1-agirliklar": {
   "https://huggingface.co/api/models?author=moonshotai&search=K3": [
-   "moonshotai/Kimi-K3"
+   "moonshotai/Kimi-K3",
+   "moonshotai/Kimi-K3.1-Pro"
   ],
   "https://huggingface.co/moonshotai": []
  }
