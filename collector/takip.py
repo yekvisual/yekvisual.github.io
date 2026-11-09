@@ -85,6 +85,15 @@ TAKIPLER = [
         "tetik": r"MCP|assistant|Claude",
         "sayfalar": ["https://www.blackmagicdesign.com/products/davinciresolve/whatsnew", "https://www.blackmagicdesign.com/products/davinciresolve"],
     },
+    {
+        "ad": "higgsfield-miracle",
+        "haber": "(henüz yok: çıkınca deneyip yeni haber + Ben denedim Reels'i yapılacak)",
+        "baslik": "Higgsfield Miracle kullanıma açılmış olabilir: hemen dene",
+        "anahtar": r"miracle",
+        "tetik": r"available now|now available|now live|is live|try (it )?now|start editing|out now|launch(ed)?|pricing|credits?|mcp|\$",
+        "kalkan": r"coming soon|waitlist|early testing|selected partners|yakında",
+        "sayfalar": ["https://higgsfield.ai/miracle", "https://higgsfield.ai/mcp"],
+    },
 ]
 
 
