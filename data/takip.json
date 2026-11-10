@@ -178,5 +178,15 @@
    "moonshotai/Kimi-K3.1-Pro"
   ],
   "https://huggingface.co/moonshotai": []
+ },
+ "higgsfield-miracle": {
+  "https://higgsfield.ai/miracle": [
+   "Higgsfield Miracle — Real-Time AI Video Editing, Coming Soon Higgsfield Explore Image Video Audio MCP API Genjutsu New Shorts Studio New Content Factory Ads Studio New Playable Mangaka New AI Influencer Academy New Katana ChatGPT Plugin Effects Cinema Studio Contests Marketing Studio Supercomputer E",
+   "Miracle is built to edit an existing clip, not to generate one from scratch.",
+   "Miracle is in early testing with selected partners.",
+   "Object edit Move or remove one thing in the shot Nothing drifts Face Light Camera move Any color Type a hex, only that object takes it Text Miracle Live text Type it in, it holds frame to frame Layers Pull any one out.",
+   "We’ll share exact performance numbers when Miracle launches."
+  ],
+  "https://higgsfield.ai/mcp": []
  }
 }
