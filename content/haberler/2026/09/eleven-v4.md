@@ -5,8 +5,8 @@ kategori: ses
 puan: 4
 ozet: "ElevenLabs'in yeni konuşma modelleri Eleven v4 ve v4 Turbo çıktı. 90'dan fazla dil destekliyor, Türkçe listede var. Anlık ses klonu için 10 saniyelik kayıt yetiyor; [laughs], [light rain] gibi satır içi etiketlerle ve doğal dille yönlendirme daha isabetli. Turbo'nun ilk sese kadar gecikmesi yaklaşık 150 ms."
 neden_onemli: "Seslendirme, dublaj ve sesli asistan işlerinde iki şey para ve zaman yiyor: kaliteli klon için uzun kayıt gereksinimi ve tonlamayı tutturmak için tekrar tekrar üretmek. 10 saniyelik klon ve etiketle yönlendirme bu iki maliyeti düşürüyor; Türkçe desteği sayesinde Reels seslendirmesi ya da kurumsal eğitim videosu için doğrudan kullanılabiliyor."
-yekvisual_notu: "v4'ü henüz Türkçe metinle denemedim; merak ettiğim, vurgu ve soru tonlamasının etiketlerle ne kadar düzeldiği. Aynı paragrafı v3 ve v4 ile üretip burada paylaşacağım. Ücretsiz planda v4'ün açık olup olmadığını doğrulamadım."
-ucretsiz: null
+yekvisual_notu: "v4'ü henüz Türkçe metinle denemedim; merak ettiğim, vurgu ve soru tonlamasının etiketlerle ne kadar düzeldiği. Aynı paragrafı v3 ve v4 ile üretip burada paylaşacağım. v4 ücretsiz planda da var: ElevenLabs'in v4 sayfasına göre diğer seslendirme modelleriyle aynı krediyi harcıyor; ücretsiz planda ayda 10.000 kredi, yaklaşık 10 dakika ses."
+ucretsiz: true
 acik_kaynak: false
 zorluk: yeni
 sirket: ElevenLabs
@@ -17,6 +17,7 @@ kapak_kaynak: "Görsel: ElevenLabs"
 kaynaklar:
   - { ad: "ElevenLabs blog: Eleven v4", url: "https://elevenlabs.io/blog/eleven-v4" }
   - { ad: "ElevenLabs belgeleri: Modeller", url: "https://elevenlabs.io/docs/overview/models" }
+  - { ad: "ElevenLabs: Eleven v4 sayfası ve SSS", url: "https://elevenlabs.io/v4" }
 ---
 
 ## Neler yeni?
@@ -29,7 +30,7 @@ ElevenLabs, 28 Eylül'de Eleven v4 ve Eleven v4 Turbo'yu yayınladı. İki model
 - **Hız:** v4'te medyan gecikme yaklaşık 100 ms; Turbo'da ilk sese kadar yaklaşık 150 ms. Bu, sesli asistanlarda "iki kişinin konuşması arasındaki duraklamadan daha kısa" demek.
 - **Sınır:** Tek istekte 10.000 karakter, yaklaşık 10 dakika ses.
 
-Fiyatlandırma duyuruda ayrıca belirtilmiyor; mevcut plan ve karakter kotaları geçerli görünüyor.
+Fiyat ayrı değil: ElevenLabs'in v4 sayfasındaki SSS'ye göre v4, diğer seslendirme modelleriyle aynı kredi fiyatında ve ücretsiz plan dahil tüm planlarda kullanılabiliyor. Ücretsiz planda ayda 10.000 kredi var (yaklaşık 10 dakika ses, kişisel kullanım için).
 
 ## Kimin işine yarar?
 

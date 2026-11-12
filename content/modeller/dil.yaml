@@ -12,7 +12,7 @@ degisenler:
   - { metin: "Kimi K3.1 Pro ilk 10'da; ağırlıklar 4 Kasım'da", yon: yeni }
 modeller:
   - { ad: "Claude Opus 5.5", firma: Anthropic, puan: 58.4, erisim: ucretli, fiyat: "$4 / $20 (M token)", not: "Bence içerik ve yazı için hâlâ en iyisi; bu site onunla yazılıyor. Uzun metin yazımında (EQ-Bench) 3., LiveBench'te 3." }
-  - { ad: "Gemini 4 Carbon", firma: Google, puan: 59.4, erisim: ucretli, fiyat: "$4 / $20 (M token)", not: "Endekste birinci. Google onu siber güvenlik ve uzun ajan görevleri için tanıtıyor; şimdilik yalnız seçili güvenlik uzmanlarına açık. Henüz denemedik." }
+  - { ad: "Gemini 4 Carbon", firma: Google, puan: 59.4, erisim: ucretli, fiyat: "$4 / $20 (M token)", not: "Endekste birinci. Google onu siber güvenlik ve uzun ajan görevleri için tanıtıyor. 10 Kasım'dan beri Gemini uygulamasında yalnız AI Ultra abonelerine ve API'de ücretli geliştiricilere açık. Henüz denemedik." }
   - { ad: "GPT-6 Astra", firma: OpenAI, puan: 56.9, erisim: ucretli, fiyat: "$10 / $50 (M token)" }
   - { ad: "GPT-6.1 Sol", firma: OpenAI, puan: 54.5, erisim: ucretli, fiyat: "$2 / $10 (M token)" }
   - { ad: "Claude Sonnet 5.5", firma: Anthropic, puan: 54.2, erisim: ucretli, fiyat: "$2 / $10 (M token)" }
@@ -20,7 +20,7 @@ modeller:
   - { ad: "Gemini 4 Argon", firma: Google, puan: 50.4, erisim: ucretli }
   - { ad: "Muse Wonder", firma: Meta, puan: 49.7, erisim: ucretli }
   - { ad: "Claude Fable 5.1", firma: Anthropic, puan: 49.7, erisim: ucretli }
-  - { ad: "Kimi K3.1 Pro", firma: Moonshot, puan: 46.0, erisim: sinirli, turkce: evet, fiyat: "$2 / $10 (M token)", not: "Ağırlıklar 4 Kasım'da açılıyor. Evde çalışmaz: 500 GB+ RAM ister." }
+  - { ad: "Kimi K3.1 Pro", firma: Moonshot, puan: 46.0, erisim: acik, turkce: evet, fiyat: "$2 / $10 (M token)", not: "Ağırlıklar 4 Kasım'da açıldı (1,56 TB, ek koşullu MIT lisansı). Evde çalışmaz: budanmış Mac sürümü bile 512 GB ister." }
   - { ad: "Claude Haiku 5.5", firma: Anthropic, puan: 36.2, erisim: ucretli }
   - { ad: "Grok 4.7", firma: xAI, puan: 35.0, erisim: ucretli }
   - { ad: "Qwen3.8 Max", firma: Alibaba, puan: 33.6, erisim: ucretli }

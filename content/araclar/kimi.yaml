@@ -1,9 +1,9 @@
 ad: Kimi
 url: https://kimi.com
-aciklama: "Moonshot'ın dil modeli; K3.1 Pro Claude'un hemen arkasında, ağırlıkları 4 Kasım'da açılıyor. Uygulamada sınırlı ücretsiz."
+aciklama: "Moonshot'ın dil modeli; K3.1 Pro Claude'un hemen arkasında, ağırlıkları 4 Kasım'da Hugging Face'te açıldı (1,56 TB). Uygulamada sınırlı ücretsiz."
 kategori: acik-kaynak
 ucretsiz: null
-acik_kaynak: false  # 4 Kasım'da ağırlıklar açılınca true yap
+acik_kaynak: true
 zorluk: yeni
 eklenme: 2026-10-27
 etiketler: [dil modeli, açık ağırlık, moonshot]
