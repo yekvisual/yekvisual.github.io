@@ -5,7 +5,7 @@ kategori: araclar
 puan: 4
 ozet: "Anthropic, 9 Kasım'da Claude Fable 5.2'yi ve aynı temel modelin sınırlı erişimli sürümü Mythos 5.2'yi yayınladı. Şirkete göre Fable 5.2 yanıtları yüzde 30'a kadar daha hızlı veriyor; kodlama, akıl yürütme ve görsel anlamada 5.1'in belirgin önünde. Ücretsiz planda yok; API fiyatı 5.1'e göre yüzde 20 düştü ve Pro'da 16 Kasım'a kadar dahil."
 neden_onemli: "Fable 5.2 görsel ya da video üretmiyor; metin ve kod yazıyor. Ama Anthropic onu ürün sayfasında 3D, donanım ve hareket tasarımı için en iyi modeli olarak tanıtıyor: kodla animasyon, sesli anlatım videosu ve etkileşimli 3D sahne. Remotion gibi araçlarla video hazırlayan, kurgu işlerini betikle otomatikleştiren ya da uzun PDF'lerle çalışan içerik üreticileri için doğrudan ilgili bir güncelleme."
-yekvisual_notu: "Henüz denemedim. İlk olarak Reels'te kullandığım Remotion şablonuna aynı istemle yeni bir sahne yazdırıp Fable 5.2'yi Opus 5.5 ile süre ve düzeltme sayısında karşılaştıracağım; ardından bir DaVinci kurgu betiği ve 100 sayfalık bir PDF'ten tablo çıkarma geliyor. Bu haftaki ek kullanım, bunları limit derdi olmadan denemek için iyi bir fırsat."
+yekvisual_notu: "Denedim: Opus 5.5 ile aynı iki istemi verdim (3D ışık stüdyosu ve Boğaz'da vapur). Sonuçlar başa baş; süre de ikisinde yirmi dakika civarı. Fable'ı ikinci kez denediğimde aynı iş 8 dakikada bitti. Tek deneme bir şey kanıtlamıyor; ayrıntılar ve istemlerin tam metni aşağıda."
 ucretsiz: false
 acik_kaynak: false
 zorluk: orta
@@ -90,3 +90,42 @@ Sıfırlamayı Ayarlar > Kullanım sayfasından kullanıyorsunuz. Varsayılan mo
 - **Limitleri hızlı tüketiyor.** Pro'da lansman haftası bitince Fable kullanım kredisine geçiyor.
 - **Veri saklama.** Fable kullanımında güvenlik denetimi için 30 günlük veri saklama varsayılan olarak zorunlu; sıfır veri saklama yalnız uygun kurumsal müşterilere açık.
 - **Bazı konular başka modele yönlendiriliyor.** Güvenlik önlemlerine takılan siber güvenlik soruları Opus 4.8'e, biyoloji soruları Opus 5'e aktarılabiliyor. Anthropic'e göre yanlış engellemeler 5.1'e göre yaklaşık yüzde 55 azaldı.
+
+## Denedim: Opus 5.5 ile aynı istem
+
+Fable 5.2'ye ve Opus 5.5'e aynı iki istemi verdim; ikisi de Claude Code'da, kendi bilgisayarımda çalıştı. Çıktıları kaydedip yan yana koydum: [Instagram'daki karşılaştırma](https://www.instagram.com/yekvisual/).
+
+| | Opus 5.5 | Fable 5.2 (1. deneme) | Fable 5.2 (2. deneme) |
+|---|---|---|---|
+| Işık stüdyosu | 13 dk 20 sn · 5 düzeltme turu | 7 dk 57 sn · 2 tur | 2 dk 53 sn · 1 tur |
+| Boğaz'da vapur | 6 dk 26 sn · 2 tur | 13 dk 1 sn · 6 tur | 5 dk 7 sn · 1 tur |
+| **Toplam** | **19 dk 46 sn · 7 tur** | **20 dk 58 sn · 8 tur** | **8 dk 0 sn · 2 tur** |
+
+Bilmeniz gerekenler:
+
+- **Süreyi ve turları modeller kendisi ölçtü** ve "düzeltme turu"nu kendileri tanımladı. Tanımlar birebir aynı değil.
+- **Her istem her modelde bir kez denendi.** Fable'ı ikinci kez, ayrı bir oturumda denedim; Opus'u ikinci kez denemedim. Bu yüzden "hangisi daha hızlı" sorusunun cevabı bu deneme değil; ikinci deneme yalnız tek ölçümün ne kadar oynak olduğunu gösteriyor.
+- **Opus istemden biraz saptı:** stilleri 1,5 yerine 1,4 saniyede değiştirdi ve bunu notuna yazdı. Fable iki denemede de isteme uydu.
+- **Videodaki yüzleri sonradan kadına çevirdim.** Üç sayfada da yalnız baş ve omuz modeline dokundum; ışık, zamanlama ve liste kodu modellerin yazdığı gibi kaldı.
+- Vapurda en iyi kesitleri seçtim; Opus'un videosunda görüntünün bir an beyaza patladığı kısmı almadım.
+
+### İstem 1 · Işık stüdyosu
+
+> Ekteki görsel, bir Instagram videosunun üç karesi: aynı kişinin yüzünde ışık stilleri sırayla değişiyor, solda numaralı bir liste büyüyor. Bu fikri Three.js ile gerçek zamanlı 3D sahne olarak yeniden kur.
+> - Ortada, ışığı güzel gösteren stilize bir insan başı ve omuzları olsun. Geometri ya da shader ile kurabilirsin; dışarıdan model indirme.
+> - 13 ışık stili sırayla gelsin, her biri 1,5 saniye: Rembrandt, kelebek (paramount), yarım (split), loop, kontra (arkadan), siluet, altın saat, mavi saat, high key, low key, neon, pencere ışığı, alttan ışık.
+> - Işıklar fiziksel olarak doğru yönden gelsin, gölgeler doğru düşsün.
+> - Solda o ana kadarki ışıkların numaralı listesi büyüsün, o anki madde vurgulansın.
+> - Toplam 20 saniye; sonunda tüm stillerin küçük bir ızgarası görünsün.
+
+### İstem 2 · Boğaz'da vapur
+
+> Three.js ile gün batımında İstanbul Boğazı'nı kur.
+> - Ön planda ilerleyen bir şehir hatları vapuru, bacasından çıkan duman parçacıkları.
+> - Suda dalga simülasyonu ve güneş yansıması; uçuşan martılar.
+> - Ufukta cami ve köprü siluetleri (basit geometriyle).
+> - Kamera 20 saniyelik sinematik bir yol izlesin; sonunda başa dönsün.
+> - Normal açılışta fareyle kamera çevrilebilsin; kayıt modunda kamera sabit yolu izlesin.
+
+İki istemin sonuna aynı teknik kuralları ekledim: tek bir `index.html` dosyası, dikey 1080×1920 tuval ve videoya kaydedebilmek için saniyeye göre kare çizen bir `renderAt(t)` fonksiyonu.
+
