@@ -5,7 +5,7 @@ kategori: gorsel
 puan: 4
 ozet: "ByteDance'in Seed ekibi 9 Kasım'da görsel modeli Seedream 5.5'i duyurdu. Model şeffaf ya da yarı saydam arka planlı görseli doğrudan üretiyor, aynı görsel üzerinde 100 tura kadar düzenlemeye dayanıyor ve küçük, sık yazıyı daha az bozuyor. Dola, BytePlus Playground ve Dreamina'da deneyebiliyorsunuz; Pro sürümü sonra gelecek."
 neden_onemli: "Çıkartma, ürün kesimi ya da logo gibi bir görseli tasarıma yerleştirmek için şimdiye kadar ayrı bir arka plan silme adımı gerekiyordu; saç teli ve cam gibi kenarlar da çoğu zaman bozuluyordu. Seedream 5.5 bu katmanı baştan şeffaf üretiyor. Art arda düzenlemede dokunulmayan alanların piksel piksel korunması da aynı görseli adım adım geliştirmek isteyenler için önemli: her turda renk kayması ve bulanıklaşma birikmiyor."
-yekvisual_notu: "Seedream 5.5'i henüz kendim denemedim. Benim için en ilgi çekici kısım şeffaf çıktı: karusellerde ve Reels kapaklarında kullandığım çıkartma ve ürün kesimleri için arka plan silme adımını atlamak demek. Denediğimde iki şeye bakacağım: saç teli ve cam gibi yarı saydam kenarlar temiz çıkıyor mu, ve aynı afişi 10–15 tur düzenledikten sonra ğ, ş, ı gibi harfler ve renkler gerçekten yerinde kalıyor mu."
+yekvisual_notu: "Magnific'te denedim. Şeffaf çıktı duman, ağaç dalı, çıkartma ve ürün kesiminde gerçekten silme adımını atlatıyor; ama cam, su ve sabun köpüğünün içi opak çıkıyor. Aynı fotoğrafı 20 tur düzenledim: yüz ve kadraj yerinde kaldı, Türkçe harfler (Ç, ü, ı) doğru yazıldı. Bir turda ise gözlüğü çıkar deyince kadının gözlerini de kapattı. Ayrıntılar ve istemler aşağıda."
 ucretsiz: null
 acik_kaynak: false
 zorluk: yeni
@@ -65,3 +65,39 @@ ByteDance, Seedream 5.5 serisinin Pro sürümünün sonra geleceğini söylüyor
 - **Karşılaştırmalar ByteDance'in.** Kalite ve yazı bozulması oranları şirketin kendi platformunda ölçüldü.
 - **Katman adları karışabiliyor.** Runware'in belgelerine göre görseli katmanlara ayırırken model katmanlara kendisi ad veriyor ve bu adlarda Çince karışabiliyor; süslü ya da çok küçük yazılar metin katmanı olarak tanınmayabiliyor.
 - **Erişim aşamalı.** Model önce ByteDance'in kendi ürünlerinde açıldı; ABD'ye ve başka pazarlara ne zaman tam olarak açılacağı belli değil.
+
+## Denedim: şeffaf çıktı ve 20 tur düzenleme
+
+Seedream 5.5'i Magnific üzerinden 2K çözünürlükte denedim. Şeffaflık Magnific'te ek bir ayarla açılıyor ve fiyatı opak görselle aynı.
+
+**Şeffaf çıktı (12 istem).** Her istemin sonuna "Arka plan şeffaf." ekledim.
+
+- **İyi çıkanlar:** duman (gerçekten yarı saydam), çiçekli ağaç dalı, beyaz spor ayakkabı (gölgesi de yarı saydam), çıkartmalar, dantel delikleri, yuvarlak etiket. Etiketteki "ŞEFFAF", "İSTANBUL" ve "Görsel Üretim Atölyesi" yazıları doğru çıktı.
+- **Orta:** saç. Teller tek tek korunuyor, ama uçlarda açık renkli bir hale var ve koyu zeminde belli oluyor.
+- **Kötü:** cam bardak, su sıçraması ve sabun köpüğü. Dış kenar temiz, ama içleri opak; arkadaki zemin camın içinden görünmüyor.
+- **İstenmeyen eklemeler:** kediye pizza ve konfeti, etikete ikinci bir "ŞEFFAF", yuvarlak istenen dantel kare çıktı.
+
+Örnek istemler:
+
+> Kalın beyaz kenarlı çıkartma: güneş gözlüklü turuncu kedi. Arka plan şeffaf.
+
+> Havada kıvrılarak yükselen ince, yarı saydam beyaz duman bulutu; uçlarında silikleşen ince duman telleri. Fotoğraf. Arka plan şeffaf.
+
+> Dört ayrı çıkartmadan oluşan set: ince belli bir çay bardağı, susamlı bir simit, bir martı ve Galata Kulesi. Her biri kalın beyaz kenarlı, aralarında boşluk var. Arka plan şeffaf.
+
+> Buzlu bir bardak limonata; cam bardak ve buz küpleri yarı saydam, üstünde nane yaprağı, bardakta su damlaları. Stüdyo ürün fotoğrafı. Arka plan şeffaf.
+
+**20 tur düzenleme.** Önce bir fotoğraf ürettim, sonra her turda bir önceki çıktıyı referans verip tek bir şeyi değiştirdim:
+
+> İstanbul'da sade bir kafe. Pencere kenarındaki küçük yuvarlak mermer masada oturan, lacivert ceketli, gözlüklü, omuz hizasında koyu kahverengi saçlı otuzlu yaşlarda bir kadın, kameraya dönük. Masada beyaz bir fincan kahve. Arkada açık kırmızı tuğla duvar ve üstünde "KAHVE" yazan küçük siyah bir tabela, köşede yeşil bir saksı bitkisi. Pencereden uzakta Galata Kulesi görünüyor. Gündüz, doğal ışık, fotoğraf.
+
+Her turun kalıbı:
+
+> Bu fotoğrafta yalnızca tek bir değişiklik yap: [değişiklik]. Kadının yüzü, kimliği, pozu, kadraj, ışık ve diğer tüm nesneler aynen kalsın.
+
+Turlar sırayla: ceket yeşil, tabakta simit, duvar gri sıva, gün batımı ışığı, gözlüğü çıkar, fincan kırmızı, gözlerini açsın, pencerede karlı kış, saçlar küt, tabelada "ÇAY", saksıda kaktüs, karşı sandalyede yaşlı bir adam, kareli masa örtüsü, tavanda ampul, kırmızı atkı, menü kartı ("Günün çorbası: Mercimek", "90 TL"), pervazda uyuyan kedi, gece ve kar, duvar saati, cam vazoda lale.
+
+- **Tutan:** 20 turun sonunda kadın açıkça aynı kişi, kadraj hiç kaymadı, ayrıntı bulanıklaşmadı. "ÇAY" ve menü kartındaki ü, ç, ı doğru yazıldı.
+- **Tutmayan:** "Gözlüğü çıkar" deyince kadının gözlerini de kapattı; bir tur daha verip düzelttim. Pencereye kış manzarası istediğimde içerideki gün batımı ışığını da kışa çevirdi. Gece turunda birkaç kar tanesi içeri düştü.
+- Düzenleme pikselleri koruyan bir mod değil; her tur görseli yeniden üretiyor. Ölçtüğüm kadarıyla dokunulmayan yüz her turda çok az kayıyor, ama 20 turda gözle görülür bir bozulma yok.
+
