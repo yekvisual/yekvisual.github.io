@@ -12,7 +12,7 @@ gorsel: ./medya/kodla-video.webp
 
 ## Ne bu?
 
-Video kurgu programında saatlerce keyframe çekmek yerine videoyu **kodla tarif ediyorsunuz**: "3 saniye logo açılsın, sonra şu başlık alttan kaysın, arkada şu müzik çalsın." [Remotion](https://www.remotion.dev) bunu React ile, [HyperFrames](https://hyperframes.dev) ise düz HTML/CSS ile yapıyor. Kodu sizin yazmanız gerekmiyor; Claude'a ne istediğinizi anlatıyorsunuz, o yazıyor, siz sonucu izleyip "başlığı büyüt, rengi değiştir" diyorsunuz.
+Video kurgu programında saatlerce keyframe çekmek yerine videoyu **kodla tarif ediyorsunuz**: "3 saniye logo açılsın, sonra şu başlık alttan kaysın, arkada şu müzik çalsın." [Remotion](https://www.remotion.dev) bunu React ile, [HyperFrames](https://hyperframes.heygen.com) ise düz HTML/CSS ile yapıyor. Kodu sizin yazmanız gerekmiyor; Claude'a ne istediğinizi anlatıyorsunuz, o yazıyor, siz sonucu izleyip "başlığı büyüt, rengi değiştir" diyorsunuz.
 
 ## Ne işe yarar?
 

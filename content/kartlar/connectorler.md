@@ -13,7 +13,7 @@ gorsel: ./medya/connectorler.webp
 
 ## Ne bu?
 
-Claude'a bir uygulamayı **bağlayıcı (connector)** olarak eklediğinizde Claude o uygulamanın içinde iş yapabiliyor: Canva'da tasarım oluşturuyor, Adobe'de fotoğrafı rötuşluyor, Figma'daki tasarımı okuyor, Drive'daki dosyaları buluyor, Notion'a not yazıyor. Kurulum genellikle "Bağlan" düğmesine basıp hesabınıza giriş yapmaktan ibaret.
+Claude'a bir uygulamayı **bağlayıcı (connector)** olarak eklediğinizde Claude o uygulamanın içinde iş yapabiliyor: Canva'da tasarım oluşturuyor, Adobe Express'te görsel düzenliyor, Figma'daki tasarımı okuyor, Drive'daki dosyaları buluyor, Notion'a not yazıyor. Kurulum genellikle "Bağlan" düğmesine basıp hesabınıza giriş yapmaktan ibaret. Masaüstündeki Photoshop, Illustrator, Premiere ve After Effects için Adobe'nin bağlantısı henüz önizlemede; Adobe'ye göre kullanıcılara 2027 başında açılacak.
 
 ## Ne işe yarar?
 

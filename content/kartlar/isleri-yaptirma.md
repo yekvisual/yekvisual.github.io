@@ -6,7 +6,7 @@ sira: 6
 zorluk: yeni
 kategori: otomasyon
 araclar: [claude, claude-code, github-actions]
-etiketler: [otomasyon, zamanlama, takvim, e-posta, routine, cron]
+etiketler: [otomasyon, zamanlama, zamanlanmış görev, scheduled tasks, takvim, e-posta, cron]
 gorsel: ./medya/isleri-yaptirma.webp
 ---
 
@@ -26,3 +26,5 @@ Claude'a bir işi **tarif edip zamanlayabiliyorsunuz**: "Her pazartesi 08:00'de 
 1. [claude.ai](https://claude.ai) üzerinde Google Takvim ve Gmail bağlayıcılarını açın.
 2. Claude Code'da `/schedule` yazıp şöyle bir görev tarif edin: *"Her sabah 08:00'de bugünkü takvimimi ve okunmamış önemli e-postaları 5 maddede özetle."*
 3. Birkaç gün izleyin, isteğinizi düzeltin. Sonra ikinci işi ekleyin.
+
+> Bu özelliğin adı artık "zamanlanmış görevler" (scheduled tasks; eski adı routines). Pro, Max, Ultra, Team ve Enterprise planlarında var, ücretsiz planda yok. Hâlâ araştırma önizlemesinde ve bir görev saatte birden sık çalıştırılamıyor.

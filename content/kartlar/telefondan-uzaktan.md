@@ -13,7 +13,7 @@ gorsel: ./medya/telefondan-uzaktan.webp
 
 ## Ne bu?
 
-Claude Code'un **uzaktan kontrol** özelliğiyle bilgisayarınızdaki oturumu telefonunuzdan ya da başka bir bilgisayardan sürdürebiliyorsunuz. Bilgisayar evde açık kalıyor, siz claude.ai uygulamasından ona bağlanıp iş veriyorsunuz: dosyalar, DaVinci, Remotion, hepsi bilgisayarda; siz sadece konuşuyorsunuz.
+Claude Code'un **uzaktan kontrol** özelliğiyle bilgisayarınızdaki oturumu telefonunuzdan ya da başka bir bilgisayardan sürdürebiliyorsunuz. Bilgisayar evde açık kalıyor, siz Claude uygulamasından ona bağlanıp iş veriyorsunuz: dosyalar, DaVinci, Remotion, hepsi bilgisayarda; siz sadece konuşuyorsunuz.
 
 ## Ne işe yarar?
 
@@ -23,8 +23,10 @@ Claude Code'un **uzaktan kontrol** özelliğiyle bilgisayarınızdaki oturumu te
 
 ## İlk adım
 
-1. Bilgisayarda Claude Code'u açın ve `/remote-control` yazın; bir bağlantı kodu verir.
-2. Telefonda [claude.ai](https://claude.ai) uygulamasını açın, aynı hesapla giriş yapın, oturumu seçin.
+1. Bilgisayarda Claude Code'u açın ve `/remote-control` (kısaca `/rc`) yazın; oturumun adresini verir. QR kodu görmek için komutu bir kez daha yazın.
+2. Telefonda Claude uygulamasını açın, aynı hesapla giriş yapın ve **Code** bölümündeki listeden oturumu seçin. QR kodu okutmak da oturumu doğrudan açıyor; tarayıcıdan [claude.ai/code](https://claude.ai/code) adresi de olur.
 3. Bilgisayarın uykuya geçmesini kapatın (Mac: Sistem Ayarları → Pil → Uyku). Deneme için: *"Masaüstüne 'merhaba.txt' adında bir dosya oluştur."*
+
+> Uzaktan kontrol Pro, Max, Ultra, Team ve Enterprise planlarında var; ücretsiz planda ve API anahtarıyla çalışmıyor. Team ve Enterprise'da önce yöneticinin açması gerekiyor.
 
 > Daha güçlü alternatif: işin bilgisayarda değil bulutta yapılması. "Her sabah 08:00'de hazır bir brifing almak" kartına bakın.

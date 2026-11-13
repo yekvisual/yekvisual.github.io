@@ -12,7 +12,7 @@ gorsel: ./medya/ai-ile-video-edit.webp
 
 ## Ne bu?
 
-DaVinci Resolve'un bir **programlama arayüzü** var: zaman çizelgesine klip ekleme, kesme, renk düğümü oluşturma, LUT uygulama, render alma gibi her şey komutla yapılabiliyor. Claude bu arayüze bir bağlayıcı (MCP) üzerinden erişince, "bu klibin sessiz yerlerini kes", "tüm kliplere şu LUT'u uygula ve 9:16 olarak dışa aktar" gibi isteklerinizi doğrudan uyguluyor.
+DaVinci Resolve'un bir **programlama arayüzü** var: zaman çizelgesine klip ekleme, kesme, renk düğümü oluşturma, LUT uygulama, render alma gibi her şey komutla yapılabiliyor. Eylül 2026'daki 21.1 sürümünden beri bu arayüze bağlanan bağlayıcı (MCP sunucusu) Resolve'un içinde resmi olarak geliyor. Claude bu bağlayıcı üzerinden erişince, "bu klibin sessiz yerlerini kes", "tüm kliplere şu LUT'u uygula ve 9:16 olarak dışa aktar" gibi isteklerinizi doğrudan uyguluyor.
 
 ## Ne işe yarar?
 
@@ -24,5 +24,5 @@ DaVinci Resolve'un bir **programlama arayüzü** var: zaman çizelgesine klip ek
 ## İlk adım
 
 1. DaVinci Resolve (ücretsiz sürüm yeterli) ve Claude Code kurulu olsun.
-2. Claude Code'a Resolve bağlayıcısını ekleyin; ilk komutta Claude sizi yönlendirir.
+2. Claude Code'a Resolve'un kendi bağlayıcısını ekleyin (21.1 ve üstü); üçüncü taraf bir araç aramanıza gerek yok. İlk komutta Claude sizi yönlendirir.
 3. Açık bir projede deneyin: *"Zaman çizelgesindeki klipleri listele ve toplam süreyi söyle."* Çalışıyorsa gerisi hayal gücünüze kalmış.

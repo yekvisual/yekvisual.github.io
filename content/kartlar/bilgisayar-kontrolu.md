@@ -25,6 +25,6 @@ gorsel: ./medya/bilgisayar-kontrolu.webp
 
 ## İlk adım
 
-1. Claude Code'u kurun ([claude.com/claude-code](https://claude.com/claude-code)); Mac, Windows ve Linux'ta çalışıyor, VS Code eklentisi de var.
-2. Terminalde `cd ~/Desktop` ve `claude` yazın.
+1. En kolayı Claude masaüstü uygulaması ([claude.com/claude-code](https://claude.com/claude-code)): kurun, giriş yapın, **Code** sekmesini açın. Terminal gerekmiyor; ücretli abonelik gerekiyor. Mac, Windows ve Linux'ta var; tarayıcıda, VS Code ve JetBrains'te de çalışıyor.
+2. Çalışma klasörü olarak Masaüstü'nü seçin. Terminal kullanıyorsanız `cd ~/Desktop` ve `claude` yazın.
 3. İlk görev: *"Masaüstündeki dosyaları listele ve nasıl düzenleyebileceğimi öner. Henüz bir şey taşıma."* Öneriyi beğenirseniz "yap" deyin.
