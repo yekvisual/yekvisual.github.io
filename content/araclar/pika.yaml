@@ -1,0 +1,15 @@
+ad: Pika H3 Flex
+url: https://huggingface.co/Pika-Labs/Pika-H3-Flex
+aciklama: "Görüntüyü, sesi ve diyaloğu birlikte üreten açık video modeli; ComfyUI ile kendi bilgisayarınızda çalışıyor."
+kategori: video
+ucretsiz: true
+acik_kaynak: true
+zorluk: teknik
+eklenme: 2026-11-05
+etiketler: [video, sesli video, açık ağırlık, minimax h3]
+populer: 3
+kullanim: ["Yerel çalışma", "Konuşan karakter", "Sesli kısa sahne"]
+fiyat: "Yerel sürüm ücretsiz; 1080p–4K büyütme Pika API'sinde ücretli"
+turkce: evet
+analiz: "Kredi ödemeden sesli ve konuşmalı kısa sahne üretmek için şu an elimizdeki en iyi açık seçenek; simitçi denememizde seslenme net, sahne tutarlıydı. Bedeli donanım ve zaman: Mac'te 8 saniye 46 dakika sürdü, yerelde en fazla 768p. Hızlı sonuç ve yüksek çözünürlük istiyorsanız Kling ya da Veo gibi kapalı servisler daha pratik."
+isakisi: acik-kaynak-modeller
