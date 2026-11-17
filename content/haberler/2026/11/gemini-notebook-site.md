@@ -18,6 +18,8 @@ kapak_kaynak: "Görsel: Google"
 medya:
   - { tip: video, src: ./gemini-notebook-site/site-uretimi.mp4, alt: "Google'ın tanıtım videosu (48 sn, sesli): yedi kaynaklı bir kimya not defterinden periyodik tabloyu anlatan, sonunda kısa bir sınav bulunan site; ardından dört kaynaktan proje takip panosu ve beş kaynaktan çeyrek dönem satış panosu üretiliyor.", kaynak: "Google" }
 denemeler:
+  - { tip: gorsel, src: ./gemini-notebook-site/deneme-kurgu-filtresi.webp, alt: "Kurgu/Montaj seçilince kalan beş araç: DaVinci Resolve, Runway, Remotion, HyperFrames, Claude Code. Her kartta fiyat etiketi, seviye, ne işe yaradığı, nasıl erişildiği ve sitemizdeki değerlendirmenin özeti.", kaynak: "YEK Lab denemesi" }
+  - { tip: gorsel, src: ./gemini-notebook-site/deneme-video-kartlari.webp, alt: "Video üretim kartlarından bir bölüm: Replicate, Kling 4.0, Google Flow, MiniMax Hailuo, Seedance 2.5, Pika H3 Flex.", kaynak: "YEK Lab denemesi" }
   - { tip: gorsel, src: ./gemini-notebook-site/deneme-arac-rehberi.webp, alt: "Gemini Notebook'un sitemizdeki 24 araç sayfasından ürettiği 'Hangi iş için hangi yapay zekâ aracı?' sitesi: iş seçme düğmeleri, ücretsiz filtresi, arama kutusu ve araç kartları. Üretim yaklaşık 4 dakika sürdü.", kaynak: "YEK Lab denemesi" }
 kaynaklar:
   - { ad: "Google: Gemini Notebook ile etkileşimli siteler", url: "https://blog.google/innovation-and-ai/products/gemini-notebook/interactive-sites" }
@@ -70,6 +72,9 @@ Sitemizdeki 24 araç sayfasının bağlantısını tek seferde kaynak olarak ekl
 
 - **Süre.** Site Studio panelinde yaklaşık dört dakikada hazır oldu; bu sırada sohbet ve diğer işler kullanılabiliyor.
 - **Sonuç.** İş seçme düğmeleri (görsel, video, seslendirme, müzik, kurgu, otomasyon), arama kutusu, "yalnızca ücretsiz olanlar" anahtarı, özet sayılar ve her araç için bir kart: ne işe yaradığı, nasıl erişildiği, ücret durumu ve kaynak sayfadaki değerlendirmenin özeti. İstemediğim bir dil filtresini de kendisi ekledi.
+- **Sitenin yapısı.** Üstte altı iş düğmesi var ve yanlarında kaç araç olduğu yazıyor: Görsel Üret 9, Video Üret 10, Seslendirme 3, Müzik 2, Kurgu/Montaj 5, Otomasyon/Kod 9 (bir araç birden çok işte görünebiliyor). Altında araç adına ya da amaca göre arama kutusu ve "yalnızca ücretsiz olanları göster" anahtarı duruyor. Özet kutuları 24 aracın 16'sının ücretsiz ya da freemium olduğunu gösteriyor (4'ü tamamen ücretsiz, 12'si freemium).
+- **Bir kartın içi.** Aracın adı ve tek satırlık tanımı, sağ üstte "Ücretsiz / Freemium / Ücretli" etiketi, erişim ve seviye etiketleri, "Ne işe yarar?", aracın resmi sitesine bağlantı veren "Nasıl erişilir?" ve kaynak sayfadaki değerlendirmenin kısa özeti. En altta aracın hangi işlerde göründüğü yazıyor; Kurgu/Montaj seçince örneğin DaVinci Resolve, Runway, Remotion, HyperFrames ve Claude Code kalıyor.
+- **Ad.** Not defterine biz ad vermedik; kaynaklara bakıp kendine "YEK Lab Yapay Zekâ Araçları Rehberi" adını verdi.
 - **Doğruluk.** Kartlardaki bilgiler kaynak sayfalardan geliyor; yine de yayınlamadan önce birkaç kartı kaynakla karşılaştırmak gerekir.
 - **Paylaşım.** Siteyi paylaşmak, not defterini paylaşmak demek: gören kişi kaynakları da görebiliyor. Kişisel ya da iş belgelerinden yapılan siteleri paylaşırken buna dikkat edin.
 
