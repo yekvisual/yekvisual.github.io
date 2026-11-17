@@ -1,6 +1,7 @@
 ---
 baslik: "Eleven v4 ile 10 saniyelik kayıttan ses klonu; Türkçe dahil 90'dan fazla dil"
 tarih: 2026-09-28
+yayin: 2026-10-27
 kategori: ses
 puan: 4
 ozet: "ElevenLabs'in yeni konuşma modelleri Eleven v4 ve v4 Turbo çıktı. 90'dan fazla dil destekliyor, Türkçe listede var. Anlık ses klonu için 10 saniyelik kayıt yetiyor; [laughs], [light rain] gibi satır içi etiketlerle ve doğal dille yönlendirme daha isabetli. Turbo'nun ilk sese kadar gecikmesi yaklaşık 150 ms."

@@ -1,6 +1,7 @@
 ---
 baslik: "Röportaj dökümünde kim ne dedi, daha az hatayla: ElevenLabs Scribe v3"
 tarih: 2026-11-10
+yayin: 2026-11-17
 kategori: ses
 puan: 4
 ozet: "ElevenLabs 10 Kasım'da iki yeni konuşmadan yazıya modeli duyurdu. Kayıtlı ses için Scribe v3, 102 dilde ölçülen testte Scribe v2'ye göre %27 daha az kelime hatası yapıyor ve konuşmacıları daha doğru ayırıyor. Canlı ses için Scribe v3 Live ilk kez gerçek zamanlı konuşmacı etiketi getiriyor. İkisi de ElevenLabs uygulamasında artık varsayılan model; API'de saati 0,20 $ ve 0,22 $."

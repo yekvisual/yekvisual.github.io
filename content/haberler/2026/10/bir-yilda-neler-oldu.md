@@ -1,6 +1,7 @@
 ---
 baslik: "1 yılda neler oldu: görsel, video ve seste 10 değişiklik ve güncel erişim listesi"
 tarih: 2026-10-28
+yayin: 2026-10-28
 kategori: araclar
 puan: 5
 ozet: "Eylül 2025'ten bu yana yapay zekâ ile üretimde öne çıkan 10 değişiklik: 30 saniyelik tek seferde video, konuşarak video düzenleme, Sora'nın kapanışı, okunur yazılı görseller, eskizden görsel, evde 4K, 10 saniyelik kayıttan ses klonu, lisanslı müzik ve komut alan programlar. Sonunda 25 aracın güncel erişim listesi var."

@@ -1,6 +1,7 @@
 ---
 baslik: "Pika H3 Flex açık kaynak oldu: sesli ve konuşmalı video, kendi bilgisayarınızda"
 tarih: 2026-10-29
+yayin: 2026-11-13
 kategori: video
 puan: 5
 ozet: "Pika, MiniMax H3 üzerine eğittiği H3 Flex'in ağırlıklarını Hugging Face'te yayınladı. Model görüntüyü ve sesi (efekt, ortam sesi, diyalog) birlikte, 6 adımda üretiyor; yerelde 480p ve 768p, 5–15 saniye. Lisans Türkiye'de ücretsiz kullanıma izin veriyor; AB, İngiltere, Kore ve ABD kapsam dışında."

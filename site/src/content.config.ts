@@ -24,6 +24,8 @@ const haberler = defineCollection({
     z.object({
       baslik: z.string(),
       tarih: z.coerce.date(),
+      // Sitede yayınlandığı gün; sıralama buna göre (yoksa tarih).
+      yayin: z.coerce.date().optional(),
       kategori,
       puan: z.number().int().min(0).max(5),
       ozet: z.string(),

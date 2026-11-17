@@ -1,6 +1,7 @@
 ---
 baslik: "Hi3D V1.0 açık kaynak: kaba 3D modeli fotoğrafa bakarak ayrıntılandırıyor"
 tarih: 2026-10-23
+yayin: 2026-10-28
 kategori: 3d
 puan: 4
 ozet: "Hi3D, eski adı Sparc3D olan 3D modelinin ilk sürümünü açık kaynak yaptı. Model bir nesnenin referans fotoğrafı ile kaba 3D modelini alıp çok daha ayrıntılı bir geometri üretiyor; kod ve ağırlıklar GitHub ve Hugging Face'te."

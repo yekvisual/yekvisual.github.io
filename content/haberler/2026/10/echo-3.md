@@ -1,6 +1,7 @@
 ---
 baslik: "Echo-3: iPhone ile birkaç dakikada çekilen mekân, gerçek ölçekte gezilebilir 3D'ye dönüşüyor"
 tarih: 2026-10-27
+yayin: 2026-10-28
 kategori: 3d
 puan: 5
 ozet: "SpAItial'ın yeni modeli Echo-3, telefonla birkaç dakikada çekilen bir odayı, binayı ya da açık alanı gerçek ölçekte gezilebilir bir 3D ortama çeviriyor; çekimde kaçan yerleri model tamamlıyor. iOS uygulaması yayında, abonelikli ve ilk ay ücretsiz."

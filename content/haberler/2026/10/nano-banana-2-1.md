@@ -1,6 +1,7 @@
 ---
 baslik: "Nano Banana 2.1 Gemini'de: 14 referansla tutarlı karakter, 4K yarı fiyata"
 tarih: 2026-10-06
+yayin: 2026-10-27
 kategori: gorsel
 puan: 4
 ozet: "Google'ın yeni görsel üretim ve düzenleme modeli Nano Banana 2.1, Gemini uygulaması, AI Studio ve API'de yayında. 1K, 2K ve 4K üretiyor, 1:8 ve 8:1 gibi uç en-boy oranlarını destekliyor; API'de 4K görsel fiyatı önceki modele göre yarıya indi."

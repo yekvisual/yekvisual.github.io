@@ -4,7 +4,7 @@ import { Image } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import HaberKart from '../../components/HaberKart.astro';
 import Rozetler from '../../components/Rozetler.astro';
-import { kartYolu } from '../../lib/site';
+import { kartYolu, yayinSirasi } from '../../lib/site';
 
 export async function getStaticPaths() {
   const kartlar = await getCollection('kartlar');
@@ -22,7 +22,7 @@ const sonraki = tumKartlar[i + 1];
 const araclar = (await getCollection('araclar')).filter((a) => d.araclar.includes(a.id));
 const haberler = (await getCollection('haberler'))
   .filter((h) => h.data.kart === kart.id || h.data.kategori === d.kategori)
-  .sort((a, b) => b.data.tarih.valueOf() - a.data.tarih.valueOf())
+  .sort(yayinSirasi)
   .slice(0, 3);
 ---
 

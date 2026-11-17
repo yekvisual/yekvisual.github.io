@@ -1,6 +1,7 @@
 ---
 baslik: "Gemini'de galaksiden atoma inen görsel keşif: Persepolis'ten yıldırıma, dokundukça derinleşiyor"
 tarih: 2026-10-28
+yayin: 2026-10-28
 kategori: araclar
 puan: 4
 ozet: "Google, Gemini uygulamasına hazır konulardan oluşan bir görsel keşif kütüphanesi ekledi. Her konu belgesel kalitesinde bir sahneyle açılıyor; sahnedeki etiketlere dokundukça bir alt katmana iniliyor ve bazı konular gezegen ölçeğinden molekül ve atoma kadar gidiyor. Ücretsiz, Google hesabıyla açılıyor; şimdilik beta."

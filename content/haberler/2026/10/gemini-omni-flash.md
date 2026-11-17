@@ -1,6 +1,7 @@
 ---
 baslik: "Gemini video Omni Flash'a geçti: konuşarak düzeltme, Veo 3.1 Preview kapandı"
 tarih: 2026-10-22
+yayin: 2026-10-27
 kategori: video
 puan: 4
 ozet: "Google, Gemini API'deki Veo 3.1 Preview uç noktalarını 22 Ekim'de kapattı ve yerine Gemini Omni Flash'ı gösterdi. Omni Flash tek seferlik üretim yerine çok turlu düzenleme sunuyor: üretilen videoyu 'arka planı değiştir', 'açıyı yükselt' gibi isteklerle baştan üretmeden düzeltiyorsunuz. Gemini uygulamasındaki video üretimi de bu modelle çalışıyor."

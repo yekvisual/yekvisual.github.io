@@ -2,7 +2,7 @@
 import { getCollection, getEntry } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import HaberKart from '../../components/HaberKart.astro';
-import { kartYolu } from '../../lib/site';
+import { kartYolu, yayinSirasi } from '../../lib/site';
 import { kategoriAdi, zorlukAdi } from '../../lib/taxonomy';
 
 export async function getStaticPaths() {
@@ -20,7 +20,7 @@ const haberler = (await getCollection('haberler'))
     const metin = `${h.data.baslik} ${h.data.sirket ?? ''} ${h.data.model ?? ''} ${h.data.etiketler.join(' ')}`.toLowerCase();
     return metin.includes(adKucuk.split(' ')[0]) || h.data.kategori === d.kategori;
   })
-  .sort((a, b) => b.data.tarih.valueOf() - a.data.tarih.valueOf())
+  .sort(yayinSirasi)
   .slice(0, 3);
 const benzerler = (await getCollection('araclar'))
   .filter((a) => a.id !== arac.id && (a.data.kategori === d.kategori || a.data.kullanim.some((k) => d.kullanim.includes(k))))

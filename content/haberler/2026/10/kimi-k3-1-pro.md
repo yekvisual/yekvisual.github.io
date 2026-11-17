@@ -1,6 +1,7 @@
 ---
 baslik: "Kimi K3.1 Pro çıktı: Claude'a en yakın açık kaynak model, ama evde çalışmıyor"
 tarih: 2026-10-23
+yayin: 2026-10-27
 kategori: acik-kaynak
 puan: 5
 ozet: "Moonshot AI'ın 2,8 trilyon parametreli yeni modeli Terminal-Bench 4.0'da Claude Opus 5.5'in bir puan gerisinde. Ağırlıklar 4 Kasım'da Hugging Face'te açıldı (1,56 TB); API fiyatı milyon token başına 2 $ giriş, 10 $ çıkış."

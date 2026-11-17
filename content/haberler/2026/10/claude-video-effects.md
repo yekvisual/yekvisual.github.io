@@ -1,6 +1,7 @@
 ---
 baslik: "Claude Code ile konuşan kafa videosuna 45 efekt: denedik, çoğu tutuyor"
 tarih: 2026-10-28
+yayin: 2026-10-28
 kategori: video
 puan: 4
 ozet: "Ücretsiz claude-video-effects becerisi, kameraya konuşan bir videoya yörüngede dönen kartlar, kişinin arkasına yazı, sözle tetiklenen spot ışığı gibi 45 efekt ekliyor. Bu bilgisayarda kurup 14 saniyelik bir klipte altı efekti denedik: kurulum 6 dakika, her efekt 8 ile 22 saniye arasında hazır."

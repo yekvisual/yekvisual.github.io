@@ -1,6 +1,7 @@
 ---
 baslik: "Sitenizi tek komutla Reels videosuna çevirin: /vitrin"
 tarih: 2026-11-04
+yayin: 2026-11-04
 kategori: video
 puan: 4
 ozet: "YEK Lab'ın ilk açık kaynak becerisi /vitrin, bir projeyi ya da web sitesini Reels, TikTok ve Shorts için 15–25 saniyelik dikey bir tanıtım videosuna çeviriyor. 20 binin üzerinde yıldızlı brag projesinden uyarlandı; yayınlamadan önce iki sitede denedik ve takıldığı yerleri talimata işledik."

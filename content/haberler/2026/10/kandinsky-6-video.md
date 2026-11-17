@@ -1,6 +1,7 @@
 ---
 baslik: "Kandinsky 6.0 Video: sesli ve dudak eşlemeli 5 saniyelik klip, MIT lisansı"
 tarih: 2026-10-06
+yayin: 2026-10-27
 kategori: video
 puan: 4
 ozet: "Kandinsky Lab, görüntü ve sesi aynı anda üreten Kandinsky 6.0 Video'yu MIT lisansıyla açtı. İki boy var: 3 milyar parametreli Lite ve 29 milyar parametreli Pro. İkisi de 5 saniyelik, 24 fps, 44 kHz sesli ve dudak eşlemeli klip üretiyor; yerleşik büyütme ile 1920×1080'e çıkıyor."

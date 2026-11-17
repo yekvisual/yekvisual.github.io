@@ -1,6 +1,7 @@
 ---
 baslik: "Genie 4, mekân keşfini değiştirebilir: tek fotoğraftan içinde gezilen set"
 tarih: 2026-10-27
+yayin: 2026-10-28
 kategori: video
 puan: 5
 ozet: "Google DeepMind'ın yeni dünya modeli Genie 4, tek bir fotoğraftan içinde gerçek zamanlı gezilebilen bir sahne kuruyor; hava, kamera ve sahneye eklenenler metinle değiştiriliyor. Set ekipleri için anlamı: mekâncının çektiği bir kareden yönetmen ve görüntü yönetmeni mekânın içinde dolaşıp açı arayabilir. Şimdilik seçili test kullanıcılarına açık."

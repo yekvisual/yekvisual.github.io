@@ -1,6 +1,7 @@
 ---
 baslik: "FLUX 3 Image Klein açık kaynak oldu: 8 GB ekran kartında 4K görsel üretimi"
 tarih: 2026-10-15
+yayin: 2026-10-27
 kategori: gorsel
 puan: 5
 ozet: "Black Forest Labs, 5,6 milyar parametreli FLUX 3 Image Klein'ın ağırlıklarını açtı. Model 4K üretiyor, 10 referans görsele kadar alıyor ve INT8 sürümü 8 GB VRAM'li ekran kartında çalışıyor. Yıllık geliri 5 milyon doların altındaki kişi ve şirketler ticari olarak ücretsiz kullanabiliyor."

@@ -1,6 +1,7 @@
 ---
 baslik: "Premiere'de renk, Photoshop'ta yeniden ışık: Adobe MAX 2026'da ne çıktı, ne beta"
 tarih: 2026-11-12
+yayin: 2026-11-12
 kategori: araclar
 puan: 4
 ozet: "Adobe, 10–12 Kasım'da Miami Beach'te yapılan MAX 2026'da Premiere'in renk düzenleme alanı Color Mode'u genel kullanıma açtı, Photoshop 28.0'a Relight ve Generative Restyle'ı ekledi. Uygulama içi yapay zekâ asistanları beta olarak genişledi; Photoshop, Premiere, Illustrator ve After Effects için MCP desteği önizlemede, kullanıcılara 2027 başında geliyor. Sneaks'te gösterilen 10 deneysel projeden Deep Brush ve Hands On şimdiden Adobe Labs'te denenebiliyor."

@@ -1,11 +1,11 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import type { APIContext } from 'astro';
-import { SITE, haberYolu } from '../lib/site';
+import { SITE, haberYolu, yayinSirasi } from '../lib/site';
 import { kategoriAdi } from '../lib/taxonomy';
 
 export async function GET(context: APIContext) {
-  const haberler = (await getCollection('haberler')).sort((a, b) => b.data.tarih.valueOf() - a.data.tarih.valueOf());
+  const haberler = (await getCollection('haberler')).sort(yayinSirasi);
   return rss({
     title: SITE.ad,
     description: SITE.aciklama,

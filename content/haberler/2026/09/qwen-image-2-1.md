@@ -1,6 +1,7 @@
 ---
 baslik: "Qwen-Image-2.1: üretim ve düzenleme tek modelde, doğrudan şeffaf PNG"
 tarih: 2026-09-20
+yayin: 2026-10-27
 kategori: acik-kaynak
 puan: 4
 ozet: "Alibaba'nın Qwen ekibi, görsel üretimi ve düzenlemeyi tek modelde birleştiren 7 milyar parametreli Qwen-Image-2.1'i Hugging Face'te yayınladı. Doğrudan şeffaf arka planlı (RGBA) görsel üretebiliyor, 10 referans görsele kadar alıyor. Ağırlıklar açık ama lisans araştırma amaçlı; ticari kullanım için Alibaba ile ayrı anlaşma gerekiyor. 9 Ekim'de 8 adımda üreten Turbo sürümü eklendi."

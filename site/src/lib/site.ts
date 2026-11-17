@@ -35,3 +35,9 @@ export function haberYolu(id: string) {
 export function kartYolu(id: string) {
   return `/bilmeniz-gerekenler/${id}/`;
 }
+
+// Haberleri sitede yayınlandığı güne göre (yeniden eskiye) sıralar; aynı gün içinde duyuru tarihine bakar.
+export function yayinSirasi<T extends { data: { tarih: Date; yayin?: Date } }>(a: T, b: T) {
+  const ya = (a.data.yayin ?? a.data.tarih).valueOf(), yb = (b.data.yayin ?? b.data.tarih).valueOf();
+  return yb - ya || b.data.tarih.valueOf() - a.data.tarih.valueOf();
+}

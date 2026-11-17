@@ -7,14 +7,14 @@ import HaberKart from '../components/HaberKart.astro';
 import BilgiKart from '../components/BilgiKart.astro';
 import Bulten from '../components/Bulten.astro';
 import ModelPaneli from '../components/ModelPaneli.astro';
-import { SITE } from '../lib/site';
+import { SITE, yayinSirasi } from '../lib/site';
 import reelKling from '../assets/reels/kling-4.jpg';
 import reelKimi from '../assets/reels/kimi-3-1.jpg';
 import reelDiyalog from '../assets/reels/kling-4-diyalog.jpg';
 import giris from '../../../content/site/giris.json';
 import instagram from '../data/instagram.json';
 
-const haberler = (await getCollection('haberler')).sort((a, b) => b.data.tarih.valueOf() - a.data.tarih.valueOf());
+const haberler = (await getCollection('haberler')).sort(yayinSirasi);
 const kartlar = (await getCollection('kartlar')).sort((a, b) => a.data.sira - b.data.sira);
 const araclar = (await getCollection('araclar')).sort((a, b) => b.data.populer - a.data.populer || a.data.ad.localeCompare(b.data.ad, 'tr'));
 

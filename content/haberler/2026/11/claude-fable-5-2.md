@@ -1,6 +1,7 @@
 ---
 baslik: "Kodla animasyon ve uzun işler için daha hızlı model: Claude Fable 5.2 çıktı"
 tarih: 2026-11-12
+yayin: 2026-11-12
 kategori: araclar
 puan: 4
 ozet: "Anthropic, 9 Kasım'da Claude Fable 5.2'yi ve aynı temel modelin sınırlı erişimli sürümü Mythos 5.2'yi yayınladı. Şirkete göre Fable 5.2 yanıtları yüzde 30'a kadar daha hızlı veriyor; kodlama, akıl yürütme ve görsel anlamada 5.1'in belirgin önünde. Ücretsiz planda yok; API fiyatı 5.1'e göre yüzde 20 düştü ve Pro'da 16 Kasım'a kadar dahil."

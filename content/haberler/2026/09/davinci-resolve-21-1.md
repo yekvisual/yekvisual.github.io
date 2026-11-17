@@ -1,6 +1,7 @@
 ---
 baslik: "DaVinci Resolve 21.1: Claude'a medya düzenletip toplu render aldırmak"
 tarih: 2026-09-08
+yayin: 2026-10-27
 kategori: araclar
 puan: 5
 ozet: "Blackmagic Design, IBC 2026'da DaVinci Resolve 21.1'i yayınladı. Sürüm; Claude, Claude Code ve ChatGPT Codex gibi yapay zekâ asistanlarının Resolve'a bağlanmasını sağlıyor: projeyi analiz etme, medyayı düzenleme, ayar değiştirme, uzun çekimden özet kurgu çıkarma ve toplu render gündelik dille isteniyor. Güncelleme ücretsiz."

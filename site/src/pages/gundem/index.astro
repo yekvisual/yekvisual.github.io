@@ -1,10 +1,11 @@
 ---
 import { getCollection } from 'astro:content';
+import { yayinSirasi } from '../../lib/site';
 import Base from '../../layouts/Base.astro';
 import HaberKart from '../../components/HaberKart.astro';
 import { KATEGORILER } from '../../lib/taxonomy';
 
-const haberler = (await getCollection('haberler')).sort((a, b) => b.data.tarih.valueOf() - a.data.tarih.valueOf());
+const haberler = (await getCollection('haberler')).sort(yayinSirasi);
 ---
 
 <Base title="Gündem" description="Yapay zekâ görsel, video, ses ve otomasyon dünyasından yeni modeller, araçlar ve gelişmeler; sade ve güncel.">

@@ -1,6 +1,7 @@
 ---
 baslik: "GPT-6.1 Terra: bilgisayarı sizin yerinize kullanan hızlı ve ucuz OpenAI modeli"
 tarih: 2026-10-26
+yayin: 2026-10-28
 kategori: araclar
 puan: 4
 ozet: "OpenAI, masaüstü yazılımlarını çalıştırmak ve tekrar eden bilgisayar işlerini yapmak için tasarlanan GPT-6.1 Terra'yı yayınladı. Şirkete göre GPT-6 Astra ile benzer sonuçları onda bir fiyatla ve üç kattan hızlı veriyor; ChatGPT Plus ve üstü planlarda, Codex'te ve API'de var."

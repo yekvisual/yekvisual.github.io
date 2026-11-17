@@ -1,6 +1,7 @@
 ---
 baslik: "Tek cümleyle GIF yapmak: ChatGPT Images 2.6 ve yeni Mac uygulamasını denedik"
 tarih: 2026-11-09
+yayin: 2026-11-11
 kategori: gorsel
 puan: 4
 ozet: "ChatGPT'nin görsel modeli Images 2.6 artık yazdığınız bir cümleden döngü GIF üretiyor. Plus hesapla, yeni Mac uygulamasında dört GIF denedik: tebeşirle yazılan \"Öğretmenler Günü Kutlu Olsun\" harfi harfine doğru çıktı, ama GIF'ler küçük. Aynı uygulamada Çalışma modunda sunum, sohbet içinde oyun ve SVG ikon da denedik."

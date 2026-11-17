@@ -1,6 +1,7 @@
 ---
 baslik: "Oyuncuya dokunmadan mekânı değiştirin: Beeble SwitchX 3.0 elde kamerada, 4K'da"
 tarih: 2026-11-11
+yayin: 2026-11-17
 kategori: video
 puan: 4
 ozet: "Beeble, 11 Kasım'da video-videoya model SwitchX 3.0'ı yayınladı. Model çekilmiş bir planda oyuncunun performansını kare kare koruyup mekânı, ışığı ve arka plandaki her şeyi değiştiriyor. Yenilikler: tek işte dört referans görsel, hareket eden arka planlar, elde ve koşarak çekilmiş planlarda işaretsiz kamera takibi ve daha iyi prompt kontrolü. Çıktı 4K'ya kadar, kredi fiyatı 2.0 ile aynı; kullanmak için ücretli plan gerekiyor."

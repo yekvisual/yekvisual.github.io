@@ -1,6 +1,7 @@
 ---
 baslik: "16 referans görselle 4K üretin: MiniMax'ın açık kaynak modeli H3-Image"
 tarih: 2026-11-11
+yayin: 2026-11-17
 kategori: gorsel
 puan: 4
 ozet: "MiniMax, 11 Kasım'da görsel üretme ve düzenleme modeli H3-Image'ı ağırlıklarıyla birlikte yayınladı. Şirkete göre model 4096×4096 piksellik bir görseli 10 saniyenin altında üretiyor ve düzenlemede 16 referans görsele kadar alıyor. Hugging Face'ten indirip ComfyUI ile kendi makinenizde çalıştırabiliyor ya da MiniMax'ın API'si ve Hailuo üzerinden kullanabiliyorsunuz. Lisans Türkiye'de ücretsiz kullanıma izin veriyor; yıllık geliri 1 milyon doları aşanlar için yazılı izin şart."

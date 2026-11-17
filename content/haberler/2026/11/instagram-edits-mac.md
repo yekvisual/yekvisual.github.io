@@ -1,6 +1,7 @@
 ---
 baslik: "Reels'i Mac'te ücretsiz kurgulayın: Instagram Edits masaüstüne geldi"
 tarih: 2026-11-05
+yayin: 2026-11-17
 kategori: video
 puan: 4
 ozet: "Instagram, video kurgu uygulaması Edits'in Mac sürümünü 5 Kasım'da yayınladı. Ücretsiz uygulamada çok izli zaman çizelgesi, anahtar kare, renk çarkları ve eğriler, log dönüştürme, kendi LUT'larınızı yükleme ve sınırsız otomatik altyazı var. Videoyu filigransız 4K dışa aktarabiliyor ya da doğrudan Instagram'da yayınlayabiliyorsunuz. Apple silicon'lu (M1 ve sonrası) bir Mac ve Instagram hesabı gerekiyor; aynı projeyi telefonla Mac arasında taşımak henüz yok."

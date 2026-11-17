@@ -1,6 +1,7 @@
 ---
 baslik: "Comfy Agent: akışı tarif edin, ComfyUI düğümlerini yapay zekâ kursun"
 tarih: 2026-10-01
+yayin: 2026-10-27
 kategori: araclar
 puan: 4
 ozet: "ComfyUI ekibi, tuvalin içinde çalışan bir asistan olan Comfy Agent'ı yayınladı. Ne istediğinizi yazıyorsunuz; asistan iş akışını planlıyor, düğümleri yerleştirip bağlıyor, çalıştırıyor ve hata verirse düzeltiyor. İlk gün Comfy Cloud'da herkese açık, beta aşamasında; masaüstü sürümü birkaç hafta içinde geleceği söyleniyor."

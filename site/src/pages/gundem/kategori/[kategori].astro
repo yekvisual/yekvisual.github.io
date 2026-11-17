@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import { yayinSirasi } from '../../../lib/site';
 import Base from '../../../layouts/Base.astro';
 import HaberKart from '../../../components/HaberKart.astro';
 import { KATEGORILER } from '../../../lib/taxonomy';
@@ -12,7 +13,7 @@ const { kategori } = Astro.params;
 const k = KATEGORILER[kategori];
 const haberler = (await getCollection('haberler'))
   .filter((h) => h.data.kategori === kategori)
-  .sort((a, b) => b.data.tarih.valueOf() - a.data.tarih.valueOf());
+  .sort(yayinSirasi);
 ---
 
 <Base title={`${k.ad} haberleri`} description={k.aciklama}>

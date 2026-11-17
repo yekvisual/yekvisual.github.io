@@ -5,7 +5,7 @@ import Kapak from '../../components/Kapak.astro';
 import Medya from '../../components/Medya.astro';
 import Rozetler from '../../components/Rozetler.astro';
 import HaberKart from '../../components/HaberKart.astro';
-import { SITE, kartYolu, tarihTR } from '../../lib/site';
+import { SITE, kartYolu, tarihTR, yayinSirasi } from '../../lib/site';
 
 export async function getStaticPaths() {
   const haberler = await getCollection('haberler');
@@ -18,7 +18,7 @@ const { Content } = await render(haber);
 const kart = d.kart ? await getEntry('kartlar', d.kart) : undefined;
 const ilgili = (await getCollection('haberler'))
   .filter((h) => h.id !== haber.id && (h.data.kategori === d.kategori || h.data.kart === d.kart))
-  .sort((a, b) => b.data.tarih.valueOf() - a.data.tarih.valueOf())
+  .sort(yayinSirasi)
   .slice(0, 3);
 const ogYolu = `/og/${haber.id}.png`;
 const paylasUrl = new URL(Astro.url.pathname, Astro.site).toString();

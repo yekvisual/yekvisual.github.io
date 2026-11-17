@@ -1,6 +1,7 @@
 ---
 baslik: "Kling 4.0 ile tek seferde 30 saniyelik, Türkçe konuşan video"
 tarih: 2026-10-15
+yayin: 2026-10-27
 kategori: video
 puan: 5
 ozet: "Kuaishou'nun yeni video modeli parça birleştirmeden 30 saniyelik sahne üretiyor; 10 anahtar kare ve 15 referans görselle karakter tutarlılığı sağlıyor, karakterler Türkçe dahil birçok dilde konuşabiliyor. Sitede deneme kredisi var."

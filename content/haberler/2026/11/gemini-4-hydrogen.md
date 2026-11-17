@@ -1,6 +1,7 @@
 ---
 baslik: "Ücretsiz Gemini'de daha hızlı ve talimata sadık yanıtlar alın: Gemini 4 Hydrogen"
 tarih: 2026-11-12
+yayin: 2026-11-17
 kategori: araclar
 puan: 4
 ozet: "Google, 12 Kasım'da Gemini 4 ailesinin hızlı modeli Gemini 4 Hydrogen'ı yayınladı. Model Gemini uygulamasına, Google Arama'ya, AI Studio'ya ve Gemini API'ye geliyor. Ücretsiz hesapta model listesinden seçilemiyor; otomatik model seçimi açıksa, daha çok düşünme gerektiren istemlerde Gemini onu kendisi kullanıyor. API fiyatı milyon giriş token'ı başına 1,50 $, çıkış için 7,50 $."

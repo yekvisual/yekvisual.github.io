@@ -1,6 +1,7 @@
 ---
 baslik: "Telefon çekiminizden farklı kamera açıları: Google Flow'da 5 yeni araç"
 tarih: 2026-11-12
+yayin: 2026-11-17
 kategori: video
 puan: 3
 ozet: "Google, 12 Kasım'da yapay zekâ stüdyosu Flow'a sanatçıların yaptığı beş araç ekledi. Pocket Studio telefonla çekilmiş tek bir plandan birden çok kamera açısı üretip görüntüyü iyileştiriyor; oyuncunun performansı aynen kalıyor. Diğerleri afiş tasarlıyor, bir karakteri farklı yaşlarda gösteriyor, görseli piksel ve ASCII gibi retro stillere çeviriyor ve cam kırılması gibi ışık efektleri üretiyor. Flow Türkiye'de açık; araçların ürettiği medya Flow kredisi harcıyor."

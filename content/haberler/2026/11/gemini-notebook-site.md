@@ -1,6 +1,7 @@
 ---
 baslik: "Notlarınızı ve kaynaklarınızı etkileşimli bir siteye çevirin: Gemini Notebook"
 tarih: 2026-11-16
+yayin: 2026-11-17
 kategori: araclar
 puan: 4
 ozet: "Google, 16 Kasım'da Gemini Notebook'a kaynaklardan etkileşimli site üretme özelliğini ekledi. Not defterinin sohbetine \"make me a site\" yazıp ne istediğinizi anlatıyorsunuz; Gemini Notebook yüklediğiniz kaynaklardan çalışan bir sayfa kuruyor: etkileşimli bir periyodik tablo, satış panosu ya da proje takip listesi gibi. Özellik 16 Kasım itibarıyla dünya genelinde web'de 18 yaş üstü kullanıcılara açılmaya başladı; mobil uygulamaya sonra gelecek."

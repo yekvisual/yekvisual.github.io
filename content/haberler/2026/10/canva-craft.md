@@ -1,6 +1,7 @@
 ---
 baslik: "Canva'nın ilk kendi görsel modeli Craft: önce düzeni planlıyor, sonra çiziyor"
 tarih: 2026-10-22
+yayin: 2026-10-30
 kategori: gorsel
 puan: 4
 ozet: "Canva, kendi araştırma ekibinin sıfırdan eğittiği ilk görsel üretim modeli Craft'ı tüm kullanıcılara açtı. Model önce görselin düzenini ve içindeki yazıyı planlıyor, sonra 2K çözünürlükte çiziyor. DesignArena sıralamasında dördüncü sırada başladı; Canva'da Dream Lab bölümünden, ücretsiz hesapla da kullanılabiliyor."

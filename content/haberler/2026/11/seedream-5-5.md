@@ -1,6 +1,7 @@
 ---
 baslik: "Arka planı silmeden şeffaf görsel, 100 tura kadar düzenleme: Seedream 5.5"
 tarih: 2026-11-12
+yayin: 2026-11-12
 kategori: gorsel
 puan: 4
 ozet: "ByteDance'in Seed ekibi 9 Kasım'da görsel modeli Seedream 5.5'i duyurdu. Model şeffaf ya da yarı saydam arka planlı görseli doğrudan üretiyor, aynı görsel üzerinde 100 tura kadar düzenlemeye dayanıyor ve küçük, sık yazıyı daha az bozuyor. Dola, BytePlus Playground ve Dreamina'da deneyebiliyorsunuz; Pro sürümü sonra gelecek."

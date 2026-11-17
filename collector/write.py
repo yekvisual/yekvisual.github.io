@@ -61,6 +61,7 @@ def _frontmatter(h: Haber, grup: list[Oge], e: Eleme, kapak: str | None, kapak_k
     fm: dict = {
         "baslik": h.baslik,
         "tarih": tarih,
+        "yayin": datetime.now(timezone.utc).isoformat()[:10],
         "kategori": h.kategori,
         "puan": e.puan,
         "ozet": h.ozet,

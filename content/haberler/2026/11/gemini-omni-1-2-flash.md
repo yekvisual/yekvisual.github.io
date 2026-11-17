@@ -1,6 +1,7 @@
 ---
 baslik: "15 saniyelik video Google Vids'te ücretsiz: Gemini Omni 1.2 Flash'ı denedik"
 tarih: 2026-11-09
+yayin: 2026-11-10
 kategori: video
 puan: 4
 ozet: "Google, 5 Kasım'da video modeli Gemini Omni 1.2 Flash'ı çıkardı: klip artık 3 ile 15 saniye arası, ses videoyla birlikte üretiliyor ve klibi sohbetle düzeltebiliyorsunuz. Google'a göre Google hesabı olan herkes Vids'te ayda 3 adet 15 saniyelik video üretebiliyor. Vids'te beş prompt denedik; hepsini aşağıda birebir paylaşıyoruz."
