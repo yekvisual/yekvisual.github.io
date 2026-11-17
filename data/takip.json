@@ -67,8 +67,7 @@
   "https://elevenlabs.io/pricing": [
    "After that, your account will be downgraded to the Free plan and any unused paid credits will expire.",
    "Annual billing works out to two months free — you pay for 10 months (annual price = monthly price × 10).",
-   "Calculate your costs based on your usage needs Monthly billing Monthly billing Yearly billing Startup Grants Program Build intelligent, real-time conversational AI agents into your new product or startup for free with an ElevenLabs Grant.",
-   "Ends September 30 Subscribe strong]:tw-font-normal tw-text-gray-600\"> Introducing Eleven v4 Meet Eleven v4, our most emotive model yet.",
+   "Calculate your costs based on your usage needs Yearly billing Monthly billing Yearly billing Startup Grants Program Build intelligent, real-time conversational AI agents into your new product or startup for free with an ElevenLabs Grant.",
    "If you are not satisfied with the output, a limited number of free regenerations may be available as long as the content and certain settings do not change.",
    "Monthly price and included credits per plan: Free $0 (10,000 credits); Starter $6 (30,000 credits); Creator $22 (121,000 credits, $11 for the first month); Pro $99 (600,000 credits); Scale $299 (1,800,000 credits, 3 seats); Business $990 (6,000,000 credits, 10 seats); Enterprise is custom.",
    "Rollover does not apply to the Free plan.",
@@ -106,7 +105,7 @@
    "1 2 3 Dial in every detail with Nano Banana.",
    "Bring your wildest ideas to life at the speed and quality you need with Nano Banana.",
    "Google AI Pro, Plus, Ultra users have access to our best image model, Nano Banana 2.1, and can regenerate images using Nano Banana Pro by selecting the three dot menu and then “Redo with Pro”.",
-   "Learn more Close Skip to main content For Students Features Gemini Live Image Generation Video Generation Music Generation Deep Research Personal Intelligence Daily Brief Canvas Gemini in Chrome Productivity Explore Subscriptions What's New Gemini for desktop Gemini Drops Latest News Try Gemini Nano",
+   "Learn more Close Skip to main content For Students For Business Features Gemini Live Image Generation Video Generation Music Generation Deep Research Personal Intelligence Daily Brief Canvas Gemini in Chrome Productivity Subscriptions What's New Gemini for desktop Gemini Drops Latest News Try Gemini",
    "Nano Banana 2 - Gemini AI image generator & photo editor College students can unlock higher access to Nano Banana with a free Pro plan for one year.",
    "To access Nano Banana, select \"🍌Create images\" from the tools menu.",
    "Try Nano Banana 2.1 Make yourself the main character.",
@@ -181,14 +180,20 @@
  },
  "higgsfield-miracle": {
   "https://higgsfield.ai/miracle": [
-   "Higgsfield Miracle — Real-Time AI Video Editing, Coming Soon Higgsfield Explore Image Video Audio MCP API Cinema Studio Genjutsu Top Miracle Soon Contests Shorts New Ads Studio New Playable Supercomputer Community Academy Plugins Canvas Plugin for ChatGPT MCP for Claude Higgsfield Miracle coming soo",
+   "Higgsfield Miracle — Real-Time AI Video Editing, Coming Soon Higgsfield Explore Image Video Audio MCP API Cinema Studio Genjutsu Top Short Drama New Miracle Soon Contests Shorts New Ads Studio New Playable Supercomputer Community Academy Plugins Canvas Plugin for ChatGPT MCP for Claude Higgsfield Mi",
    "Miracle is built to edit an existing clip, not to generate one from scratch.",
    "Miracle is in early testing with selected partners.",
    "Object edit Move or remove one thing in the shot Nothing drifts Face Light Camera move Any color Type a hex, only that object takes it Text Miracle Live text Type it in, it holds frame to frame Layers Pull any one out.",
    "We’ll share exact performance numbers when Miracle launches."
-  ],
-  "https://higgsfield.ai/mcp": [
-   "Higgsfield MCP | AI Image & Video Generation for Any Agent Higgsfield Explore Image Video Audio MCP API Cinema Studio Genjutsu Top Miracle Soon Contests Shorts New Ads Studio New Playable Supercomputer Community Academy Plugins Canvas ChatGPT Claude Claude Code Telegram CLI Other Generate Images & V"
   ]
+ },
+ "enhancor-portre-buyutucu": {
+  "https://upscale.sirioberati.com/": [
+   "Input Drop image here or click to upload JPG, PNG, WebP Replace Remove Tap Replace to upload your portrait and start Skin Fix & Upscale Enhance + 2× upscale Upscale Up to 4× resolution Skin Fix AI skin enhancement Detail Level 0.01–0.15 0.10 Upscale Factor 2x 3x 4x Denoise 0.05–0.5 0.20 Advanced Set",
+   "Portrait Upscaler — Enhancor Free for a limited time — upscale portraits at no cost.",
+   "Sign up for unlimited access Upscaler FREE BETA Join Community Sign Up Enhancor AI Portrait Upscaler AI-powered upscaling up to 4K.",
+   "We'd love to hear your thoughts on the Portrait Upscaler."
+  ],
+  "https://enhancor.ai/": []
  }
 }
