@@ -92,7 +92,16 @@ TAKIPLER = [
         "anahtar": r"miracle",
         "tetik": r"available now|now available|now live|is live|try (it )?now|start editing|out now|launch(ed)?|pricing|credits?|mcp|\$",
         "kalkan": r"coming soon|waitlist|early testing|selected partners|yakında",
-        "sayfalar": ["https://higgsfield.ai/miracle", "https://higgsfield.ai/mcp"],
+        "sayfalar": ["https://higgsfield.ai/miracle"],
+    },
+    {
+        "ad": "enhancor-portre-buyutucu",
+        "haber": "(henüz yok: açılınca TTKB fotoğraflarıyla kimlik koruma testi + haber + Reels adayı)",
+        "baslik": "Enhancor kimlik koruyan portre büyütücüsü açılmış olabilir: test et",
+        "anahtar": r"portrait|upscal|skin fix|identity",
+        "tetik": r"available now|now available|now live|is live|try (it )?now|start upscaling|upload|pricing|credits?|\$",
+        "kalkan": r"coming soon|trial has ended|waitlist|yakında",
+        "sayfalar": ["https://upscale.sirioberati.com/", "https://enhancor.ai/"],
     },
 ]
 

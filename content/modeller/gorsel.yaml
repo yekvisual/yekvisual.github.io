@@ -1,24 +1,26 @@
 ad: Görsel
 sira: 1
-olcu: "Artificial Analysis Image Arena, metinden görsel (kör oylama Elo puanı)"
-kaynak: "Artificial Analysis Text-to-Image Leaderboard, 2 Kasım 2026'da okundu"
-guncelleme: 2026-11-02
-aciklama: "Metinden görsel üreten modeller, kör oylamayla sıralanıyor. Puanlar Artificial Analysis'ten aynen alındı."
-yontem: "Kullanıcılar aynı istemle üretilmiş iki görseli adını görmeden karşılaştırıyor; oylardan Elo puanı çıkıyor. FLUX.2 [dev] bu ölçekte 1000 puanlık çapa model. Fiyat görsel başına API fiyatı; puana karışmaz. LMArena'da da ilk sırada aynı model var (GPT Image 2.5 Sunburst)."
+olcu: "Sıra YEK Lab seçimi; puan Artificial Analysis Image Arena, metinden görsel (kör oylama Elo)"
+yeklab_sirasi: true
+kaynak: "Artificial Analysis Text-to-Image Leaderboard, 17 Kasım 2026'da okundu"
+guncelleme: 2026-11-17
+aciklama: "Metinden görsel üreten modeller. Her firmadan tek bir sürümle daha çok seçenek göstermek için OpenAI'ı en güncel modeliyle tek satırda tuttuk; Kling Image 4.0 ve Canva Craft'ı ardından koyduk. Gerisi Artificial Analysis'in kör oylama puanına göre."
+yontem: "Kullanıcılar aynı istemle üretilmiş iki görseli adını görmeden karşılaştırıyor; oylardan Elo puanı çıkıyor. FLUX.2 [dev] bu ölçekte 1000 puanlık çapa model. Arenanın ilk beş sırası OpenAI'ın GPT Image sürümleri (2.6 ve 2.5'in Sunburst ve Flare ayarları, GPT Image 2); burada yalnız en yükseğini gösteriyoruz. Fiyat görsel başına API fiyatı; puana karışmaz."
 degisenler:
-  - { metin: "İlk gerçek ölçüm: puanlar artık tamamen kamu verisi", yon: yeni }
-  - { metin: "OpenAI GPT Image 2.5 iki arenada da birinci", yon: yukari }
-  - { metin: "En iyi açık model FLUX 3 Image Klein, 21. sırada", yon: asagi }
+  - { metin: "GPT Image 2.6 Sunburst 1261 ile yeni birinci", yon: yeni }
+  - { metin: "Kling Image 4.0 önizlemede 1180 puanla girdi", yon: yeni }
+  - { metin: "Canva Craft ve Seedream 5.5 listede", yon: yukari }
 modeller:
-  - { ad: "GPT Image 2.5 Sunburst", firma: OpenAI, puan: 1222, erisim: ucretli, fiyat: "$0,21" }
-  - { ad: "GPT Image 2.5 Flare", firma: OpenAI, puan: 1207, erisim: ucretli, fiyat: "$0,21" }
-  - { ad: "GPT Image 2", firma: OpenAI, puan: 1186, erisim: ucretli, fiyat: "$0,21" }
+  - { ad: "GPT Image 2.6 Sunburst", firma: OpenAI, puan: 1261, erisim: ucretli, fiyat: "$0,21", not: "Arenanın ilk beş sırası OpenAI'ın; en günceli ve en yükseği bu." }
+  - { ad: "Kling Image 4.0", firma: Kuaishou, puan: 1180, erisim: deneme, fiyat: "API fiyatı henüz yok", not: "Önizlemede; arenaya önizleme sürümüyle girdi." }
+  - { ad: "Canva Craft", firma: Canva, puan: 1158, erisim: sinirli, fiyat: "$0,03", not: "Canva'da Dream Lab bölümünden, ücretsiz hesapla da kullanılabiliyor." }
   - { ad: "Nano Banana 2.1", firma: Google, puan: 1176, erisim: sinirli, turkce: evet, fiyat: "$0,034", not: "Gemini uygulamasında ücretsiz." }
-  - { ad: "MAI-Image-2.6", firma: Microsoft AI, puan: 1166, erisim: ucretli, fiyat: "$0,039" }
-  - { ad: "Grok Imagine Image 2.0", firma: xAI, puan: 1166, erisim: ucretli, fiyat: "$0,06" }
-  - { ad: "Nano Banana 2", firma: Google, puan: 1140, erisim: ucretli, fiyat: "$0,067" }
-  - { ad: "Muse Image", firma: Meta, puan: 1127, erisim: ucretli, fiyat: "$0,01" }
-  - { ad: "GPT Image 1.5", firma: OpenAI, puan: 1123, erisim: ucretli, fiyat: "$0,13" }
-  - { ad: "MAI-Image-2.6-Flash", firma: Microsoft AI, puan: 1119, erisim: ucretli, fiyat: "$0,019" }
+  - { ad: "MAI-Image-2.6", firma: Microsoft AI, puan: 1168, erisim: ucretli, fiyat: "$0,039" }
+  - { ad: "Grok Imagine Image 2.0", firma: xAI, puan: 1167, erisim: ucretli, fiyat: "$0,06" }
+  - { ad: "Nano Banana 2", firma: Google, puan: 1143, erisim: ucretli, fiyat: "$0,067" }
+  - { ad: "Seedream 5.5", firma: ByteDance, puan: 1134, erisim: ucretli, fiyat: "$0,02", not: "Şeffaf arka planlı görseli doğrudan üretiyor; 100 tura kadar düzenleme." }
+  - { ad: "Muse Image", firma: Meta, puan: 1126, erisim: ucretli, fiyat: "$0,01" }
+  - { ad: "MAI-Image-2.6-Flash", firma: Microsoft AI, puan: 1124, erisim: ucretli, fiyat: "$0,019" }
 gecmis:
   - { tarih: 2026-11-02, puanlar: { "GPT Image 2.5 Sunburst": 1222, "GPT Image 2.5 Flare": 1207, "GPT Image 2": 1186, "Nano Banana 2.1": 1176, "MAI-Image-2.6": 1166 } }
+  - { tarih: 2026-11-17, puanlar: { "GPT Image 2.6 Sunburst": 1261, "Kling Image 4.0": 1180, "Nano Banana 2.1": 1176, "MAI-Image-2.6": 1168, "Grok Imagine Image 2.0": 1167 } }

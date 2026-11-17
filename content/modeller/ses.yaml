@@ -1,24 +1,25 @@
 ad: Ses
 sira: 4
 olcu: "Artificial Analysis Speech Arena, metinden ses (kör oylama Elo puanı)"
-kaynak: "Artificial Analysis Text-to-Speech Leaderboard, 2 Kasım 2026'da okundu"
-guncelleme: 2026-11-02
+kaynak: "Artificial Analysis Text-to-Speech Leaderboard, 17 Kasım 2026'da okundu"
+guncelleme: 2026-11-17
 aciklama: "Metni sese çeviren modeller, kör dinleme oylarıyla sıralanıyor. Puanlar Artificial Analysis'ten aynen alındı."
 yontem: "Dinleyiciler aynı metnin iki seslendirmesini adını bilmeden karşılaştırıyor; oylardan Elo puanı çıkıyor. Oylama ağırlıkla İngilizce metinlerle yapılıyor; Türkçe performansı ayrıca denemek gerekir. Fiyat milyon karakter başına."
 degisenler:
-  - { metin: "İlk gerçek ölçüm: puanlar artık tamamen kamu verisi", yon: yeni }
-  - { metin: "ElevenLabs Eleven v4 ilk iki sırada", yon: yukari }
-  - { metin: "Fish Audio Drama 3 açık ağırlıklı modellerde birinci", yon: yeni }
+  - { metin: "ElevenLabs Eleven v4 ilk iki sırada (1340 / 1338)", yon: yukari }
+  - { metin: "Speechify Simba 3.5 beşinci sıradan girdi; en ucuzu", yon: yeni }
+  - { metin: "Qwen-Audio-3.1 yedi puan kaybetti ama üçüncü", yon: asagi }
 modeller:
-  - { ad: "Eleven v4 Turbo", firma: ElevenLabs, puan: 1336, erisim: sinirli, turkce: evet, fiyat: "$40 / M karakter" }
-  - { ad: "Eleven v4", firma: ElevenLabs, puan: 1334, erisim: sinirli, turkce: evet, fiyat: "$80 / M karakter" }
-  - { ad: "Qwen-Audio-3.1-TTS-Plus", firma: Alibaba, puan: 1305, erisim: ucretli, fiyat: "$19,31 / M karakter" }
-  - { ad: "Sonic 3.6", firma: Cartesia, puan: 1296, erisim: ucretli, fiyat: "$49 / M karakter" }
+  - { ad: "Eleven v4 Turbo", firma: ElevenLabs, puan: 1340, erisim: sinirli, turkce: evet, fiyat: "$40 / M karakter" }
+  - { ad: "Eleven v4", firma: ElevenLabs, puan: 1338, erisim: sinirli, turkce: evet, fiyat: "$80 / M karakter" }
+  - { ad: "Qwen-Audio-3.1-TTS-Plus", firma: Alibaba, puan: 1298, erisim: ucretli, fiyat: "$19,31 / M karakter" }
+  - { ad: "Sonic 3.6", firma: Cartesia, puan: 1295, erisim: ucretli, fiyat: "$49 / M karakter" }
+  - { ad: "Simba 3.5", firma: Speechify, puan: 1291, erisim: ucretli, fiyat: "$6,58 / M karakter", not: "Kasım'da çıktı; listenin en ucuzu." }
   - { ad: "Gemini 3.8 Flash TTS", firma: Google, puan: 1283, erisim: ucretli, fiyat: "$16,49 / M karakter" }
-  - { ad: "Fish Audio Drama 3", firma: Fish Audio, puan: 1278, erisim: acik, fiyat: "$15 / M karakter", not: "Listedeki tek açık ağırlıklı model." }
-  - { ad: "Qwen-Audio-3.0-TTS-Plus", firma: Alibaba, puan: 1269, erisim: ucretli, fiyat: "$19,31 / M karakter" }
-  - { ad: "Inworld Realtime TTS-2", firma: Inworld, puan: 1267, erisim: ucretli, fiyat: "$20,83 / M karakter" }
-  - { ad: "Lightning V3.1 Pro", firma: Smallest.ai, puan: 1266, erisim: ucretli, fiyat: "$19,50 / M karakter" }
-  - { ad: "Gemini 3.8 Flash-Lite TTS", firma: Google, puan: 1259, erisim: ucretli, fiyat: "$11,03 / M karakter" }
+  - { ad: "Fish Audio Drama 3", firma: Fish Audio, puan: 1279, erisim: acik, fiyat: "$15 / M karakter", not: "Listedeki tek açık kaynak model." }
+  - { ad: "Lightning V3.1 Pro", firma: Smallest.ai, puan: 1271, erisim: ucretli, fiyat: "$19,50 / M karakter" }
+  - { ad: "Inworld Realtime TTS-2", firma: Inworld, puan: 1270, erisim: ucretli, fiyat: "$20,83 / M karakter" }
+  - { ad: "Qwen-Audio-3.0-TTS-Plus", firma: Alibaba, puan: 1263, erisim: ucretli, fiyat: "$19,31 / M karakter" }
 gecmis:
   - { tarih: 2026-11-02, puanlar: { "Eleven v4 Turbo": 1336, "Eleven v4": 1334, "Qwen-Audio-3.1-TTS-Plus": 1305, "Sonic 3.6": 1296, "Gemini 3.8 Flash TTS": 1283 } }
+  - { tarih: 2026-11-17, puanlar: { "Eleven v4 Turbo": 1340, "Eleven v4": 1338, "Qwen-Audio-3.1-TTS-Plus": 1298, "Sonic 3.6": 1295, "Simba 3.5": 1291 } }

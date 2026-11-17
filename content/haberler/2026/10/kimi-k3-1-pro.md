@@ -1,5 +1,5 @@
 ---
-baslik: "Kimi K3.1 Pro çıktı: Claude'a en yakın açık ağırlıklı model, ama evde çalışmıyor"
+baslik: "Kimi K3.1 Pro çıktı: Claude'a en yakın açık kaynak model, ama evde çalışmıyor"
 tarih: 2026-10-23
 kategori: acik-kaynak
 puan: 5

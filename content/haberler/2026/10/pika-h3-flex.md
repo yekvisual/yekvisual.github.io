@@ -1,5 +1,5 @@
 ---
-baslik: "Pika H3 Flex açık ağırlıklı oldu: sesli ve konuşmalı video, kendi bilgisayarınızda"
+baslik: "Pika H3 Flex açık kaynak oldu: sesli ve konuşmalı video, kendi bilgisayarınızda"
 tarih: 2026-10-29
 kategori: video
 puan: 5

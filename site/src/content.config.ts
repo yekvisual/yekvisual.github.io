@@ -94,7 +94,7 @@ const ozetler = defineCollection({
 });
 
 // Model sıralamaları: her kategori bir YAML (content/modeller/<kategori>.yaml).
-// Her Cumartesi güncellenir; `ornek: true` olanlar henüz gerçek ölçüm değildir.
+// Düzenli olarak güncellenir; `ornek: true` olanlar henüz gerçek ölçüm değildir.
 // `yeklab_sirasi: true`: sıra YAML'daki sıradır (YEK Lab seçimi), puan yalnız bilgi; puanı olmayan model `puan: null`.
 const modeller = defineCollection({
   loader: glob({ pattern: '*.yaml', base: '../content/modeller' }),
