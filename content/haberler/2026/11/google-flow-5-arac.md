@@ -5,7 +5,7 @@ kategori: video
 puan: 3
 ozet: "Google, 12 Kasım'da yapay zekâ stüdyosu Flow'a sanatçıların yaptığı beş araç ekledi. Pocket Studio telefonla çekilmiş tek bir plandan birden çok kamera açısı üretip görüntüyü iyileştiriyor; oyuncunun performansı aynen kalıyor. Diğerleri afiş tasarlıyor, bir karakteri farklı yaşlarda gösteriyor, görseli piksel ve ASCII gibi retro stillere çeviriyor ve cam kırılması gibi ışık efektleri üretiyor. Flow Türkiye'de açık; araçların ürettiği medya Flow kredisi harcıyor."
 neden_onemli: "Tek kamerayla çekim yapan biri için en büyük kısıt açı sayısı: röportajda ya da konuşmalı videoda kurguyu canlı tutan şey geniş, orta ve yakın plan arasında geçiş yapabilmek. Pocket Studio bunu tek bir telefon çekiminden üretmeyi vaat ediyor. Haber ayrıca Flow'daki Tools özelliğinin nereye gittiğini gösteriyor: herkesin kendi iş akışını küçük bir uygulamaya çevirip bağlantıyla paylaşabildiği bir yapı."
-yekvisual_notu: "Pocket Studio'yu denedim; aracın tanıtımı konuşan kafa çekimleri için ama ben telefonla halıda çektiğim bir hard diski verdim. Kendi tarif ettiğim beyaz ürün masası stüdyosunu Nano Banana 2.1 üretti, Omni 1.2 Flash videoya uyguladı: bulanık, halıdaki disk beyaz kaide üstünde net bir ürün çekimine döndü. Arka planla birlikte nesneyi de yeniden çiziyor; birebir aynı nesne değil. İki şeye dikkat: klip 3–15 saniye arası olmalı (21 saniyelik videom sessizce reddedildi), dışa aktarmada 1080p seçtim ama dosya 720p geldi."
+yekvisual_notu: "Pocket Studio'yu denedim; aracın tanıtımı konuşan kafa çekimleri için ama ben telefonla yerde çektiğim bir hard diski verdim. Kendi tarif ettiğim beyaz ürün masası stüdyosunu Nano Banana 2.1 üretti, Omni 1.2 Flash videoya uyguladı: bulanık, yerdeki disk beyaz kaide üstünde net bir ürün çekimine döndü. Arka planla birlikte nesneyi de yeniden çiziyor; birebir aynı nesne değil. İki şeye dikkat: klip 3–15 saniye arası olmalı (21 saniyelik videom sessizce reddedildi), dışa aktarmada 1080p seçtim ama dosya 720p geldi."
 ucretsiz: null
 acik_kaynak: false
 zorluk: yeni
@@ -17,7 +17,7 @@ kapak_kaynak: "Görsel: Google"
 medya:
   - { tip: video, src: ./google-flow-5-arac/pocket-studio.mp4, alt: "Google'ın Pocket Studio tanıtımı: telefonla çekilmiş bir konuşma planı, ışık ve arka planı değiştirilmiş stüdyo görünümüne çevriliyor. Sağ panelde ışık profili, arka plan, ses iyileştirme ve kamera açısı seçenekleri görünüyor. 10 sn, sessiz.", kaynak: "Video: Google" }
 denemeler:
-  - { tip: gorsel, src: ./google-flow-5-arac/deneme-once-sonra.webp, alt: "Solda telefonla halıda çektiğim hard disk, sağda Pocket Studio'nun 'beyaz ürün masası' stüdyosuyla çıkardığı kare. Disk yeniden çizildiği için bulanıklık gitti; nesne birebir aynı değil.", kaynak: "YEK Lab denemesi" }
+  - { tip: gorsel, src: ./google-flow-5-arac/deneme-once-sonra.webp, alt: "Solda telefonla yerde çektiğim hard disk, sağda Pocket Studio'nun 'beyaz ürün masası' stüdyosuyla çıkardığı kare. Disk yeniden çizildiği için bulanıklık gitti; nesne birebir aynı değil.", kaynak: "YEK Lab denemesi" }
   - { tip: video, src: ./google-flow-5-arac/deneme-pocket-studio.mp4, alt: "Pocket Studio çıktısı: 12 sn, dikey. İlk 6,6 saniye geniş açı, sonrası orta plan ve yavaş yaklaşma (aracın kurgu bölümünden).", kaynak: "YEK Lab denemesi" }
 kaynaklar:
   - { ad: "Google Blog: 5 new Google Flow Tools designed by visual artists", url: "https://blog.google/innovation-and-ai/models-and-research/google-labs/new-google-flow-tools/" }
@@ -67,11 +67,11 @@ Her aracın paylaşılan bağlantısı Google'ın yazısında var. Flow yardım 
 
 ## Denedim: Pocket Studio, bir ürün çekimiyle
 
-Aracın tanıtımı konuşan kafa çekimleri için. Ben bilerek başka bir şey verdim: telefonla, halının üstünde, elde çektiğim bir hard disk videosu.
+Aracın tanıtımı konuşan kafa çekimleri için. Ben bilerek başka bir şey verdim: telefonla, yerde, elde çektiğim bir hard disk videosu.
 
 - **Süre sınırı.** 21 saniyelik ilk videom hiçbir uyarı göstermeden geri döndü; aracın içindeki gizli hata mesajına göre arka plan değiştirme yalnız **3–15 saniyelik** kliplerde çalışıyor. 12 saniyeye kısalttım.
 - **Stüdyo.** Hazır seçenekler (prodüksiyon stüdyosu, akustik oda, yönetici ofisi, tuğla loft) insan için. "Mat beyaz masa, açık gri fon, soldan yumuşak ışık" diye kendi stüdyomu tarif ettim; görseli Nano Banana 2.1 birkaç saniyede üretti.
-- **Videoya uygulama.** Omni 1.2 Flash 12 saniyelik videoyu birkaç dakikada işledi. Sonuç çarpıcı: bulanık, halıdaki disk beyaz kaide üstünde, net bir ürün çekimine döndü. Ama araç yalnız arka planı değiştirmiyor, nesneyi de yeniden çiziyor; birebir sizin çektiğiniz nesne değil.
+- **Videoya uygulama.** Omni 1.2 Flash 12 saniyelik videoyu birkaç dakikada işledi. Sonuç çarpıcı: bulanık, yerdeki disk beyaz kaide üstünde, net bir ürün çekimine döndü. Ama araç yalnız arka planı değiştirmiyor, nesneyi de yeniden çiziyor; birebir sizin çektiğiniz nesne değil.
 - **Çoklu kamera.** Kurgu bölümünde çekimi böldüm; ikinci parçaya orta plan ve yavaş yaklaşma verdim. Bu kısım yeni üretim yapmıyor, var olan görüntüyü kırpıp hareket ettiriyor.
 - **Dışa aktarma.** 1080p ve 30 fps seçtim; inen dosya 720×1280 ve 24 fps çıktı.
 
