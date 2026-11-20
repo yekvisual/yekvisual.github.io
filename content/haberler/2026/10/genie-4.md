@@ -18,8 +18,12 @@ kapak_kaynak: "Görsel: Google DeepMind, Genie 4 tanıtım videosu"
 medya:
   - { tip: video, src: "./genie-4/genie3-genie4-karsilastirma.mp4", alt: "Genie 3 ile Genie 4 aynı istemle yan yana", kaynak: "Google DeepMind" }
 kaynaklar:
+  - { ad: "Google: Genie 4 kullanıma açıldı (18 Kasım)", url: "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/genie-4-now-available-project-genie/" }
+  - { ad: "Google: Genie 4 Gemini API'de (19 Kasım)", url: "https://blog.google/innovation-and-ai/technology/developers-tools/genie-4-in-gemini-api/" }
   - { ad: "Google DeepMind duyurusu", url: "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/" }
 ---
+
+> **Güncelleme, 20 Kasım:** Genie 4, 18 Kasım'da Project Genie içinde Google AI Ultra abonelerine açılmaya başladı; Google AI Pro aboneleri için bekleme listesi var. 19 Kasım'dan beri Gemini API'de geliştiricilere de açık. Ayrıntılar aşağıda "Nasıl denenir?" bölümünde.
 
 ## Neler yeni?
 
@@ -57,4 +61,7 @@ Yani Genie 4 bugün mekân keşfinin yerini almaz; ama hangi mekâna gidileceği
 
 ## Nasıl denenir?
 
-Şimdilik denenemiyor: Genie 4 güvenilir test kullanıcılarına açık bir araştırma önizlemesinde. DeepMind, Google AI Ultra aboneleri için Project Genie içinde ve erken erişim ortakları için Gemini API ile Google AI Studio'da "yakında" diyor; duyuru sayfasında bekleme listesi var. Fiyat, çözünürlük ve oturum süresi açıklanmadı.
+- **Project Genie (labs.google/projectgenie):** 18 Kasım'dan beri uygun Google AI Ultra abonelerine kademeli olarak açılıyor. Google AI Pro aboneleri aynı sayfadan bekleme listesine yazılabiliyor. Google hangi ülkelerde açık olduğunu yazmadı; Türkiye'den erişimi henüz denemedik.
+- **Gemini API ve Google AI Studio:** 19 Kasım'dan beri geliştiricilere açık. Çıktı 720p, 24 kare/saniye ve sesli. Fiyat milyon token başına girişte 1,50 $, video çıktısında 17,50 $; ücretsiz katmanda yok.
+- Project Genie'de bir de ajan var: anlatmak istediğiniz hikâyeyi ya da simülasyonu tarif ediyorsunuz, ajan fikri sizinle birlikte geliştirip görüntü ve ses üretiyor. Topluluğun kurduğu dünyaları açıp ortamını, karakterlerini ve sesini değiştirebiliyorsunuz.
+- Üretilen içeriğe Google'ın SynthID filigranı ekleniyor.
