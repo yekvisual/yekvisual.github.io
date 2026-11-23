@@ -92,6 +92,7 @@ TAKIPLER = [
         "anahtar": r"miracle",
         "tetik": r"available now|now available|now live|is live|try (it )?now|start editing|out now|launch(ed)?|pricing|credits?|mcp|\$",
         "kalkan": r"coming soon|waitlist|early testing|selected partners|yakında",
+        "butun_sayfa": True,  # menü metni tek "cümle" geliyor; parça değişimi değil, sayfanın tamamı ölçülür
         "sayfalar": ["https://higgsfield.ai/miracle"],
     },
     {
@@ -101,6 +102,7 @@ TAKIPLER = [
         "anahtar": r"portrait|upscal|skin fix|identity",
         "tetik": r"available now|now available|now live|is live|try (it )?now|start upscaling|upload|pricing|credits?|\$",
         "kalkan": r"coming soon|trial has ended|waitlist|yakında",
+        "butun_sayfa": True,
         "sayfalar": ["https://upscale.sirioberati.com/", "https://enhancor.ai/"],
     },
 ]
@@ -163,7 +165,16 @@ def main(argv: list[str]) -> int:
             cikan = [x for x in eski[url] if x not in c]
             if not (eklenen or cikan):
                 continue
-            if t.get("her_degisiklik") or any(re.search(t["tetik"], x, re.I) for x in eklenen) or any(re.search(t.get("kalkan", r"yalnızca google ai ultra|only .*ultra|coming soon|yakında"), x, re.I) for x in cikan):
+            kalkan = t.get("kalkan", r"yalnızca google ai ultra|only .*ultra|coming soon|yakında")
+            if t.get("butun_sayfa"):
+                # Yalnız sayfada daha önce hiç geçmeyen bir tetik kelimesi belirirse ya da
+                # kalkan ifadesi sayfadan tümüyle silinirse uyar (menü kıpırtısı sayılmaz).
+                once, simdi = " ".join(eski[url]), " ".join(c)
+                yeni_tetik = {m.group(0).lower() for m in re.finditer(t["tetik"], simdi, re.I)} - {m.group(0).lower() for m in re.finditer(t["tetik"], once, re.I)}
+                uyar = bool(yeni_tetik) or (bool(re.search(kalkan, once, re.I)) and not re.search(kalkan, simdi, re.I))
+            else:
+                uyar = t.get("her_degisiklik") or any(re.search(t["tetik"], x, re.I) for x in eklenen) or any(re.search(kalkan, x, re.I) for x in cikan)
+            if uyar:
                 rapor.append(f"### {url}\n\n**Yeni:**\n" + "\n".join(f"- {x}" for x in eklenen) + "\n\n**Kalkan:**\n" + "\n".join(f"- {x}" for x in cikan))
         if rapor:
             govde = (f"`{t['haber']}` haberini güncelleyip ana sayfada öne çıkarma zamanı olabilir.\n\n" + "\n\n".join(rapor))
