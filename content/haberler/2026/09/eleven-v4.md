@@ -29,7 +29,7 @@ ElevenLabs, 28 Eylül'de Eleven v4 ve Eleven v4 Turbo'yu yayınladı. İki model
 - **Klonlama:** Anlık ses klonu (Instant Voice Clone) 10 saniyelik kayıtla çalışıyor. Yüksek kalite isteyenler için Profesyonel Ses Klonu (PVC) desteği de v4'te var.
 - **Yönlendirme:** Konuşmanın nasıl söyleneceğini doğal dille tarif ediyorsunuz; metnin içine `[laughs]`, `[said angrily in French accent]`, `[light rain]`, `[phone buzzing]` gibi etiketler koyabiliyorsunuz. Şirket, modelin bu etiketlere önceki modellerden daha sadık olduğunu söylüyor.
 - **Hız:** v4'te medyan gecikme yaklaşık 100 ms; Turbo'da ilk sese kadar yaklaşık 150 ms. Bu, sesli asistanlarda "iki kişinin konuşması arasındaki duraklamadan daha kısa" demek.
-- **Sınır:** Tek istekte 10.000 karakter, yaklaşık 10 dakika ses.
+- **Sınır:** Tek istekte 100.000 karakter, yaklaşık 100 dakika ses. (Çıkışta 10.000 karakterdi; ElevenLabs Kasım 2026'da sınırı on katına çıkardı.)
 
 Fiyat ayrı değil: ElevenLabs'in v4 sayfasındaki SSS'ye göre v4, diğer seslendirme modelleriyle aynı kredi fiyatında ve ücretsiz plan dahil tüm planlarda kullanılabiliyor. Ücretsiz planda ayda 10.000 kredi var (yaklaşık 10 dakika ses, kişisel kullanım için).
 
