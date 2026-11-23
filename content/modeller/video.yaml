@@ -2,25 +2,26 @@ ad: Video
 sira: 2
 olcu: "Sıra YEK Lab seçimi; puan Artificial Analysis Video Arena, görselden sesli video (kör oylama Elo)"
 yeklab_sirasi: true
-kaynak: "Artificial Analysis Image-to-Video Leaderboard (Ekim 2026 yenilemesi), 17 Kasım 2026'da okundu"
-guncelleme: 2026-11-17
+kaynak: "Artificial Analysis Image-to-Video Leaderboard (AA-Video-I2V v2.1), 23 Kasım 2026'da okundu"
+guncelleme: 2026-11-23
 aciklama: "Görselden sesli video üreten modeller: bir kare verip onu canlandırıyorsunuz. Gerçek işlerde en çok bu yol kullanılıyor. Seedance ölçümde de birinci; Kling 4.0'ı deneyimimize göre üçüncü sıraya koyduk. Gerisi Artificial Analysis'in kör oylama puanına göre."
 yontem: "Metinden video yerine görselden videoyu esas aldık: kareyi siz belirlediğiniz için sonuç daha gerçekçi ve kontrol edilebilir oluyor. Artificial Analysis kullanıcılara aynı görselden üretilmiş iki videoyu adını göstermeden izletiyor; oylardan Elo puanı çıkıyor. Kling 3.0 bu ölçekte 1000 puanlık çapa model. Herkese açık API'si olmayan Utopai X (arenada 2.) listeye alınmadı. Fiyat dakika başına API fiyatı; puana karışmaz."
 degisenler:
-  - { metin: "Seedance 2.5 birinciliği korudu (1161)", yon: yukari }
-  - { metin: "SkyReels V4 ve Pika H3 Flex ilk 10'a girdi", yon: yeni }
-  - { metin: "Wan 3.0 ilk 10'dan düştü; Kling 4.0 hâlâ ölçülmedi", yon: asagi }
+  - { metin: "Creatify'ın Boreal-H3'ü 1151 puanla arenaya üçüncü sıradan girdi; denedik", yon: yeni }
+  - { metin: "Seedance 2.5 birinciliği korudu (1162)", yon: yukari }
+  - { metin: "Pika H3 Flex ilk 10'dan çıktı; Kling 4.0 hâlâ ölçülmedi", yon: asagi }
 modeller:
-  - { ad: "Seedance 2.5", firma: ByteDance, puan: 1161, erisim: ucretli, fiyat: "$34,12 / dk", not: "Bence şu an en iyi video modeli; ölçümde de birinci." }
+  - { ad: "Seedance 2.5", firma: ByteDance, puan: 1162, erisim: ucretli, fiyat: "$34,12 / dk", not: "Bence şu an en iyi video modeli; ölçümde de birinci." }
   - { ad: "Seedance 2.0", firma: ByteDance, puan: 1141, erisim: ucretli, fiyat: "$22,45 / dk" }
   - { ad: "Kling 4.0", firma: Kuaishou, puan: null, erisim: deneme, fiyat: "Deneme kredisi, sonra abonelik", not: "Artificial Analysis'te henüz yok, puanı yok; sırası bizim deneyimimize göre. Tek çekimde 30 saniye, karakter tutarlılığı güçlü." }
-  - { ad: "MiniMax H3 (768p)", firma: MiniMax, puan: 1134, erisim: acik, fiyat: "$4,80 / dk", not: "Listenin üst sıralarındaki açık kaynak model." }
+  - { ad: "Boreal-H3", firma: Creatify, puan: 1151, erisim: deneme, fiyat: "$2,42 / dk", not: "Denedik: verdiğimiz kareden 5 saniyelik sesli videoyu 40 saniyede üretti; yüz ve masadaki Türkçe yazılar korundu, yalnız laptopun açısı kaydı. Creatify'da 7 günlük denemeyle 20 kredi veriliyor." }
+  - { ad: "MiniMax H3 (768p)", firma: MiniMax, puan: 1136, erisim: acik, fiyat: "$4,80 / dk", not: "Listenin üst sıralarındaki açık kaynak model." }
+  - { ad: "HeyGen Video 1", firma: HeyGen, puan: 1127, erisim: ucretli, fiyat: "$2,40 / dk" }
   - { ad: "SkyReels V4", firma: Skywork AI, puan: 1125, erisim: ucretli, fiyat: "$21 / dk" }
-  - { ad: "HeyGen Video 1", firma: HeyGen, puan: 1124, erisim: ucretli, fiyat: "$2,40 / dk" }
-  - { ad: "Hyperflow H3", firma: Video Rebirth, puan: 1119, erisim: ucretli, fiyat: "$9 / dk" }
+  - { ad: "Hyperflow H3", firma: Video Rebirth, puan: 1121, erisim: ucretli, fiyat: "$9 / dk" }
+  - { ad: "MiniMax H3 Max", firma: Fal, puan: 1119, erisim: ucretli, fiyat: "$9,60 / dk" }
   - { ad: "P-Video-2-Pro", firma: Pruna AI, puan: 1117, erisim: ucretli, fiyat: "$5,70 / dk" }
-  - { ad: "MiniMax H3 Max", firma: Fal, puan: 1116, erisim: ucretli, fiyat: "$9,60 / dk" }
-  - { ad: "Pika H3 Flex", firma: Pika, puan: 1114, erisim: acik, fiyat: "$2,10 / dk", not: "Mac'te yerelde de çalışıyor (MPS yamasıyla)." }
 gecmis:
   - { tarih: 2026-11-02, puanlar: { "Seedance 2.5": 1153, "Seedance 2.0": 1136, "MiniMax H3 (768p)": 1128, "Hyperflow H3": 1124, "HeyGen Video 1": 1120 } }
   - { tarih: 2026-11-17, puanlar: { "Seedance 2.5": 1161, "Seedance 2.0": 1141, "MiniMax H3 (768p)": 1134, "SkyReels V4": 1125, "HeyGen Video 1": 1124 } }
+  - { tarih: 2026-11-23, puanlar: { "Seedance 2.5": 1162, "Boreal-H3": 1151, "Seedance 2.0": 1141, "MiniMax H3 (768p)": 1136, "HeyGen Video 1": 1127 } }
