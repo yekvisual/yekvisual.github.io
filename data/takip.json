@@ -67,15 +67,18 @@
  },
  "eleven-v4-plan": {
   "https://elevenlabs.io/pricing": [
-   "After that, your account will be downgraded to the Free plan and any unused paid credits will expire.",
-   "Annual billing works out to two months free — you pay for 10 months (annual price = monthly price × 10).",
+   "After that your workspace drops to Free and leftover paid credits are lost.",
+   "Am I charged for every generation and can I regenerate for free?",
    "Calculate your costs based on your usage needs Yearly billing Monthly billing Yearly billing Startup Grants Program Build intelligent, real-time conversational AI agents into your new product or startup for free with an ElevenLabs Grant.",
-   "If you are not satisfied with the output, a limited number of free regenerations may be available as long as the content and certain settings do not change.",
-   "Monthly price and included credits per plan: Free $0 (10,000 credits); Starter $6 (30,000 credits); Creator $22 (121,000 credits, $11 for the first month); Pro $99 (600,000 credits); Scale $299 (1,800,000 credits, 3 seats); Business $990 (6,000,000 credits, 10 seats); Enterprise is custom.",
-   "Rollover does not apply to the Free plan.",
-   "The limit depends on whether you are on the Free tier or a paid subscription.",
-   "Whether a regeneration is free is indicated before generating.",
-   "Your subscription will remain active until the end of your current billing cycle, after which it will not renew and your account will be downgraded to the Free plan."
+   "ElevenLabs Pricing | Black Friday Sale: Save up to 55% &)]:tw-overflow-x-hidden\"> Black Friday Up to 55% off Get up to 55% off Ends December 1 Get the offer First month for $1 Get your first month for only $1 Ends December 1 Subscribe strong]:tw-font-normal tw-text-gray-600\"> Introducing Eleven v4 M",
+   "ElevenLabs offers annual billing with two months free.",
+   "Free includes images only, up to 3 per day.",
+   "Free to Pro include 1 Full seat, Scale 3 seats and Business 10, and every plan adds 20 Basic seats.",
+   "In the web app, a single generation can run to 10,000 characters on Eleven v4 and 5,000 on other models.",
+   "On ElevenCreative , Free is $0 with 10,000 credits.",
+   "On the website, you’re able to get 2 free regenerations within 2 hours if the text, voice, and model stay the same.",
+   "Rollover ends if you downgrade or cancel and does not apply to Free.",
+   "Through the API , Eleven v4 , v3, and Multilingual v2 also cost 1 credit, while Turbo, Flash, and v3 Conversational models cost 0.5."
   ],
   "https://elevenlabs.io/docs/overview/models": [
    "Agents Platform Use eleven_v4_turbo , eleven_flash_v2_5 , eleven_flash_v2 or eleven_multilingual_v2 Perfect for real-time conversational applications.",
@@ -141,11 +144,11 @@
    "Upgrade to a Google AI Plan to unlock Nano Banana 2.1, our most advanced image model with enhanced quality, reasoning, and visual design."
   ],
   "https://gemini.google/subscriptions/": [
-   "$0 / month with a Google Account Get started Gemini app Your personal, proactive and powerful AI Assistant Auto model selection Image generation and editing Deep Research Gemini Live Canvas Skills Google Flow 3 Access to our AI creative studio to create cinematic scenes and stories, including limite",
+   "$0 / month with a Google Account Get started Gemini app Your personal, proactive and powerful AI Assistant Auto model selection Image generation and editing Deep Research Gemini Live Canvas Skills Google Flow 2 Access to our AI creative studio to create cinematic scenes and stories, including limite",
    "Gemini 4 Carbon model and Nano Banana Pro in AI Mode are available in select countries — see full list of countries with Gemini 4 Carbon in AI Mode and full list of countries with Nano Banana Pro in AI Mode .",
-   "Google Search 4 Higher access to Nano Banana, agentic capabilities, and more.",
-   "Google Search 4 Highest access to Gemini 4 Carbon, Nano Banana, agentic capabilities, and more.",
-   "Google Search 4 More access to Nano Banana in Search."
+   "Google Search 3 Higher access to Nano Banana, agentic capabilities, and more.",
+   "Google Search 3 Highest access to Gemini 4 Carbon, Nano Banana, agentic capabilities, and more.",
+   "Google Search 3 More access to Nano Banana in Search."
   ]
  },
  "davinci-mcp-ucretsiz": {
