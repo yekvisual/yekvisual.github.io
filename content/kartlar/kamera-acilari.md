@@ -24,11 +24,11 @@ gorsel: ./medya/kamera-acilari.webp
 - Açıların İngilizce adlarını da yazdık. İstemi Türkçe yazsanız bile açının adını İngilizce bırakın; "low angle", "over-the-shoulder" gibi terimler sinema dilinde yerleşik.
 - Aynı sahneyi birkaç açıdan üretip art arda koyarsanız tek bir çekimden kısa bir sahne kurmuş olursunuz.
 
-## İmza yönetmen açıları
+## Yönetmen planları
 
-Belli yönetmenlerle anılan, görünce "bu kimin filmi?" dedirten açılar. Videonun ilk beş açısı bunlar.
+Belli yönetmenlerin imzası olmuş, görünce "bu kimin filmi?" dedirten planlar. Videonun ilk beş açısı bunlar.
 
-![İmza yönetmen açıları: Bagaj planı, Vertigo efekti, Double dolly, Tek nokta perspektif, Simetrik kadraj](./medya/kamera-acilari/imza.webp)
+![Yönetmen planları: Bagaj planı, Vertigo efekti, Double dolly, Tek nokta perspektif, Simetrik kadraj](./medya/kamera-acilari/imza.webp)
 
 ### 1. Bagaj planı
 
